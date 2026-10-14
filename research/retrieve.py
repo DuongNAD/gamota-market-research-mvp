@@ -82,8 +82,8 @@ def canonicalize_url(url: str) -> str:
     )
 
 
-def _extract_date_fallback(url: str, text: str) -> Optional[str]:
-    """Fallback date detector from URL path or leading article text."""
+def _extract_date_fallback(url: str, text: str, title: str = "") -> Optional[str]:
+    """Fallback date detector from URL path, title, or leading article text."""
     # 1. Check URL for /YYYY/MM/DD/ or /YYYY-MM-DD
     m_url_full = re.search(r"/(202[0-6])[/-](0[1-9]|1[0-2])[/-](0[1-9]|[12]\d|3[01])", url)
     if m_url_full:
@@ -93,12 +93,11 @@ def _extract_date_fallback(url: str, text: str) -> Optional[str]:
         return f"{m_url_month.group(1)}-{m_url_month.group(2)}"
 
     # 2. Check text header for ISO date YYYY-MM-DD
-    head = (text or "")[:1500]
+    head = f"{title}\n{(text or '')[:1500]}"
     m_iso = re.search(r"\b(202[0-6])-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])\b", head)
     if m_iso:
         return f"{m_iso.group(1)}-{m_iso.group(2)}-{m_iso.group(3)}"
 
-    # 3. Check English Month DD, YYYY
     months_map = {
         "january": "01",
         "february": "02",
@@ -124,6 +123,8 @@ def _extract_date_fallback(url: str, text: str) -> Optional[str]:
         "nov": "11",
         "dec": "12",
     }
+
+    # 3. Check English Month DD, YYYY in header/title
     m_en = re.search(
         r"\b(Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|"
         r"Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)"
@@ -137,7 +138,34 @@ def _extract_date_fallback(url: str, text: str) -> Optional[str]:
         yyyy = m_en.group(3)
         return f"{yyyy}-{mm}-{dd:02d}"
 
+    # 4. Check Month YYYY in URL or title/header (e.g. "september-2026", "September 2026")
+    combined_slug = f"{url} {title} {head[:600]}"
+    m_month_yr = re.search(
+        r"\b(january|february|march|april|may|june|july|august|september|october|november|december)"
+        r"[\s\-_/]+(202[0-6])\b",
+        combined_slug,
+        re.IGNORECASE,
+    )
+    if m_month_yr:
+        mm = months_map.get(m_month_yr.group(1).lower(), "06")
+        return f"{m_month_yr.group(2)}-{mm}"
+
+    # 5. Check Quarter YYYY in URL or title (e.g. "q1-2026", "Q3 2025")
+    q_map = {"1": "03", "2": "06", "3": "09", "4": "12"}
+    m_q_yr = re.search(r"\bq([1-4])[\s\-_/]+(202[0-6])\b", combined_slug, re.IGNORECASE)
+    if m_q_yr:
+        return f"{m_q_yr.group(2)}-{q_map[m_q_yr.group(1)]}"
+
+    # 6. Check explicit report year in URL slug or title (e.g. "-2025", "2026-report", "(2025)")
+    m_url_yr = re.search(r"(?:[\-_/]|report[\-_/]?)(202[2-6])(?:[\-_/]|$)", url.lower())
+    if m_url_yr:
+        return f"{m_url_yr.group(1)}-06"
+    m_title_yr = re.search(r"\b(202[2-6])\b", title)
+    if m_title_yr:
+        return f"{m_title_yr.group(1)}-06"
+
     return None
+
 
 
 def truncate_source_text(
@@ -294,8 +322,10 @@ def fetch_page_content_and_date(
     existing_snippet: str = "",
     existing_date: Optional[str] = None,
     use_cache: bool = True,
+    existing_title: str = "",
 ) -> tuple[str, Optional[str]]:
     """Fetch main text and publication date using httpx + trafilatura (with disk cache)."""
+    cache_file: Optional[Path] = None
     if use_cache:
         CACHE_DIR.mkdir(parents=True, exist_ok=True)
         u_hash = hashlib.sha256(f"fetch_v1::{url}".encode("utf-8")).hexdigest()[:24]
@@ -303,7 +333,16 @@ def fetch_page_content_and_date(
         if cache_file.exists():
             try:
                 cached = json.loads(cache_file.read_text(encoding="utf-8"))
-                return cached.get("text", ""), cached.get("published_date")
+                c_text = cached.get("text", "")
+                c_date = cached.get("published_date")
+                if not c_date:
+                    c_date = _extract_date_fallback(url, c_text, existing_title)
+                    if c_date:
+                        cache_file.write_text(
+                            json.dumps({"url": url, "text": c_text, "published_date": c_date}, ensure_ascii=False),
+                            encoding="utf-8",
+                        )
+                return c_text, c_date
             except Exception:
                 pass
 
@@ -346,9 +385,9 @@ def fetch_page_content_and_date(
         text = f"{snippet_clean}\n\n{text}".strip() if text else snippet_clean
 
     if not pub_date:
-        pub_date = _extract_date_fallback(url, text)
+        pub_date = _extract_date_fallback(url, text, existing_title)
 
-    if use_cache and text:
+    if use_cache and text and cache_file is not None:
         cache_file.write_text(
             json.dumps({"url": url, "text": text, "published_date": pub_date}, ensure_ascii=False),
             encoding="utf-8",
@@ -451,6 +490,7 @@ def retrieve_and_grade_sources(
                 cand.get("snippet") or "",
                 cand.get("published_date"),
                 use_cache,
+                cand.get("title") or "",
             ): cand
             for cand in fetch_pool
         }
@@ -502,11 +542,26 @@ def retrieve_and_grade_sources(
 
     fetched_items.sort(key=_rank_key)
 
+    # Prioritize domain diversity: take at most 2 sources per domain first, then fill remaining slots if needed
+    primary_pass: list[tuple[Source, str]] = []
+    overflow_pass: list[tuple[Source, str]] = []
+    domain_counts: dict[str, int] = {}
+    for pair in fetched_items:
+        dom = (pair[0].domain or "").lower()
+        cnt = domain_counts.get(dom, 0)
+        if cnt < 1 or (pair[0].tier in ("A", "B") and cnt < 2):
+            primary_pass.append(pair)
+            domain_counts[dom] = cnt + 1
+        else:
+            overflow_pass.append(pair)
+
+    ordered_items = primary_pass + overflow_pass
+
     kept_sources: list[Source] = []
     truncated_texts: dict[str, str] = {}
     full_texts: dict[str, str] = {}
 
-    for idx, (src, full_txt) in enumerate(fetched_items):
+    for idx, (src, full_txt) in enumerate(ordered_items):
         if idx < max_kept_sources:
             sid = f"S{idx + 1}"
             final_src = src.model_copy(update={"id": sid})
@@ -519,7 +574,7 @@ def retrieve_and_grade_sources(
             rejected_sources.append(
                 RejectedItem(
                     item_id=src.url[:80],
-                    reason=f"Vượt quá giới hạn {max_kept_sources} nguồn tốt nhất (Hạng {src.tier}, {src.freshness_label})",
+                    reason=f"Vượt quá giới hạn {max_kept_sources} nguồn tốt nhất hoặc trùng lặp domain (Hạng {src.tier}, {src.freshness_label})",
                 )
             )
 

@@ -15,27 +15,27 @@ CACHED_RUNS_DIR = Path(__file__).resolve().parent / "data" / "cached_runs"
 
 SAMPLE_QUESTIONS = [
     (
-        "Cơ hội thể loại (TC1)",
+        "🎯 Cơ hội thể loại (TC1)",
         "Thể loại game mobile nào có tiềm năng tại Đông Nam Á trong 12 tháng tới?",
     ),
     (
-        "Mô hình kiếm tiền (TC2)",
+        "💰 Mô hình kiếm tiền (TC2)",
         "Mô hình kiếm tiền nào đang hiệu quả với game casual tại Indonesia và Philippines?",
     ),
     (
-        "Quy mô thị trường (TC3)",
+        "📊 Quy mô thị trường (TC3)",
         "Quy mô thị trường game mobile Việt Nam hiện nay là bao nhiêu?",
     ),
     (
-        "Kiểm tra tiền đề (TC5)",
-        "Vì sao doanh thu game mobile Đông Nam Á giảm 50% trong năm qua?",
+        "🏆 Đối thủ & Doanh thu (TC6)",
+        "Doanh thu tháng trước của 3 game gacha top đầu Thái Lan là bao nhiêu?",
     ),
 ]
 
 
-def load_cached_runs() -> dict[str, tuple[Path, Report]]:
+def load_cached_runs() -> list[tuple[str, Path, Report]]:
     """Load all saved real runs from data/cached_runs/*.json."""
-    runs: dict[str, tuple[Path, Report]] = {}
+    runs: list[tuple[str, Path, Report]] = []
     if not CACHED_RUNS_DIR.exists():
         return runs
     for path in sorted(CACHED_RUNS_DIR.glob("*.json")):
@@ -43,8 +43,9 @@ def load_cached_runs() -> dict[str, tuple[Path, Report]]:
             data = json.loads(path.read_text(encoding="utf-8"))
             rep = Report.model_validate(data)
             ts = rep.trace.get("run_timestamp", "Không rõ thời điểm")
-            label = f"{rep.question} (Chạy thật lúc: {ts})"
-            runs[label] = (path, rep)
+            dur = rep.trace.get("duration_seconds", 0)
+            label = f"[{path.stem.upper()}] {rep.question} (Chạy thật: {ts} · {dur}s)"
+            runs.append((label, path, rep))
         except Exception:
             continue
     return runs
@@ -57,86 +58,112 @@ def main() -> None:
         layout="wide",
     )
 
+    cached_runs = load_cached_runs()
+    llm_probe = LLMClient()
+    has_key = llm_probe.has_any_api_key()
+    max_live_runs = int(os.environ.get("MAX_LIVE_RUNS_PER_SESSION", "5"))
+
     if "live_runs_used" not in st.session_state:
         st.session_state["live_runs_used"] = 0
     if "question_input" not in st.session_state:
         st.session_state["question_input"] = SAMPLE_QUESTIONS[0][1]
+    if "selected_cached_idx" not in st.session_state:
+        st.session_state["selected_cached_idx"] = 0
     if "active_report" not in st.session_state:
-        st.session_state["active_report"] = None
-
-    max_live_runs = int(os.environ.get("MAX_LIVE_RUNS_PER_SESSION", "5"))
+        st.session_state["active_report"] = (
+            cached_runs[0][2] if cached_runs else None
+        )
 
     st.title("🎮 Hệ thống Nghiên cứu Thị trường Game có Căn cứ (Gamota MVP)")
-    st.caption(
-        "Giả thuyết cốt lõi: Mọi nhận định quan trọng đều truy về trích dẫn nguyên văn (≤ 40 từ, code xác minh RapidFuzz ≥ 90), "
-        "gắn với hạng nguồn A/B/C và độ tin cậy tính bằng quy tắc minh bạch (LLM không tự chấm điểm, không tự viết URL)."
+    st.markdown(
+        "**Giả thuyết cốt lõi:** Với *bất kỳ* câu hỏi nghiên cứu thị trường game nào, mỗi nhận định quan trọng đều "
+        "(a) truy về **trích dẫn nguyên văn ≤ 40 từ đã được code xác minh (`RapidFuzz ≥ 90`)**, "
+        "(b) gắn với **hạng tin cậy của nguồn (`A/B/C`)**, và "
+        "(c) có **độ tin cậy (`CAO / TRUNG BÌNH / THẤP`) tính bằng quy tắc code minh bạch** — LLM không tự chấm điểm, không tự viết URL. Thiếu dữ liệu thì nói rõ là thiếu."
     )
-
-    cached_runs = load_cached_runs()
-    llm_probe = LLMClient()
-    has_key = llm_probe.has_any_api_key()
 
     with st.sidebar:
         st.header("⚙️ Chế độ vận hành")
-        default_mode_idx = 0 if has_key else 1
+        # Default to Cached Runs if available so evaluators can inspect immediately even without keys
+        default_mode_idx = 0 if cached_runs else (1 if has_key else 0)
         mode = st.radio(
             "Chọn chế độ:",
-            options=["🔴 Live (Chạy trực tiếp)", "📦 Kết quả đã lưu (Không cần API key)"],
+            options=[
+                "📦 Kết quả đã lưu (Chạy thật, không cần key)",
+                "🔴 Live (Chạy trực tiếp qua Pipeline)",
+            ],
             index=default_mode_idx,
         )
         st.divider()
-        st.subheader("Trạng thái cấu hình")
-        st.write(f"- **LLM API Key:** `{'ĐÃ CẤU HÌNH' if has_key else 'CHƯA CÓ (Dùng Kết quả đã lưu)'}`")
-        st.write(f"- **Model mặc định:** `{llm_probe.provider}/{llm_probe.model}`")
+        st.subheader("Trạng thái hệ thống")
+        st.write(
+            f"- **API Key (Free-tier):** `{'SẴN SÀNG' if has_key else 'CHƯA CẤU HÌNH'}`"
+        )
+        st.write(f"- **Model cấu hình:** `{llm_probe.provider}/{llm_probe.model}`")
         st.write(
             f"- **Lượt chạy Live trong phiên:** `{st.session_state['live_runs_used']}/{max_live_runs}`"
         )
-        st.write(f"- **Số bản chạy thật đã lưu:** `{len(cached_runs)}`")
+        st.write(f"- **Bản chạy thật đã lưu:** `{len(cached_runs)} file`")
+        st.caption(
+            "💡 Chế độ **Kết quả đã lưu** đọc trực tiếp từ `data/cached_runs/*.json` (các lần chạy thật đã lưu kèm timestamp) để luôn kiểm tra được ngay cả khi hết quota."
+        )
 
-    st.subheader("1. Chọn câu hỏi mẫu hoặc nhập câu hỏi nghiên cứu")
+    st.subheader("1. Câu hỏi mẫu theo 4 nhóm quyết định (Bấm để chọn nhanh)")
     cols = st.columns(len(SAMPLE_QUESTIONS))
     for idx, (short_label, q_text) in enumerate(SAMPLE_QUESTIONS):
         if cols[idx].button(short_label, use_container_width=True):
             st.session_state["question_input"] = q_text
+            # Match in cached_runs if present
+            for c_idx, (_lbl, _p, c_rep) in enumerate(cached_runs):
+                if c_rep.question.strip() == q_text.strip():
+                    st.session_state["selected_cached_idx"] = c_idx
+                    st.session_state["active_report"] = c_rep
+                    break
 
     if mode.startswith("📦"):
         if not cached_runs:
-            st.info(
-                "Hiện chưa có file kết quả chạy thật nào trong `data/cached_runs/`. "
-                "Sau khi chạy các câu hỏi mẫu ở P1–P2, kết quả thật sẽ hiển thị tại đây để xem ngay không cần API key."
+            st.warning(
+                "Chưa có file nào trong `data/cached_runs/`. Hãy chuyển sang chế độ Live hoặc chạy CLI để lưu kết quả."
             )
         else:
-            selected_label = st.selectbox(
-                "Chọn lần chạy thật đã lưu (`data/cached_runs/*.json`):",
-                options=list(cached_runs.keys()),
+            labels = [item[0] for item in cached_runs]
+            safe_idx = min(
+                st.session_state.get("selected_cached_idx", 0), len(labels) - 1
             )
-            if selected_label:
-                _path, rep = cached_runs[selected_label]
-                st.session_state["active_report"] = rep
+            chosen_label = st.selectbox(
+                "Chọn báo cáo chạy thật đã lưu trong `data/cached_runs/`:",
+                options=labels,
+                index=safe_idx,
+            )
+            chosen_idx = labels.index(chosen_label)
+            st.session_state["selected_cached_idx"] = chosen_idx
+            st.session_state["active_report"] = cached_runs[chosen_idx][2]
     else:
         question_val = st.text_input(
-            "Câu hỏi nghiên cứu thị trường game:",
+            "Nhập câu hỏi nghiên cứu thị trường game bất kỳ:",
             key="question_input",
-            placeholder="Nhập bất kỳ câu hỏi nghiên cứu thị trường game nào...",
+            placeholder="Ví dụ: Thể loại game mobile nào có tiềm năng tại Đông Nam Á trong 12 tháng tới?",
         )
-        run_btn = st.button("🚀 Phân tích & Xác minh bằng chứng (Live)", type="primary")
+        run_btn = st.button(
+            "🚀 Chạy Pipeline 6 bước & Xác minh trích dẫn (Live)", type="primary"
+        )
         if run_btn:
             if not question_val.strip():
                 st.warning("Vui lòng nhập câu hỏi nghiên cứu.")
             elif st.session_state["live_runs_used"] >= max_live_runs:
                 st.error(
-                    f"Bạn đã dùng hết {max_live_runs} lượt chạy Live trong phiên này để bảo vệ quota miễn phí. "
+                    f"Đã đạt giới hạn {max_live_runs} lượt chạy Live trong phiên này để bảo vệ quota miễn phí. "
                     "Vui lòng chuyển sang chế độ **📦 Kết quả đã lưu** ở thanh bên trái."
                 )
             elif not has_key:
                 st.error(
-                    "Chưa cấu hình API Key (`GEMINI_API_KEY` / `GROQ_API_KEY`) trong `.env` hoặc Secrets. "
+                    "Chưa cấu hình `GEMINI_API_KEY` trong `.env` hoặc Secrets của ứng dụng. "
                     "Vui lòng chuyển sang chế độ **📦 Kết quả đã lưu** ở thanh bên trái để xem kết quả chạy thật."
                 )
             else:
                 try:
                     with st.status(
-                        "Đang chạy pipeline 6 bước (Plan → Retrieve → Grade → Extract → Synthesize → Score)...",
+                        "Đang thực thi Pipeline 6 bước (Plan → Retrieve → Grade → Extract → Synthesize → Score)...",
                         expanded=True,
                     ) as status_box:
 
@@ -157,33 +184,59 @@ def main() -> None:
                         )
                 except LLMQuotaOrKeyError as q_err:
                     st.error(
-                        f"Lỗi API / Hết hạn mức miễn phí (Quota): {q_err}\n\n"
-                        "👉 **Gợi ý:** Hãy chuyển sang chế độ **📦 Kết quả đã lưu** ở thanh bên trái để xem các lần chạy thật đã lưu sẵn."
+                        f"⚠️ Tạm thời chạm giới hạn API miễn phí (Quota): {q_err}\n\n"
+                        "👉 **Gợi ý:** Hãy chuyển sang chế độ **📦 Kết quả đã lưu** ở thanh bên trái để xem đầy đủ các lần chạy thật đã lưu sẵn."
                     )
                 except Exception as exc:
                     st.error(
-                        f"Đã xảy ra lỗi khi chạy pipeline: {type(exc).__name__}: {exc}\n\n"
-                        "👉 **Gợi ý:** Hãy chuyển sang chế độ **📦 Kết quả đã lưu** để xem các bản chạy thật đã lưu."
+                        f"⚠️ Đã xảy ra lỗi khi gọi API trực tiếp: {type(exc).__name__}: {exc}\n\n"
+                        "👉 **Gợi ý:** Hãy chuyển sang chế độ **📦 Kết quả đã lưu** ở thanh bên trái để xem các bản chạy thật đã lưu."
                     )
 
     active_report: Report | None = st.session_state.get("active_report")
     if active_report is not None:
         st.divider()
+        q = active_report.quality
+        trace = active_report.trace or {}
+
+        # Self-check metric cards
+        m1, m2, m3, m4 = st.columns(4)
+        m1.metric(
+            "Trích dẫn xác minh (RapidFuzz ≥ 90)",
+            f"{q.verified_quote_rate}%",
+            f"{q.verified_quotes_count}/{q.total_quotes_extracted} câu trích gốc",
+        )
+        m2.metric(
+            "Nhận định có ≥ 1 bằng chứng",
+            f"{q.insights_with_verified_evidence_rate}%",
+            f"{q.total_insights_count} nhận định hợp lệ",
+        )
+        m3.metric(
+            "Nhận định CAO từ nguồn C",
+            f"{q.high_confidence_from_tier_c_only_count}",
+            "Quy tắc bắt buộc = 0",
+        )
+        m4.metric(
+            "Nguồn giữ lại / bị loại",
+            f"{len(active_report.sources)} giữ / {q.rejected_sources_count} loại",
+            f"Thời gian: {trace.get('duration_seconds', 0)}s ({trace.get('llm_calls_count', 0)} LLM calls)",
+        )
+
         md_output = render_report_markdown(active_report)
         json_output = json.dumps(
             active_report.model_dump(), ensure_ascii=False, indent=2
         )
 
-        dl_col1, dl_col2, _ = st.columns([1, 1, 3])
+        dl_col1, dl_col2, _ = st.columns([1, 1, 2])
         dl_col1.download_button(
-            "⬇️ Tải báo cáo Markdown (.md)",
+            "⬇️ Tải Báo cáo Markdown (.md)",
             data=md_output.encode("utf-8"),
             file_name="gamota_market_report.md",
             mime="text/markdown",
             use_container_width=True,
         )
         dl_col2.download_button(
-            "⬇️ Tải dữ liệu JSON (.json)",
+            "⬇️ Tải Dữ liệu JSON (.json)",
             data=json_output.encode("utf-8"),
             file_name="gamota_market_report.json",
             mime="application/json",
@@ -192,8 +245,39 @@ def main() -> None:
 
         st.markdown(md_output, unsafe_allow_html=True)
 
-        with st.expander("🔍 Nhật ký Pipeline & Trace chi tiết (Pipeline Audit Log)"):
-            st.json(active_report.trace)
+        with st.expander(
+            "📋 Nhật ký Pipeline (Số nguồn tìm thấy/giữ/loại, câu hỏi con, truy vấn & lý do loại)",
+            expanded=False,
+        ):
+            st.markdown("#### Tiến trình từng bước")
+            for log_line in trace.get("step_logs", []):
+                st.write(f"- {log_line}")
+            st.markdown("#### Truy vấn tìm kiếm đã chạy")
+            st.write(trace.get("queries_executed", []))
+            st.markdown("#### Lý do loại nguồn (`rejected_sources`)")
+            if q.rejected_sources:
+                st.table(
+                    [
+                        {"Nguồn / URL": r.item_id, "Lý do loại": r.reason}
+                        for r in q.rejected_sources
+                    ]
+                )
+            else:
+                st.write("Không có nguồn nào bị loại.")
+            st.markdown("#### Lý do loại trích dẫn (`rejected_quotes`)")
+            if q.rejected_quotes:
+                st.table(
+                    [
+                        {
+                            "Mã trích dẫn": r.item_id,
+                            "Lý do loại": r.reason,
+                            "Nội dung": r.detail,
+                        }
+                        for r in q.rejected_quotes
+                    ]
+                )
+            else:
+                st.write("100% trích dẫn đều khớp nguyên văn (0 trích dẫn bị loại).")
 
 
 if __name__ == "__main__":

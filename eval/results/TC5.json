@@ -1,0 +1,771 @@
+{
+  "question": "Vì sao doanh thu game mobile Đông Nam Á giảm 50% trong năm qua?",
+  "short_answer": "Không có bằng chứng nào cho thấy doanh thu game mobile Đông Nam Á giảm 50% trong năm qua (2025-2026). Ngược lại, các bằng chứng hiện có cho thấy thị trường này đang tăng trưởng về doanh thu, mặc dù lượt tải xuống có thể giảm ở một số khu vực hoặc có sự phân hóa giữa các thể loại game và quốc gia. Cụ thể, doanh thu game mobile Đông Nam Á đạt 5,4 tỷ USD và duy trì tốc độ tăng trưởng hàng năm 13,8% vào năm 2026. Lưu ý chênh lệch số liệu giữa các nguồn theo phạm vi/kỳ báo cáo: Doanh thu game mobile Đông Nam Á Q1 2025 ([E2]: 625 triệu USD vs. [E24]: 625 triệu USD vs. [E28]: 625 triệu USD — Các nguồn Sensor Tower, icon-era.com và gamedevreports.substack.com đều báo cáo cùng một con số doanh thu IAP cho Q1 2025 là 625 triệu USD. Không có xung đột.); Tăng trưởng doanh thu game mobile toàn cầu 2025 ([E23]: tăng 0.2% vs. [E26]: tăng 4.7% (cho 6 thị trường SEA) — AppMagic báo cáo doanh thu trò chơi di động toàn cầu chỉ tăng 0.2% trong năm 2025, trong khi Niko Partners báo cáo tăng trưởng 4.7% cho năm 2025 riêng cho sáu thị trường Đông Nam Á. Sự khác biệt này có thể do phạm vi địa lý (toàn cầu so với Đông Nam Á) và phương pháp tính toán.)",
+  "recommendation": "Gamota nên tập trung vào các thị trường và thể loại game có tiềm năng tăng trưởng doanh thu cao, đặc biệt là các thể loại chiến thuật 4X và MOBA. Đồng thời, cần khai thác hiệu quả hơn mô hình IAP và tận dụng sự phát triển của các phương thức thanh toán kỹ thuật số như ví điện tử và QR code để tối ưu hóa khả năng kiếm tiền. Nghiên cứu sâu hơn về hành vi người chơi và xu hướng thị trường ở từng quốc gia cụ thể sẽ giúp điều chỉnh chiến lược phù hợp.",
+  "decision_criteria": [
+    "Mức độ chính xác của thông tin về sự sụt giảm doanh thu (50%)",
+    "Các nguyên nhân chính và mức độ ảnh hưởng của từng nguyên nhân (vĩ mô, thị trường, hành vi người chơi)",
+    "Phân tích chi tiết theo thể loại game và mô hình kiếm tiền để xác định các điểm yếu và cơ hội",
+    "So sánh tình hình giữa các quốc gia trong khu vực Đông Nam Á để hiểu rõ hơn về sự khác biệt",
+    "Dữ liệu về chi phí UA và giữ chân người chơi để đánh giá hiệu quả đầu tư"
+  ],
+  "option_matrix": [],
+  "insights": [
+    {
+      "id": "I1",
+      "statement": "Không có bằng chứng nào cho thấy doanh thu game mobile Đông Nam Á giảm 50% trong năm qua (2025-2026). Ngược lại, thị trường này đang tăng trưởng về doanh thu.",
+      "type": "fact",
+      "evidence_ids": [
+        "E10",
+        "E13",
+        "E18",
+        "E19",
+        "E22",
+        "E23",
+        "E26",
+        "E27"
+      ],
+      "confidence": "TRUNG BÌNH",
+      "confidence_reason": "Đạt mức TRUNG BÌNH: 5 nguồn hạng C khác domain đồng thuận (S10 (Hạng C, games.gg), S11 (Hạng C, icon-era.com), S6 (Hạng C, mobidictum.com), S8 (Hạng C, voxbooster.com), S9 (Hạng C, advertisingvietnam.com))",
+      "assumptions": [],
+      "is_forecast": false,
+      "has_conflict": false
+    },
+    {
+      "id": "I2",
+      "statement": "Thị trường game mobile Đông Nam Á đạt 5,4 tỷ USD vào năm 2026 và duy trì tốc độ tăng trưởng doanh thu hàng năm 13,8%, là một trong những khu vực có tốc độ tăng trưởng kép hàng năm nhanh nhất thế giới về giải trí kỹ thuật số.",
+      "type": "fact",
+      "evidence_ids": [
+        "E18",
+        "E19"
+      ],
+      "confidence": "THẤP",
+      "confidence_reason": "Chỉ có 1 nguồn hạng C mới hoặc nguồn A/B không rõ ngày (S8 (Hạng C, voxbooster.com))",
+      "assumptions": [],
+      "is_forecast": false,
+      "has_conflict": false
+    },
+    {
+      "id": "I3",
+      "statement": "Trong nửa đầu năm 2026, lượt tải game mobile tại Đông Nam Á nhìn chung giảm so với cùng kỳ năm trước, nhưng doanh thu lại tăng trưởng ở một số thị trường.",
+      "type": "fact",
+      "evidence_ids": [
+        "E10",
+        "E22"
+      ],
+      "confidence": "TRUNG BÌNH",
+      "confidence_reason": "Đạt mức TRUNG BÌNH: 2 nguồn hạng C khác domain đồng thuận (S6 (Hạng C, mobidictum.com), S9 (Hạng C, advertisingvietnam.com))",
+      "assumptions": [],
+      "is_forecast": false,
+      "has_conflict": false
+    },
+    {
+      "id": "I4",
+      "statement": "Việt Nam chứng kiến lượt tải game mobile giảm 9,7% trong nửa đầu năm 2026 so với cùng kỳ năm trước, nhưng tổng doanh thu lại tăng 7,5% lên 177 triệu USD, cho thấy khả năng chuyển đổi người dùng thành giá trị đang tăng cường.",
+      "type": "fact",
+      "evidence_ids": [
+        "E9",
+        "E12",
+        "E13"
+      ],
+      "confidence": "TRUNG BÌNH",
+      "confidence_reason": "Đạt mức TRUNG BÌNH: 2 nguồn hạng C khác domain đồng thuận (S5 (Hạng C, gamota.com), S6 (Hạng C, mobidictum.com))",
+      "assumptions": [],
+      "is_forecast": false,
+      "has_conflict": false
+    },
+    {
+      "id": "I5",
+      "statement": "Thái Lan là quốc gia dẫn đầu khu vực về doanh thu IAP trong quý 1 năm 2025 với 162 triệu USD, mặc dù có sự giảm nhẹ 6% so với quý trước. Indonesia đứng thứ hai với 118 triệu USD (tăng 1%) và Malaysia thứ ba với 103 triệu USD (tăng 7%).",
+      "type": "fact",
+      "evidence_ids": [
+        "E4",
+        "E29"
+      ],
+      "confidence": "TRUNG BÌNH",
+      "confidence_reason": "Đạt mức TRUNG BÌNH: dữ liệu cũ dần 12–24 tháng (S1 (Hạng A, sensortower.com), S12 (Hạng C, gamedevreports.substack.com))",
+      "assumptions": [],
+      "is_forecast": false,
+      "has_conflict": false
+    },
+    {
+      "id": "I6",
+      "statement": "Indonesia là thị trường game lớn nhất Đông Nam Á về cả số lượng người chơi và doanh thu, đồng thời dẫn đầu về lượt tải game di động với 870 triệu lượt trong quý 1 năm 2025.",
+      "type": "fact",
+      "evidence_ids": [
+        "E3",
+        "E20"
+      ],
+      "confidence": "TRUNG BÌNH",
+      "confidence_reason": "Đạt mức TRUNG BÌNH: nguồn tham chiếu (S1 (Hạng A, sensortower.com), S8 (Hạng C, voxbooster.com))",
+      "assumptions": [],
+      "is_forecast": false,
+      "has_conflict": false
+    },
+    {
+      "id": "I7",
+      "statement": "Các thể loại game chiến thuật 4X và MOBA đang dẫn đầu về tăng trưởng doanh thu trong quý 1 năm 2025, với mức tăng lần lượt là 17,6% và 20,1% so với quý trước, trong khi MMORPG giảm 17,1%.",
+      "type": "fact",
+      "evidence_ids": [
+        "E30"
+      ],
+      "confidence": "THẤP",
+      "confidence_reason": "Chỉ có 1 nguồn hạng C mới hoặc nguồn A/B không rõ ngày (S12 (Hạng C, gamedevreports.substack.com))",
+      "assumptions": [],
+      "is_forecast": false,
+      "has_conflict": false
+    },
+    {
+      "id": "I8",
+      "statement": "Sự xuất hiện của các tiêu chuẩn thanh toán QR quốc gia và ví điện tử fintech đã giải quyết vấn đề hạn chế khả năng kiếm tiền từ game kỹ thuật số do tỷ lệ sử dụng thẻ tín dụng thương mại thấp ở Đông Nam Á trước đây.",
+      "type": "fact",
+      "evidence_ids": [
+        "E21"
+      ],
+      "confidence": "THẤP",
+      "confidence_reason": "Chỉ có 1 nguồn hạng C mới hoặc nguồn A/B không rõ ngày (S8 (Hạng C, voxbooster.com))",
+      "assumptions": [],
+      "is_forecast": false,
+      "has_conflict": false
+    },
+    {
+      "id": "I9",
+      "statement": "Mặc dù Việt Nam dẫn đầu thế giới về lượt tải game mobile vào năm 2024 với 9,6 tỷ lượt, nhưng chỉ đứng thứ 5 về doanh thu game tại Đông Nam Á, với chỉ số ARPU chỉ khoảng 0,06 USD, thấp hơn gần 12 lần so với mức trung bình toàn cầu (0,70 USD). Phần lớn doanh thu đến từ quảng cáo trong game (IAA) thay vì mua vật phẩm trong ứng dụng (IAP).",
+      "type": "fact",
+      "evidence_ids": [
+        "E14",
+        "E15",
+        "E16",
+        "E17"
+      ],
+      "confidence": "THẤP",
+      "confidence_reason": "Chỉ có 1 nguồn hạng C mới hoặc nguồn A/B không rõ ngày (S7 (Hạng C, techtrend.vn))",
+      "assumptions": [],
+      "is_forecast": false,
+      "has_conflict": false
+    }
+  ],
+  "conflicts": [
+    {
+      "topic": "Doanh thu game mobile Đông Nam Á Q1 2025",
+      "values": [
+        "[E2]: 625 triệu USD",
+        "[E24]: 625 triệu USD",
+        "[E28]: 625 triệu USD"
+      ],
+      "explanation": "Các nguồn Sensor Tower, icon-era.com và gamedevreports.substack.com đều báo cáo cùng một con số doanh thu IAP cho Q1 2025 là 625 triệu USD. Không có xung đột.",
+      "evidence_ids": [
+        "E2",
+        "E24",
+        "E28"
+      ]
+    },
+    {
+      "topic": "Tăng trưởng doanh thu game mobile toàn cầu 2025",
+      "values": [
+        "[E23]: tăng 0.2%",
+        "[E26]: tăng 4.7% (cho 6 thị trường SEA)"
+      ],
+      "explanation": "AppMagic báo cáo doanh thu trò chơi di động toàn cầu chỉ tăng 0.2% trong năm 2025, trong khi Niko Partners báo cáo tăng trưởng 4.7% cho năm 2025 riêng cho sáu thị trường Đông Nam Á. Sự khác biệt này có thể do phạm vi địa lý (toàn cầu so với Đông Nam Á) và phương pháp tính toán.",
+      "evidence_ids": [
+        "E23",
+        "E26"
+      ]
+    }
+  ],
+  "premise_checks": [
+    {
+      "premise": "Doanh thu game mobile Đông Nam Á đã giảm 50% trong năm qua (2025-2026).",
+      "status": "BÁC BỎ",
+      "explanation": "Các bằng chứng cho thấy doanh thu game mobile Đông Nam Á không giảm 50%. Ngược lại, thị trường này đã tăng lên 5,4 tỷ USD vào năm 2026 và duy trì tốc độ tăng trưởng doanh thu hàng năm 13,8% (E18, E19). Trong nửa đầu năm 2026, mặc dù lượt tải xuống giảm, doanh thu lại tăng trưởng ở nhiều thị trường (E10, E22). Cụ thể, Việt Nam ghi nhận doanh thu tăng 7,5% trong nửa đầu năm 2026 (E13).",
+      "evidence_ids": [
+        "E10",
+        "E13",
+        "E18",
+        "E19",
+        "E22"
+      ]
+    },
+    {
+      "premise": "Có đủ dữ liệu công khai để xác định nguyên nhân của sự sụt giảm này.",
+      "status": "BÁC BỎ",
+      "explanation": "Tiền đề này bị bác bỏ vì không có sự sụt giảm doanh thu 50% như đã nêu. Tuy nhiên, có dữ liệu công khai về các yếu tố ảnh hưởng đến thị trường, như sự chậm lại của tăng trưởng ở các thị trường trưởng thành (E5), cạnh tranh gay gắt hơn (E7), sự phân hóa hiệu suất giữa các thể loại phụ (E9), và sự thay đổi trong phương thức kiếm tiền (từ IAA sang IAP) (E17).",
+      "evidence_ids": [
+        "E5",
+        "E7",
+        "E9",
+        "E17"
+      ]
+    },
+    {
+      "premise": "Sự sụt giảm này là một xu hướng chung trên toàn khu vực Đông Nam Á.",
+      "status": "BÁC BỎ",
+      "explanation": "Tiền đề này bị bác bỏ vì không có sự sụt giảm doanh thu 50%. Ngược lại, doanh thu game mobile Đông Nam Á đang tăng trưởng (E18, E19). Mặc dù lượt tải xuống có thể giảm ở một số thị trường (E10, E12), doanh thu lại tăng trưởng ở nhiều nơi (E10, E22). Có sự khác biệt rõ rệt giữa các quốc gia và thể loại game, ví dụ Việt Nam tăng doanh thu nhưng giảm lượt tải (E12, E13), Thái Lan dẫn đầu doanh thu nhưng giảm nhẹ trong Q1 2025 (E29).",
+      "evidence_ids": [
+        "E10",
+        "E12",
+        "E13",
+        "E18",
+        "E19",
+        "E22",
+        "E29"
+      ]
+    }
+  ],
+  "gaps": [
+    "Dữ liệu chi tiết về chi phí UA và giữ chân người chơi cho từng quốc gia và thể loại game cụ thể trong Đông Nam Á.",
+    "Phân tích sâu hơn về các yếu tố vĩ mô (kinh tế, chính trị, xã hội) tác động đến thị trường game mobile Đông Nam Á trong giai đoạn 2025-2026.",
+    "Dữ liệu về doanh thu và lượt tải xuống cho từng thể loại game cụ thể (ngoài chiến thuật 4X, MOBA, MMORPG) trên toàn khu vực Đông Nam Á.",
+    "Dữ liệu về doanh thu và lượt tải xuống cho các quốc gia như Philippines, Singapore, Malaysia trong nửa đầu năm 2026 để có cái nhìn toàn diện hơn."
+  ],
+  "what_would_change": [
+    "Nếu có dữ liệu mới xác nhận sự sụt giảm doanh thu đáng kể (ví dụ: 20-30% trở lên) trên toàn khu vực Đông Nam Á, khuyến nghị sẽ thay đổi để tập trung vào các chiến lược phục hồi và đa dạng hóa nguồn doanh thu.",
+    "Nếu có bằng chứng về sự thay đổi lớn trong sở thích thể loại game của người chơi, khuyến nghị sẽ điều chỉnh để tập trung vào các thể loại mới nổi hoặc có tiềm năng tăng trưởng.",
+    "Nếu có dữ liệu chi tiết về hiệu quả của các chiến dịch UA và giữ chân người chơi, khuyến nghị sẽ bao gồm các chiến lược tối ưu hóa marketing cụ thể."
+  ],
+  "next_checks": [
+    "Tìm kiếm các báo cáo thị trường game mobile Đông Nam Á mới nhất từ các nguồn uy tín như Sensor Tower, Newzoo, Niko Partners, SocialPeta cho quý 3 và quý 4 năm 2026 để cập nhật số liệu doanh thu và lượt tải xuống.",
+    "Phân tích sâu hơn các báo cáo hiện có (ví dụ: Báo cáo Marketing Game Mobile Đông Nam Á 2026 của SocialPeta và Gamota) để tìm kiếm dữ liệu chi tiết về các thể loại game và mô hình kiếm tiền.",
+    "Thực hiện khảo sát người chơi tại các thị trường trọng điểm (Việt Nam, Indonesia, Thái Lan) để hiểu rõ hơn về hành vi, sở thích và mức độ chi tiêu của họ.",
+    "Liên hệ trực tiếp với các công ty nghiên cứu thị trường game để mua các báo cáo chuyên sâu hơn về chi phí UA, giữ chân người chơi và phân tích theo quốc gia/thể loại."
+  ],
+  "sources": [
+    {
+      "id": "S1",
+      "url": "https://sensortower.com/blog/southeast-asia-mobile-gaming-2025",
+      "domain": "sensortower.com",
+      "title": "Sensor Tower Southeast Asia Mobile Game Market Insights 2025",
+      "published_date": "2025-05",
+      "tier": "A",
+      "tier_reason": "Nhà cung cấp dữ liệu đo lường thị trường ứng dụng & game mobile hàng đầu (Sensor Tower)",
+      "freshness": "aging",
+      "freshness_label": "Cũ dần (12-24 tháng)"
+    },
+    {
+      "id": "S2",
+      "url": "https://sensortower.com/state-of-mobile-games-in-sea-2025-report",
+      "domain": "sensortower.com",
+      "title": "Southeast Asia: Mobile Game Market Insights 2025 Report",
+      "published_date": "2025-06",
+      "tier": "A",
+      "tier_reason": "Nhà cung cấp dữ liệu đo lường thị trường ứng dụng & game mobile hàng đầu (Sensor Tower)",
+      "freshness": "aging",
+      "freshness_label": "Cũ dần (12-24 tháng)"
+    },
+    {
+      "id": "S3",
+      "url": "https://newzoo.com/reports/global-games-market-report",
+      "domain": "newzoo.com",
+      "title": "Newzoo's Global Games Market Report 2025",
+      "published_date": "2025-09-09",
+      "tier": "A",
+      "tier_reason": "Đơn vị nghiên cứu dữ liệu chuyên sâu ngành game toàn cầu (Newzoo)",
+      "freshness": "aging",
+      "freshness_label": "Cũ dần (12-24 tháng)"
+    },
+    {
+      "id": "S4",
+      "url": "https://newzoo.com/articles/global-games-market-189-billion-2025",
+      "domain": "newzoo.com",
+      "title": "Global games market to hit $189 billion in 2025 as growth ...",
+      "published_date": "2025-09-09",
+      "tier": "A",
+      "tier_reason": "Đơn vị nghiên cứu dữ liệu chuyên sâu ngành game toàn cầu (Newzoo)",
+      "freshness": "aging",
+      "freshness_label": "Cũ dần (12-24 tháng)"
+    },
+    {
+      "id": "S5",
+      "url": "https://gamota.com/gamota-lab/reports/socialpeta-and-gamota-launch-the-2026-southeast-asia-mobile-game-marketing-report",
+      "domain": "gamota.com",
+      "title": "SocialPeta và Gamota ra mắt Báo cáo Xu hướng Marketing Game ...",
+      "published_date": "2026-08-26",
+      "tier": "C",
+      "tier_reason": "Nguồn hạng C (mặc định): Blog, trang tổng hợp SEO, diễn đàn, thông cáo báo chí hoặc domain chưa trong danh mục kiểm chứng (gamota.com)",
+      "freshness": "fresh",
+      "freshness_label": "Mới (<=12 tháng)"
+    },
+    {
+      "id": "S6",
+      "url": "https://mobidictum.com/2026-southeast-asia-mobile-game-marketing-report",
+      "domain": "mobidictum.com",
+      "title": "2026 Southeast Asia Mobile Game Marketing Report",
+      "published_date": "2026-09-02",
+      "tier": "C",
+      "tier_reason": "Nguồn hạng C (mặc định): Blog, trang tổng hợp SEO, diễn đàn, thông cáo báo chí hoặc domain chưa trong danh mục kiểm chứng (mobidictum.com)",
+      "freshness": "fresh",
+      "freshness_label": "Mới (<=12 tháng)"
+    },
+    {
+      "id": "S7",
+      "url": "https://techtrend.vn/game-viet-luot-tai-dan-dau-nhung-doanh-thu-thap",
+      "domain": "techtrend.vn",
+      "title": "Nghịch lý game Việt: Lượt tải dẫn đầu thế giới nhưng doanh ...",
+      "published_date": "2026-09-12",
+      "tier": "C",
+      "tier_reason": "Nguồn hạng C (mặc định): Blog, trang tổng hợp SEO, diễn đàn, thông cáo báo chí hoặc domain chưa trong danh mục kiểm chứng (techtrend.vn)",
+      "freshness": "fresh",
+      "freshness_label": "Mới (<=12 tháng)"
+    },
+    {
+      "id": "S8",
+      "url": "https://voxbooster.com/blog/southeast-asia-mobile-gaming-statistics-2026",
+      "domain": "voxbooster.com",
+      "title": "Southeast Asia Mobile Esports and Gaming Statistics (2026 ...",
+      "published_date": "2026-06",
+      "tier": "C",
+      "tier_reason": "Nguồn hạng C (mặc định): Blog, trang tổng hợp SEO, diễn đàn, thông cáo báo chí hoặc domain chưa trong danh mục kiểm chứng (voxbooster.com)",
+      "freshness": "fresh",
+      "freshness_label": "Mới (<=12 tháng)"
+    },
+    {
+      "id": "S9",
+      "url": "https://advertisingvietnam.com/article/bao-cao-marketing-game-mobile-dong-nam-a-2026",
+      "domain": "advertisingvietnam.com",
+      "title": "Báo cáo Marketing Game Mobile Đông Nam Á 2026",
+      "published_date": "2026-06",
+      "tier": "C",
+      "tier_reason": "Nguồn hạng C (mặc định): Blog, trang tổng hợp SEO, diễn đàn, thông cáo báo chí hoặc domain chưa trong danh mục kiểm chứng (advertisingvietnam.com)",
+      "freshness": "fresh",
+      "freshness_label": "Mới (<=12 tháng)"
+    },
+    {
+      "id": "S10",
+      "url": "https://games.gg/vi/news/doanh-thu-game-mobile-2025-trì-trệ",
+      "domain": "games.gg",
+      "title": "Doanh thu trò chơi di động chững lại trong năm 2025",
+      "published_date": "2026-06-09",
+      "tier": "C",
+      "tier_reason": "Nguồn hạng C (mặc định): Blog, trang tổng hợp SEO, diễn đàn, thông cáo báo chí hoặc domain chưa trong danh mục kiểm chứng (games.gg)",
+      "freshness": "fresh",
+      "freshness_label": "Mới (<=12 tháng)"
+    },
+    {
+      "id": "S11",
+      "url": "https://icon-era.com/statistics/southeast-asia-mobile-gaming",
+      "domain": "icon-era.com",
+      "title": "Southeast Asia Mobile Gaming Statistics 2026 - Icon Era",
+      "published_date": "2025-03",
+      "tier": "C",
+      "tier_reason": "Nguồn hạng C (mặc định): Blog, trang tổng hợp SEO, diễn đàn, thông cáo báo chí hoặc domain chưa trong danh mục kiểm chứng (icon-era.com)",
+      "freshness": "aging",
+      "freshness_label": "Cũ dần (12-24 tháng)"
+    },
+    {
+      "id": "S12",
+      "url": "https://gamedevreports.substack.com/p/sensor-tower-southeast-asia-mobile",
+      "domain": "gamedevreports.substack.com",
+      "title": "Sensor Tower: Southeast Asia Mobile Game Market in 2025",
+      "published_date": "2025-06-13",
+      "tier": "C",
+      "tier_reason": "Nguồn hạng C (mặc định): Blog, trang tổng hợp SEO, diễn đàn, thông cáo báo chí hoặc domain chưa trong danh mục kiểm chứng (gamedevreports.substack.com)",
+      "freshness": "aging",
+      "freshness_label": "Cũ dần (12-24 tháng)"
+    }
+  ],
+  "evidences": [
+    {
+      "id": "E1",
+      "source_id": "S1",
+      "quote": "In the first quarter of 2025, Southeast Asia ranked as the second-largest global market for mobile game downloads, hitting an impressive 1.93 billion new installs. This represents a 3% increase from the previous quarter",
+      "claim": "Trong quý 1 năm 2025, Đông Nam Á là thị trường game di động lớn thứ hai toàn cầu về lượt tải xuống, đạt 1,93 tỷ lượt cài đặt mới, tăng 3% so với quý trước.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://sensortower.com/blog/southeast-asia-mobile-gaming-2025#:~:text=In%20the%20first%20quarter%20of%202025%2C%20Southeast%20Asia%20ranked%20as"
+    },
+    {
+      "id": "E2",
+      "source_id": "S1",
+      "quote": "While SEA currently ranks seventh globally in in-app purchase (IAP) revenue at $625 million in Q1 2025, this figure signals significant untapped monetization potential.",
+      "claim": "Doanh thu từ mua hàng trong ứng dụng (IAP) của Đông Nam Á đạt 625 triệu USD trong quý 1 năm 2025, xếp thứ bảy toàn cầu, cho thấy tiềm năng kiếm tiền chưa được khai thác đáng kể.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://sensortower.com/blog/southeast-asia-mobile-gaming-2025#:~:text=While%20SEA%20currently%20ranks%20seventh%20globally%20in%20in-app%20purchase%20%28IAP%29"
+    },
+    {
+      "id": "E3",
+      "source_id": "S1",
+      "quote": "Indonesia stands out as the leader in mobile game downloads, reaching 870 million in Q1 2025, a 9% increase from the prior quarter.",
+      "claim": "Indonesia dẫn đầu về lượt tải game di động với 870 triệu lượt trong quý 1 năm 2025, tăng 9% so với quý trước.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://sensortower.com/blog/southeast-asia-mobile-gaming-2025#:~:text=Indonesia%20stands%20out%20as%20the%20leader%20in%20mobile%20game%20downloads%2C"
+    },
+    {
+      "id": "E4",
+      "source_id": "S1",
+      "quote": "When it comes to revenue, Thailand takes the lead in the region, generating $162 million in IAP revenue during Q1 2025.",
+      "claim": "Thái Lan dẫn đầu khu vực về doanh thu, tạo ra 162 triệu USD từ IAP trong quý 1 năm 2025.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://sensortower.com/blog/southeast-asia-mobile-gaming-2025#:~:text=When%20it%20comes%20to%20revenue%2C%20Thailand%20takes%20the%20lead%20in"
+    },
+    {
+      "id": "E5",
+      "source_id": "S3",
+      "quote": "mobile growth is slowing in mature markets. The Global Games Market Report 2025 is the premier games industry publication, trusted by publishers, platforms, and investors.",
+      "claim": "Tăng trưởng game di động đang chậm lại ở các thị trường trưởng thành, theo Báo cáo Thị trường Game Toàn cầu 2025.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://newzoo.com/reports/global-games-market-report#:~:text=mobile%20growth%20is%20slowing%20in%20mature%20markets.%20The%20Global%20Games"
+    },
+    {
+      "id": "E6",
+      "source_id": "S4",
+      "quote": "Mobile will remain the biggest and fastest-growing, but PC will surpass one billion players for the first time, while console players will steadily climb to 688 million.",
+      "claim": "Game di động vẫn là phân khúc lớn nhất và tăng trưởng nhanh nhất, trong khi PC sẽ vượt 1 tỷ người chơi và console đạt 688 triệu người chơi.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://newzoo.com/articles/global-games-market-189-billion-2025#:~:text=Mobile%20will%20remain%20the%20biggest%20and%20fastest-growing%2C%20but%20PC%20will"
+    },
+    {
+      "id": "E7",
+      "source_id": "S4",
+      "quote": "2025 shows us a market that's maturing — but not stagnating. Growth is there; it's just harder to win.",
+      "claim": "Thị trường game năm 2025 đang trưởng thành nhưng không trì trệ; vẫn có tăng trưởng nhưng cạnh tranh gay gắt hơn.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://newzoo.com/articles/global-games-market-189-billion-2025#:~:text=2025%20shows%20us%20a%20market%20that%27s%20maturing%20%E2%80%94%20but%20not"
+    },
+    {
+      "id": "E8",
+      "source_id": "S5",
+      "quote": "SocialPeta và Gamota chính thức phát hành 2026 Southeast Asia Mobile Game Marketing Report, mang đến góc nhìn chuyên sâu về những xu hướng đang định hình thị trường và hoạt động marketing game mobile tại Đông Nam Á trong",
+      "claim": "SocialPeta và Gamota đã phát hành Báo cáo Marketing Game Mobile Đông Nam Á 2026, cung cấp cái nhìn sâu sắc về các xu hướng thị trường và hoạt động marketing game mobile trong khu vực.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://gamota.com/gamota-lab/reports/socialpeta-and-gamota-launch-the-2026-southeast-asia-mobile-game-marketing-report#:~:text=SocialPeta%20v%C3%A0%20Gamota%20ch%C3%ADnh%20th%E1%BB%A9c%20ph%C3%A1t%20h%C3%A0nh%202026%20Southeast%20Asia"
+    },
+    {
+      "id": "E9",
+      "source_id": "S5",
+      "quote": "Việt Nam cũng xuất hiện những tín hiệu đáng chú ý khi downloads và revenue trong nửa đầu năm 2026 không hoàn toàn dịch chuyển theo cùng một hướng, đồng thời hiệu suất giữa các subgenre ngày càng phân hóa",
+      "claim": "Tại Việt Nam, lượt tải xuống và doanh thu game mobile trong nửa đầu năm 2026 không tăng trưởng đồng bộ, và hiệu suất giữa các thể loại phụ ngày càng có sự khác biệt rõ rệt.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://gamota.com/gamota-lab/reports/socialpeta-and-gamota-launch-the-2026-southeast-asia-mobile-game-marketing-report#:~:text=Vi%E1%BB%87t%20Nam%20c%C5%A9ng%20xu%E1%BA%A5t%20hi%E1%BB%87n%20nh%E1%BB%AFng%20t%C3%ADn%20hi%E1%BB%87u%20%C4%91%C3%A1ng%20ch%C3%BA"
+    },
+    {
+      "id": "E10",
+      "source_id": "S6",
+      "quote": "But in the first half of 2026, the market’s underlying dynamics are quietly shifting: downloads have generally declined year over year, while revenue has grown against the trend in several markets.",
+      "claim": "Trong nửa đầu năm 2026, thị trường game mobile Đông Nam Á chứng kiến sự thay đổi: lượt tải xuống giảm so với năm trước, nhưng doanh thu lại tăng trưởng ở một số thị trường.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://mobidictum.com/2026-southeast-asia-mobile-game-marketing-report#:~:text=But%20in%20the%20first%20half%20of%202026%2C%20the%20market%E2%80%99s%20underlying"
+    },
+    {
+      "id": "E11",
+      "source_id": "S6",
+      "quote": "According to SocialPeta, the average number of mobile game advertisers actively running campaigns in Southeast Asia reached 46,200 in 2026, up 19.7% YoY and 5.2% MoM, indicating continued expansion in the region’s advertising market.",
+      "claim": "Số lượng nhà quảng cáo game mobile hoạt động tại Đông Nam Á đạt trung bình 46.200 vào năm 2026, tăng 19,7% so với cùng kỳ năm trước và 5,2% so với tháng trước, cho thấy thị trường quảng cáo khu vực tiếp tục mở rộng.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://mobidictum.com/2026-southeast-asia-mobile-game-marketing-report#:~:text=According%20to%20SocialPeta%2C%20the%20average%20number%20of%20mobile%20game%20advertisers"
+    },
+    {
+      "id": "E12",
+      "source_id": "S6",
+      "quote": "In the first half of 2026, mobile game downloads in Vietnam reached 76.5 million, down 9.7% YoY. However, the market began to recover in May and June, with June reaching 14.0 million downloads, the highest monthly figure in H1.",
+      "claim": "Trong nửa đầu năm 2026, lượt tải game mobile tại Việt Nam đạt 76,5 triệu, giảm 9,7% so với cùng kỳ năm trước, nhưng thị trường đã phục hồi vào tháng 5 và 6, với tháng 6 đạt 14 triệu lượt tải.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://mobidictum.com/2026-southeast-asia-mobile-game-marketing-report#:~:text=In%20the%20first%20half%20of%202026%2C%20mobile%20game%20downloads%20in"
+    },
+    {
+      "id": "E13",
+      "source_id": "S6",
+      "quote": "Meanwhile, total revenue reached $177 million, up 7.5% YoY, with monthly revenue remaining relatively stable at $28.7–30.6 million. Revenue is growing faster than user acquisition, signaling that the market’s ability to convert users into value is strengthening.",
+      "claim": "Tổng doanh thu game mobile tại Việt Nam đạt 177 triệu USD, tăng 7,5% so với cùng kỳ năm trước, với doanh thu hàng tháng ổn định từ 28,7–30,6 triệu USD, cho thấy khả năng chuyển đổi người dùng thành giá trị đang tăng cường.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://mobidictum.com/2026-southeast-asia-mobile-game-marketing-report#:~:text=Meanwhile%2C%20total%20revenue%20reached%20%24177%20million%2C%20up%207.5%25%20YoY%2C%20with"
+    },
+    {
+      "id": "E14",
+      "source_id": "S7",
+      "quote": "Theo dữ liệu từ Digital in Asia, Việt Nam hiện dẫn đầu thế giới về lượt tải game mobile với 9,6 tỷ lượt trong năm 2024, chiếm tới 37,3% tổng lượt tải toàn cầu.",
+      "claim": "Việt Nam dẫn đầu thế giới về lượt tải game mobile vào năm 2024 với 9,6 tỷ lượt, chiếm 37,3% tổng lượt tải toàn cầu.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://techtrend.vn/game-viet-luot-tai-dan-dau-nhung-doanh-thu-thap#:~:text=Theo%20d%E1%BB%AF%20li%E1%BB%87u%20t%E1%BB%AB%20Digital%20in%20Asia%2C%20Vi%E1%BB%87t%20Nam%20hi%E1%BB%87n"
+    },
+    {
+      "id": "E15",
+      "source_id": "S7",
+      "quote": "Tuy nhiên, bức tranh doanh thu lại hoàn toàn trái ngược. Việt Nam chỉ xếp thứ 5 tại Đông Nam Á về doanh thu game, một vị trí khá khiêm tốn so với quy mô người dùng.",
+      "claim": "Mặc dù có lượng người dùng lớn, Việt Nam chỉ đứng thứ 5 về doanh thu game tại Đông Nam Á, cho thấy sự chênh lệch giữa quy mô người chơi và khả năng tạo doanh thu.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://techtrend.vn/game-viet-luot-tai-dan-dau-nhung-doanh-thu-thap#:~:text=Tuy%20nhi%C3%AAn%2C%20b%E1%BB%A9c%20tranh%20doanh%20thu%20l%E1%BA%A1i%20ho%C3%A0n%20to%C3%A0n%20tr%C3%A1i"
+    },
+    {
+      "id": "E16",
+      "source_id": "S7",
+      "quote": "Chỉ số ARPU (doanh thu trung bình trên mỗi người dùng) của các studio Việt hiện chỉ khoảng 0,06 USD, thấp hơn gần 12 lần so với mức trung bình toàn cầu là 0,70 USD.",
+      "claim": "Chỉ số ARPU của các studio game Việt Nam hiện chỉ đạt khoảng 0,06 USD, thấp hơn gần 12 lần so với mức trung bình toàn cầu là 0,70 USD.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://techtrend.vn/game-viet-luot-tai-dan-dau-nhung-doanh-thu-thap#:~:text=Ch%E1%BB%89%20s%E1%BB%91%20ARPU%20%28doanh%20thu%20trung%20b%C3%ACnh%20tr%C3%AAn%20m%E1%BB%97i%20ng%C6%B0%E1%BB%9Di"
+    },
+    {
+      "id": "E17",
+      "source_id": "S7",
+      "quote": "Hiện nay, phần lớn doanh thu của các studio vẫn phụ thuộc vào quảng cáo trong game (IAA), trong khi nguồn thu từ mua vật phẩm (IAP) – vốn là trụ cột của các tựa game thành công toàn cầu",
+      "claim": "Phần lớn doanh thu của các studio game Việt Nam đến từ quảng cáo trong game (IAA), trong khi doanh thu từ mua vật phẩm trong ứng dụng (IAP) chưa được khai thác hiệu quả.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://techtrend.vn/game-viet-luot-tai-dan-dau-nhung-doanh-thu-thap#:~:text=Hi%E1%BB%87n%20nay%2C%20ph%E1%BA%A7n%20l%E1%BB%9Bn%20doanh%20thu%20c%E1%BB%A7a%20c%C3%A1c%20studio%20v%E1%BA%ABn"
+    },
+    {
+      "id": "E18",
+      "source_id": "S8",
+      "quote": "Southeast Asia’s mobile gaming market surged to $5.4 billion, establishing the region as the undisputed epicentre of competitive mobile esports and mobile-first consumer gaming.",
+      "claim": "Thị trường game mobile Đông Nam Á đã tăng lên 5,4 tỷ USD, khẳng định vị thế là trung tâm của thể thao điện tử di động và game di động dành cho người tiêu dùng.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://voxbooster.com/blog/southeast-asia-mobile-gaming-statistics-2026#:~:text=Southeast%20Asia%E2%80%99s%20mobile%20gaming%20market%20surged%20to%20%245.4%20billion%2C%20establishing"
+    },
+    {
+      "id": "E19",
+      "source_id": "S8",
+      "quote": "13.8% annual revenue growth: The region maintains one of the fastest digital entertainment compound annual growth rates worldwide.",
+      "claim": "Khu vực Đông Nam Á duy trì tốc độ tăng trưởng doanh thu hàng năm 13,8%, là một trong những khu vực có tốc độ tăng trưởng kép hàng năm nhanh nhất thế giới về giải trí kỹ thuật số.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://voxbooster.com/blog/southeast-asia-mobile-gaming-statistics-2026#:~:text=13.8%25%20annual%20revenue%20growth%3A%20The%20region%20maintains%20one%20of%20the"
+    },
+    {
+      "id": "E20",
+      "source_id": "S8",
+      "quote": "Indonesia represents the largest gaming market in Southeast Asia by both player count and revenue.",
+      "claim": "Indonesia là thị trường game lớn nhất Đông Nam Á về cả số lượng người chơi và doanh thu.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://voxbooster.com/blog/southeast-asia-mobile-gaming-statistics-2026#:~:text=Indonesia%20represents%20the%20largest%20gaming%20market%20in%20Southeast%20Asia%20by"
+    },
+    {
+      "id": "E21",
+      "source_id": "S8",
+      "quote": "Low commercial credit card adoption across Southeast Asia previously limited digital game monetization. The emergence of national QR payment standards and fintech e-wallets has solved monetization friction.",
+      "claim": "Việc áp dụng thẻ tín dụng thương mại thấp ở Đông Nam Á trước đây đã hạn chế khả năng kiếm tiền từ game kỹ thuật số, nhưng sự xuất hiện của các tiêu chuẩn thanh toán QR quốc gia và ví điện tử fintech đã giải quyết được vấn đề này.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://voxbooster.com/blog/southeast-asia-mobile-gaming-statistics-2026#:~:text=Low%20commercial%20credit%20card%20adoption%20across%20Southeast%20Asia%20previously%20limited"
+    },
+    {
+      "id": "E22",
+      "source_id": "S9",
+      "quote": "Tuy nhiên, trong nửa đầu năm 2026, những động lực nền tảng của thị trường đang âm thầm thay đổi: lượt tải nhìn chung giảm so với cùng kỳ, trong khi doanh thu tại nhiều thị trường lại tăng trưởng",
+      "claim": "Trong nửa đầu năm 2026, thị trường game mobile Đông Nam Á chứng kiến lượt tải giảm nhưng doanh thu lại tăng trưởng ở nhiều thị trường.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://advertisingvietnam.com/article/bao-cao-marketing-game-mobile-dong-nam-a-2026#:~:text=Tuy%20nhi%C3%AAn%2C%20trong%20n%E1%BB%ADa%20%C4%91%E1%BA%A7u%20n%C4%83m%202026%2C%20nh%E1%BB%AFng%20%C4%91%E1%BB%99ng%20l%E1%BB%B1c"
+    },
+    {
+      "id": "E23",
+      "source_id": "S10",
+      "quote": "AppMagic báo cáo doanh thu trò chơi di động chỉ tăng 0.2% trong 2025. Dòng game chiến thuật tăng 16%, 56% game hàng đầu dùng AI.",
+      "claim": "Doanh thu trò chơi di động chỉ tăng 0.2% trong năm 2025, với game chiến thuật tăng 16% và 56% game hàng đầu sử dụng AI.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://games.gg/vi/news/doanh-thu-game-mobile-2025-trì-trệ#:~:text=AppMagic%20b%C3%A1o%20c%C3%A1o%20doanh%20thu%20tr%C3%B2%20ch%C6%A1i%20di%20%C4%91%E1%BB%99ng%20ch%E1%BB%89"
+    },
+    {
+      "id": "E24",
+      "source_id": "S11",
+      "quote": "Southeast Asian players downloaded 1.93 billion mobile games in Q1 2025 and spent $625 million through app stores. Sensor Tower ranks the region second worldwide on downloads and seventh on revenue.",
+      "claim": "Trong quý 1 năm 2025, người chơi Đông Nam Á đã tải xuống 1.93 tỷ game mobile và chi 625 triệu đô la qua các cửa hàng ứng dụng, xếp thứ hai toàn cầu về lượt tải và thứ bảy về doanh thu.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://icon-era.com/statistics/southeast-asia-mobile-gaming#:~:text=Southeast%20Asian%20players%20downloaded%201.93%20billion%20mobile%20games%20in%20Q1"
+    },
+    {
+      "id": "E25",
+      "source_id": "S11",
+      "quote": "Southeast Asia recorded 4.2 billion mobile game downloads in H1 2024, up 3.4% on the prior half. IAP revenue fell 3.0% to $1.16 billion, close to its H1 2020 level.",
+      "claim": "Trong nửa đầu năm 2024, Đông Nam Á ghi nhận 4.2 tỷ lượt tải game mobile (tăng 3.4%), nhưng doanh thu IAP giảm 3.0% xuống còn 1.16 tỷ USD, gần bằng mức của nửa đầu năm 2020.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://icon-era.com/statistics/southeast-asia-mobile-gaming#:~:text=Southeast%20Asia%20recorded%204.2%20billion%20mobile%20game%20downloads%20in%20H1"
+    },
+    {
+      "id": "E26",
+      "source_id": "S11",
+      "quote": "Niko Partners reports 4.7% growth for 2025 and projects a 4.8% five-year CAGR to 2030. Its six markets are Indonesia, Malaysia, the Philippines, Singapore, Thailand and Vietnam.",
+      "claim": "Niko Partners báo cáo tăng trưởng 4.7% cho năm 2025 và dự kiến CAGR 4.8% trong 5 năm đến năm 2030 cho sáu thị trường Đông Nam Á.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://icon-era.com/statistics/southeast-asia-mobile-gaming#:~:text=Niko%20Partners%20reports%204.7%25%20growth%20for%202025%20and%20projects%20a"
+    },
+    {
+      "id": "E27",
+      "source_id": "S11",
+      "quote": "Vietnam’s mobile game market generated $825 million in 2025, up 9.16% year on year, according to Gamota’s Vietnam Mobile Gaming Year-in-Review 2025.",
+      "claim": "Thị trường game mobile Việt Nam đạt doanh thu 825 triệu USD vào năm 2025, tăng 9.16% so với năm trước.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://icon-era.com/statistics/southeast-asia-mobile-gaming#:~:text=Vietnam%E2%80%99s%20mobile%20game%20market%20generated%20%24825%20million%20in%202025%2C%20up"
+    },
+    {
+      "id": "E28",
+      "source_id": "S12",
+      "quote": "Southeast Asian users spent $625 million on games in Q1'25, up 1% QoQ. This is the seventh-highest figure worldwide, and again, it’s a region being compared to individual countries.",
+      "claim": "Người dùng Đông Nam Á đã chi 625 triệu USD cho game trong quý 1 năm 2025, tăng 1% so với quý trước, đứng thứ bảy toàn cầu về doanh thu.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://gamedevreports.substack.com/p/sensor-tower-southeast-asia-mobile#:~:text=Southeast%20Asian%20users%20spent%20%24625%20million%20on%20games%20in%20Q1%2725%2C"
+    },
+    {
+      "id": "E29",
+      "source_id": "S12",
+      "quote": "In terms of revenue, Thailand leads with $162 million (-6% QoQ). Indonesia is second with $118 million (+1% QoQ), and Malaysia is third with $103 million (+7% QoQ).",
+      "claim": "Về doanh thu quý 1 năm 2025, Thái Lan dẫn đầu với 162 triệu USD (giảm 6%), Indonesia đứng thứ hai với 118 triệu USD (tăng 1%), và Malaysia thứ ba với 103 triệu USD (tăng 7%).",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://gamedevreports.substack.com/p/sensor-tower-southeast-asia-mobile#:~:text=In%20terms%20of%20revenue%2C%20Thailand%20leads%20with%20%24162%20million%20%28-6%25"
+    },
+    {
+      "id": "E30",
+      "source_id": "S12",
+      "quote": "For revenue, 4X strategy games (+17.6% QoQ), MOBA (+20.1% QoQ), and MMORPG (-17.1% QoQ) are on top.",
+      "claim": "Về doanh thu, các thể loại game chiến thuật 4X (+17.6% QoQ), MOBA (+20.1% QoQ) đang dẫn đầu, trong khi MMORPG giảm 17.1% QoQ.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://gamedevreports.substack.com/p/sensor-tower-southeast-asia-mobile#:~:text=For%20revenue%2C%204X%20strategy%20games%20%28%2B17.6%25%20QoQ%29%2C%20MOBA%20%28%2B20.1%25%20QoQ%29%2C"
+    },
+    {
+      "id": "E31",
+      "source_id": "S12",
+      "quote": "Vietnamese publishers deserve special mention: 3 of the top 15 publishers in 2024 are from Vietnam.",
+      "claim": "Ba trong số 15 nhà phát hành hàng đầu năm 2024 đến từ Việt Nam, cho thấy sự nổi bật của các nhà phát hành Việt Nam.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://gamedevreports.substack.com/p/sensor-tower-southeast-asia-mobile#:~:text=Vietnamese%20publishers%20deserve%20special%20mention%3A%203%20of%20the%20top%2015"
+    }
+  ],
+  "quality": {
+    "total_quotes_extracted": 31,
+    "verified_quotes_count": 31,
+    "verified_quote_rate": 100.0,
+    "total_insights_count": 9,
+    "insights_with_verified_evidence_rate": 100.0,
+    "high_confidence_from_tier_c_only_count": 0,
+    "llm_invented_urls_removed_count": 0,
+    "rejected_sources_count": 12,
+    "rejected_quotes_count": 0,
+    "rejected_sources": [
+      {
+        "item_id": "https://files.gameindustrylibrary.com/documents/southeast-asia-mobile-game-marke",
+        "reason": "Bỏ qua định dạng file nhị phân/tải xuống",
+        "detail": ""
+      },
+      {
+        "item_id": "https://files.gameindustrylibrary.com/documents/global-games-market-report-2025.",
+        "reason": "Bỏ qua định dạng file nhị phân/tải xuống",
+        "detail": ""
+      },
+      {
+        "item_id": "https://investgame.net/wp-content/uploads/2026/09/2026-09-03-socialpetaxgamato_2",
+        "reason": "Bỏ qua định dạng file nhị phân/tải xuống",
+        "detail": ""
+      },
+      {
+        "item_id": "https://dantri.com.vn/kinh-doanh/don-song-dau-tu-ngoai-nganh-game-viet-nham-moc-",
+        "reason": "Ngoài top 18 ứng viên ưu tiên sau khi khử trùng lặp",
+        "detail": ""
+      },
+      {
+        "item_id": "https://www.mgoddess.com/news/vietnam-s-mobile-games-market-hits-121m-downloads-",
+        "reason": "Ngoài top 18 ứng viên ưu tiên sau khi khử trùng lặp",
+        "detail": ""
+      },
+      {
+        "item_id": "https://gamecuoi.com/game-viet/bao-cao-thi-truong-game-mobile-made-in-vietnam-q1",
+        "reason": "Ngoài top 18 ứng viên ưu tiên sau khi khử trùng lặp",
+        "detail": ""
+      },
+      {
+        "item_id": "https://www.scribd.com/document/957327609/2025-Newzoo-Free-Global-Games-Market-R",
+        "reason": "Vượt quá giới hạn 12 nguồn tốt nhất hoặc trùng lặp domain (Hạng C, Cũ dần (12-24 tháng))",
+        "detail": ""
+      },
+      {
+        "item_id": "https://www.bing.com/aclick?ld=e8uM-pQDp8lmKYWBK2VavtHzVUCUwoQa0jmHnZJvxc5mNE7eg",
+        "reason": "Vượt quá giới hạn 12 nguồn tốt nhất hoặc trùng lặp domain (Hạng C, Cũ (>24 tháng hoặc không rõ ngày))",
+        "detail": ""
+      },
+      {
+        "item_id": "https://gamota.com/gamota-lab/reports/gamota-launches-vietnam-mobile-gaming-indu",
+        "reason": "Vượt quá giới hạn 12 nguồn tốt nhất hoặc trùng lặp domain (Hạng C, Mới (<=12 tháng))",
+        "detail": ""
+      },
+      {
+        "item_id": "https://gamota.com/gamota-lab/reports/gamota-releases-the-vietnam-gaming-2026-ou",
+        "reason": "Vượt quá giới hạn 12 nguồn tốt nhất hoặc trùng lặp domain (Hạng C, Mới (<=12 tháng))",
+        "detail": ""
+      },
+      {
+        "item_id": "https://games.gg/news/newzoo-2025-game-market-report",
+        "reason": "Vượt quá giới hạn 12 nguồn tốt nhất hoặc trùng lặp domain (Hạng C, Cũ dần (12-24 tháng))",
+        "detail": ""
+      },
+      {
+        "item_id": "https://games.gg/vi/news/ngành-gaming-đông-nam-á-đạt-hơn-6-tỷ-usd",
+        "reason": "Vượt quá giới hạn 12 nguồn tốt nhất hoặc trùng lặp domain (Hạng C, Cũ (>24 tháng hoặc không rõ ngày))",
+        "detail": ""
+      }
+    ],
+    "rejected_quotes": []
+  },
+  "trace": {
+    "run_timestamp": "2026-10-15T01:18:01",
+    "current_date": "2026-10-15",
+    "duration_seconds": 33.8,
+    "llm_provider": "gemini",
+    "llm_model": "gemini-3.8-flash",
+    "llm_calls_count": 3,
+    "search_provider": "ddgs",
+    "queries_executed": [
+      "Southeast Asia mobile game revenue 2025-2026 Sensor Tower",
+      "Mobile game market trends SEA 2025 Newzoo",
+      "Data.ai Southeast Asia mobile gaming report 2026",
+      "Nguyên nhân sụt giảm doanh thu game mobile Đông Nam Á 2025-2026",
+      "Tình hình thị trường game mobile Việt Nam 2026"
+    ],
+    "sub_questions": [
+      "Doanh thu game mobile Đông Nam Á có thực sự giảm 50% trong năm qua (từ 2025 đến 2026) không?",
+      "Nếu có giảm, những yếu tố vĩ mô (kinh tế, chính trị, xã hội) nào đã tác động đến thị trường game mobile Đông Nam Á?",
+      "Những thay đổi nào trong hành vi người chơi và xu hướng thị trường (ví dụ: sự bão hòa, cạnh tranh, thay đổi sở thích thể loại) đã góp phần vào sự sụt giảm?",
+      "Các phân khúc game (thể loại, mô hình kiếm tiền) nào bị ảnh hưởng nặng nề nhất và phân khúc nào vẫn duy trì được doanh thu?",
+      "Các thị trường quốc gia cụ thể nào trong Đông Nam Á (ví dụ: Việt Nam, Indonesia, Thái Lan, Philippines) chịu ảnh hưởng lớn nhất và có sự khác biệt nào giữa các quốc gia?"
+    ],
+    "decision_criteria": [
+      "Mức độ chính xác của thông tin về sự sụt giảm doanh thu (50%)",
+      "Các nguyên nhân chính và mức độ ảnh hưởng của từng nguyên nhân (vĩ mô, thị trường, hành vi người chơi)",
+      "Phân tích chi tiết theo thể loại game và mô hình kiếm tiền để xác định các điểm yếu và cơ hội",
+      "So sánh tình hình giữa các quốc gia trong khu vực Đông Nam Á để hiểu rõ hơn về sự khác biệt",
+      "Dữ liệu về chi phí UA và giữ chân người chơi để đánh giá hiệu quả đầu tư"
+    ],
+    "implicit_premises": [
+      "Doanh thu game mobile Đông Nam Á đã giảm 50% trong năm qua (2025-2026).",
+      "Có đủ dữ liệu công khai để xác định nguyên nhân của sự sụt giảm này.",
+      "Sự sụt giảm này là một xu hướng chung trên toàn khu vực Đông Nam Á."
+    ],
+    "raw_search_results_count": 25,
+    "deduped_sources_count": 21,
+    "kept_sources_count": 12,
+    "step_logs": [
+      "[Bước 1/6 · Lập kế hoạch (Plan)] Phân tách câu hỏi con, tiêu chí ra quyết định, truy vấn tìm kiếm EN/VI và tiền đề ngầm...",
+      "[Bước 1/6 · Hoàn tất Plan] Đã tạo 5 câu hỏi con, 5 tiêu chí quyết định, 5 truy vấn tìm kiếm và 3 tiền đề cần kiểm chứng.",
+      "[Bước 2–3/6 · Thu thập & Xếp hạng nguồn (Retrieve & Grade)] Đang tìm kiếm 5 truy vấn (top 5/truy vấn), khử trùng lặp, trích xuất nội dung và chấm hạng A/B/C...",
+      "[Bước 2–3/6 · Hoàn tất Retrieve & Grade] Tìm thấy 25 kết quả thô -> 21 URL duy nhất -> Giữ 12 nguồn tốt nhất (Hạng A: 4, Hạng B: 0, Hạng C: 8); Loại 12 nguồn.",
+      "[Bước 4/6 · Rút trích & Xác minh trích dẫn (Extract & Verify)] Đang rút trích claim kèm trích dẫn nguyên văn <= 40 từ từ 12 nguồn (gom 4 nguồn/lần gọi LLM) và kiểm tra bằng RapidFuzz >= 90...",
+      "[Bước 4/6 · Hoàn tất Extract & Verify] Xác minh thành công 31/31 trích dẫn nguyên văn (Loại 0 trích dẫn không đạt chuẩn).",
+      "[Bước 5/6 · Tổng hợp nhận định (Synthesize)] Đang tổng hợp nhận định, kiểm tra tiền đề, phát hiện mâu thuẫn và khoảng trống dữ liệu từ 31 bằng chứng đã xác minh...",
+      "[Bước 5/6 · Hoàn tất Synthesize] Đã tổng hợp 9 nhận định dự thảo, 2 điểm mâu thuẫn, 3 kiểm tra tiền đề và 4 khoảng trống dữ liệu.",
+      "[Bước 6/6 · Chấm điểm độ tin cậy & Tự kiểm (Score & Self-Check)] Áp dụng quy tắc chấm điểm CAO/TRUNG BÌNH/THẤP, gắn link Text Fragment và tính chỉ số tự kiểm...",
+      "[Bước 6/6 · Hoàn tất] Hoàn thành trong 33.8s với 3 lần gọi LLM. Tỷ lệ trích dẫn xác minh: 100.0% | Số nhận định CAO từ nguồn C: 0."
+    ]
+  }
+}

@@ -1,0 +1,579 @@
+{
+  "question": "Doanh thu tháng trước của 3 game gacha top đầu Thái Lan là bao nhiêu?",
+  "short_answer": "Dữ liệu doanh thu tháng 9/2026 của các game gacha top đầu tại Thái Lan không có sẵn trong các nguồn đã cung cấp. Các nguồn hiện chỉ cung cấp dữ liệu doanh thu toàn cầu hoặc theo quốc gia cụ thể (ví dụ: Trung Quốc, Nhật Bản, Hoa Kỳ) cho một số game gacha, nhưng không có số liệu chi tiết cho thị trường Thái Lan. Doanh thu toàn cầu của các game gacha hàng đầu như Genshin Impact và Honkai: Star Rail đã được ghi nhận trong tháng 9/2026, nhưng không thể suy ra doanh thu cụ thể tại Thái Lan. Lưu ý chênh lệch số liệu giữa các nguồn theo phạm vi/kỳ báo cáo: Doanh thu toàn cầu của Honkai: Star Rail và Genshin Impact trong tháng 9/2026 ([E3]: Genshin Impact 50,23 triệu USD, [E5]: Honkai: Star Rail 35,735 triệu USD vs. [E19]: Honkai: Star Rail hơn 67 triệu USD, Genshin Impact 45 triệu USD — Có sự khác biệt đáng kể về số liệu doanh thu toàn cầu của Honkai: Star Rail và Genshin Impact trong tháng 9/2026 giữa các nguồn. Nguồn Game8.co (E3, E5) báo cáo Genshin Impact cao hơn HSR, trong khi nguồn Mytour.vn (E19) lại báo cáo HSR cao hơn Genshin Impact và với con số lớn hơn nhiều. Sự khác biệt này có thể do phương pháp ước tính, phạm vi dữ liệu (ví dụ: chỉ iOS, bao gồm Android, hoặc các thị trường cụ thể) hoặc thời điểm tổng hợp dữ liệu khác nhau.)",
+  "recommendation": "Để có được thông tin chính xác về doanh thu của 3 game gacha top đầu tại Thái Lan trong tháng 9/2026, Gamota cần thực hiện các bước nghiên cứu sâu hơn. Cụ thể, nên ưu tiên sử dụng các công cụ phân tích thị trường chuyên biệt có khả năng lọc dữ liệu theo quốc gia (Thái Lan) và thể loại game (gacha) để xác định các tựa game dẫn đầu và doanh thu ước tính của chúng. Đồng thời, cần theo dõi các báo cáo thị trường chuyên sâu về Đông Nam Á hoặc Thái Lan để nắm bắt xu hướng doanh thu và các yếu tố thành công tại thị trường này.",
+  "decision_criteria": [
+    "Quy mô doanh thu thực tế của từng game gacha top đầu",
+    "Mức độ ổn định và tăng trưởng/suy giảm doanh thu của các game này",
+    "So sánh hiệu suất doanh thu giữa các game gacha hàng đầu",
+    "Đánh giá tiềm năng thị trường gacha Thái Lan dựa trên hiệu suất của các game dẫn đầu"
+  ],
+  "option_matrix": [],
+  "insights": [
+    {
+      "id": "I1",
+      "statement": "Tổng chi tiêu của người dùng toàn cầu cho game di động trên App Store và Google Play đạt 6,13 tỷ USD vào tháng 9/2026, giảm 7% so với tháng trước.",
+      "type": "fact",
+      "evidence_ids": [
+        "E1"
+      ],
+      "confidence": "TRUNG BÌNH",
+      "confidence_reason": "Đạt mức TRUNG BÌNH: dựa trên 1 nguồn uy tín hạng A/B (S1 (Hạng A, sensortower.com))",
+      "assumptions": [],
+      "is_forecast": false,
+      "has_conflict": false
+    },
+    {
+      "id": "I2",
+      "statement": "Hoa Kỳ, Trung Quốc (chỉ iOS) và Nhật Bản là ba thị trường đóng góp doanh thu game di động lớn nhất toàn cầu trong tháng 9/2026, chiếm lần lượt 28,7%, 15,7% và 12,4% tổng doanh thu.",
+      "type": "fact",
+      "evidence_ids": [
+        "E2"
+      ],
+      "confidence": "TRUNG BÌNH",
+      "confidence_reason": "Đạt mức TRUNG BÌNH: dựa trên 1 nguồn uy tín hạng A/B (S1 (Hạng A, sensortower.com))",
+      "assumptions": [],
+      "is_forecast": false,
+      "has_conflict": false
+    },
+    {
+      "id": "I3",
+      "statement": "Genshin Impact dẫn đầu về doanh thu di động toàn cầu ước tính 50,23 triệu USD vào tháng 9/2026, tăng 30,7% so với tháng 8/2026.",
+      "type": "fact",
+      "evidence_ids": [
+        "E3",
+        "E6"
+      ],
+      "confidence": "THẤP",
+      "confidence_reason": "Chỉ có 1 nguồn hạng C mới hoặc nguồn A/B không rõ ngày (S3 (Hạng C, game8.co))",
+      "assumptions": [],
+      "is_forecast": false,
+      "has_conflict": false
+    },
+    {
+      "id": "I4",
+      "statement": "Honkai: Star Rail (HSR) đạt doanh thu ước tính 35,735 triệu USD vào tháng 9/2026, tăng 20,2% so với tháng 8/2026.",
+      "type": "fact",
+      "evidence_ids": [
+        "E5",
+        "E6"
+      ],
+      "confidence": "THẤP",
+      "confidence_reason": "Chỉ có 1 nguồn hạng C mới hoặc nguồn A/B không rõ ngày (S3 (Hạng C, game8.co))",
+      "assumptions": [],
+      "is_forecast": false,
+      "has_conflict": false
+    },
+    {
+      "id": "I5",
+      "statement": "Thị trường game Thái Lan được ước tính đạt 192 triệu USD vào năm 2025 và dự kiến tăng lên 220 triệu USD vào năm 2032, với tốc độ tăng trưởng kép hàng năm (CAGR) là 2.0% từ năm 2026 đến 2032.",
+      "type": "fact",
+      "evidence_ids": [
+        "E11"
+      ],
+      "confidence": "THẤP",
+      "confidence_reason": "Chỉ có 1 nguồn hạng C mới hoặc nguồn A/B không rõ ngày (S7 (Hạng C, 6wresearch.com))",
+      "assumptions": [
+        "Giả định xu hướng và điều kiện thị trường hiện tại tiếp tục duy trì trong kỳ dự phóng"
+      ],
+      "is_forecast": true,
+      "has_conflict": false
+    },
+    {
+      "id": "I6",
+      "statement": "Game di động chiếm khoảng 58% tổng doanh thu ngành game Thái Lan, cho thấy đây là phân khúc chủ đạo nhưng tỷ lệ doanh thu từ các nền tảng không di động (PC và console) cao nhất Đông Nam Á (42%).",
+      "type": "fact",
+      "evidence_ids": [
+        "E7"
+      ],
+      "confidence": "THẤP",
+      "confidence_reason": "Chỉ có 1 nguồn hạng C mới hoặc nguồn A/B không rõ ngày (S5 (Hạng C, speequalgames.com))",
+      "assumptions": [],
+      "is_forecast": false,
+      "has_conflict": false
+    },
+    {
+      "id": "I7",
+      "statement": "MMORPG vẫn là một trong những thể loại game yêu thích tại Thái Lan, với các tựa game phổ biến như Genshin Impact, Ragnarok Origin, Ragnarok Online và Final Fantasy XIV.",
+      "type": "fact",
+      "evidence_ids": [
+        "E9"
+      ],
+      "confidence": "THẤP",
+      "confidence_reason": "Chỉ có 1 nguồn hạng C mới hoặc nguồn A/B không rõ ngày (S5 (Hạng C, speequalgames.com))",
+      "assumptions": [],
+      "is_forecast": false,
+      "has_conflict": false
+    },
+    {
+      "id": "I8",
+      "statement": "Thành công doanh thu của các game gacha hàng đầu như Genshin Impact và Honkai: Star Rail được thúc đẩy bởi việc cập nhật nội dung mới và các phiên bản game mới.",
+      "type": "inference",
+      "evidence_ids": [
+        "E20"
+      ],
+      "confidence": "THẤP",
+      "confidence_reason": "Dữ liệu cũ (>24 tháng hoặc không rõ ngày đăng) từ S12 (Hạng C, mytour.vn)",
+      "assumptions": [
+        "Các game gacha thường xuyên cập nhật nội dung mới để duy trì sự hấp dẫn và thúc đẩy chi tiêu của người chơi.",
+        "Chiến lược cập nhật nội dung mới là yếu tố quan trọng đối với thành công doanh thu của các game gacha nói chung."
+      ],
+      "is_forecast": false,
+      "has_conflict": false
+    },
+    {
+      "id": "I9",
+      "statement": "Thị trường game Thái Lan đang có xu hướng chuyển dịch sang game di động và nền tảng trực tuyến, cùng với sự gia tăng phổ biến của livestream và các sự kiện thể thao điện tử.",
+      "type": "fact",
+      "evidence_ids": [
+        "E13"
+      ],
+      "confidence": "THẤP",
+      "confidence_reason": "Chỉ có 1 nguồn hạng C mới hoặc nguồn A/B không rõ ngày (S7 (Hạng C, 6wresearch.com))",
+      "assumptions": [],
+      "is_forecast": false,
+      "has_conflict": false
+    }
+  ],
+  "conflicts": [
+    {
+      "topic": "Doanh thu toàn cầu của Honkai: Star Rail và Genshin Impact trong tháng 9/2026",
+      "values": [
+        "[E3]: Genshin Impact 50,23 triệu USD, [E5]: Honkai: Star Rail 35,735 triệu USD",
+        "[E19]: Honkai: Star Rail hơn 67 triệu USD, Genshin Impact 45 triệu USD"
+      ],
+      "explanation": "Có sự khác biệt đáng kể về số liệu doanh thu toàn cầu của Honkai: Star Rail và Genshin Impact trong tháng 9/2026 giữa các nguồn. Nguồn Game8.co (E3, E5) báo cáo Genshin Impact cao hơn HSR, trong khi nguồn Mytour.vn (E19) lại báo cáo HSR cao hơn Genshin Impact và với con số lớn hơn nhiều. Sự khác biệt này có thể do phương pháp ước tính, phạm vi dữ liệu (ví dụ: chỉ iOS, bao gồm Android, hoặc các thị trường cụ thể) hoặc thời điểm tổng hợp dữ liệu khác nhau.",
+      "evidence_ids": [
+        "E3",
+        "E5",
+        "E19"
+      ]
+    }
+  ],
+  "premise_checks": [
+    {
+      "premise": "Dữ liệu doanh thu tháng trước (tháng 9/2026) của các game gacha top đầu Thái Lan có sẵn và có thể truy cập được thông qua các công cụ phân tích thị trường.",
+      "status": "BÁC BỎ",
+      "explanation": "Các bằng chứng hiện có không cung cấp dữ liệu doanh thu cụ thể cho thị trường Thái Lan trong tháng 9/2026. Các nguồn như Sensor Tower (E1, E2) và Game8.co (E3, E4, E5) chỉ cung cấp dữ liệu toàn cầu hoặc theo quốc gia lớn (Mỹ, Trung Quốc, Nhật Bản). Nguồn Gachadash.com (E17) cũng xác nhận dữ liệu tháng 9/2026 chưa có sẵn và thường được công bố sau 2-4 tuần kể từ cuối tháng. Do đó, không thể truy cập dữ liệu cụ thể cho Thái Lan từ các nguồn này.",
+      "evidence_ids": [
+        "E1",
+        "E2",
+        "E3",
+        "E4",
+        "E5",
+        "E17"
+      ]
+    },
+    {
+      "premise": "Có một định nghĩa rõ ràng về 'game gacha' và 'top đầu' mà các nguồn dữ liệu sẽ tuân theo.",
+      "status": "CHƯA ĐỦ BẰNG CHỨNG",
+      "explanation": "Các bằng chứng không cung cấp định nghĩa rõ ràng và thống nhất về 'game gacha' hay tiêu chí để xác định 'top đầu' mà các nguồn dữ liệu tuân theo. Mặc dù có đề cập đến thể loại RPG chiếm ưu thế trong thị trường game gacha (E14) và một số game được coi là gacha (Genshin Impact, Honkai: Star Rail), nhưng không có định nghĩa chính thức hay tiêu chí xếp hạng 'top đầu' được nêu rõ.",
+      "evidence_ids": [
+        "E14"
+      ]
+    }
+  ],
+  "gaps": [
+    "Không có dữ liệu doanh thu cụ thể của các game gacha tại thị trường Thái Lan trong tháng 9/2026.",
+    "Không có danh sách 3 game gacha top đầu về doanh thu tại Thái Lan trong tháng 9/2026.",
+    "Không có xu hướng doanh thu chi tiết của các game gacha top đầu tại Thái Lan trong 6-12 tháng gần nhất.",
+    "Thiếu định nghĩa rõ ràng và thống nhất về 'game gacha' và tiêu chí 'top đầu' từ các nguồn dữ liệu."
+  ],
+  "what_would_change": [
+    "Nếu có dữ liệu doanh thu chi tiết theo quốc gia (Thái Lan) và theo từng game gacha cụ thể trong tháng 9/2026 từ các công cụ phân tích thị trường uy tín (ví dụ: Sensor Tower, App Annie), chúng tôi có thể xác định chính xác các game top đầu và doanh thu của chúng.",
+    "Nếu có các báo cáo thị trường chuyên sâu về ngành game Thái Lan, đặc biệt là phân khúc gacha, cung cấp danh sách các game dẫn đầu và xu hướng doanh thu của chúng.",
+    "Nếu có định nghĩa rõ ràng và tiêu chí xếp hạng 'top đầu' được các nguồn dữ liệu sử dụng, giúp chuẩn hóa việc xác định các game gacha hàng đầu."
+  ],
+  "next_checks": [
+    "Kiểm tra các công cụ phân tích thị trường game chuyên biệt (ví dụ: Sensor Tower, App Annie) để tìm kiếm dữ liệu doanh thu game di động theo quốc gia (Thái Lan) và thể loại (gacha) cho tháng 9/2026.",
+    "Tìm kiếm các báo cáo thị trường chuyên sâu về ngành game Thái Lan hoặc Đông Nam Á từ các công ty nghiên cứu thị trường (ví dụ: Niko Partners, Newzoo) để xác định các game gacha hàng đầu và xu hướng doanh thu.",
+    "Liên hệ trực tiếp với các nhà phát hành game lớn có sản phẩm gacha tại Thái Lan để thu thập thông tin về hiệu suất thị trường (nếu có thể)."
+  ],
+  "sources": [
+    {
+      "id": "S1",
+      "url": "https://sensortower.com/blog/top-10-worldwide-mobile-games-by-revenue-and-downloads-in-september-2026",
+      "domain": "sensortower.com",
+      "title": "Sensor Tower Top 10 Worldwide Mobile Games - September 2026",
+      "published_date": "2026-09",
+      "tier": "A",
+      "tier_reason": "Nhà cung cấp dữ liệu đo lường thị trường ứng dụng & game mobile hàng đầu (Sensor Tower)",
+      "freshness": "fresh",
+      "freshness_label": "Mới (<=12 tháng)"
+    },
+    {
+      "id": "S2",
+      "url": "https://app.sensortower.com/top-charts?category=7014&country=US&os=ios",
+      "domain": "sensortower.com",
+      "title": "Top Charts - Market Analysis - Sensor Tower",
+      "published_date": null,
+      "tier": "A",
+      "tier_reason": "Nhà cung cấp dữ liệu đo lường thị trường ứng dụng & game mobile hàng đầu (Sensor Tower)",
+      "freshness": "stale",
+      "freshness_label": "Cũ (>24 tháng hoặc không rõ ngày)"
+    },
+    {
+      "id": "S3",
+      "url": "https://game8.co/articles/latest/genshin-hsr-naruto-mobile-top-gacha-game-revenue-rankings-september-2026-zzz-falls-from-top-10",
+      "domain": "game8.co",
+      "title": "Genshin, HSR, Naruto Mobile Top Gacha Game Revenue Rankings ...",
+      "published_date": "2026-10-02",
+      "tier": "C",
+      "tier_reason": "Nguồn hạng C (mặc định): Blog, trang tổng hợp SEO, diễn đàn, thông cáo báo chí hoặc domain chưa trong danh mục kiểm chứng (game8.co)",
+      "freshness": "fresh",
+      "freshness_label": "Mới (<=12 tháng)"
+    },
+    {
+      "id": "S4",
+      "url": "https://eog.gg/revenue",
+      "domain": "eog.gg",
+      "title": "Gacha Revenue August 2026: Top 100 Highest-Grossing Games",
+      "published_date": "2026-08",
+      "tier": "C",
+      "tier_reason": "Nguồn hạng C (mặc định): Blog, trang tổng hợp SEO, diễn đàn, thông cáo báo chí hoặc domain chưa trong danh mục kiểm chứng (eog.gg)",
+      "freshness": "fresh",
+      "freshness_label": "Mới (<=12 tháng)"
+    },
+    {
+      "id": "S5",
+      "url": "https://speequalgames.com/thailands-game-guide-2026-navigating-seas-top-spending-gaming-market-development-trends",
+      "domain": "speequalgames.com",
+      "title": "Thailand Game Guide 2026: Market & Dev Trends",
+      "published_date": "2026-07-27",
+      "tier": "C",
+      "tier_reason": "Nguồn hạng C (mặc định): Blog, trang tổng hợp SEO, diễn đàn, thông cáo báo chí hoặc domain chưa trong danh mục kiểm chứng (speequalgames.com)",
+      "freshness": "fresh",
+      "freshness_label": "Mới (<=12 tháng)"
+    },
+    {
+      "id": "S6",
+      "url": "https://www.facebook.com/Otaku.Media.Magazine/posts/-trang-thống-kê-gacha-revenue-đã-công-bố-bảng-xếp-hạng-doanh-thu-game-gacha-trên/1655540536134870",
+      "domain": "facebook.com",
+      "title": "Otaku Media - Trang thống kê GACHA REVENUE đã công bố ...",
+      "published_date": "2026-10-03",
+      "tier": "C",
+      "tier_reason": "Nguồn hạng C (mặc định): Blog, trang tổng hợp SEO, diễn đàn, thông cáo báo chí hoặc domain chưa trong danh mục kiểm chứng (facebook.com)",
+      "freshness": "fresh",
+      "freshness_label": "Mới (<=12 tháng)"
+    },
+    {
+      "id": "S7",
+      "url": "https://www.6wresearch.com/industry-report/thailand-gaming-market-outlook",
+      "domain": "6wresearch.com",
+      "title": "Thailand Gaming Market | Share, Value & Trends 2026 - 6Wresearch",
+      "published_date": "2026-06",
+      "tier": "C",
+      "tier_reason": "Nguồn hạng C (mặc định): Blog, trang tổng hợp SEO, diễn đàn, thông cáo báo chí hoặc domain chưa trong danh mục kiểm chứng (6wresearch.com)",
+      "freshness": "fresh",
+      "freshness_label": "Mới (<=12 tháng)"
+    },
+    {
+      "id": "S8",
+      "url": "https://www.marketreportsworld.com/market-reports/gacha-games-market-14722256",
+      "domain": "marketreportsworld.com",
+      "title": "Gacha Games Market Size, Share & Trends Report, 2026-2035",
+      "published_date": "2026-09-01",
+      "tier": "C",
+      "tier_reason": "Nguồn hạng C (mặc định): Blog, trang tổng hợp SEO, diễn đàn, thông cáo báo chí hoặc domain chưa trong danh mục kiểm chứng (marketreportsworld.com)",
+      "freshness": "fresh",
+      "freshness_label": "Mới (<=12 tháng)"
+    },
+    {
+      "id": "S9",
+      "url": "https://derkein.github.io/gacha-tracker-",
+      "domain": "derkein.github.io",
+      "title": "Gacha Revenue Tracker - derkein.github.io",
+      "published_date": null,
+      "tier": "C",
+      "tier_reason": "Nguồn hạng C (mặc định): Blog, trang tổng hợp SEO, diễn đàn, thông cáo báo chí hoặc domain chưa trong danh mục kiểm chứng (derkein.github.io)",
+      "freshness": "stale",
+      "freshness_label": "Cũ (>24 tháng hoặc không rõ ngày)"
+    },
+    {
+      "id": "S10",
+      "url": "https://revenue.ennead.cc/",
+      "domain": "revenue.ennead.cc",
+      "title": "GACHAREVENUE - Gacha Game Revenue Tracker",
+      "published_date": null,
+      "tier": "C",
+      "tier_reason": "Nguồn hạng C (mặc định): Blog, trang tổng hợp SEO, diễn đàn, thông cáo báo chí hoặc domain chưa trong danh mục kiểm chứng (revenue.ennead.cc)",
+      "freshness": "stale",
+      "freshness_label": "Cũ (>24 tháng hoặc không rõ ngày)"
+    },
+    {
+      "id": "S11",
+      "url": "https://www.gachadash.com/revenue",
+      "domain": "gachadash.com",
+      "title": "Revenue Rankings — GachaDash",
+      "published_date": null,
+      "tier": "C",
+      "tier_reason": "Nguồn hạng C (mặc định): Blog, trang tổng hợp SEO, diễn đàn, thông cáo báo chí hoặc domain chưa trong danh mục kiểm chứng (gachadash.com)",
+      "freshness": "stale",
+      "freshness_label": "Cũ (>24 tháng hoặc không rõ ngày)"
+    },
+    {
+      "id": "S12",
+      "url": "https://mytour.vn/vi/blog/bai-viet/bxh-doanh-thu-game-gacha-thang-9-mihoyo-co-cu-tro-lai-an-tuong-mot-sieu-pham-roi-tu-do-mytour.html",
+      "domain": "mytour.vn",
+      "title": "Bảng xếp hạng doanh thu game Gacha tháng 9 - mytour.vn",
+      "published_date": null,
+      "tier": "C",
+      "tier_reason": "Nguồn hạng C (mặc định): Blog, trang tổng hợp SEO, diễn đàn, thông cáo báo chí hoặc domain chưa trong danh mục kiểm chứng (mytour.vn)",
+      "freshness": "stale",
+      "freshness_label": "Cũ (>24 tháng hoặc không rõ ngày)"
+    }
+  ],
+  "evidences": [
+    {
+      "id": "E1",
+      "source_id": "S1",
+      "quote": "Global consumer spending on mobile games across the App Store and Google Play reached $6.13 billion in September, down 7% month-over-month.",
+      "claim": "Tổng chi tiêu của người dùng toàn cầu cho game di động trên App Store và Google Play đạt 6,13 tỷ USD vào tháng 9, giảm 7% so với tháng trước.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://sensortower.com/blog/top-10-worldwide-mobile-games-by-revenue-and-downloads-in-september-2026#:~:text=Global%20consumer%20spending%20on%20mobile%20games%20across%20the%20App%20Store"
+    },
+    {
+      "id": "E2",
+      "source_id": "S1",
+      "quote": "The United States accounted for 28.7% of total revenue, followed by China (iOS only) at 15.7% and Japan at 12.4%.",
+      "claim": "Hoa Kỳ chiếm 28,7% tổng doanh thu game di động toàn cầu, Trung Quốc (chỉ iOS) 15,7% và Nhật Bản 12,4%.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://sensortower.com/blog/top-10-worldwide-mobile-games-by-revenue-and-downloads-in-september-2026#:~:text=The%20United%20States%20accounted%20for%2028.7%25%20of%20total%20revenue%2C%20followed"
+    },
+    {
+      "id": "E3",
+      "source_id": "S3",
+      "quote": "Genshin Impact led the pack with an estimated $50.23 million in mobile revenue, a 30.7% increase from August’s $38.42 million.",
+      "claim": "Genshin Impact dẫn đầu với doanh thu di động ước tính 50,23 triệu USD vào tháng 9, tăng 30,7% so với 38,42 triệu USD của tháng 8.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://game8.co/articles/latest/genshin-hsr-naruto-mobile-top-gacha-game-revenue-rankings-september-2026-zzz-falls-from-top-10#:~:text=Genshin%20Impact%20led%20the%20pack%20with%20an%20estimated%20%2450.23%20million"
+    },
+    {
+      "id": "E4",
+      "source_id": "S3",
+      "quote": "Naruto Mobile also posted a 30% increase, reaching an estimated $35.75 million from $27.5 million in August. The figure covers China only",
+      "claim": "Naruto Mobile tăng 30%, đạt doanh thu ước tính 35,75 triệu USD từ 27,5 triệu USD vào tháng 8, nhưng con số này chỉ tính riêng thị trường Trung Quốc.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://game8.co/articles/latest/genshin-hsr-naruto-mobile-top-gacha-game-revenue-rankings-september-2026-zzz-falls-from-top-10#:~:text=Naruto%20Mobile%20also%20posted%20a%2030%25%20increase%2C%20reaching%20an%20estimated"
+    },
+    {
+      "id": "E5",
+      "source_id": "S3",
+      "quote": "Honkai: Star Rail (HSR) reached $35.735 million in September, a 20.2% increase from its $29.74 million estimate in August.",
+      "claim": "Honkai: Star Rail (HSR) đạt 35,735 triệu USD vào tháng 9, tăng 20,2% so với ước tính 29,74 triệu USD vào tháng 8.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://game8.co/articles/latest/genshin-hsr-naruto-mobile-top-gacha-game-revenue-rankings-september-2026-zzz-falls-from-top-10#:~:text=Honkai%3A%20Star%20Rail%20%28HSR%29%20reached%20%2435.735%20million%20in%20September%2C%20a"
+    },
+    {
+      "id": "E6",
+      "source_id": "S3",
+      "quote": "Genshin Impact's lead over the other two was more than $14 million. Naruto Mobile and HSR, however, are separated by just $15,000.",
+      "claim": "Genshin Impact dẫn trước hơn 14 triệu USD so với hai game còn lại, trong khi Naruto Mobile và HSR chỉ chênh lệch 15.000 USD.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://game8.co/articles/latest/genshin-hsr-naruto-mobile-top-gacha-game-revenue-rankings-september-2026-zzz-falls-from-top-10#:~:text=Genshin%20Impact%27s%20lead%20over%20the%20other%20two%20was%20more%20than"
+    },
+    {
+      "id": "E7",
+      "source_id": "S5",
+      "quote": "While mobile gaming continues to be the dominant force, accounting for roughly 58% of overall gaming revenues, PC and console gaming account for approximately 42%, making it one of Southeast Asia’s biggest non-mobile revenue shares.",
+      "claim": "Game di động chiếm khoảng 58% tổng doanh thu ngành game Thái Lan, trong khi game PC và console chiếm 42%, cho thấy thị trường game Thái Lan có tỷ lệ doanh thu từ các nền tảng không di động cao nhất Đông Nam Á.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://speequalgames.com/thailands-game-guide-2026-navigating-seas-top-spending-gaming-market-development-trends#:~:text=While%20mobile%20gaming%20continues%20to%20be%20the%20dominant%20force%2C%20accounting"
+    },
+    {
+      "id": "E8",
+      "source_id": "S5",
+      "quote": "Services like PromptPay have changed the way players pay for games, downloadable content, and in-game purchases by providing safe, real-time transactions. According to The Nation, the platform had over 90 million registrations and conducted well over 74 million daily transactions",
+      "claim": "Hệ thống thanh toán kỹ thuật số như PromptPay đã thay đổi cách người chơi thanh toán cho game và các giao dịch trong game, với hơn 90 triệu lượt đăng ký và 74 triệu giao dịch hàng ngày tính đến tháng 6 năm 2025.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://speequalgames.com/thailands-game-guide-2026-navigating-seas-top-spending-gaming-market-development-trends#:~:text=Services%20like%20PromptPay%20have%20changed%20the%20way%20players%20pay%20for"
+    },
+    {
+      "id": "E9",
+      "source_id": "S5",
+      "quote": "MMORPGs (Massively Multiplayer Online Role-Playing Games) remain one of the country’s favorite genres, with popular titles like Genshin Impact, Ragnarok Origin, Ragnarok Online, and Final Fantasy XIV.",
+      "claim": "MMORPG vẫn là một trong những thể loại game yêu thích tại Thái Lan, với các tựa game phổ biến như Genshin Impact, Ragnarok Origin, Ragnarok Online và Final Fantasy XIV.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://speequalgames.com/thailands-game-guide-2026-navigating-seas-top-spending-gaming-market-development-trends#:~:text=MMORPGs%20%28Massively%20Multiplayer%20Online%20Role-Playing%20Games%29%20remain%20one%20of%20the"
+    },
+    {
+      "id": "E10",
+      "source_id": "S6",
+      "quote": "Trang thống kê GACHA REVENUE đã công bố bảng xếp hạng doanh thu game gacha trên toàn thế giới trong tháng 9/2026 với các điểm đáng chú ý như sau: +...",
+      "claim": "Trang GACHA REVENUE đã công bố bảng xếp hạng doanh thu game gacha toàn cầu trong tháng 9/2026.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://www.facebook.com/Otaku.Media.Magazine/posts/-trang-thống-kê-gacha-revenue-đã-công-bố-bảng-xếp-hạng-doanh-thu-game-gacha-trên/1655540536134870#:~:text=Trang%20th%E1%BB%91ng%20k%C3%AA%20GACHA%20REVENUE%20%C4%91%C3%A3%20c%C3%B4ng%20b%E1%BB%91%20b%E1%BA%A3ng%20x%E1%BA%BFp"
+    },
+    {
+      "id": "E11",
+      "source_id": "S7",
+      "quote": "The Thailand Gaming Market was estimated at USD 192 Million in 2025 and is projected to reach USD 220 Million by 2032, growing at a CAGR of 2.0% from 2026 to 2032.",
+      "claim": "Thị trường game Thái Lan được ước tính đạt 192 triệu USD vào năm 2025 và dự kiến sẽ tăng lên 220 triệu USD vào năm 2032, với tốc độ tăng trưởng kép hàng năm (CAGR) là 2.0% từ năm 2026 đến 2032.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://www.6wresearch.com/industry-report/thailand-gaming-market-outlook#:~:text=The%20Thailand%20Gaming%20Market%20was%20estimated%20at%20USD%20192%20Million"
+    },
+    {
+      "id": "E12",
+      "source_id": "S7",
+      "quote": "Despite the promising growth, regulatory hurdles and piracy remain pervasive issues in the Thailand gaming sector. Local developers are adapting to cultural preferences while competing against international gaming giants, making it crucial for the market to innovate and address these",
+      "claim": "Thị trường game Thái Lan đối mặt với các thách thức như rào cản pháp lý và nạn vi phạm bản quyền, đồng thời các nhà phát triển địa phương phải cạnh tranh với các ông lớn game quốc tế.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://www.6wresearch.com/industry-report/thailand-gaming-market-outlook#:~:text=Despite%20the%20promising%20growth%2C%20regulatory%20hurdles%20and%20piracy%20remain%20pervasive"
+    },
+    {
+      "id": "E13",
+      "source_id": "S7",
+      "quote": "Emerging trends in the Thailand Gaming Market reflect a shift towards mobile gaming and online platforms. With the growing popularity of live streaming and e-sports events, more gamers are engaging not just in playing but also as spectators.",
+      "claim": "Các xu hướng mới nổi trong thị trường game Thái Lan cho thấy sự chuyển dịch sang game di động và nền tảng trực tuyến, cùng với sự gia tăng phổ biến của livestream và các sự kiện thể thao điện tử.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://www.6wresearch.com/industry-report/thailand-gaming-market-outlook#:~:text=Emerging%20trends%20in%20the%20Thailand%20Gaming%20Market%20reflect%20a%20shift"
+    },
+    {
+      "id": "E14",
+      "source_id": "S8",
+      "quote": "RPG Games: RPG games dominate the gacha games market with approximately 58% share. This format combines character collection with storytelling, exploration, tactical combat, equipment, skill development, and team building.",
+      "claim": "Game RPG chiếm ưu thế trên thị trường game gacha với khoảng 58% thị phần, kết hợp thu thập nhân vật với kể chuyện, khám phá, chiến đấu chiến thuật, phát triển kỹ năng và xây dựng đội hình.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://www.marketreportsworld.com/market-reports/gacha-games-market-14722256#:~:text=RPG%20Games%3A%20RPG%20games%20dominate%20the%20gacha%20games%20market%20with"
+    },
+    {
+      "id": "E15",
+      "source_id": "S9",
+      "quote": "Sensor Tower reports only a game's monthly worldwide total; each banner's figure here is assumed — its share of that month applied to the real Sensor Tower total, then summed across the months it ran.",
+      "claim": "Sensor Tower chỉ báo cáo tổng doanh thu hàng tháng trên toàn thế giới của một trò chơi; số liệu của mỗi banner được ước tính dựa trên tỷ lệ đóng góp vào tổng doanh thu đó.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://derkein.github.io/gacha-tracker-#:~:text=Sensor%20Tower%20reports%20only%20a%20game%27s%20monthly%20worldwide%20total%3B%20each"
+    },
+    {
+      "id": "E16",
+      "source_id": "S9",
+      "quote": "This site doesn't measure or estimate anything itself. It re-presents two third-party datasets in a more readable form: game-i.daa.jp's per-banner Japan revenue (the default, in ¥), and the community Sensor Tower monthly reports' combined worldwide revenue (the “Sensor Tower $”",
+      "claim": "Trang web này không tự đo lường hay ước tính doanh thu mà chỉ trình bày lại dữ liệu từ hai nguồn bên thứ ba: doanh thu từng banner tại Nhật Bản của game-i.daa.jp và tổng doanh thu toàn cầu hàng tháng của Sensor Tower.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://derkein.github.io/gacha-tracker-#:~:text=This%20site%20doesn%27t%20measure%20or%20estimate%20anything%20itself.%20It%20re-presents"
+    },
+    {
+      "id": "E17",
+      "source_id": "S11",
+      "quote": "Sep 2026 data not yet available Showing Aug 2026. Revenue data typically publishes 2-4 weeks after month end.",
+      "claim": "Dữ liệu doanh thu tháng 9 năm 2026 chưa có sẵn, hiện đang hiển thị dữ liệu tháng 8 năm 2026 và thường được công bố sau 2-4 tuần kể từ cuối tháng.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://www.gachadash.com/revenue#:~:text=Sep%202026%20data%20not%20yet%20available%20Showing%20Aug%202026.%20Revenue"
+    },
+    {
+      "id": "E18",
+      "source_id": "S11",
+      "quote": "Revenue estimates sourced from SensorTower via gacharevenue. Mobile only (iOS + Android). CN revenue estimated using 1.75x multiplier.",
+      "claim": "Ước tính doanh thu được lấy từ SensorTower thông qua gacharevenue, chỉ tính trên nền tảng di động (iOS + Android), với doanh thu tại Trung Quốc được ước tính bằng cách nhân 1.75 lần.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://www.gachadash.com/revenue#:~:text=Revenue%20estimates%20sourced%20from%20SensorTower%20via%20gacharevenue.%20Mobile%20only%20%28iOS"
+    },
+    {
+      "id": "E19",
+      "source_id": "S12",
+      "quote": "Honkai: Star Rail dẫn đầu BXH với mức tăng hơn 67 triệu USD, trong khi Genshin Impact và Zenless Zone Zero cũng tăng 1 hạng, với doanh thu lần lượt đạt 45 triệu USD và 34 triệu USD.",
+      "claim": "Trong tháng 9, Honkai: Star Rail dẫn đầu bảng xếp hạng với mức tăng hơn 67 triệu USD, Genshin Impact đạt 45 triệu USD và Zenless Zone Zero đạt 34 triệu USD.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://mytour.vn/vi/blog/bai-viet/bxh-doanh-thu-game-gacha-thang-9-mihoyo-co-cu-tro-lai-an-tuong-mot-sieu-pham-roi-tu-do-mytour.html#:~:text=Honkai%3A%20Star%20Rail%20d%E1%BA%ABn%20%C4%91%E1%BA%A7u%20BXH%20v%E1%BB%9Bi%20m%E1%BB%A9c%20t%C4%83ng%20h%C6%A1n"
+    },
+    {
+      "id": "E20",
+      "source_id": "S12",
+      "quote": "Thành công này có thể dễ dàng lý giải nhờ vào việc cả ba trò chơi đều được cập nhật nhiều nội dung mới mẻ. Honkai: Star Rail vừa phát hành phiên bản 2.5, Genshin Impact cập nhật phiên bản",
+      "claim": "Thành công doanh thu của các game miHoYo trong tháng 9 là nhờ vào việc cập nhật nội dung mới: Honkai: Star Rail với phiên bản 2.5, Genshin Impact với phiên bản 5.0 và Zenless Zone Zero với banner nhân vật Jane Doe.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://mytour.vn/vi/blog/bai-viet/bxh-doanh-thu-game-gacha-thang-9-mihoyo-co-cu-tro-lai-an-tuong-mot-sieu-pham-roi-tu-do-mytour.html#:~:text=Th%C3%A0nh%20c%C3%B4ng%20n%C3%A0y%20c%C3%B3%20th%E1%BB%83%20d%E1%BB%85%20d%C3%A0ng%20l%C3%BD%20gi%E1%BA%A3i%20nh%E1%BB%9D"
+    }
+  ],
+  "quality": {
+    "total_quotes_extracted": 20,
+    "verified_quotes_count": 20,
+    "verified_quote_rate": 100.0,
+    "total_insights_count": 9,
+    "insights_with_verified_evidence_rate": 100.0,
+    "high_confidence_from_tier_c_only_count": 0,
+    "llm_invented_urls_removed_count": 0,
+    "rejected_sources_count": 2,
+    "rejected_quotes_count": 0,
+    "rejected_sources": [
+      {
+        "item_id": "https://tsukiyo.gg/gacha-revenue",
+        "reason": "Nội dung trích xuất quá ngắn (< 120 ký tự) hoặc trang chặn bot",
+        "detail": ""
+      },
+      {
+        "item_id": "https://revenue.ennead.cc/revenue",
+        "reason": "Vượt quá giới hạn 12 nguồn tốt nhất hoặc trùng lặp domain (Hạng C, Cũ (>24 tháng hoặc không rõ ngày))",
+        "detail": ""
+      }
+    ],
+    "rejected_quotes": []
+  },
+  "trace": {
+    "run_timestamp": "2026-10-15T01:18:24",
+    "current_date": "2026-10-15",
+    "duration_seconds": 23.39,
+    "llm_provider": "gemini",
+    "llm_model": "gemini-3.8-flash",
+    "llm_calls_count": 2,
+    "search_provider": "ddgs",
+    "queries_executed": [
+      "Top grossing gacha games Thailand September 2026 Sensor Tower",
+      "Thailand mobile game revenue gacha September 2026 Data.ai",
+      "Highest earning gacha games Thailand monthly revenue 2026",
+      "Doanh thu game gacha Thái Lan tháng 9/2026",
+      "Thị trường game gacha Thái Lan 2026"
+    ],
+    "sub_questions": [
+      "Ba game gacha nào đang đứng đầu về doanh thu tại Thái Lan trong tháng trước (tháng 9/2026)?",
+      "Doanh thu ước tính của từng game trong số 3 game gacha top đầu đó tại thị trường Thái Lan trong tháng 9/2026 là bao nhiêu?",
+      "Xu hướng doanh thu của các game gacha top đầu tại Thái Lan trong 6-12 tháng gần nhất như thế nào?",
+      "Các yếu tố chính nào đóng góp vào thành công doanh thu của các game gacha này tại Thái Lan?"
+    ],
+    "decision_criteria": [
+      "Quy mô doanh thu thực tế của từng game gacha top đầu",
+      "Mức độ ổn định và tăng trưởng/suy giảm doanh thu của các game này",
+      "So sánh hiệu suất doanh thu giữa các game gacha hàng đầu",
+      "Đánh giá tiềm năng thị trường gacha Thái Lan dựa trên hiệu suất của các game dẫn đầu"
+    ],
+    "implicit_premises": [
+      "Dữ liệu doanh thu tháng trước (tháng 9/2026) của các game gacha top đầu Thái Lan có sẵn và có thể truy cập được thông qua các công cụ phân tích thị trường.",
+      "Có một định nghĩa rõ ràng về 'game gacha' và 'top đầu' mà các nguồn dữ liệu sẽ tuân theo."
+    ],
+    "raw_search_results_count": 25,
+    "deduped_sources_count": 14,
+    "kept_sources_count": 12,
+    "step_logs": [
+      "[Bước 1/6 · Lập kế hoạch (Plan)] Phân tách câu hỏi con, tiêu chí ra quyết định, truy vấn tìm kiếm EN/VI và tiền đề ngầm...",
+      "[Bước 1/6 · Hoàn tất Plan] Đã tạo 4 câu hỏi con, 4 tiêu chí quyết định, 5 truy vấn tìm kiếm và 2 tiền đề cần kiểm chứng.",
+      "[Bước 2–3/6 · Thu thập & Xếp hạng nguồn (Retrieve & Grade)] Đang tìm kiếm 5 truy vấn (top 5/truy vấn), khử trùng lặp, trích xuất nội dung và chấm hạng A/B/C...",
+      "[Bước 2–3/6 · Hoàn tất Retrieve & Grade] Tìm thấy 25 kết quả thô -> 14 URL duy nhất -> Giữ 12 nguồn tốt nhất (Hạng A: 2, Hạng B: 0, Hạng C: 10); Loại 2 nguồn.",
+      "[Bước 4/6 · Rút trích & Xác minh trích dẫn (Extract & Verify)] Đang rút trích claim kèm trích dẫn nguyên văn <= 40 từ từ 12 nguồn (gom 4 nguồn/lần gọi LLM) và kiểm tra bằng RapidFuzz >= 90...",
+      "[Bước 4/6 · Hoàn tất Extract & Verify] Xác minh thành công 20/20 trích dẫn nguyên văn (Loại 0 trích dẫn không đạt chuẩn).",
+      "[Bước 5/6 · Tổng hợp nhận định (Synthesize)] Đang tổng hợp nhận định, kiểm tra tiền đề, phát hiện mâu thuẫn và khoảng trống dữ liệu từ 20 bằng chứng đã xác minh...",
+      "[Bước 5/6 · Hoàn tất Synthesize] Đã tổng hợp 9 nhận định dự thảo, 1 điểm mâu thuẫn, 2 kiểm tra tiền đề và 4 khoảng trống dữ liệu.",
+      "[Bước 6/6 · Chấm điểm độ tin cậy & Tự kiểm (Score & Self-Check)] Áp dụng quy tắc chấm điểm CAO/TRUNG BÌNH/THẤP, gắn link Text Fragment và tính chỉ số tự kiểm...",
+      "[Bước 6/6 · Hoàn tất] Hoàn thành trong 23.39s với 2 lần gọi LLM. Tỷ lệ trích dẫn xác minh: 100.0% | Số nhận định CAO từ nguồn C: 0."
+    ]
+  }
+}

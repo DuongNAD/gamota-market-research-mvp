@@ -61,9 +61,15 @@ def evaluate_assertions(report: Report, assertions: dict[str, Any]) -> tuple[boo
             reasons.append(f"Dự báo/suy luận thiếu giả định: {missing_assump}")
 
     if assertions.get("must_have_conflicts_or_multiple_figures"):
-        if not report.conflicts and len(report.evidences) < 2:
+        if not report.conflicts:
             passed = False
-            reasons.append("Chưa ghi nhận các con số/nguồn khác nhau trong mục mâu thuẫn")
+            reasons.append("Chưa ghi nhận các con số/nguồn khác nhau trong mục mâu thuẫn (conflicts)")
+        import re as _re
+
+        num_mentions = _re.findall(r"\b\d+(?:[.,]\d+)?\s*(?:triệu|tỷ|million|billion|M|B)\b", report.short_answer, _re.IGNORECASE)
+        if len(num_mentions) < 2:
+            passed = False
+            reasons.append("Câu trả lời ngắn (short_answer) mới nêu 1 con số thay vì nêu dải nhiều con số kèm nguồn")
 
     if assertions.get("must_have_gaps"):
         if not report.gaps:
@@ -86,13 +92,32 @@ def evaluate_assertions(report: Report, assertions: dict[str, Any]) -> tuple[boo
 
     if assertions.get("strict_recent_month_data_required"):
         # TC6 requires exact last-month revenue for top 3 Thailand gacha games from open web
-        has_high_conf_exact = any(
-            i.confidence == "CAO" and i.type == "fact" for i in report.insights
+        sa_low = (report.short_answer or "").lower()
+        admits_missing = any(
+            kw in sa_low
+            for kw in (
+                "không có sẵn",
+                "không tìm thấy",
+                "chưa có số liệu",
+                "chưa có dữ liệu",
+                "không thể xác định",
+                "không công bố",
+            )
         )
-        if not has_high_conf_exact:
+        has_high_conf_thailand_gacha = any(
+            i.confidence == "CAO"
+            and i.type == "fact"
+            and ("thái lan" in i.statement.lower() or "thailand" in i.statement.lower())
+            and not any(
+                m in i.statement.lower()
+                for m in ("không có sẵn", "không tìm thấy", "chưa có")
+            )
+            for i in report.insights
+        )
+        if admits_missing or not has_high_conf_thailand_gacha:
             passed = False
             reasons.append(
-                "Nguồn web mở không có bảng số liệu doanh thu đúng 'tháng trước' của top 3 game gacha Thái Lan (bị khóa sau paywall Sensor Tower/AppMagic)"
+                "CHƯA ĐẠT (Đúng giới hạn nguồn mở): Nguồn web mở không có bảng số liệu doanh thu đúng 'tháng trước' của top 3 game gacha tại riêng Thái Lan (bị khóa sau paywall Sensor Tower/AppMagic); hệ thống đã trung thực báo thiếu dữ liệu thay vì bịa số"
             )
 
     if report.quality.high_confidence_from_tier_c_only_count > 0:

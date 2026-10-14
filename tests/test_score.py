@@ -240,3 +240,26 @@ def test_strip_llm_urls() -> None:
     assert count == 2
     assert "https://" not in cleaned
     assert "www." not in cleaned
+
+
+def test_stale_tier_a_plus_fresh_tier_c_or_missing_data_does_not_reach_cao() -> None:
+    sources = _make_sources()
+    evidences = _make_evidences()
+    # S5 is Tier A stale; S3 is Tier C fresh -> only 1 non-stale domain (Tier C) -> THẤP (not CAO)
+    ins_mixed = Insight(
+        id="I9",
+        statement="Số liệu kết hợp nguồn A cũ và nguồn C mới.",
+        type="fact",
+        evidence_ids=["E5", "E3"],
+    )
+    assert score_single_insight(ins_mixed, evidences, sources).confidence == "THẤP"
+
+    # Negative statement saying data is unavailable -> capped at TRUNG BÌNH even with S1+S2
+    ins_missing = Insight(
+        id="I10",
+        statement="Dữ liệu doanh thu tháng 9/2026 tại Thái Lan không có sẵn trong các nguồn mở.",
+        type="fact",
+        evidence_ids=["E1", "E2"],
+    )
+    assert score_single_insight(ins_missing, evidences, sources).confidence == "TRUNG BÌNH"
+

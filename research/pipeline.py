@@ -202,6 +202,13 @@ def run(
     return final_report
 
 
+def _esc_md(text: str, is_table: bool = True) -> str:
+    s = (text or "").replace("$", r"\$")
+    if is_table:
+        s = s.replace("|", "/").replace("\n", " ")
+    return s
+
+
 def render_report_markdown(report: Report) -> str:
     """Render Report into a structured 6-part Vietnamese Markdown document (BRIEF section 4.3)."""
     source_map = {s.id: s for s in report.sources}
@@ -209,7 +216,7 @@ def render_report_markdown(report: Report) -> str:
 
     lines: list[str] = []
     lines.append(f"# Báo cáo Nghiên cứu Thị trường Game")
-    lines.append(f"**Câu hỏi nghiên cứu:** {report.question}\n")
+    lines.append(f"**Câu hỏi nghiên cứu:** {_esc_md(report.question, False)}\n")
     trace = report.trace or {}
     if trace:
         lines.append(
@@ -221,8 +228,8 @@ def render_report_markdown(report: Report) -> str:
 
     # --- SECTION 1 ---
     lines.append("## 1. Trả lời ngắn & Khuyến nghị ra quyết định")
-    lines.append(f"### Trả lời ngắn\n{report.short_answer}\n")
-    lines.append(f"### Khuyến nghị hành động (kèm điều kiện áp dụng)\n{report.recommendation}\n")
+    lines.append(f"### Trả lời ngắn\n{_esc_md(report.short_answer, False)}\n")
+    lines.append(f"### Khuyến nghị hành động (kèm điều kiện áp dụng)\n{_esc_md(report.recommendation, False)}\n")
 
     if report.decision_criteria:
         crit_str = " · ".join(f"`{c}`" for c in report.decision_criteria)
@@ -241,12 +248,12 @@ def render_report_markdown(report: Report) -> str:
         lines.append(sep)
         for row in report.option_matrix:
             cells = [
-                (row.criteria_assessment.get(c, "—") or "—").replace("|", "/").replace("\n", " ")
+                _esc_md(row.criteria_assessment.get(c, "—") or "—")
                 for c in all_crit
             ]
             eids_str = ", ".join(f"`{eid}`" for eid in row.evidence_ids) if row.evidence_ids else "—"
-            suit_clean = (row.suitability or "—").replace("|", "/").replace("\n", " ")
-            opt_clean = row.option.replace("|", "/")
+            suit_clean = _esc_md(row.suitability or "—")
+            opt_clean = _esc_md(row.option)
             lines.append(f"| **{opt_clean}** | " + " | ".join(cells) + f" | {suit_clean} | {eids_str} |")
         lines.append("")
 
@@ -267,12 +274,12 @@ def render_report_markdown(report: Report) -> str:
                 if ins.type == "fact" and not ins.is_forecast
                 else "Suy luận / Dự báo (`inference`)"
             )
-            stmt_cell = ins.statement.replace("|", "/").replace("\n", " ")
+            stmt_cell = _esc_md(ins.statement)
             if ins.assumptions:
-                assump_str = "; ".join(ins.assumptions).replace("|", "/").replace("\n", " ")
+                assump_str = _esc_md("; ".join(ins.assumptions))
                 stmt_cell += f"<br>*(Giả định: {assump_str})*"
 
-            conf_cell = f"**{ins.confidence}**<br><small>{ins.confidence_reason.replace('|', '/')}</small>"
+            conf_cell = f"**{ins.confidence}**<br><small>{_esc_md(ins.confidence_reason)}</small>"
 
             src_links: list[str] = []
             quotes_cells: list[str] = []
@@ -288,7 +295,7 @@ def render_report_markdown(report: Report) -> str:
                         f"[{eid} · {src.id} ({src.domain})]({link_url}) "
                         f"— **Hạng {src.tier}**, `{date_disp}`"
                     )
-                q_clean = ev.quote.replace("|", "/").replace("\n", " ")
+                q_clean = _esc_md(ev.quote)
                 quotes_cells.append(f"**[{eid}]** *\"{q_clean}\"* (`match={ev.match_score}%`)")
 
             src_cell = "<br>".join(src_links) if src_links else "—"
@@ -306,7 +313,7 @@ def render_report_markdown(report: Report) -> str:
     else:
         for pc in report.premise_checks:
             eids = f" (Bằng chứng: {', '.join(pc.evidence_ids)})" if pc.evidence_ids else ""
-            lines.append(f"- **Tiền đề:** *{pc.premise}* → **Kết luận: `{pc.status}`** — {pc.explanation}{eids}")
+            lines.append(f"- **Tiền đề:** *{_esc_md(pc.premise, False)}* → **Kết luận: `{pc.status}`** — {_esc_md(pc.explanation, False)}{eids}")
     lines.append("")
 
     lines.append("### 3.2 Mâu thuẫn số liệu / nhận định giữa các nguồn")
@@ -314,10 +321,10 @@ def render_report_markdown(report: Report) -> str:
         lines.append("- Không ghi nhận mâu thuẫn trực tiếp giữa các nguồn đã xác minh.")
     else:
         for cf in report.conflicts:
-            vals_str = " vs. ".join(cf.values) if cf.values else ""
+            vals_str = " vs. ".join(_esc_md(v, False) for v in cf.values) if cf.values else ""
             eids = f" (Bằng chứng: {', '.join(cf.evidence_ids)})" if cf.evidence_ids else ""
-            lines.append(f"- **{cf.topic}**: {vals_str}")
-            lines.append(f"  - *Giải thích khác biệt (định nghĩa / phạm vi / kỳ):* {cf.explanation}{eids}")
+            lines.append(f"- **{_esc_md(cf.topic, False)}**: {vals_str}")
+            lines.append(f"  - *Giải thích khác biệt (định nghĩa / phạm vi / kỳ):* {_esc_md(cf.explanation, False)}{eids}")
     lines.append("")
 
     # --- SECTION 4 ---
@@ -327,7 +334,7 @@ def render_report_markdown(report: Report) -> str:
         lines.append("- Chưa ghi nhận khoảng trống dữ liệu trọng yếu.")
     else:
         for g in report.gaps:
-            lines.append(f"- {g}")
+            lines.append(f"- {_esc_md(g, False)}")
     lines.append("")
 
     lines.append("### 4.2 Điều gì sẽ làm thay đổi kết luận?")
@@ -335,7 +342,7 @@ def render_report_markdown(report: Report) -> str:
         lines.append("- Có thêm dữ liệu sơ cấp (Hạng A) cập nhật quý gần nhất ngược với xu hướng hiện tại.")
     else:
         for w in report.what_would_change:
-            lines.append(f"- {w}")
+            lines.append(f"- {_esc_md(w, False)}")
     lines.append("")
 
     lines.append("### 4.3 Bước kiểm chứng tiếp theo (ưu tiên cách rẻ nhất trước)")
@@ -343,7 +350,7 @@ def render_report_markdown(report: Report) -> str:
         lines.append("1. Kiểm tra bảng xếp hạng doanh thu/lượt tải công khai trên AppMagic / Sensor Tower.")
     else:
         for idx, nc in enumerate(report.next_checks, start=1):
-            lines.append(f"{idx}. {nc}")
+            lines.append(f"{idx}. {_esc_md(nc, False)}")
     lines.append("")
 
     # --- SECTION 5 ---
@@ -354,9 +361,9 @@ def render_report_markdown(report: Report) -> str:
         lines.append("| Mã nguồn | Tiêu đề & Link gốc | Domain | Hạng | Ngày đăng & Độ mới | Lý do xếp hạng |")
         lines.append("|---|---|---|---|---|---|")
         for s in report.sources:
-            t_clean = s.title.replace("|", "/").replace("\n", " ")
+            t_clean = _esc_md(s.title)
             d_disp = s.published_date or "Không rõ"
-            r_clean = s.tier_reason.replace("|", "/").replace("\n", " ")
+            r_clean = _esc_md(s.tier_reason)
             lines.append(
                 f"| **{s.id}** | [{t_clean}]({s.url}) | `{s.domain}` | **Hạng {s.tier}** | `{d_disp}` ({s.freshness_label}) | {r_clean} |"
             )

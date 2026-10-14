@@ -68,8 +68,19 @@ def score_single_insight(
 
     unique_domains = {s.domain.lower() for s in linked_sources if s.domain}
     num_domains = max(1, len(unique_domains))
+    non_stale_domains = {
+        s.domain.lower() for s in linked_sources if s.domain and s.freshness != "stale"
+    }
+    num_non_stale_domains = len(non_stale_domains)
+
     tiers = [s.tier for s in linked_sources]
     has_ab = any(t in ("A", "B") for t in tiers)
+    has_non_stale_ab = any(
+        s.tier in ("A", "B") and s.freshness != "stale" for s in linked_sources
+    )
+    has_fresh_ab = any(
+        s.tier in ("A", "B") and s.freshness == "fresh" for s in linked_sources
+    )
     tier_summary = ", ".join(
         sorted({f"{s.id} (Hạng {s.tier}, {s.domain})" for s in linked_sources})
     )
@@ -78,6 +89,18 @@ def score_single_insight(
     all_stale = all(f == "stale" for f in freshnesses)
     has_fresh = any(f == "fresh" for f in freshnesses)
     only_aging_or_stale = (not has_fresh) and any(f == "aging" for f in freshnesses)
+
+    stmt_lower = (insight.statement or "").lower()
+    is_missing_data_stmt = any(
+        phrase in stmt_lower
+        for phrase in (
+            "không có sẵn",
+            "không tìm thấy dữ liệu",
+            "chưa có số liệu",
+            "chưa có dữ liệu",
+            "không thể xác định",
+        )
+    )
 
     is_inference_or_forecast = (insight.type == "inference") or bool(insight.is_forecast)
     assumptions = list(insight.assumptions)
@@ -97,21 +120,21 @@ def score_single_insight(
         reason = (
             f"Dữ liệu cũ (>24 tháng hoặc không rõ ngày đăng) từ {tier_summary}"
         )
-    elif (not has_ab) and num_domains < 2:
+    elif (not has_non_stale_ab) and num_non_stale_domains < 2:
         confidence = "THẤP"
-        reason = f"Chỉ có 1 nguồn hạng C ({tier_summary})"
+        reason = f"Chỉ có 1 nguồn hạng C mới hoặc nguồn A/B không rõ ngày ({tier_summary})"
     # 2. Check CAO vs TRUNG BÌNH conditions
-    elif num_domains >= 2 and has_ab and has_fresh:
-        if is_inference_or_forecast:
+    elif num_non_stale_domains >= 2 and has_fresh_ab and has_fresh:
+        if is_inference_or_forecast or is_missing_data_stmt:
             confidence = "TRUNG BÌNH"
             reason = (
-                f"Có {num_domains} domain độc lập gồm nguồn hạng A/B mới ({tier_summary}), "
-                "nhưng là nhận định suy luận/dự báo nên tối đa TRUNG BÌNH theo quy tắc"
+                f"Có {num_non_stale_domains} domain độc lập gồm nguồn hạng A/B mới ({tier_summary}), "
+                "nhưng là nhận định suy luận/dự báo hoặc ghi nhận thiếu dữ liệu nên tối đa TRUNG BÌNH theo quy tắc"
             )
         else:
             confidence = "CAO"
             reason = (
-                f"Nhận định thực chứng (fact) từ {num_domains} domain độc lập, "
+                f"Nhận định thực chứng (fact) từ {num_non_stale_domains} domain độc lập, "
                 f"có nguồn hạng A/B mới <=12 tháng ({tier_summary}), không mâu thuẫn"
             )
     else:
@@ -119,11 +142,11 @@ def score_single_insight(
         reasons_parts: list[str] = []
         if only_aging_or_stale:
             reasons_parts.append(f"dữ liệu cũ dần 12–24 tháng ({tier_summary})")
-        elif has_ab and num_domains == 1:
+        elif has_non_stale_ab and num_non_stale_domains == 1:
             reasons_parts.append(f"dựa trên 1 nguồn uy tín hạng A/B ({tier_summary})")
-        elif (not has_ab) and num_domains >= 2:
+        elif (not has_non_stale_ab) and num_non_stale_domains >= 2:
             reasons_parts.append(
-                f"{num_domains} nguồn hạng C khác domain đồng thuận ({tier_summary})"
+                f"{num_non_stale_domains} nguồn hạng C khác domain đồng thuận ({tier_summary})"
             )
         else:
             reasons_parts.append(f"nguồn tham chiếu ({tier_summary})")
@@ -194,6 +217,18 @@ def score_and_finalize_report(
     short_clean, n_short = strip_llm_urls(report.short_answer)
     rec_clean, n_rec = strip_llm_urls(report.recommendation)
     urls_removed_total += n_short + n_rec
+
+    if cleaned_conflicts:
+        conflict_notes = []
+        for c in cleaned_conflicts:
+            if c.values and not all(v in short_clean for v in c.values):
+                vals_str = " vs. ".join(c.values)
+                conflict_notes.append(f"{c.topic} ({vals_str} — {c.explanation})")
+        if conflict_notes:
+            short_clean = (
+                f"{short_clean} Lưu ý chênh lệch số liệu giữa các nguồn theo phạm vi/kỳ báo cáo: "
+                + "; ".join(conflict_notes)
+            )
 
     scored_insights: list[Insight] = []
     gaps_list = list(report.gaps)

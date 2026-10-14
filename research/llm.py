@@ -23,15 +23,16 @@ CACHE_DIR = Path(__file__).resolve().parent.parent / ".cache" / "llm"
 FORBIDDEN_MODELS = ("gemini-4-argon", "argon", "gpt-4-32k", "claude-3-opus")
 
 DEFAULT_MODELS = {
-    "gemini": "gemini-2.5-flash",
+    "gemini": "gemini-3.8-flash",
     "groq": "llama-3.3-70b-versatile",
     "openrouter": "google/gemini-2.0-flash-exp:free",
 }
 
 GEMINI_FALLBACK_MODELS = [
+    "gemini-3.8-flash",
     "gemini-2.5-flash",
-    "gemini-2.0-flash",
     "gemini-2.5-flash-lite",
+    "gemini-flash-lite-latest",
 ]
 
 
@@ -48,6 +49,22 @@ def _get_secret(key: str, default: str = "") -> str:
     except Exception:
         pass
     return default
+
+
+def _get_gemini_keys() -> list[str]:
+    """Return deduplicated list of configured Gemini API keys (supports GEMINI_API_KEYS and GEMINI_API_KEY)."""
+    raw_parts: list[str] = []
+    for var_name in ("GEMINI_API_KEYS", "GEMINI_API_KEY", "GOOGLE_API_KEY"):
+        val = _get_secret(var_name)
+        if val:
+            raw_parts.extend(k.strip() for k in val.split(",") if k.strip())
+    seen: set[str] = set()
+    keys: list[str] = []
+    for k in raw_parts:
+        if not k.startswith("sk-") and k not in seen:
+            seen.add(k)
+            keys.append(k)
+    return keys
 
 
 def _extract_json_string(raw_text: str) -> str:
@@ -68,6 +85,10 @@ class LLMQuotaOrKeyError(RuntimeError):
     """Raised when no valid API key is configured or free-tier quota is exhausted."""
 
 
+class _ModelUnavailableError(RuntimeError):
+    """Raised when a model endpoint returns 503/404 so we skip to the next fallback model immediately."""
+
+
 class LLMClient:
     """Pure-Python LLM client enforcing <= 8 calls per run, JSON schema validation, 1x retry, and disk cache."""
 
@@ -77,8 +98,9 @@ class LLMClient:
         model: Optional[str] = None,
         max_calls: int = 8,
         use_cache: bool = True,
-        timeout: float = 35.0,
+        timeout: float = 45.0,
     ) -> None:
+        load_dotenv(override=True)
         self.provider = (
             provider or _get_secret("LLM_PROVIDER", "gemini")
         ).lower().strip()
@@ -98,16 +120,18 @@ class LLMClient:
         self.calls_count = 0
         self.use_cache = use_cache
         self.timeout = timeout
+        self._key_idx = 0
+        self._unavailable_models: set[str] = set()
         if self.use_cache:
             CACHE_DIR.mkdir(parents=True, exist_ok=True)
 
     def has_any_api_key(self) -> bool:
         """Check whether at least one supported LLM API key is configured (without exposing keys)."""
+        if _get_gemini_keys():
+            return True
         return any(
             bool(_get_secret(k))
             for k in (
-                "GEMINI_API_KEY",
-                "GOOGLE_API_KEY",
                 "GROQ_API_KEY",
                 "OPENROUTER_API_KEY",
             )
@@ -130,23 +154,32 @@ class LLMClient:
         digest = hashlib.sha256(payload.encode("utf-8")).hexdigest()
         return CACHE_DIR / f"{schema_name}_{digest[:24]}.json"
 
-    def _call_gemini(self, system_prompt: str, user_prompt: str, model_name: str) -> str:
-        api_key = _get_secret("GEMINI_API_KEY") or _get_secret("GOOGLE_API_KEY")
-        if not api_key:
-            raise LLMQuotaOrKeyError(
-                "Thiếu GEMINI_API_KEY trong file .env hoặc Streamlit Secrets."
-            )
+    def _call_gemini(
+        self, system_prompt: str, user_prompt: str, model_name: str, api_key: str
+    ) -> str:
         url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent"
+        gen_cfg: dict[str, Any] = {
+            "temperature": 0.1,
+            "responseMimeType": "application/json",
+        }
+        if "2.5" in model_name or "lite" in model_name:
+            gen_cfg["thinkingConfig"] = {"thinkingBudget": 0}
+
         body: dict[str, Any] = {
             "systemInstruction": {"parts": [{"text": system_prompt}]},
             "contents": [{"role": "user", "parts": [{"text": user_prompt}]}],
-            "generationConfig": {
-                "temperature": 0.1,
-                "responseMimeType": "application/json",
-            },
+            "generationConfig": gen_cfg,
         }
         with httpx.Client(timeout=self.timeout) as client:
             resp = client.post(url, params={"key": api_key}, json=body)
+            if resp.status_code == 404 or (resp.status_code == 503 and "3.8" in model_name):
+                raise _ModelUnavailableError(
+                    f"Model '{model_name}' tạm thời không khả dụng (HTTP {resp.status_code})."
+                )
+            if resp.status_code in (503, 500):
+                raise RuntimeError(
+                    f"Gemini model '{model_name}' quá tải tạm thời (HTTP {resp.status_code})."
+                )
             if resp.status_code == 429:
                 raise LLMQuotaOrKeyError(
                     f"Gemini model '{model_name}' chạm giới hạn quota (HTTP 429)."
@@ -191,7 +224,7 @@ class LLMClient:
             return data["choices"][0]["message"]["content"]
 
     def _raw_completion(self, system_prompt: str, user_prompt: str) -> str:
-        """Execute LLM API call with automatic free-tier fallback on 429/missing key."""
+        """Execute LLM API call with automatic key rotation and free-tier model fallback."""
         if self.calls_count >= self.max_calls:
             raise RuntimeError(
                 f"Đã chạm trần số lần gọi LLM tối đa ({self.max_calls} lần/câu hỏi)."
@@ -199,20 +232,28 @@ class LLMClient:
         self.calls_count += 1
 
         errors: list[str] = []
+        gemini_keys = _get_gemini_keys()
 
-        # 1. Try primary provider
-        if self.provider == "gemini" and (
-            _get_secret("GEMINI_API_KEY") or _get_secret("GOOGLE_API_KEY")
-        ):
+        # 1. Try primary Gemini provider with key rotation & sticky model failover
+        if self.provider == "gemini" and gemini_keys:
             models_to_try = [self.model] + [
                 m for m in GEMINI_FALLBACK_MODELS if m != self.model
             ]
             for m in models_to_try:
-                try:
-                    return self._call_gemini(system_prompt, user_prompt, m)
-                except Exception as exc:
-                    errors.append(f"gemini/{m}: {type(exc).__name__}")
-                    time.sleep(0.5)
+                if m in self._unavailable_models:
+                    continue
+                for attempt in range(len(gemini_keys)):
+                    key_to_use = gemini_keys[self._key_idx % len(gemini_keys)]
+                    self._key_idx += 1
+                    try:
+                        return self._call_gemini(system_prompt, user_prompt, m, key_to_use)
+                    except _ModelUnavailableError as m_err:
+                        errors.append(f"gemini/{m}: {m_err}")
+                        self._unavailable_models.add(m)
+                        break
+                    except Exception as exc:
+                        errors.append(f"gemini/{m}[key#{attempt + 1}]: {type(exc).__name__}")
+                        time.sleep(0.8)
 
         # 2. Try Groq fallback
         groq_key = _get_secret("GROQ_API_KEY")

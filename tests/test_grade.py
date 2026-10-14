@@ -58,3 +58,25 @@ def test_grade_source_model_copy() -> None:
     assert graded.tier == "A"
     assert graded.domain == "newzoo.com"
     assert graded.freshness == "fresh"
+
+
+def test_extract_date_fallback_report_slugs() -> None:
+    from research.retrieve import _extract_date_fallback
+
+    assert (
+        _extract_date_fallback(
+            "https://sensortower.com/blog/top-10-worldwide-mobile-games-by-revenue-in-september-2026",
+            "Top 10 mobile games",
+            "Top 10 Mobile Games September 2026",
+        )
+        == "2026-09"
+    )
+    assert (
+        _extract_date_fallback(
+            "https://sensortower.com/blog/state-of-southeast-asia-mobile-gaming-2025",
+            "SEA report body",
+            "State of Southeast Asia Mobile Gaming 2025",
+        )
+        == "2025-06"
+    )
+
