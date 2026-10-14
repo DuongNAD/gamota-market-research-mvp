@@ -1,0 +1,31 @@
+# Secrets & environment variables (NEVER commit)
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+
+# Local development cache (contains raw fetched web pages & LLM cache)
+.cache/
+
+# Python virtual environment & bytecode
+.venv/
+venv/
+ENV/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+
+# Testing & coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# OS & IDE files
+.DS_Store
+Thumbs.db
+*.swp

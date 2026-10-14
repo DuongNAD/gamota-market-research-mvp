@@ -1,0 +1,64 @@
+# Bộ kiểm thử tự động (6 test cases theo BRIEF.md mục 7)
+# Kỳ vọng được định nghĩa TRƯỚC khi chạy dưới dạng cả tiêu chí máy kiểm được và mô tả định tính.
+
+cases:
+  - id: TC1
+    name: "Tiềm năng thể loại game mobile Đông Nam Á"
+    expected_group: "Làm tốt"
+    question: "Thể loại game mobile nào có tiềm năng tại Đông Nam Á trong 12 tháng tới?"
+    qualitative_expectation: "Nhận định có trích dẫn nguyên văn đã xác minh; khuyến nghị nêu rõ giả định và tiêu chí quyết định; các nhận định dự báo tương lai có độ tin cậy tối đa TRUNG BÌNH; 0 nhận định CAO từ nguồn C."
+    assertions:
+      min_verified_quotes: 2
+      min_verified_rate: 50.0
+      max_forecast_confidence: "TRUNG BÌNH"
+      must_have_assumptions_on_forecast: true
+      max_high_conf_from_tier_c: 0
+
+  - id: TC2
+    name: "Mô hình kiếm tiền game casual tại Indonesia và Philippines"
+    expected_group: "Làm tốt (loại câu hỏi khác)"
+    question: "Mô hình kiếm tiền nào đang hiệu quả với game casual tại Indonesia và Philippines?"
+    qualitative_expectation: "Xử lý tốt câu hỏi thuộc nhóm mô hình kiếm tiền (IAP / IAA / Hybrid-casual), có trích dẫn nguyên văn xác minh từ nguồn thực tế, chứng minh hệ thống không hardcode theo câu hỏi mẫu."
+    assertions:
+      min_verified_quotes: 2
+      min_verified_rate: 50.0
+      max_high_conf_from_tier_c: 0
+
+  - id: TC3
+    name: "Quy mô thị trường game mobile Việt Nam (Nguồn mâu thuẫn)"
+    expected_group: "Khó: nguồn mâu thuẫn"
+    question: "Quy mô thị trường game mobile Việt Nam hiện nay là bao nhiêu?"
+    qualitative_expectation: "Hiện nhiều con số ước tính kèm nguồn tương ứng, giải thích sự khác biệt về định nghĩa/phạm vi/kỳ báo cáo; không tự ý lấy trung bình ngầm hay chốt cứng một con số duy nhất không điều kiện."
+    assertions:
+      min_verified_quotes: 2
+      must_have_conflicts_or_multiple_figures: true
+      max_high_conf_from_tier_c: 0
+
+  - id: TC4
+    name: "Doanh thu MMORPG mobile tại Campuchia năm 2025 (Thiếu dữ liệu)"
+    expected_group: "Khó: thiếu dữ liệu"
+    question: "Doanh thu thể loại MMORPG mobile tại Campuchia năm 2025 là bao nhiêu?"
+    qualitative_expectation: "Nói rõ các nguồn công khai không đủ dữ liệu chi tiết cho phân khúc ngách (MMORPG tại Campuchia năm 2025); không bịa con số; gợi ý dữ liệu thay thế và bước kiểm chứng tiếp theo rẻ nhất."
+    assertions:
+      must_have_gaps: true
+      must_have_next_checks: true
+      max_high_conf_from_tier_c: 0
+
+  - id: TC5
+    name: "Kiểm tra tiền đề sai: Doanh thu game mobile ĐNÁ giảm 50%"
+    expected_group: "Khó: tiền đề sai"
+    question: "Vì sao doanh thu game mobile Đông Nam Á giảm 50% trong năm qua?"
+    qualitative_expectation: "Kiểm tra tiền đề câu hỏi ('giảm 50%'); phản biện/bác bỏ hoặc chỉ rõ không có bằng chứng cho thấy mức sụt giảm 50% dựa trên số liệu thực tế của thị trường Đông Nam Á."
+    assertions:
+      must_challenge_premise: true
+      max_high_conf_from_tier_c: 0
+
+  - id: TC6
+    name: "Doanh thu tháng trước của 3 game gacha top đầu Thái Lan (Dễ thất bại)"
+    expected_group: "Dễ thất bại"
+    question: "Doanh thu tháng trước của 3 game gacha top đầu Thái Lan là bao nhiêu?"
+    qualitative_expectation: "Đòi hỏi số liệu doanh thu đúng kỳ 'tháng trước' của đúng 3 tựa game gacha dẫn đầu tại Thái Lan (thường bị khóa sau paywall Sensor Tower / AppMagic). Nếu không có số liệu đúng kỳ được hỏi thì phải nói rõ, không lấy số liệu kỳ khác thay thế."
+    assertions:
+      strict_recent_month_data_required: true
+      must_have_gaps: true
+      max_high_conf_from_tier_c: 0

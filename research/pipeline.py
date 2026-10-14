@@ -1,0 +1,396 @@
+"""Main 6-step market research pipeline (`run(question) -> Report`) and Vietnamese Markdown renderer."""
+
+from __future__ import annotations
+
+from datetime import date, datetime
+import time
+from typing import Callable, Optional
+
+from research.extract import extract_claims_from_sources
+from research.llm import LLMClient
+from research.retrieve import retrieve_and_grade_sources
+from research.schemas import (
+    Insight,
+    PipelineTrace,
+    Report,
+)
+from research.score import score_and_finalize_report
+from research.synthesize import plan_research, synthesize_report
+
+ProgressCallback = Callable[[str, str], None]
+
+
+def _default_progress(_step: str, _detail: str) -> None:
+    pass
+
+
+def run(
+    question: str,
+    progress_callback: Optional[ProgressCallback] = None,
+    use_cache: bool = True,
+    reference_date: Optional[date] = None,
+    llm_client: Optional[LLMClient] = None,
+) -> Report:
+    """Execute the 6-step market research pipeline: Plan -> Retrieve -> Grade -> Extract -> Synthesize -> Score."""
+    t0 = time.perf_counter()
+    cb = progress_callback or _default_progress
+    ref_date = reference_date or date.today()
+    current_date_str = ref_date.isoformat()
+    llm = llm_client or LLMClient(max_calls=8, use_cache=use_cache)
+    step_logs: list[str] = []
+
+    def _log(step_title: str, detail: str) -> None:
+        msg = f"[{step_title}] {detail}"
+        step_logs.append(msg)
+        cb(step_title, detail)
+
+    # --- STEP 1: PLAN ---
+    _log(
+        "Bước 1/6 · Lập kế hoạch (Plan)",
+        "Phân tách câu hỏi con, tiêu chí ra quyết định, truy vấn tìm kiếm EN/VI và tiền đề ngầm...",
+    )
+    plan = plan_research(question=question, llm=llm, current_date=current_date_str)
+    _log(
+        "Bước 1/6 · Hoàn tất Plan",
+        f"Đã tạo {len(plan.sub_questions)} câu hỏi con, {len(plan.decision_criteria)} tiêu chí quyết định, "
+        f"{len(plan.search_queries)} truy vấn tìm kiếm và {len(plan.implicit_premises)} tiền đề cần kiểm chứng.",
+    )
+
+    # --- STEP 2 & 3: RETRIEVE & GRADE ---
+    _log(
+        "Bước 2–3/6 · Thu thập & Xếp hạng nguồn (Retrieve & Grade)",
+        f"Đang tìm kiếm {len(plan.search_queries)} truy vấn (top 5/truy vấn), khử trùng lặp, trích xuất nội dung và chấm hạng A/B/C...",
+    )
+    (
+        kept_sources,
+        truncated_texts,
+        full_texts,
+        rejected_sources,
+        retrieve_stats,
+    ) = retrieve_and_grade_sources(
+        queries=plan.search_queries,
+        keywords=plan.keywords,
+        reference_date=ref_date,
+        max_per_query=5,
+        max_kept_sources=12,
+        max_chars_per_source=6000,
+        use_cache=use_cache,
+    )
+    tier_counts = {
+        t: sum(1 for s in kept_sources if s.tier == t) for t in ("A", "B", "C")
+    }
+    _log(
+        "Bước 2–3/6 · Hoàn tất Retrieve & Grade",
+        f"Tìm thấy {retrieve_stats['raw_search_results_count']} kết quả thô -> {retrieve_stats['deduped_sources_count']} URL duy nhất "
+        f"-> Giữ {len(kept_sources)} nguồn tốt nhất (Hạng A: {tier_counts['A']}, Hạng B: {tier_counts['B']}, Hạng C: {tier_counts['C']}); "
+        f"Loại {len(rejected_sources)} nguồn.",
+    )
+
+    # --- STEP 4: EXTRACT & VERIFY ---
+    _log(
+        "Bước 4/6 · Rút trích & Xác minh trích dẫn (Extract & Verify)",
+        f"Đang rút trích claim kèm trích dẫn nguyên văn <= 40 từ từ {len(kept_sources)} nguồn (gom 4 nguồn/lần gọi LLM) và kiểm tra bằng RapidFuzz >= 90...",
+    )
+    (
+        verified_evidences,
+        rejected_quotes,
+        total_quotes_extracted,
+    ) = extract_claims_from_sources(
+        question=question,
+        sub_questions=plan.sub_questions,
+        sources=kept_sources,
+        source_texts=truncated_texts,
+        full_source_texts=full_texts,
+        llm=llm,
+        current_date=current_date_str,
+        batch_size=4,
+    )
+    _log(
+        "Bước 4/6 · Hoàn tất Extract & Verify",
+        f"Xác minh thành công {len(verified_evidences)}/{total_quotes_extracted} trích dẫn nguyên văn "
+        f"(Loại {len(rejected_quotes)} trích dẫn không đạt chuẩn).",
+    )
+
+    # --- STEP 5: SYNTHESIZE ---
+    _log(
+        "Bước 5/6 · Tổng hợp nhận định (Synthesize)",
+        f"Đang tổng hợp nhận định, kiểm tra tiền đề, phát hiện mâu thuẫn và khoảng trống dữ liệu từ {len(verified_evidences)} bằng chứng đã xác minh...",
+    )
+    synthesis = synthesize_report(
+        question=question,
+        plan=plan,
+        sources=kept_sources,
+        verified_evidences=verified_evidences,
+        llm=llm,
+        current_date=current_date_str,
+    )
+    _log(
+        "Bước 5/6 · Hoàn tất Synthesize",
+        f"Đã tổng hợp {len(synthesis.insights)} nhận định dự thảo, {len(synthesis.conflicts)} điểm mâu thuẫn, "
+        f"{len(synthesis.premise_checks)} kiểm tra tiền đề và {len(synthesis.gaps)} khoảng trống dữ liệu.",
+    )
+
+    # --- STEP 6: SCORE & SELF-CHECK ---
+    _log(
+        "Bước 6/6 · Chấm điểm độ tin cậy & Tự kiểm (Score & Self-Check)",
+        "Áp dụng quy tắc chấm điểm CAO/TRUNG BÌNH/THẤP, gắn link Text Fragment và tính chỉ số tự kiểm...",
+    )
+    draft_insights = [
+        Insight(
+            id=f"I{idx + 1}",
+            statement=di.statement,
+            type=di.type,
+            evidence_ids=di.evidence_ids,
+            assumptions=di.assumptions,
+            is_forecast=di.is_forecast,
+            has_conflict=di.has_conflict,
+        )
+        for idx, di in enumerate(synthesis.insights)
+    ]
+
+    duration_sec = round(time.perf_counter() - t0, 2)
+    trace_obj = PipelineTrace(
+        run_timestamp=datetime.now().isoformat(timespec="seconds"),
+        current_date=current_date_str,
+        duration_seconds=duration_sec,
+        llm_provider=llm.provider,
+        llm_model=llm.model,
+        llm_calls_count=llm.calls_count,
+        search_provider=str(retrieve_stats.get("search_provider", "unknown")),
+        queries_executed=plan.search_queries,
+        sub_questions=plan.sub_questions,
+        decision_criteria=plan.decision_criteria,
+        implicit_premises=plan.implicit_premises,
+        raw_search_results_count=int(retrieve_stats.get("raw_search_results_count", 0)),
+        deduped_sources_count=int(retrieve_stats.get("deduped_sources_count", 0)),
+        kept_sources_count=len(kept_sources),
+        step_logs=step_logs,
+    )
+
+    raw_report = Report(
+        question=question,
+        short_answer=synthesis.short_answer,
+        recommendation=synthesis.recommendation,
+        decision_criteria=plan.decision_criteria,
+        option_matrix=synthesis.option_matrix,
+        insights=draft_insights,
+        conflicts=synthesis.conflicts,
+        premise_checks=synthesis.premise_checks,
+        gaps=synthesis.gaps,
+        what_would_change=synthesis.what_would_change,
+        next_checks=synthesis.next_checks,
+        sources=kept_sources,
+        evidences=verified_evidences,
+        trace=trace_obj.model_dump(),
+    )
+
+    final_report = score_and_finalize_report(
+        report=raw_report,
+        total_quotes_extracted=total_quotes_extracted,
+        rejected_sources=rejected_sources,
+        rejected_quotes=rejected_quotes,
+    )
+
+    _log(
+        "Bước 6/6 · Hoàn tất",
+        f"Hoàn thành trong {duration_sec}s với {llm.calls_count} lần gọi LLM. "
+        f"Tỷ lệ trích dẫn xác minh: {final_report.quality.verified_quote_rate}% | "
+        f"Số nhận định CAO từ nguồn C: {final_report.quality.high_confidence_from_tier_c_only_count}.",
+    )
+    final_report.trace["step_logs"] = step_logs
+    final_report.trace["duration_seconds"] = round(time.perf_counter() - t0, 2)
+    return final_report
+
+
+def render_report_markdown(report: Report) -> str:
+    """Render Report into a structured 6-part Vietnamese Markdown document (BRIEF section 4.3)."""
+    source_map = {s.id: s for s in report.sources}
+    evidence_map = {e.id: e for e in report.evidences}
+
+    lines: list[str] = []
+    lines.append(f"# Báo cáo Nghiên cứu Thị trường Game")
+    lines.append(f"**Câu hỏi nghiên cứu:** {report.question}\n")
+    trace = report.trace or {}
+    if trace:
+        lines.append(
+            f"> **Thời điểm chạy:** `{trace.get('run_timestamp', '')}` · "
+            f"**Thời gian xử lý:** `{trace.get('duration_seconds', 0)}s` · "
+            f"**Model:** `{trace.get('llm_provider', '')}/{trace.get('llm_model', '')}` ({trace.get('llm_calls_count', 0)} lệnh gọi LLM) · "
+            f"**Search:** `{trace.get('search_provider', '')}`\n"
+        )
+
+    # --- SECTION 1 ---
+    lines.append("## 1. Trả lời ngắn & Khuyến nghị ra quyết định")
+    lines.append(f"### Trả lời ngắn\n{report.short_answer}\n")
+    lines.append(f"### Khuyến nghị hành động (kèm điều kiện áp dụng)\n{report.recommendation}\n")
+
+    if report.decision_criteria:
+        crit_str = " · ".join(f"`{c}`" for c in report.decision_criteria)
+        lines.append(f"**Tiêu chí ra quyết định đã dùng:** {crit_str}\n")
+
+    if report.option_matrix:
+        lines.append("### Bảng so sánh Phương án × Tiêu chí quyết định")
+        all_crit: list[str] = list(report.decision_criteria)
+        for row in report.option_matrix:
+            for k in row.criteria_assessment.keys():
+                if k not in all_crit:
+                    all_crit.append(k)
+        header = "| Phương án | " + " | ".join(all_crit) + " | Đánh giá & Điều kiện phù hợp | Bằng chứng |"
+        sep = "|---|" + "|".join(["---"] * len(all_crit)) + "|---|---|"
+        lines.append(header)
+        lines.append(sep)
+        for row in report.option_matrix:
+            cells = [
+                (row.criteria_assessment.get(c, "—") or "—").replace("|", "/").replace("\n", " ")
+                for c in all_crit
+            ]
+            eids_str = ", ".join(f"`{eid}`" for eid in row.evidence_ids) if row.evidence_ids else "—"
+            suit_clean = (row.suitability or "—").replace("|", "/").replace("\n", " ")
+            opt_clean = row.option.replace("|", "/")
+            lines.append(f"| **{opt_clean}** | " + " | ".join(cells) + f" | {suit_clean} | {eids_str} |")
+        lines.append("")
+
+    # --- SECTION 2 ---
+    lines.append("## 2. Bảng nhận định có căn cứ (Verified Insights)")
+    if not report.insights:
+        lines.append(
+            "*Không có nhận định nào đủ bằng chứng nguyên văn đã xác minh. Xem mục 4 (Khoảng trống dữ liệu) bên dưới.*\n"
+        )
+    else:
+        lines.append(
+            "| ID | Nhận định & Giả định | Loại | Độ tin cậy & Lý do | Nguồn (Hạng, Ngày, Link tô sáng) | Trích dẫn nguyên văn (<=40 từ) |"
+        )
+        lines.append("|---|---|---|---|---|---|")
+        for ins in report.insights:
+            type_label = (
+                "Thực chứng (`fact`)"
+                if ins.type == "fact" and not ins.is_forecast
+                else "Suy luận / Dự báo (`inference`)"
+            )
+            stmt_cell = ins.statement.replace("|", "/").replace("\n", " ")
+            if ins.assumptions:
+                assump_str = "; ".join(ins.assumptions).replace("|", "/").replace("\n", " ")
+                stmt_cell += f"<br>*(Giả định: {assump_str})*"
+
+            conf_cell = f"**{ins.confidence}**<br><small>{ins.confidence_reason.replace('|', '/')}</small>"
+
+            src_links: list[str] = []
+            quotes_cells: list[str] = []
+            for eid in ins.evidence_ids:
+                ev = evidence_map.get(eid)
+                if not ev:
+                    continue
+                src = source_map.get(ev.source_id)
+                if src:
+                    date_disp = src.published_date or "Không rõ ngày"
+                    link_url = ev.highlight_url or src.url
+                    src_links.append(
+                        f"[{eid} · {src.id} ({src.domain})]({link_url}) "
+                        f"— **Hạng {src.tier}**, `{date_disp}`"
+                    )
+                q_clean = ev.quote.replace("|", "/").replace("\n", " ")
+                quotes_cells.append(f"**[{eid}]** *\"{q_clean}\"* (`match={ev.match_score}%`)")
+
+            src_cell = "<br>".join(src_links) if src_links else "—"
+            quote_cell = "<br>".join(quotes_cells) if quotes_cells else "—"
+            lines.append(
+                f"| **{ins.id}** | {stmt_cell} | {type_label} | {conf_cell} | {src_cell} | {quote_cell} |"
+            )
+        lines.append("")
+
+    # --- SECTION 3 ---
+    lines.append("## 3. Mâu thuẫn giữa các nguồn & Kiểm tra tiền đề câu hỏi")
+    lines.append("### 3.1 Kiểm tra tiền đề (Premise Check)")
+    if not report.premise_checks:
+        lines.append("- Không phát hiện tiền đề ngầm bất thường.")
+    else:
+        for pc in report.premise_checks:
+            eids = f" (Bằng chứng: {', '.join(pc.evidence_ids)})" if pc.evidence_ids else ""
+            lines.append(f"- **Tiền đề:** *{pc.premise}* → **Kết luận: `{pc.status}`** — {pc.explanation}{eids}")
+    lines.append("")
+
+    lines.append("### 3.2 Mâu thuẫn số liệu / nhận định giữa các nguồn")
+    if not report.conflicts:
+        lines.append("- Không ghi nhận mâu thuẫn trực tiếp giữa các nguồn đã xác minh.")
+    else:
+        for cf in report.conflicts:
+            vals_str = " vs. ".join(cf.values) if cf.values else ""
+            eids = f" (Bằng chứng: {', '.join(cf.evidence_ids)})" if cf.evidence_ids else ""
+            lines.append(f"- **{cf.topic}**: {vals_str}")
+            lines.append(f"  - *Giải thích khác biệt (định nghĩa / phạm vi / kỳ):* {cf.explanation}{eids}")
+    lines.append("")
+
+    # --- SECTION 4 ---
+    lines.append("## 4. Khoảng trống dữ liệu, Điều kiện đảo chiều & Bước kiểm chứng tiếp theo")
+    lines.append("### 4.1 Khoảng trống dữ liệu & Điều chưa chắc chắn")
+    if not report.gaps:
+        lines.append("- Chưa ghi nhận khoảng trống dữ liệu trọng yếu.")
+    else:
+        for g in report.gaps:
+            lines.append(f"- {g}")
+    lines.append("")
+
+    lines.append("### 4.2 Điều gì sẽ làm thay đổi kết luận?")
+    if not report.what_would_change:
+        lines.append("- Có thêm dữ liệu sơ cấp (Hạng A) cập nhật quý gần nhất ngược với xu hướng hiện tại.")
+    else:
+        for w in report.what_would_change:
+            lines.append(f"- {w}")
+    lines.append("")
+
+    lines.append("### 4.3 Bước kiểm chứng tiếp theo (ưu tiên cách rẻ nhất trước)")
+    if not report.next_checks:
+        lines.append("1. Kiểm tra bảng xếp hạng doanh thu/lượt tải công khai trên AppMagic / Sensor Tower.")
+    else:
+        for idx, nc in enumerate(report.next_checks, start=1):
+            lines.append(f"{idx}. {nc}")
+    lines.append("")
+
+    # --- SECTION 5 ---
+    lines.append("## 5. Danh sách nguồn thông tin (Source Grading)")
+    if not report.sources:
+        lines.append("*Không có nguồn nào được giữ lại.*\n")
+    else:
+        lines.append("| Mã nguồn | Tiêu đề & Link gốc | Domain | Hạng | Ngày đăng & Độ mới | Lý do xếp hạng |")
+        lines.append("|---|---|---|---|---|---|")
+        for s in report.sources:
+            t_clean = s.title.replace("|", "/").replace("\n", " ")
+            d_disp = s.published_date or "Không rõ"
+            r_clean = s.tier_reason.replace("|", "/").replace("\n", " ")
+            lines.append(
+                f"| **{s.id}** | [{t_clean}]({s.url}) | `{s.domain}` | **Hạng {s.tier}** | `{d_disp}` ({s.freshness_label}) | {r_clean} |"
+            )
+        lines.append("")
+
+    # --- SECTION 6 ---
+    q = report.quality
+    lines.append("## 6. Tự kiểm chất lượng (Self-Check Quality Metrics)")
+    lines.append(
+        f"- **Tỷ lệ trích dẫn xác minh được (`rapidfuzz >= 90`):** `{q.verified_quote_rate}%` "
+        f"({q.verified_quotes_count}/{q.total_quotes_extracted} trích dẫn)"
+    )
+    lines.append(
+        f"- **Tỷ lệ nhận định có ≥ 1 bằng chứng đã xác minh:** `{q.insights_with_verified_evidence_rate}%` "
+        f"({q.total_insights_count} nhận định hợp lệ)"
+    )
+    lines.append(
+        f"- **Số nhận định CAO chỉ dựa trên nguồn hạng C (bắt buộc = 0):** `{q.high_confidence_from_tier_c_only_count}`"
+    )
+    lines.append(
+        f"- **Số URL do LLM tự viết bị phát hiện và lọc bỏ:** `{q.llm_invented_urls_removed_count}`"
+    )
+    lines.append(f"- **Số nguồn bị loại:** `{q.rejected_sources_count}` · **Số trích dẫn bị loại:** `{q.rejected_quotes_count}`")
+
+    if q.rejected_quotes:
+        lines.append("\n<details><summary>Chi tiết các trích dẫn bị loại (không khớp nguyên văn hoặc > 40 từ)</summary>\n")
+        for rq in q.rejected_quotes:
+            lines.append(f"- `{rq.item_id}`: {rq.reason} — *\"{rq.detail}\"*")
+        lines.append("\n</details>")
+
+    if q.rejected_sources:
+        lines.append("\n<details><summary>Chi tiết các nguồn bị loại</summary>\n")
+        for rs in q.rejected_sources:
+            lines.append(f"- `{rs.item_id}`: {rs.reason}")
+        lines.append("\n</details>")
+
+    return "\n".join(lines)

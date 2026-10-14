@@ -1,0 +1,80 @@
+# Quy tắc phân hạng độ tin cậy của nguồn thông tin thị trường game (Hạng A / B / C)
+# Theo BRIEF.md mục 4.2:
+# - Hạng A: Dữ liệu gốc hoặc nhà cung cấp dữ liệu ngành, cơ quan nhà nước, báo cáo tài chính/IR của publisher niêm yết.
+# - Hạng B: Truyền thông và phân tích ngành game uy tín, hãng tin và báo kinh tế/công nghệ lớn.
+# - Hạng C: Mặc định (blog cá nhân, trang tổng hợp SEO, diễn đàn, thông cáo báo chí, domain chưa kiểm chứng).
+
+tier_a:
+  default_reason: "Nhà cung cấp dữ liệu ngành gốc / Báo cáo IR publisher niêm yết / Cơ quan quản lý nhà nước"
+  domains:
+    sensortower.com: "Nhà cung cấp dữ liệu đo lường thị trường ứng dụng & game mobile hàng đầu (Sensor Tower)"
+    newzoo.com: "Đơn vị nghiên cứu dữ liệu chuyên sâu ngành game toàn cầu (Newzoo)"
+    data.ai: "Nền tảng dữ liệu thị trường mobile (data.ai / App Annie)"
+    appmagic.rocks: "Nền tảng phân tích doanh thu và lượt tải game mobile (AppMagic)"
+    nikopartners.com: "Đơn vị nghiên cứu thị trường game chuyên sâu khu vực châu Á & Đông Nam Á (Niko Partners)"
+    statista.com: "Nền tảng tổng hợp thống kê và dữ liệu thị trường định lượng (Statista)"
+    gdc.com: "Báo cáo khảo sát ngành game thường niên (Game Developers Conference)"
+    gdconf.com: "Báo cáo khảo sát ngành game thường niên (GDC)"
+    sea.com: "Báo cáo tài chính / Quan hệ nhà đầu tư công ty mẹ Garena (Sea Limited IR)"
+    tencent.com: "Báo cáo tài chính / Quan hệ nhà đầu tư nhà phát hành game niêm yết (Tencent IR)"
+    netease.com: "Báo cáo tài chính / Quan hệ nhà đầu tư nhà phát hành game niêm yết (NetEase IR)"
+    nexon.co.jp: "Báo cáo tài chính / Quan hệ nhà đầu tư nhà phát hành game niêm yết (Nexon IR)"
+    krafton.com: "Báo cáo tài chính / Quan hệ nhà đầu tư nhà phát hành game niêm yết (Krafton IR)"
+    netmarble.com: "Báo cáo tài chính / Quan hệ nhà đầu tư nhà phát hành game niêm yết (Netmarble IR)"
+    vng.com.vn: "Thông tin công bố chính thức từ tập đoàn công nghệ & phát hành game (VNG)"
+    mic.gov.vn: "Cổng thông tin Bộ Thông tin và Truyền thông Việt Nam (số liệu cơ quan nhà nước)"
+    abei.gov.vn: "Cục Phát thanh, truyền hình và thông tin điện tử Việt Nam (số liệu cơ quan nhà nước)"
+    gso.gov.vn: "Tổng cục Thống kê Việt Nam (số liệu cơ quan nhà nước)"
+    sec.gov: "Ủy ban Chứng khoán và Giao dịch Hoa Kỳ - hồ sơ tài chính niêm yết (SEC EDGAR)"
+  suffix_patterns:
+    - ".gov"
+    - ".gov.vn"
+    - ".gov.sg"
+    - ".go.th"
+    - ".go.id"
+    - ".gov.ph"
+  subdomain_prefixes:
+    - "ir."
+    - "investor."
+    - "investors."
+
+tier_b:
+  default_reason: "Truyền thông, chuyên trang phân tích ngành game uy tín hoặc hãng tin/báo lớn"
+  domains:
+    gamesindustry.biz: "Chuyên trang phân tích kinh doanh ngành game uy tín (GamesIndustry.biz)"
+    pocketgamer.biz: "Chuyên trang kinh doanh & thị trường game mobile uy tín (PocketGamer.biz)"
+    mobilegamer.biz: "Chuyên trang tin tức và phân tích dữ liệu ngành game mobile (MobileGamer.biz)"
+    naavik.co: "Tổ chức tư vấn và phân tích chuyên sâu kinh tế ngành game (Naavik)"
+    deconstructoroffun.com: "Chuyên trang phân tích thiết kế và mô hình kiếm tiền game mobile (Deconstructor of Fun)"
+    gamedeveloper.com: "Chuyên trang phân tích phát triển và kinh doanh game (Game Developer / Gamasutra)"
+    venturebeat.com: "Chuyên trang công nghệ và ngành game GamesBeat (VentureBeat)"
+    ign.com: "Chuyên trang truyền thông ngành game lớn (IGN)"
+    reuters.com: "Hãng thông tấn quốc tế uy tín (Reuters)"
+    bloomberg.com: "Hãng tin tài chính và kinh tế quốc tế uy tín (Bloomberg)"
+    ft.com: "Báo tài chính quốc tế uy tín (Financial Times)"
+    wsj.com: "Báo kinh tế tài chính uy tín (Wall Street Journal)"
+    cnbc.com: "Kênh tin tức tài chính và kinh doanh quốc tế (CNBC)"
+    nikkei.com: "Báo kinh tế châu Á uy tín (Nikkei Asia)"
+    techinasia.com: "Chuyên trang công nghệ và khởi nghiệp châu Á (Tech in Asia)"
+    kr-asia.com: "Chuyên trang phân tích kinh tế số châu Á (KrASIA)"
+    dealstreetasia.com: "Chuyên trang dữ liệu đầu tư và thị trường Đông Nam Á (DealStreetAsia)"
+    vnexpress.net: "Báo điện tử lớn tại Việt Nam (VnExpress)"
+    vneconomy.vn: "Tạp chí Kinh tế Việt Nam (VnEconomy)"
+    tuoitre.vn: "Báo điện tử lớn tại Việt Nam (Tuổi Trẻ)"
+    thanhnien.vn: "Báo điện tử lớn tại Việt Nam (Thanh Niên)"
+    cafef.vn: "Chuyên trang thông tin tài chính - kinh doanh tại Việt Nam (CafeF)"
+    cafebiz.vn: "Chuyên trang thông tin kinh doanh - công nghệ tại Việt Nam (CafeBiz)"
+    forbes.com: "Tạp chí kinh doanh quốc tế (Forbes)"
+    mckinsey.com: "Báo cáo hãng tư vấn chiến lược toàn cầu (McKinsey)"
+    pwc.com: "Báo cáo hãng kiểm toán & tư vấn toàn cầu (PwC)"
+    deloitte.com: "Báo cáo hãng kiểm toán & tư vấn toàn cầu (Deloitte)"
+    adjust.com: "Báo cáo phân tích tiếp thị ứng dụng mobile (Adjust)"
+    appsflyer.com: "Báo cáo phân tích tiếp thị và UA ngành mobile (AppsFlyer)"
+    unity.com: "Báo cáo ngành game và quảng cáo in-app từ nền tảng engine (Unity Gaming Report)"
+    mistplay.com: "Báo cáo khảo sát hành vi chi tiêu người chơi mobile (Mistplay)"
+    carry1st.com: "Báo cáo phát hành và thanh toán thị trường mới nổi (Carry1st)"
+    codashop.com: "Nền tảng thanh toán game lớn tại Đông Nam Á (Coda Payments)"
+    codapayments.com: "Nền tảng thanh toán game lớn tại Đông Nam Á (Coda Payments)"
+
+tier_c:
+  default_reason: "Nguồn hạng C (mặc định): Blog, trang tổng hợp SEO, diễn đàn, thông cáo báo chí hoặc domain chưa trong danh mục kiểm chứng"
