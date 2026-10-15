@@ -2,9 +2,9 @@
 
 **Mô tả 1 câu:** Công cụ nghiên cứu thị trường game tự động phân rã câu hỏi kinh doanh, thu thập và xếp hạng nguồn (`A/B/C`), ép buộc xác minh từng câu trích dẫn nguyên văn bằng thuật toán (`RapidFuzz >= 90`) kèm link tô sáng tận nguồn (`#:~:text=`), và tính điểm độ tin cậy (`CAO / TRUNG BÌNH / THẤP`) bằng quy tắc code tất định để hỗ trợ ra quyết định phát hành game tại Gamota.
 
-- **Link Demo (Streamlit Cloud):** `https://gamota-market-research-mvp.streamlit.app` *(Hướng dẫn kích hoạt trong 2 phút từ repo public này tại mục 6; nếu ứng dụng đang ở trạng thái ngủ khi mở bằng trình duyệt ẩn danh, vui lòng bấm **"Yes, get this app back up!"** và chờ khoảng 1 phút)*
+- **Link Demo (Streamlit Cloud):** [https://gamota-market-research-mvp.streamlit.app](https://gamota-market-research-mvp.streamlit.app) *(Nếu ứng dụng đang ở trạng thái ngủ khi mở bằng trình duyệt ẩn danh, vui lòng bấm **"Yes, get this app back up!"** và chờ khoảng 1 phút)*
 - **Link Source Code (GitHub Public):** [https://github.com/DuongNAD/gamota-market-research-mvp](https://github.com/DuongNAD/gamota-market-research-mvp)
-- **Link Video Walkthrough (≤ 5 phút):** *(Cập nhật link video Loom / YouTube Unlisted / Google Drive trước khi bấm nộp form; kịch bản quay chi tiết từng giây nằm ở cuối file này và trong [`SUBMISSION.md`](SUBMISSION.md))*
+- **Link Video Walkthrough (≤ 5 phút):** [https://youtu.be/WZhY9xlLmMY](https://youtu.be/WZhY9xlLmMY)
 
 ---
 

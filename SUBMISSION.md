@@ -7,8 +7,8 @@ Tài liệu này tổng hợp sẵn toàn bộ nội dung để bạn **copy-pas
 ## 1. Các đường dẫn nộp bài
 
 - **Link Source Code (GitHub Public):** `https://github.com/DuongNAD/gamota-market-research-mvp`
-- **Link Sản phẩm chạy được (Streamlit Cloud):** `https://gamota-market-research-mvp.streamlit.app` *(Xem mục 5 bên dưới để bật lên từ repo GitHub của bạn trong 1 phút)*
-- **Link Video Walkthrough (≤ 5 phút):** `<Dán link Loom / YouTube Unlisted / Google Drive có quyền xem công khai sau khi quay theo kịch bản ở mục 4>`
+- **Link Sản phẩm chạy được (Streamlit Cloud):** `https://gamota-market-research-mvp.streamlit.app`
+- **Link Video Walkthrough (≤ 5 phút):** `https://youtu.be/WZhY9xlLmMY`
 
 ---
 
