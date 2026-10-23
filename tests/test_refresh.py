@@ -173,7 +173,7 @@ def test_refresh_confirm_upgrades_confidence_and_keeps_ids(monkeypatch):
 def test_refresh_update_adds_conflict_and_new_insight(monkeypatch):
     """C1: CẬP NHẬT ⇒ có ConflictItem, nhận định cũ THẤP, nhận định mới ở cuối."""
     rpt = _make_base_report_with_old_key_source()
-    raw_text = "In 2026, hybrid monetization growth in Indonesia slowed to 12% as pure IAA regained share."
+    raw_text = "In 2025, hybrid monetization growth in Indonesia slowed to 12% as pure IAA regained share."
 
     def fake_retrieve(queries, keywords, reference_date=None, max_per_query=5, max_kept_sources=6, use_cache=True):
         s_new = Source(
@@ -206,7 +206,7 @@ def test_refresh_update_adds_conflict_and_new_insight(monkeypatch):
                     RawExtractedClaim(
                         source_id="S2",
                         claim="Năm 2026, tốc độ tăng trưởng hybrid monetization tại Indonesia giảm xuống 12%.",
-                        quote="In 2026, hybrid monetization growth in Indonesia slowed to 12% as pure IAA regained share.",
+                        quote="In 2025, hybrid monetization growth in Indonesia slowed to 12% as pure IAA regained share.",
                     )
                 ]
             ),
@@ -423,3 +423,184 @@ def test_refresh_without_targets_makes_no_llm_call():
     assert refreshed.refresh.status == "KHÔNG CẦN LÀM MỚI"
     assert refreshed.refresh.llm_calls_count == 0
     assert len(fake_llm.calls) == 0
+
+
+def test_refresh_deduplicates_new_insights_from_same_new_evidence(monkeypatch):
+    """Regression (L2): 2 cặp CẬP NHẬT hợp lệ cùng trỏ 1 bằng chứng mới ⇒ chỉ sinh 1 nhận định mới."""
+    s1 = Source(
+        id="S1",
+        title="Indonesia Mobile Game Report 2024",
+        url="https://sensortower.com/blog/indonesia-mobile-games-2024",
+        domain="sensortower.com",
+        published_date="2024-05-10",
+        date_method="url_date",
+        date_precision="day",
+        tier="A",
+        freshness="stale",
+    )
+    s2 = Source(
+        id="S2",
+        title="AppsFlyer Indonesia Gaming Report 2024",
+        url="https://appsflyer.com/blog/indonesia-gaming-2024",
+        domain="appsflyer.com",
+        published_date="2024-06-15",
+        date_method="url_date",
+        date_precision="day",
+        tier="A",
+        freshness="stale",
+    )
+    e1 = Evidence(
+        id="E1",
+        source_id="S1",
+        claim="Tốc độ tăng trưởng hybrid monetization game tại Indonesia đạt 35% trong năm 2024.",
+        quote="Hybrid monetization in Indonesia mobile games grew 35% in 2024.",
+        verified=True,
+        match_score=100.0,
+        data_period="2024",
+        data_period_end="2024-12-31",
+    )
+    e2 = Evidence(
+        id="E2",
+        source_id="S2",
+        claim="Báo cáo thứ hai cũng ghi nhận hybrid monetization game tại Indonesia tăng 35% năm 2024.",
+        quote="Indonesia mobile game hybrid monetization increased by 35% in 2024.",
+        verified=True,
+        match_score=100.0,
+        data_period="2024",
+        data_period_end="2024-12-31",
+    )
+    i1 = Insight(
+        id="I1",
+        statement="Hybrid monetization tăng 35% tại Indonesia năm 2024.",
+        type="fact",
+        evidence_ids=["E1", "E2"],
+    )
+    rpt = Report(
+        question="Mô hình kiếm tiền nào đang hiệu quả tại Indonesia?",
+        short_answer="Hybrid đang tăng trưởng tại Indonesia.",
+        recommendation="Ưu tiên hybrid.",
+        insights=[i1],
+        evidences=[e1, e2],
+        sources=[s1, s2],
+        trace={"version": 1, "run_timestamp": "2026-10-15T10:00:00"},
+    )
+    rpt = finalize_with_recency(rpt, total_quotes_extracted=2, reference_date=date(2026, 10, 15))
+
+    raw_text = "In 2025, hybrid monetization growth in Indonesia mobile games slowed to 12%."
+
+    def fake_retrieve(queries, keywords, reference_date=None, max_per_query=5, max_kept_sources=6, use_cache=True):
+        s_new = Source(
+            id="S1",
+            title="Indonesia Mobile Game Report 2026",
+            url="https://sensortower.com/blog/indonesia-mobile-games-2026",
+            domain="sensortower.com",
+            published_date="2026-07-20",
+            date_method="url_date",
+            date_precision="day",
+            tier="A",
+            freshness="fresh",
+        )
+        return [s_new], {"S1": raw_text}, {"S1": raw_text}, [], {"raw_search_results_count": 1}
+
+    monkeypatch.setattr(refresh_mod, "retrieve_and_grade_sources", fake_retrieve)
+
+    fake_llm = FakeLLMClient(
+        [
+            RefreshQueriesLLMOutput(queries=["Indonesia mobile game hybrid monetization 2025 2026"]),
+            BatchExtractLLMOutput(
+                extracted_claims=[
+                    RawExtractedClaim(
+                        source_id="S3",
+                        claim="Năm 2025, tăng trưởng hybrid monetization game tại Indonesia giảm xuống 12%.",
+                        quote="In 2025, hybrid monetization growth in Indonesia mobile games slowed to 12%.",
+                    )
+                ]
+            ),
+            RefreshComparisonLLMOutput(
+                items=[
+                    RefreshComparisonItemLLM(
+                        old_evidence_id="E1",
+                        new_evidence_ids=["E3"],
+                        status="CẬP NHẬT",
+                        explanation="Cập nhật từ 35% năm 2024 xuống 12% năm 2025.",
+                    ),
+                    RefreshComparisonItemLLM(
+                        old_evidence_id="E2",
+                        new_evidence_ids=["E3"],
+                        status="CẬP NHẬT",
+                        explanation="Cập nhật từ 35% năm 2024 xuống 12% năm 2025.",
+                    ),
+                ]
+            ),
+        ]
+    )
+
+    refreshed = refresh_old_sources(rpt, llm=fake_llm, reference_date=date(2026, 10, 23))
+    new_insights = [ins for ins in refreshed.insights if ins.id != "I1"]
+    assert len(new_insights) == 1
+    assert new_insights[0].id == "I2"
+    assert new_insights[0].evidence_ids == ["E3"]
+
+
+def test_refresh_conflict_topic_truncates_by_word_not_mid_word(monkeypatch):
+    """Regression (L3): Chủ đề ConflictItem cắt theo từ (_truncate_words 16 từ), không cắt giữa chữ."""
+    rpt = _make_base_report_with_old_key_source()
+    long_claim = (
+        "Tại Đông Nam Á doanh thu mua hàng trong ứng dụng IAP của game di động "
+        "tại Indonesia đạt 625 triệu USD trong quý 1 năm 2025 xếp thứ bảy toàn cầu"
+    )
+    rpt.evidences[0] = rpt.evidences[0].model_copy(update={"claim": long_claim})
+
+    raw_text = "In 2025, hybrid monetization growth in Indonesia slowed to 12% as pure IAA regained share."
+
+    def fake_retrieve(queries, keywords, reference_date=None, max_per_query=5, max_kept_sources=6, use_cache=True):
+        s_new = Source(
+            id="S1",
+            title="Indonesia Mobile Game Report 2026",
+            url="https://sensortower.com/blog/indonesia-mobile-games-2026",
+            domain="sensortower.com",
+            published_date="2026-07-20",
+            date_method="url_date",
+            date_precision="day",
+            tier="A",
+            freshness="fresh",
+        )
+        return [s_new], {"S1": raw_text}, {"S1": raw_text}, [], {"raw_search_results_count": 1}
+
+    monkeypatch.setattr(refresh_mod, "retrieve_and_grade_sources", fake_retrieve)
+
+    fake_llm = FakeLLMClient(
+        [
+            RefreshQueriesLLMOutput(queries=["Indonesia game hybrid monetization 2025 2026"]),
+            BatchExtractLLMOutput(
+                extracted_claims=[
+                    RawExtractedClaim(
+                        source_id="S2",
+                        claim="Năm 2025, tăng trưởng hybrid monetization giảm còn 12%.",
+                        quote="In 2025, hybrid monetization growth in Indonesia slowed to 12% as pure IAA regained share.",
+                    )
+                ]
+            ),
+            RefreshComparisonLLMOutput(
+                items=[
+                    RefreshComparisonItemLLM(
+                        old_evidence_id="E1",
+                        new_evidence_ids=["E2"],
+                        status="CẬP NHẬT",
+                        explanation="Cập nhật năm 2024 sang năm 2025.",
+                    )
+                ]
+            ),
+        ]
+    )
+
+    refreshed = refresh_old_sources(rpt, llm=fake_llm, reference_date=date(2026, 10, 23))
+    assert len(refreshed.conflicts) == 1
+    topic = refreshed.conflicts[0].topic
+    assert "năm 2 (" not in topic
+    assert topic.endswith("...")
+    # Ensure every word before '...' is a complete word from long_claim
+    prefix_words = topic.split(": ", 1)[1][:-3].split()
+    assert len(prefix_words) == 16
+    assert prefix_words == long_claim.split()[:16]
+

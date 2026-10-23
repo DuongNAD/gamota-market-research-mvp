@@ -25,7 +25,7 @@ FORBIDDEN_MODELS = ("gemini-4-argon", "argon", "gpt-4-32k", "claude-3-opus")
 DEFAULT_MODELS = {
     "gemini": "gemini-3.8-flash",
     "groq": "llama-3.3-70b-versatile",
-    "openrouter": "google/gemini-2.0-flash-exp:free",
+    "openrouter": "google/gemma-4-31b-it:free",
 }
 
 GEMINI_FALLBACK_MODELS = [
@@ -280,7 +280,7 @@ class LLMClient:
             or_model = (
                 self.model
                 if self.provider == "openrouter"
-                else DEFAULT_MODELS["openrouter"]
+                else _get_secret("OPENROUTER_MODEL", DEFAULT_MODELS["openrouter"])
             )
             try:
                 return self._call_openai_compatible(

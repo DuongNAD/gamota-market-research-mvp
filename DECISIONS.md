@@ -106,6 +106,51 @@ Mỗi quyết định được ghi nhận liên tục trong quá trình xây d�
     - *Quyết định*: Chủ động **không làm**: (1) không sửa ngưỡng độ mới hay quy tắc chấm điểm M2; (2) không để LLM tự đánh giá mức độ ảnh hưởng của nguồn cũ; (3) không tự động sửa `published_date` hay tự ghi đè số cũ bằng số mới trong câu trả lời; (4) không làm tính năng upload CSV/PDF nội bộ hay đọc PDF trực tuyến (ưu tiên số 1 của Câu 3 ở M2, vì thuộc bài toán nguồn dữ liệu đóng ở `TC6` chứ không giải quyết câu hỏi ảnh hưởng của nguồn > 18 tháng); (5) không làm khung chat hỏi-đáp tự do (chỉ làm vòng làm mới có mục tiêu rõ ràng để đo lường được trước/sau).
     - *Lý do*: Tập trung toàn bộ nguồn lực vào chuỗi giải pháp **Phát hiện độ mới thật → Định lượng ảnh hưởng bằng code → Làm mới có mục tiêu giữ nguyên bối cảnh**, chứng minh bằng con số kiểm thử định lượng trước/sau.
 
+---
+
+## Các quyết định trong Đợt sửa trước khi nộp (`[M3-FIX]` · 23–24/10/2026)
+
+21. **[M3-FIX] Chốt chặn đối chiếu bằng code thuần (`research/comparability.py`) theo nguyên tắc "code chỉ hạ nhãn, không nâng nhãn"**:
+    - *Bối cảnh*: Khi tự soát kết quả vòng làm mới của `TC7` và `TC10`, phát hiện LLM ghép nhầm số liệu của toàn bộ thị trường ứng dụng di động từ nguồn `S13` (`State of Mobile Southeast Asia 2026`: `5,3 tỷ USD` IAP mọi ứng dụng, `18,1 tỷ` lượt tải mọi ứng dụng cả năm 2025) với số liệu riêng ngành game quý `Q1/2025` (`625 triệu USD` ở `TC7-E2`, `1,93 tỷ` lượt tải ở `TC10-E2/E16`) rồi gắn nhãn `CẬP NHẬT`, làm hạ oan `I2` (`TC7`) và `I4` (`TC10`).
+    - *Quyết định*: Xây dựng `research/comparability.py` kiểm tra 4 nhóm quy tắc **P** (phạm vi game), **T** (thị trường), **Đ** (số liệu & đơn vị), **K** (kỳ số liệu); khi không còn bằng chứng mới nào đạt, code hạ nhãn xuống `KHÔNG TƯƠNG ĐƯƠNG`, nhưng tuyệt đối không bao giờ tự nâng nhãn hay thêm mã `evidence_id`.
+    - *Lý do*: Ngăn chặn triệt để việc lấy số liệu khác phạm vi/đơn vị/loại kỳ để cập nhật hoặc phản bác số liệu cũ, đồng thời giữ đúng vai trò "LLM đề xuất, code kiểm chứng".
+
+22. **[M3-FIX] Không sửa prompt đối chiếu của vòng làm mới (`sys_prompt`, `usr_prompt`, `cmp_sys_prompt`, `cmp_usr_prompt`)**:
+    - *Bối cảnh*: Có thể sửa prompt trong `research/refresh.py` để nhắc LLM kiểm tra kỹ phạm vi game và loại kỳ, nhưng khóa cache LLM (`research/llm.py:140`) băm toàn văn `system_prompt` và `user_prompt`.
+    - *Quyết định*: Giữ nguyên từng ký tự của cả 4 chuỗi prompt trong `research/refresh.py`, đặt toàn bộ logic kiểm tra ở bước hậu xử lý bằng code (`guard_comparison`) sau khi nhận kết quả từ LLM/cache.
+    - *Lý do*: Bảo toàn 100% khả năng phát lại từ cache (`0` lệnh gọi LLM) cho `TC7` và `TC10`, đảm bảo tính tái lập hoàn toàn và tránh phụ thuộc vào việc LLM có tuân thủ lời nhắc trong prompt hay không.
+
+23. **[M3-FIX] Lưu giữ và hiển thị minh bạch cả `llm_status`, `guard_notes` và lời giải thích gốc của LLM (kèm đánh dấu khi bị bác bỏ)**:
+    - *Bối cảnh*: Khi code hạ nhãn một cặp từ `CẬP NHẬT` xuống `KHÔNG TƯƠNG ĐƯƠNG`, nếu xóa mất nhãn gốc hoặc giữ nguyên lời giải thích của LLM mà không cảnh báo, người đọc sẽ không hiểu vì sao cặp đó xuất hiện hoặc đọc nhầm câu giải thích sai của LLM.
+    - *Quyết định*: Thêm trường `llm_status` và `guard_notes` vào `RefreshComparison` (có giá trị mặc định tương thích ngược); hiển thị bảng đối chiếu 6 cột trên `app.py` và mục `7.5` Markdown, mở đầu cột giải thích bằng `(LLM, đã bị code bác bỏ)` ở các dòng bị hạ nhãn, đồng thời ghi nhận vào `gaps` và `recommendation`.
+    - *Lý do*: Giúp người dùng thấy rõ cơ chế kiểm soát chất lượng của hệ thống (LLM đề xuất gì, code bác bỏ vì quy tắc nào).
+
+24. **[M3-FIX] Khử trùng nhận định mới trong vòng làm mới và cắt chủ đề `ConflictItem` theo ranh giới từ (`_truncate_words`)**:
+    - *Bối cảnh*: Ở `TC10` trước khi sửa, hai bằng chứng cũ `E2` và `E16` cùng đối chiếu tới `E23` nên vòng lặp bước 6 sinh ra 2 nhận định mới `I10` và `I11` giống hệt nhau từng chữ; ở `TC7`, `oev.claim[:90]` cắt chuỗi theo ký tự làm xuất hiện cụm `"…trong quý 1 năm 2 ("` giữa chữ.
+    - *Quyết định*: Trong `research/refresh.py`, chỉ tạo nhận định mới khi tập `new_evidence_ids` và `statement` chuẩn hóa chưa từng xuất hiện; thay `oev.claim[:90]` bằng `_truncate_words(oev.claim, 16)`.
+    - *Lý do*: Loại bỏ nhận định trùng lặp và đảm bảo mọi chủ đề mâu thuẫn hiển thị trong `short_answer` đều tròn chữ.
+
+25. **[M3-FIX] Sửa duy nhất 1 câu trích dẫn fixture `"In 2026, ..."` → `"In 2025, ..."` trong `tests/test_refresh.py::test_refresh_update_adds_conflict_and_new_insight`**:
+    - *Bối cảnh*: Ở ngày tham chiếu `2026-10-23`, năm `2026` chưa kết thúc (`2026-12-31 > 2026-10-23`) nên `detect_data_period` trả về rỗng cho cụm `"In 2026"`, khiến quy tắc **K** hạ nhãn cặp `CẬP NHẬT` trong test giả lập.
+    - *Quyết định*: Đổi câu trích dẫn giả lập trong fixture của test này sang `"In 2025, hybrid monetization growth in Indonesia slowed to 12% as pure IAA regained share."` thay vì nới lỏng quy tắc **K** hay `detect_data_period`.
+    - *Lý do*: Giữ nguyên tính nghiêm ngặt của quy tắc kiểm tra kỳ số liệu đã kết thúc trong khi vẫn kiểm thử đầy đủ luồng `CẬP NHẬT` hợp lệ (`2024` → `2025`, cùng phạm vi game, cùng Indonesia, cùng đơn vị `%`).
+
+26. **[M3-FIX] Cập nhật model dự phòng OpenRouter sang `google/gemma-4-31b-it:free` và hỗ trợ biến môi trường `OPENROUTER_MODEL`**:
+    - *Bối cảnh*: Kiểm tra danh mục `GET https://openrouter.ai/api/v1/models` ngày 23/10/2026 cho thấy model dự phòng cũ `google/gemini-2.0-flash-exp:free` đã bị gỡ khỏi OpenRouter.
+    - *Quyết định*: Đổi `DEFAULT_MODELS["openrouter"]` sang `google/gemma-4-31b-it:free` (model free đang có mặt trên OpenRouter và hỗ trợ `response_format`), đồng thời cho phép ghi đè qua biến môi trường `OPENROUTER_MODEL` trong `research/llm.py` và `.env.example`. Khi gọi thử trực tiếp 1 lần cho 3 model ứng viên (`google/gemma-4-31b-it:free`, `nvidia/nemotron-3-super-120b-a12b:free`, `nvidia/nemotron-3.5-super-vl:free`), API trả về `HTTP 401 Unauthorized` (0,24–0,39s) do key OpenRouter trong môi trường local hết hiệu lực; đã xác minh cả 3 model đều tồn tại và có `response_format` trong `supported_parameters` trên API danh mục công khai của OpenRouter.
+    - *Lý do*: Đảm bảo nhánh fallback OpenRouter trỏ tới model free hợp lệ và cho phép đổi nhanh model dự phòng qua cấu hình mà không làm thay đổi khóa cache của provider chính (`gemini`).
+
+27. **[M3-FIX] Giữ nguyên model chính (`gemini-3.8-flash`) và không chuyển sang MiniMax hay model khác**:
+    - *Bối cảnh*: Cân nhắc việc đổi model chính sang model khác trên OpenRouter như `minimax/minimax-m3.1-flash` hoặc các model `:free`.
+    - *Quyết định*: Giữ nguyên `LLM_PROVIDER=gemini` và `LLM_MODEL=gemini-3.8-flash` làm model chính.
+    - *Lý do*: `minimax/minimax-m3.1-flash` là model trả phí (`0,15 USD / 1M input tokens`, `0,60 USD / 1M output tokens`), vi phạm quy tắc 4 của `AGENTS.md`; ngoài ra việc đổi model chính sẽ làm trượt toàn bộ cache LLM của `TC1`–`TC10` và phá vỡ phép so sánh hồi quy với Mission 2.
+
+28. **[M3-FIX] Lưu snapshot `eval/results/m3_before_fix/` và bổ sung Bảng D đối chiếu Trước/Sau đợt sửa**:
+    - *Bối cảnh*: Cần minh bạch hóa kết quả trước và sau khi áp dụng chốt chặn đối chiếu trên `TC7` và `TC10`.
+    - *Quyết định*: Lưu nguyên trạng các file kết quả trước khi sửa vào `eval/results/m3_before_fix/` và cập nhật `eval/compare_m2_m3.py` để tự động sinh **Bảng D — Trước/sau đợt sửa** bên cạnh Bảng A, B, C.
+    - *Lý do*: Đảm bảo tính trung thực khoa học (không xóa kết quả cũ) và cung cấp bằng chứng định lượng rõ ràng về tác dụng của chốt chặn đối chiếu bằng code.
+
+
 
 
 

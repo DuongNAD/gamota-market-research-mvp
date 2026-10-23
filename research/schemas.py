@@ -278,6 +278,8 @@ class RefreshComparison(BaseModel):
     new_evidence_ids: list[str] = Field(default_factory=list)
     status: ComparisonStatus = "KHÔNG TÌM THẤY DỮ LIỆU MỚI"
     explanation: str = ""
+    llm_status: str = ""
+    guard_notes: list[str] = Field(default_factory=list)
 
 
 class ConfidenceChange(BaseModel):

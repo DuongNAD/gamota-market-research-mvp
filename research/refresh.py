@@ -12,6 +12,7 @@ import sys
 import time
 from typing import Callable, Optional
 
+from research.comparability import guard_comparison
 from research.dates import (
     compute_age_metrics,
     date_range,
@@ -596,6 +597,7 @@ def refresh_old_sources(
                 new_evidence_ids=filtered_neids,
                 status=st_val_final,
                 explanation=expl_clean,
+                llm_status=st_val,
             )
 
         comparisons: list[RefreshComparison] = []
@@ -609,8 +611,23 @@ def refresh_old_sources(
                         new_evidence_ids=[],
                         status="KHÔNG TÌM THẤY DỮ LIỆU MỚI",
                         explanation="Không tìm thấy trích dẫn mới nào đề cập cùng chỉ số và phạm vi thị trường.",
+                        llm_status="KHÔNG TÌM THẤY DỮ LIỆU MỚI",
                     )
                 )
+
+        comparisons = [
+            guard_comparison(
+                cmp=c,
+                old_ev=ev_map.get(c.old_evidence_id),
+                old_src=src_map.get(ev_map[c.old_evidence_id].source_id)
+                if c.old_evidence_id in ev_map
+                else None,
+                new_ev_map=new_ev_map,
+                new_src_map=new_src_map,
+                ref=ref,
+            )
+            for c in comparisons
+        ]
 
         # Step 6: Merge sources, evidences, conflicts, and insights
         merged_sources = list(baseline.sources) + kept_new_sources
@@ -621,12 +638,33 @@ def refresh_old_sources(
 
         confirmed_iids: list[str] = []
         updated_or_conflicted_iids: list[str] = []
+        downgraded_old_eids: list[str] = []
         refreshed_target_sids: set[str] = set()
         next_ins_num = _max_numeric_id([i.id for i in merged_insights], "I") + 1
+        seen_new_insight_eids: list[set[str]] = []
+        seen_statements: set[str] = {
+            re.sub(r"\s+", " ", ins.statement or "").strip().lower()
+            for ins in merged_insights
+        }
 
         for cmp in comparisons:
             oev = ev_map[cmp.old_evidence_id]
             osrc = src_map.get(oev.source_id)
+            if (
+                cmp.llm_status in ("XÁC NHẬN", "CẬP NHẬT", "MÂU THUẪN")
+                and cmp.status == "KHÔNG TƯƠNG ĐƯƠNG"
+            ):
+                downgraded_old_eids.append(cmp.old_evidence_id)
+                neid_str = ", ".join(cmp.new_evidence_ids) or "—"
+                reason_short = "; ".join(cmp.guard_notes) or "khác phạm vi, đơn vị hoặc kỳ"
+                dg_gap = (
+                    f"[Vòng làm mới {ref.isoformat()}] {oev.id} ({oev.source_id}): "
+                    f"bằng chứng mới {neid_str} chưa so được với số liệu cũ ({reason_short}); "
+                    f"số liệu cũ chưa được cập nhật."
+                )
+                if dg_gap not in merged_gaps:
+                    merged_gaps.append(dg_gap)
+
             if cmp.status == "XÁC NHẬN" and cmp.new_evidence_ids:
                 refreshed_target_sids.add(oev.source_id)
                 for ins in merged_insights:
@@ -653,7 +691,7 @@ def refresh_old_sources(
 
                 merged_conflicts.append(
                     ConflictItem(
-                        topic=f"Số liệu cũ ↔ mới ({cmp.status}): {oev.claim[:90]}",
+                        topic=f"Số liệu cũ ↔ mới ({cmp.status}): {_truncate_words(oev.claim, 16)}",
                         values=vals,
                         explanation=cmp.explanation,
                         evidence_ids=[cmp.old_evidence_id] + list(cmp.new_evidence_ids),
@@ -667,16 +705,21 @@ def refresh_old_sources(
                             updated_or_conflicted_iids.append(ins.id)
 
                 first_new_ev = new_ev_map[cmp.new_evidence_ids[0]]
-                new_iid = f"I{next_ins_num}"
-                next_ins_num += 1
-                merged_insights.append(
-                    Insight(
-                        id=new_iid,
-                        statement=first_new_ev.claim,
-                        type="fact",
-                        evidence_ids=list(cmp.new_evidence_ids),
+                eid_set = set(cmp.new_evidence_ids)
+                stmt_norm = re.sub(r"\s+", " ", first_new_ev.claim or "").strip().lower()
+                if eid_set not in seen_new_insight_eids and stmt_norm not in seen_statements:
+                    seen_new_insight_eids.append(eid_set)
+                    seen_statements.add(stmt_norm)
+                    new_iid = f"I{next_ins_num}"
+                    next_ins_num += 1
+                    merged_insights.append(
+                        Insight(
+                            id=new_iid,
+                            statement=first_new_ev.claim,
+                            type="fact",
+                            evidence_ids=list(cmp.new_evidence_ids),
+                        )
                     )
-                )
 
         unrefreshed_sids = [
             sid for sid in target_sids if sid not in refreshed_target_sids
@@ -758,6 +801,11 @@ def refresh_old_sources(
         if updated_or_conflicted_iids:
             rec_parts.append(
                 f"phát hiện số liệu mới thay đổi/mâu thuẫn tại {', '.join(updated_or_conflicted_iids)}"
+            )
+        if downgraded_old_eids:
+            rec_parts.append(
+                f"code hạ {len(downgraded_old_eids)} cặp đối chiếu xuống KHÔNG TƯƠNG ĐƯƠNG "
+                f"({', '.join(downgraded_old_eids)}) vì khác phạm vi, đơn vị hoặc kỳ"
             )
         if unrefreshed_sids:
             rec_parts.append(
