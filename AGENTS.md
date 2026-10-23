@@ -1,5 +1,7 @@
 # AGENTS.md: quy tắc luôn áp dụng (Gamota · Mission 3)
 
+**Đợt sửa trước khi nộp (23–24/10/2026):** đặc tả và kế hoạch nằm ở `BRIEF_M3_FIX.md`, ưu tiên cao nhất (`BRIEF_M3_FIX.md` > `BRIEF_M3.md` > `AGENTS.md` > `BRIEF.md`). Trong đợt này làm F0 → F5 theo `BRIEF_M3_FIX.md` mục 6 (thay cho P0 → P5), dừng ở các CHECKPOINT của file đó, hạn **10:00 ngày 24/10/2026** (thay cho hạn 16:00 bên dưới); thiếu giờ thì cắt theo `BRIEF_M3_FIX.md` mục 8. Không sửa `BRIEF_M3_FIX.md`. Mọi quy tắc khác trong file này giữ nguyên.
+
 Đặc tả Mission 3 nằm ở `BRIEF_M3.md` (`BRIEF.md` là đặc tả Mission 2, chỉ để tra cứu). Đọc toàn bộ trước khi bắt đầu, và đọc lại mục liên quan ở đầu mỗi phase. Nếu có mâu thuẫn, `BRIEF_M3.md` thắng. Nếu còn mơ hồ, hỏi tôi thay vì đoán.
 
 ## Cách làm việc
