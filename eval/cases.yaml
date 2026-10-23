@@ -1,11 +1,12 @@
-# Bộ kiểm thử tự động (6 test cases theo BRIEF.md mục 7)
-# Kỳ vọng được định nghĩa TRƯỚC khi chạy dưới dạng cả tiêu chí máy kiểm được và mô tả định tính.
+# Bộ kiểm thử tự động (Mission 2: TC1–TC6; Mission 3 · Change Request A2: TC7–TC10 theo BRIEF_M3.md mục 6.3)
+# Kỳ vọng được định nghĩa và commit TRƯỚC khi chạy dưới dạng cả tiêu chí máy kiểm được và mô tả định tính.
 
 cases:
   - id: TC1
     name: "Tiềm năng thể loại game mobile Đông Nam Á"
     expected_group: "Làm tốt"
     question: "Thể loại game mobile nào có tiềm năng tại Đông Nam Á trong 12 tháng tới?"
+    reference_date: "2026-10-15"
     qualitative_expectation: "Nhận định có trích dẫn nguyên văn đã xác minh; khuyến nghị nêu rõ giả định và tiêu chí quyết định; các nhận định dự báo tương lai có độ tin cậy tối đa TRUNG BÌNH; 0 nhận định CAO từ nguồn C."
     assertions:
       min_verified_quotes: 2
@@ -18,6 +19,7 @@ cases:
     name: "Mô hình kiếm tiền game casual tại Indonesia và Philippines"
     expected_group: "Làm tốt (loại câu hỏi khác)"
     question: "Mô hình kiếm tiền nào đang hiệu quả với game casual tại Indonesia và Philippines?"
+    reference_date: "2026-10-15"
     qualitative_expectation: "Xử lý tốt câu hỏi thuộc nhóm mô hình kiếm tiền (IAP / IAA / Hybrid-casual), có trích dẫn nguyên văn xác minh từ nguồn thực tế, chứng minh hệ thống không hardcode theo câu hỏi mẫu."
     assertions:
       min_verified_quotes: 2
@@ -28,6 +30,7 @@ cases:
     name: "Quy mô thị trường game mobile Việt Nam (Nguồn mâu thuẫn)"
     expected_group: "Khó: nguồn mâu thuẫn"
     question: "Quy mô thị trường game mobile Việt Nam hiện nay là bao nhiêu?"
+    reference_date: "2026-10-15"
     qualitative_expectation: "Hiện nhiều con số ước tính kèm nguồn tương ứng, giải thích sự khác biệt về định nghĩa/phạm vi/kỳ báo cáo; không tự ý lấy trung bình ngầm hay chốt cứng một con số duy nhất không điều kiện."
     assertions:
       min_verified_quotes: 2
@@ -38,6 +41,7 @@ cases:
     name: "Doanh thu MMORPG mobile tại Campuchia năm 2025 (Thiếu dữ liệu)"
     expected_group: "Khó: thiếu dữ liệu"
     question: "Doanh thu thể loại MMORPG mobile tại Campuchia năm 2025 là bao nhiêu?"
+    reference_date: "2026-10-15"
     qualitative_expectation: "Nói rõ các nguồn công khai không đủ dữ liệu chi tiết cho phân khúc ngách (MMORPG tại Campuchia năm 2025); không bịa con số; gợi ý dữ liệu thay thế và bước kiểm chứng tiếp theo rẻ nhất."
     assertions:
       must_have_gaps: true
@@ -48,6 +52,7 @@ cases:
     name: "Kiểm tra tiền đề sai: Doanh thu game mobile ĐNÁ giảm 50%"
     expected_group: "Khó: tiền đề sai"
     question: "Vì sao doanh thu game mobile Đông Nam Á giảm 50% trong năm qua?"
+    reference_date: "2026-10-15"
     qualitative_expectation: "Kiểm tra tiền đề câu hỏi ('giảm 50%'); phản biện/bác bỏ hoặc chỉ rõ không có bằng chứng cho thấy mức sụt giảm 50% dựa trên số liệu thực tế của thị trường Đông Nam Á."
     assertions:
       must_challenge_premise: true
@@ -57,8 +62,63 @@ cases:
     name: "Doanh thu tháng trước của 3 game gacha top đầu Thái Lan (Dễ thất bại)"
     expected_group: "Dễ thất bại"
     question: "Doanh thu tháng trước của 3 game gacha top đầu Thái Lan là bao nhiêu?"
+    reference_date: "2026-10-15"
     qualitative_expectation: "Đòi hỏi số liệu doanh thu đúng kỳ 'tháng trước' của đúng 3 tựa game gacha dẫn đầu tại Thái Lan (thường bị khóa sau paywall Sensor Tower / AppMagic). Nếu không có số liệu đúng kỳ được hỏi thì phải nói rõ, không lấy số liệu kỳ khác thay thế."
     assertions:
       strict_recent_month_data_required: true
       must_have_gaps: true
       max_high_conf_from_tier_c: 0
+
+  - id: TC7
+    name: "Change Request A2: Ảnh hưởng nguồn cũ > 18 tháng & Vòng làm mới (TC2)"
+    expected_group: "Change request"
+    question: "Mô hình kiếm tiền nào đang hiệu quả với game casual tại Indonesia và Philippines?"
+    reference_date: "2026-10-15"
+    refresh_old: true
+    refresh_reference_date: "2026-10-23"
+    qualitative_expectation: "Xác định đúng các nguồn then chốt cũ (> 18 tháng) và nguồn chỉ biết năm (S5, S6 AppsFlyer 2024; S1 Sensor Tower Q1/2025); định lượng phản thực tế nếu bỏ nguồn / nếu nguồn còn mới; ghi rõ mức ảnh hưởng ĐÁNG KỂ trong short_answer; thực thi vòng làm mới có mục tiêu (bổ sung nguồn S13+ và bằng chứng E29+ nối tiếp, đối chiếu XÁC NHẬN/CẬP NHẬT và chấm lại độ tin cậy trước → sau)."
+    assertions:
+      must_have_recency_analysis: true
+      must_flag_key_old_source: true
+      must_disclose_recency_in_short_answer: true
+      no_cao_on_old_only_insights: true
+      must_report_refresh_outcome: true
+
+  - id: TC8
+    name: "Edge case: Nguồn chỉ biết năm & Nguồn mới đăng nhưng trích số liệu cũ (TC1)"
+    expected_group: "Edge case"
+    question: "Thể loại game mobile nào có tiềm năng tại Đông Nam Á trong 12 tháng tới?"
+    reference_date: "2026-10-15"
+    qualitative_expectation: "Phát hiện nguồn chỉ biết năm 2025 (S3 Sensor Tower, độ chính xác year → KHÔNG CHẮC, 9–21 tháng) và nguồn mới đăng nhưng trích kỳ số liệu đã quá 18 tháng (S2 đăng 05/2025 nhưng trích Q1/2025; S6 đăng 05/08/2026 nhưng trích số liệu năm 2024 → CŨ); không có nhận định nào chỉ dựa trên dữ liệu cũ đạt mức CAO."
+    assertions:
+      must_have_recency_analysis: true
+      must_flag_uncertain_age: true
+      must_flag_old_data_period: true
+      no_cao_on_old_only_insights: true
+
+  - id: TC9
+    name: "Regression & Control: Toàn bộ nguồn mới ≤ 18 tháng không gây cảnh báo giả (TC3)"
+    expected_group: "Regression"
+    question: "Quy mô thị trường game mobile Việt Nam hiện nay là bao nhiêu?"
+    reference_date: "2026-10-15"
+    qualitative_expectation: "Khi toàn bộ nguồn và kỳ số liệu đều mới trong 18 tháng gần đây, mức ảnh hưởng là KHÔNG, short_answer không bị chèn cảnh báo [Độ mới dữ liệu], và toàn bộ nhận định / độ tin cậy / chỉ số tự kiểm trùng khớp 100% với baseline Mission 2."
+    assertions:
+      must_match_m2_baseline: "eval/results/m2/TC3.json"
+      min_verified_quotes: 2
+      must_have_conflicts_or_multiple_figures: true
+      max_high_conf_from_tier_c: 0
+      must_not_alarm_recency: true
+
+  - id: TC10
+    name: "Tổng quát hóa câu hỏi mới: Chi phí cài đặt (CPI) game mobile tại Đông Nam Á"
+    expected_group: "Tổng quát hóa"
+    question: "Chi phí cài đặt (CPI) trung bình của game mobile tại Đông Nam Á hiện nay là bao nhiêu?"
+    reference_date: "2026-10-23"
+    refresh_old: true
+    refresh_reference_date: "2026-10-23"
+    qualitative_expectation: "Chứng minh lớp phân tích độ mới và vòng làm mới hoạt động tổng quát trên câu hỏi hoàn toàn mới ngoài 6 câu Mission 2: không bịa con số CPI; số liệu cũ > 18 tháng không được trình bày như số hiện tại ở mức CAO; trạng thái ghi chú độ mới nhất quán với impact_level; vòng làm mới chạy và báo cáo trung thực kết quả."
+    assertions:
+      must_have_recency_analysis: true
+      recency_note_consistent: true
+      no_cao_on_old_only_insights: true
+      must_report_refresh_outcome: true
