@@ -1,20 +1,24 @@
-"""Streamlit application for Gamota Game Market Research MVP."""
+"""Streamlit application for Gamota Game Market Research MVP (Mission 2 & Mission 3 · Change Request A2)."""
 
 from __future__ import annotations
 
+from datetime import date
 import html
 import json
 import os
 from pathlib import Path
 import streamlit as st
 
+from research.grade import parse_published_date
 from research.llm import LLMClient, LLMQuotaOrKeyError
 from research.pipeline import render_report_markdown, run
+from research.recency import apply_recency_layer, rescore_report_as_of
+from research.refresh import refresh_old_sources
 from research.schemas import Report
 
 CACHED_RUNS_DIR = Path(__file__).resolve().parent / "data" / "cached_runs"
 
-MODE_CACHED = "Xem báo cáo mẫu đã chạy thật (6 tình huống TC1–TC6)"
+MODE_CACHED = "Xem báo cáo mẫu đã chạy thật (TC1–TC7)"
 MODE_LIVE = "Đặt câu hỏi mới & Chạy trực tiếp (Live)"
 
 PRESET_CASES = [
@@ -59,6 +63,13 @@ PRESET_CASES = [
         "short_title": "TC6 · Top 3 Gacha Thái Lan",
         "group_tag": "Chưa đạt · Giới hạn Paywall",
         "question": "Doanh thu tháng trước của 3 game gacha top đầu Thái Lan là bao nhiêu?",
+    },
+    {
+        "code": "TC7",
+        "stem": "tc7_cr_a2_refreshed",
+        "short_title": "TC7 · Làm mới nguồn cũ (A2)",
+        "group_tag": "Mission 3 · Change Request A2",
+        "question": "Mô hình kiếm tiền nào đang hiệu quả với game casual tại Indonesia và Philippines?",
     },
 ]
 
@@ -201,6 +212,14 @@ CLEAN_LIGHT_CSS = """
         padding: 16px 18px;
         margin-bottom: 12px;
     }
+    .certainty-box {
+        background-color: #F8FAFC;
+        border: 1px solid #E2E8F0;
+        border-radius: 8px;
+        padding: 12px 14px;
+        height: 100%;
+        font-size: 0.88rem;
+    }
     .badge {
         display: inline-block;
         padding: 2px 8px;
@@ -229,8 +248,13 @@ CLEAN_LIGHT_CSS = """
         color: #334155;
         border: 1px solid #E2E8F0;
     }
-    . badge-tier-a {
-        background-color: #FEF3C7;
+    .badge-recency-old {
+        background-color: #FEF2F2;
+        color: #991B1B;
+        border: 1px solid #FECACA;
+    }
+    .badge-recency-partial {
+        background-color: #FFFBEB;
         color: #92400E;
         border: 1px solid #FDE68A;
     }
@@ -275,6 +299,44 @@ def load_cached_runs() -> list[tuple[str, Path, Report]]:
     return runs
 
 
+def _find_cached_run_for_preset(
+    cached_runs: list[tuple[str, Path, Report]], preset: dict[str, str]
+) -> tuple[int, Report] | None:
+    """Match preset by file stem FIRST, and fall back to question text ONLY if no stem matches (BRIEF_M3 4.8)."""
+    target_stem = preset["stem"].lower().strip()
+    for c_idx, (_lbl, c_path, c_rep) in enumerate(cached_runs):
+        if c_path.stem.lower() == target_stem:
+            return c_idx, c_rep
+    target_q = preset["question"].strip()
+    for c_idx, (_lbl, _c_path, c_rep) in enumerate(cached_runs):
+        if c_rep.question.strip() == target_q:
+            return c_idx, c_rep
+    return None
+
+
+@st.cache_data(show_spinner=False)
+def _cached_apply_recency(report_json: str, cache_key: str) -> str:
+    """Ensure Report has recency layer computed in memory, cached by run_timestamp + reference_date."""
+    _ = cache_key
+    rep = Report.model_validate_json(report_json)
+    if rep.recency is not None:
+        return report_json
+    ref_str = str((rep.trace or {}).get("current_date") or "").strip()
+    ref_dt = parse_published_date(ref_str) if ref_str else None
+    enriched = apply_recency_layer(rep, reference_date=ref_dt)
+    return enriched.model_dump_json()
+
+
+def ensure_report_recency(report: Report) -> Report:
+    """Return Report with recency layer populated (computed lazily only for the active report)."""
+    if report.recency is not None:
+        return report
+    trace = report.trace or {}
+    key = f"{trace.get('run_timestamp', '')}::{trace.get('current_date', '')}::{report.question}"
+    enriched_json = _cached_apply_recency(report.model_dump_json(), key)
+    return Report.model_validate_json(enriched_json)
+
+
 def _conf_badge_html(conf: str) -> str:
     if conf == "CAO":
         cls = "badge badge-cao"
@@ -285,12 +347,31 @@ def _conf_badge_html(conf: str) -> str:
     return f'<span class="{cls}">Độ tin cậy: {html.escape(conf)}</span>'
 
 
+def _recency_badge_html(rec_status: str) -> str:
+    """Render recency badge on insight card ONLY when status is not MỚI (BRIEF_M3 4.8)."""
+    if rec_status == "KHÔNG CÓ BẰNG CHỨNG MỚI":
+        return '<span class="badge badge-recency-old">Độ mới: KHÔNG CÓ BẰNG CHỨNG MỚI (&gt;18 tháng / chưa rõ)</span>'
+    if rec_status == "MỘT PHẦN CŨ":
+        return '<span class="badge badge-recency-partial">Độ mới: MỘT PHẦN DỰA TRÊN DỮ LIỆU CŨ</span>'
+    return ""
+
+
 def _render_insights_interactive(report: Report) -> None:
-    """Render filterable, easy-to-scan Insight cards with direct highlight links."""
+    """Render filterable, easy-to-scan Insight cards with direct highlight links and recency metadata."""
     source_map = {s.id: s for s in report.sources}
     evidence_map = {e.id: e for e in report.evidences}
+    src_rec_map = (
+        {sr.source_id: sr for sr in report.recency.sources}
+        if report.recency
+        else {}
+    )
+    ins_rec_map = (
+        {ir.insight_id: ir for ir in report.recency.insights}
+        if report.recency
+        else {}
+    )
 
-    f_col1, f_col2, f_col3 = st.columns([1.2, 1.2, 2])
+    f_col1, f_col2, f_col3, f_col4 = st.columns([1.1, 1.2, 1.8, 1.3])
     conf_filter = f_col1.selectbox(
         "Lọc theo Độ tin cậy:",
         options=["Tất cả", "CAO", "TRUNG BÌNH", "THẤP"],
@@ -305,6 +386,12 @@ def _render_insights_interactive(report: Report) -> None:
         "Tìm nhanh từ khóa trong nhận định hoặc trích dẫn:",
         placeholder="Nhập từ khóa (ví dụ: Indonesia, IAP, Sensor Tower, 825...)",
     )
+    with f_col4:
+        st.write("")
+        only_old_data = st.checkbox(
+            "Chỉ hiện nhận định dựa trên dữ liệu cũ",
+            value=False,
+        )
 
     filtered = []
     for ins in report.insights:
@@ -314,6 +401,9 @@ def _render_insights_interactive(report: Report) -> None:
         if type_filter == "Thực chứng (fact)" and not is_fact:
             continue
         if type_filter == "Suy luận / Dự báo (inference)" and is_fact:
+            continue
+        ir = ins_rec_map.get(ins.id)
+        if only_old_data and (ir is None or ir.status == "MỚI"):
             continue
         if search_kw.strip():
             kw = search_kw.strip().lower()
@@ -337,10 +427,20 @@ def _render_insights_interactive(report: Report) -> None:
             if ins.type == "fact" and not ins.is_forecast
             else "Suy luận / Dự báo (Inference)"
         )
+        ir = ins_rec_map.get(ins.id)
+        rec_badge = _recency_badge_html(ir.status) if ir else ""
         badge_html = (
-            f'{_conf_badge_html(ins.confidence)}'
+            f"{_conf_badge_html(ins.confidence)}"
             f'<span class="badge badge-type">{type_str}</span>'
+            f"{rec_badge}"
         )
+        rec_note_html = ""
+        if ir and ir.status != "MỚI" and ir.note:
+            rec_note_html = (
+                f'<div style="margin-top:5px;font-size:0.82rem;color:#92400E;">'
+                f"<strong>Lưu ý tuổi dữ liệu:</strong> {html.escape(ir.note)}</div>"
+            )
+
         assump_html = ""
         if ins.assumptions:
             joined_assump = html.escape("; ".join(ins.assumptions))
@@ -356,7 +456,16 @@ def _render_insights_interactive(report: Report) -> None:
                 continue
             src = source_map.get(ev.source_id)
             if src:
-                date_disp = src.published_date or "Không rõ ngày"
+                sr = src_rec_map.get(src.id)
+                date_disp = sr.date_display if sr else (src.published_date or "Không rõ ngày")
+                method_lbl = sr.date_method_label if sr else (src.date_method or "không rõ")
+                age_disp = sr.age_display if sr else src.freshness_label
+                period_disp = ev.data_period or (sr.data_vintage if sr and sr.data_vintage else "")
+                period_html = (
+                    f" · Kỳ số liệu: <code>{html.escape(period_disp)}</code>"
+                    if period_disp
+                    else ""
+                )
                 link_url = html.escape(ev.highlight_url or src.url)
                 dom_disp = html.escape(src.domain)
                 q_disp = html.escape(ev.quote)
@@ -365,10 +474,12 @@ def _render_insights_interactive(report: Report) -> None:
                     f'<div><strong>[{html.escape(eid)}] Nguyên văn:</strong> <em>"{q_disp}"</em> '
                     f'<span style="color:#64748B;font-size:0.78rem;">(Khớp chuỗi: {ev.match_score}%)</span></div>'
                     f'<div style="margin-top:4px;font-size:0.82rem;">'
-                    f'Nguồn: <strong>{html.escape(src.id)} ({dom_disp})</strong> · '
-                    f'<strong>Hạng {html.escape(src.tier)}</strong> · Ngày: <code>{html.escape(date_disp)}</code> · '
+                    f"Nguồn: <strong>{html.escape(src.id)} ({dom_disp})</strong> · "
+                    f"<strong>Hạng {html.escape(src.tier)}</strong> · "
+                    f"Ngày đăng: <code>{html.escape(date_disp)}</code> ({html.escape(method_lbl)}) · "
+                    f"Tuổi: <code>{html.escape(age_disp)}</code>{period_html} · "
                     f'<a href="{link_url}" target="_blank" rel="noopener noreferrer" style="color:#1D4ED8;font-weight:600;text-decoration:none;">'
-                    f'Mở bài báo gốc & tô sáng câu trích dẫn ↗</a>'
+                    f"Mở bài báo gốc & tô sáng câu trích dẫn ↗</a>"
                     f"</div></div>"
                 )
 
@@ -378,11 +489,391 @@ def _render_insights_interactive(report: Report) -> None:
             f'<div style="margin-bottom:8px;"><strong>{html.escape(ins.id)}</strong> &nbsp; {badge_html} '
             f'<span style="font-size:0.8rem;color:#64748B;">({html.escape(ins.confidence_reason)})</span></div>'
             f'<div style="font-size:0.96rem;color:#0F172A;font-weight:500;line-height:1.55;">{html.escape(ins.statement)}</div>'
+            f"{rec_note_html}"
             f"{assump_html}"
             f"{ev_html}"
             f"</div>"
         )
         st.markdown(card_html, unsafe_allow_html=True)
+
+
+def _render_recency_tab(
+    active_report: Report,
+    cached_runs: list[tuple[str, Path, Report]],
+    has_key: bool,
+    max_live_runs: int,
+) -> None:
+    """Render Tab 3: Độ mới & Ảnh hưởng (A2) per BRIEF_M3 section 4.8."""
+    assert active_report.recency is not None
+    trace = active_report.trace or {}
+    run_date_str = str(
+        trace.get("current_date") or active_report.recency.reference_date
+    )
+    today_date = date.today()
+    today_str = today_date.isoformat()
+
+    st.markdown(
+        "#### Phân tích độ mới dữ liệu & Ảnh hưởng tới độ tin cậy (Change Request A2)"
+    )
+
+    opt_run = f"Ngày chạy báo cáo ({run_date_str})"
+    opt_today = f"Hôm nay ({today_str})"
+    calc_mode = st.radio(
+        "Tính độ mới theo:",
+        options=[opt_run, opt_today],
+        index=0,
+        horizontal=True,
+        key="recency_as_of_mode",
+    )
+
+    view_report = active_report
+    if calc_mode == opt_today and today_str != active_report.recency.reference_date:
+        view_report = rescore_report_as_of(active_report, as_of=today_date)
+        # Summarize differences vs run_date
+        old_s_map = {s.id: s for s in active_report.sources}
+        old_sr_map = {sr.source_id: sr for sr in active_report.recency.sources}
+        old_i_map = {i.id: i for i in active_report.insights}
+
+        src_diffs: list[str] = []
+        assert view_report.recency is not None
+        for n_s in view_report.sources:
+            o_s = old_s_map.get(n_s.id)
+            if o_s and o_s.freshness != n_s.freshness:
+                src_diffs.append(
+                    f"Nguồn `{n_s.id}` ({n_s.domain}): nhóm độ mới chấm điểm đổi `{o_s.freshness}` → `{n_s.freshness}`"
+                )
+        for n_sr in view_report.recency.sources:
+            o_sr = old_sr_map.get(n_sr.source_id)
+            if o_sr and o_sr.status != n_sr.status:
+                src_diffs.append(
+                    f"Nguồn `{n_sr.source_id}`: trạng thái cảnh báo 18 tháng đổi `{o_sr.status}` → `{n_sr.status}`"
+                )
+        ins_diffs: list[str] = []
+        for n_i in view_report.insights:
+            o_i = old_i_map.get(n_i.id)
+            if o_i and o_i.confidence != n_i.confidence:
+                ins_diffs.append(
+                    f"Nhận định `{n_i.id}`: độ tin cậy đổi `{o_i.confidence}` → `{n_i.confidence}`"
+                )
+
+        if src_diffs or ins_diffs:
+            st.info(
+                "**Thay đổi khi tính lại ở ngày hôm nay so với ngày chạy báo cáo:**\n"
+                + "\n".join(f"- {d}" for d in (src_diffs + ins_diffs))
+            )
+        else:
+            st.caption(
+                f"Khi tính lại ở ngày hôm nay (`{today_str}`), tuổi nguồn tăng thêm nhưng chưa có nguồn hay nhận định nào vượt ngưỡng đổi mức độ tin cậy so với ngày `{run_date_str}`."
+            )
+
+    rec = view_report.recency
+    assert rec is not None
+    src_map = {s.id: s for s in view_report.sources}
+    ev_map = {e.id: e for e in view_report.evidences}
+
+    st.markdown(
+        f"**Ngày tham chiếu đang xem:** `{rec.reference_date}` · "
+        f"**Ngưỡng cảnh báo:** `> {rec.alert_months} tháng` · "
+        f"**Mức ảnh hưởng:** `{rec.impact_level}` — {rec.summary}"
+    )
+
+    # 2. Source Recency Table (7.1)
+    st.markdown("##### 1. Bảng nguồn thông tin và tuổi dữ liệu (7.1)")
+    src_rows = []
+    for sr in rec.sources:
+        sobj = src_map.get(sr.source_id)
+        src_rows.append(
+            {
+                "Mã": sr.source_id,
+                "Domain": sobj.domain if sobj else "",
+                "Hạng": f"Hạng {sobj.tier}" if sobj else "",
+                "Ngày đăng": sr.date_display,
+                "Cách xác định ngày": sr.date_method_label,
+                "Tuổi ước tính": sr.age_display,
+                "Kỳ số liệu trong trích dẫn": sr.data_vintage or "—",
+                "Trạng thái": sr.status,
+                "Lý do trạng thái": "; ".join(sr.reasons),
+                "Nguồn then chốt": ("Có (" + "; ".join(sr.key_reasons) + ")") if sr.is_key else "Không",
+                "Hỗ trợ nhận định": ", ".join(sr.supported_insight_ids) or "—",
+                "Cờ ngày đăng": "Có thể sai" if sr.date_conflict else "Bình thường",
+            }
+        )
+    st.dataframe(src_rows, use_container_width=True, hide_index=True)
+
+    # 3. Key Old Sources Expanders (7.2)
+    st.markdown(
+        "##### 2. Ảnh hưởng của từng nguồn then chốt cũ tới các nhận định — Phân tích phản thực tế bằng code (7.2)"
+    )
+    if not rec.key_old_sources:
+        st.success(
+            "Không có nguồn then chốt nào bị cũ (> 18 tháng) hoặc chưa rõ tuổi."
+        )
+    else:
+        for kos in rec.key_old_sources:
+            sobj = src_map.get(kos.source_id)
+            sr_obj = next(
+                (x for x in rec.sources if x.source_id == kos.source_id), None
+            )
+            exp_title = (
+                f"{kos.source_id} ({sobj.domain if sobj else ''}, Hạng {sobj.tier if sobj else ''}) · "
+                f"Ngày: {sr_obj.date_display if sr_obj else ''} · "
+                f"Trạng thái: {sr_obj.status if sr_obj else ''}"
+            )
+            with st.expander(exp_title, expanded=True):
+                st.markdown(f"**Tóm tắt ảnh hưởng:** {kos.summary}")
+                imp_rows = [
+                    {
+                        "Nhận định": imp.insight_id,
+                        "Độ tin cậy hiện tại": imp.current,
+                        "Nếu bỏ nguồn này": imp.if_source_removed,
+                        "Nếu nguồn này còn mới (≤ 12 tháng)": imp.if_source_fresh,
+                    }
+                    for imp in kos.impacts
+                ]
+                st.dataframe(imp_rows, use_container_width=True, hide_index=True)
+
+                # Show verified quotes from this source with highlight links
+                src_evs = [
+                    ev
+                    for ev in view_report.evidences
+                    if ev.verified and ev.source_id == kos.source_id
+                ]
+                if src_evs:
+                    st.markdown("**Trích dẫn nguyên văn từ nguồn này:**")
+                    for ev in src_evs:
+                        hl = html.escape(
+                            ev.highlight_url or (sobj.url if sobj else "")
+                        )
+                        p_tag = (
+                            f" · Kỳ số liệu: <code>{html.escape(ev.data_period)}</code>"
+                            if ev.data_period
+                            else ""
+                        )
+                        st.markdown(
+                            f'<div class="quote-box">'
+                            f'<strong>[{html.escape(ev.id)}]</strong> "{html.escape(ev.quote)}"{p_tag} · '
+                            f'<a href="{hl}" target="_blank" style="color:#1D4ED8;font-weight:600;text-decoration:none;">'
+                            f"Mở bài gốc & tô sáng ↗</a></div>",
+                            unsafe_allow_html=True,
+                        )
+
+    # 4. Upcoming Milestones (7.3) & Suggested Queries (7.4)
+    col_m, col_q = st.columns(2)
+    with col_m:
+        st.markdown("##### 3. Mốc thời gian độ tin cậy sẽ thay đổi (7.3)")
+        if not rec.upcoming_changes:
+            st.write(
+                "Không có nguồn đang trích dẫn nào chạm ngưỡng giảm độ tin cậy trong 12 tháng tới."
+            )
+        else:
+            for ev_item in rec.upcoming_changes:
+                st.markdown(
+                    f"- **Từ `{ev_item.date}`** (nguồn `{', '.join(ev_item.source_ids)}` chuyển nhóm độ mới), nếu chưa có dữ liệu mới: "
+                    + "; ".join(ev_item.changes)
+                )
+
+    with col_q:
+        st.markdown("##### 4. Truy vấn gợi ý để tìm bản cập nhật mới hơn (7.4)")
+        if not rec.suggested_refresh_queries:
+            st.write("Không cần sinh truy vấn làm mới.")
+        else:
+            for sq in rec.suggested_refresh_queries:
+                st.markdown(f"- `{sq}`")
+
+    # 5. User Date Override Simulator ("Thử giả định ngày đăng")
+    st.divider()
+    with st.expander(
+        "5. Thử giả định ngày đăng của một nguồn (What-if Simulator — Giả định của người dùng, không lưu vào báo cáo)",
+        expanded=False,
+    ):
+        st.caption(
+            "Giả định của người dùng, không lưu vào báo cáo: chọn một nguồn bất kỳ và thử đặt ngày đăng giả định để xem hệ thống chấm lại độ tin cậy các nhận định như thế nào."
+        )
+        sim_c1, sim_c2 = st.columns([2, 1.5])
+        src_options = [
+            f"{s.id} · {s.domain} (hiện tại: {s.published_date or 'Không rõ ngày'})"
+            for s in view_report.sources
+        ]
+        chosen_src_lbl = sim_c1.selectbox(
+            "Chọn nguồn muốn giả định ngày đăng:",
+            options=src_options,
+            key="sim_src_select",
+        )
+        chosen_sid = chosen_src_lbl.split("·")[0].strip() if chosen_src_lbl else "S1"
+        sim_date = sim_c2.date_input(
+            "Ngày đăng giả định:",
+            value=parse_published_date(rec.reference_date) or date.today(),
+            key="sim_date_input",
+        )
+        # Run simulation on a deep copy
+        sim_sources = []
+        for s in view_report.sources:
+            if s.id == chosen_sid:
+                sim_sources.append(
+                    s.model_copy(
+                        update={
+                            "published_date": sim_date.isoformat(),
+                            "date_method": "user_override",
+                            "date_precision": "day",
+                        }
+                    )
+                )
+            else:
+                sim_sources.append(s.model_copy(deep=True))
+        sim_report = view_report.model_copy(update={"sources": sim_sources})
+        ref_dt_sim = parse_published_date(rec.reference_date) or date.today()
+        sim_scored = rescore_report_as_of(sim_report, as_of=ref_dt_sim)
+        assert sim_scored.recency is not None
+
+        sim_changes = []
+        for orig_i, new_i in zip(view_report.insights, sim_scored.insights):
+            if orig_i.confidence != new_i.confidence:
+                sim_changes.append(
+                    {
+                        "Nhận định": orig_i.id,
+                        "Trước giả định": orig_i.confidence,
+                        "Sau giả định": new_i.confidence,
+                        "Lý do mới": new_i.confidence_reason,
+                    }
+                )
+        st.markdown(
+            f"**Kết quả giả định** (nếu `{chosen_sid}` có ngày đăng `{sim_date.isoformat()}` · `do người dùng nhập giả định`): "
+            f"Mức ảnh hưởng toàn báo cáo: `{rec.impact_level}` → **`{sim_scored.recency.impact_level}`**."
+        )
+        if sim_changes:
+            st.dataframe(sim_changes, use_container_width=True, hide_index=True)
+        else:
+            st.write(
+                "Không có nhận định nào đổi mức độ tin cậy với ngày giả định này (lưu ý: nếu trích dẫn trong nguồn vẫn nêu kỳ số liệu cũ > 18 tháng, cảnh báo kỳ số liệu vẫn giữ nguyên)."
+            )
+
+    # 6. Targeted Refresh Loop Section (7.5)
+    st.divider()
+    st.markdown("##### 6. Vòng làm mới dữ liệu có mục tiêu cho nguồn cũ then chốt (7.5)")
+
+    if active_report.refresh is not None:
+        rf = active_report.refresh
+        st.success(
+            f"**Đã thực thi vòng làm mới** · Trạng thái: **`{rf.status}`** · "
+            f"Ngày tham chiếu: `{rf.reference_date}` · Thời gian: `{rf.duration_seconds}s` ({rf.llm_calls_count} LLM calls) · "
+            f"Nguồn mục tiêu: `{', '.join(rf.target_source_ids) or '—'}` · "
+            f"Nguồn mới bổ sung: `{', '.join(rf.new_source_ids) or 'Không có'}`"
+        )
+        if rf.note:
+            st.caption(f"Ghi chú: {rf.note}")
+
+        if rf.queries:
+            with st.expander(
+                f"Các truy vấn tìm kiếm làm mới đã chạy ({len(rf.queries)})",
+                expanded=False,
+            ):
+                for q_str in rf.queries:
+                    st.markdown(f"- `{q_str}`")
+
+        if rf.comparisons:
+            st.markdown("**Bảng đối chiếu bằng chứng cũ ↔ bằng chứng mới:**")
+            cmp_rows = [
+                {
+                    "Bằng chứng cũ": c.old_evidence_id,
+                    "Bằng chứng mới": ", ".join(c.new_evidence_ids) or "—",
+                    "Kết quả đối chiếu": c.status,
+                    "Giải thích": c.explanation,
+                }
+                for c in rf.comparisons
+            ]
+            st.dataframe(cmp_rows, use_container_width=True, hide_index=True)
+
+        if rf.confidence_changes:
+            st.markdown(
+                "**Bảng thay đổi độ tin cậy trước → sau làm mới (cùng ngày tham chiếu):**"
+            )
+            cc_rows = [
+                {
+                    "Nhận định": cc.insight_id,
+                    "Trước làm mới": cc.before,
+                    "Sau làm mới": cc.after,
+                    "Lý do": cc.reason,
+                }
+                for cc in rf.confidence_changes
+            ]
+            st.dataframe(cc_rows, use_container_width=True, hide_index=True)
+
+        if rf.rejected_new_sources:
+            with st.expander(
+                f"Nguồn ứng viên bị loại trong vòng làm mới ({len(rf.rejected_new_sources)})",
+                expanded=False,
+            ):
+                rej_rows = [
+                    {"URL / Nguồn": r.item_id, "Lý do loại": r.reason}
+                    for r in rf.rejected_new_sources
+                ]
+                st.dataframe(rej_rows, use_container_width=True, hide_index=True)
+    else:
+        # Check if cached_runs has a pre-computed refreshed report for this report
+        matching_refreshed: tuple[int, Path, Report] | None = None
+        curr_ts = str(trace.get("run_timestamp", "")).strip()
+        for c_idx, (_lbl, c_path, c_rep) in enumerate(cached_runs):
+            if c_rep.refresh is not None:
+                parent_ts = str(
+                    (c_rep.trace or {}).get("parent_run_timestamp", "")
+                ).strip()
+                if (curr_ts and parent_ts == curr_ts) or (
+                    c_rep.question.strip() == active_report.question.strip()
+                ):
+                    matching_refreshed = (c_idx, c_path, c_rep)
+                    break
+
+        if matching_refreshed is not None:
+            r_idx, _r_path, r_rep = matching_refreshed
+            assert r_rep.refresh is not None
+            st.info(
+                f"Báo cáo này đã có bản chạy vòng làm mới lưu sẵn (`TC7`, chạy thật lúc `{r_rep.refresh.refreshed_at}`, trạng thái `{r_rep.refresh.status}`). "
+                "Bạn có thể bấm nút dưới đây để xem ngay mà không tốn API key."
+            )
+            if st.button(
+                f"Xem bản đã làm mới (chạy thật lúc {r_rep.refresh.refreshed_at})",
+                type="primary",
+                key="btn_open_cached_refresh",
+            ):
+                st.session_state["selected_cached_idx"] = r_idx
+                st.session_state["active_report"] = ensure_report_recency(r_rep)
+                st.rerun()
+
+        if st.button(
+            "Tìm dữ liệu mới hơn cho nguồn cũ (Live)",
+            key="btn_live_refresh",
+        ):
+            if st.session_state["live_runs_used"] >= max_live_runs:
+                st.error(
+                    f"Đã đạt giới hạn {max_live_runs} lượt chạy Live trong phiên này."
+                )
+            elif not has_key:
+                st.error(
+                    "Chưa cấu hình GEMINI_API_KEY để chạy làm mới trực tiếp. Vui lòng bấm chọn TC7 hoặc nút 'Xem bản đã làm mới' ở trên."
+                )
+            else:
+                with st.status(
+                    "Đang chạy vòng làm mới dữ liệu có mục tiêu cho nguồn cũ then chốt...",
+                    expanded=True,
+                ) as rf_status:
+
+                    def _rf_cb(step_title: str, detail: str) -> None:
+                        rf_status.write(f"**{step_title}**: {detail}")
+
+                    refreshed_rep = refresh_old_sources(
+                        active_report,
+                        reference_date=date.today(),
+                        use_cache=True,
+                        progress_callback=_rf_cb,
+                    )
+                    st.session_state["live_runs_used"] += 1
+                    st.session_state["active_report"] = refreshed_rep
+                    rf_status.update(
+                        label=f"Hoàn tất vòng làm mới: {refreshed_rep.refresh.status if refreshed_rep.refresh else ''}",
+                        state="complete",
+                        expanded=False,
+                    )
+                    st.rerun()
 
 
 def main() -> None:
@@ -411,7 +902,7 @@ def main() -> None:
     st.title("Hệ thống Nghiên cứu Thị trường Game có Căn cứ (Gamota MVP)")
     st.caption(
         "Mọi nhận định quan trọng đều truy về trích dẫn nguyên văn (<= 40 từ) được code xác minh (RapidFuzz >= 90) kèm link tô sáng tận nguồn, "
-        "xếp hạng nguồn A/B/C và chấm điểm độ tin cậy (CAO / TRUNG BÌNH / THẤP) bằng quy tắc code minh bạch."
+        "xếp hạng nguồn A/B/C, chấm điểm độ tin cậy (CAO / TRUNG BÌNH / THẤP) và phân tích ảnh hưởng của dữ liệu cũ (> 18 tháng · Change Request A2) bằng quy tắc code minh bạch."
     )
 
     with st.sidebar:
@@ -423,7 +914,7 @@ def main() -> None:
             index=default_mode_idx,
         )
         st.divider()
-        st.subheader("Chọn nhanh 6 tình huống (TC1–TC6)")
+        st.subheader("Chọn nhanh 7 tình huống (TC1–TC7)")
         st.caption("Bấm vào bất kỳ tình huống nào dưới đây để mở ngay báo cáo tương ứng:")
         for preset in PRESET_CASES:
             if st.button(
@@ -432,14 +923,10 @@ def main() -> None:
                 use_container_width=True,
             ):
                 st.session_state["question_input"] = preset["question"]
-                for c_idx, (_lbl, c_path, c_rep) in enumerate(cached_runs):
-                    if (
-                        c_path.stem.lower() == preset["stem"]
-                        or c_rep.question.strip() == preset["question"].strip()
-                    ):
-                        st.session_state["selected_cached_idx"] = c_idx
-                        st.session_state["active_report"] = c_rep
-                        break
+                matched = _find_cached_run_for_preset(cached_runs, preset)
+                if matched is not None:
+                    st.session_state["selected_cached_idx"] = matched[0]
+                    st.session_state["active_report"] = matched[1]
 
         st.divider()
         st.subheader("Trạng thái hệ thống")
@@ -452,9 +939,9 @@ def main() -> None:
         )
         st.write(f"- **Báo cáo lưu sẵn:** `{len(cached_runs)} tình huống`")
 
-    # Quick 6-case selector bar on main page
-    st.markdown("##### 1. Chọn nhanh 6 tình huống kiểm thử (Bấm để xem ngay kết quả)")
-    p_cols = st.columns(6)
+    # Quick 7-case selector bar on main page
+    st.markdown("##### 1. Chọn nhanh tình huống kiểm thử TC1–TC7 (Bấm để xem ngay kết quả)")
+    p_cols = st.columns(len(PRESET_CASES))
     for idx, preset in enumerate(PRESET_CASES):
         if p_cols[idx].button(
             preset["short_title"],
@@ -463,14 +950,10 @@ def main() -> None:
             use_container_width=True,
         ):
             st.session_state["question_input"] = preset["question"]
-            for c_idx, (_lbl, c_path, c_rep) in enumerate(cached_runs):
-                if (
-                    c_path.stem.lower() == preset["stem"]
-                    or c_rep.question.strip() == preset["question"].strip()
-                ):
-                    st.session_state["selected_cached_idx"] = c_idx
-                    st.session_state["active_report"] = c_rep
-                    break
+            matched = _find_cached_run_for_preset(cached_runs, preset)
+            if matched is not None:
+                st.session_state["selected_cached_idx"] = matched[0]
+                st.session_state["active_report"] = matched[1]
 
     # Input / Selection area
     with st.container():
@@ -511,17 +994,17 @@ def main() -> None:
         elif st.session_state["live_runs_used"] >= max_live_runs:
             st.error(
                 f"Đã đạt giới hạn {max_live_runs} lượt chạy Live trong phiên này để bảo vệ quota miễn phí. "
-                "Bạn vẫn có thể bấm chọn xem toàn bộ 6 báo cáo mẫu (TC1–TC6) ở thanh phía trên."
+                "Bạn vẫn có thể bấm chọn xem toàn bộ các báo cáo mẫu (TC1–TC7) ở thanh phía trên."
             )
         elif not has_key:
             st.error(
                 "Chưa cấu hình GEMINI_API_KEY trong .env hoặc Secrets của ứng dụng. "
-                "Vui lòng bấm chọn 6 báo cáo mẫu (TC1–TC6) ở thanh phía trên để xem kết quả chạy thật."
+                "Vui lòng bấm chọn các báo cáo mẫu (TC1–TC7) ở thanh phía trên để xem kết quả chạy thật."
             )
         else:
             try:
                 with st.status(
-                    "Đang thực thi Pipeline 6 bước (Plan → Retrieve → Grade → Extract → Synthesize → Score)...",
+                    "Đang thực thi Pipeline 6 bước (Plan → Retrieve → Grade → Extract → Synthesize → Score + Recency)...",
                     expanded=True,
                 ) as status_box:
 
@@ -543,25 +1026,31 @@ def main() -> None:
             except LLMQuotaOrKeyError as q_err:
                 st.error(
                     f"Tạm thời chạm giới hạn API miễn phí (Quota): {q_err}\n\n"
-                    "Gợi ý: Bạn có thể bấm vào 6 nút TC1–TC6 ở trên để xem ngay các bản chạy thật đã lưu sẵn."
+                    "Gợi ý: Bạn có thể bấm vào các nút TC1–TC7 ở trên để xem ngay các bản chạy thật đã lưu sẵn."
                 )
             except Exception as exc:
                 st.error(
                     f"Đã xảy ra lỗi khi gọi API trực tiếp: {type(exc).__name__}: {exc}\n\n"
-                    "Gợi ý: Bạn có thể bấm vào 6 nút TC1–TC6 ở trên để xem các bản chạy thật đã lưu."
+                    "Gợi ý: Bạn có thể bấm vào các nút TC1–TC7 ở trên để xem các bản chạy thật đã lưu."
                 )
 
-    active_report: Report | None = st.session_state.get("active_report")
-    if active_report is not None:
+    raw_active: Report | None = st.session_state.get("active_report")
+    if raw_active is not None:
+        active_report = ensure_report_recency(raw_active)
+        st.session_state["active_report"] = active_report
+        assert active_report.recency is not None
+        rec = active_report.recency
+
         st.divider()
         q = active_report.quality
         trace = active_report.trace or {}
 
-        # Header banner for active report
+        # Header info line for active report
         st.markdown(
             f"**Đang hiển thị báo cáo cho câu hỏi:** {active_report.question}  \n"
             f"<span style='color:#64748B;font-size:0.84rem;'>"
             f"Thời điểm chạy: <code>{trace.get('run_timestamp', 'N/A')}</code> · "
+            f"Ngày tham chiếu: <code>{rec.reference_date}</code> · "
             f"Thời gian xử lý: <code>{trace.get('duration_seconds', 0)}s</code> · "
             f"Model: <code>{trace.get('llm_provider', '')}/{trace.get('llm_model', '')}</code> ({trace.get('llm_calls_count', 0)} LLM calls) · "
             f"Search: <code>{trace.get('search_provider', '')}</code>"
@@ -569,7 +1058,20 @@ def main() -> None:
             unsafe_allow_html=True,
         )
 
-        # 4 Self-check metric cards
+        # Recency impact banner right below report info line (BRIEF_M3 4.8)
+        clean_sum = rec.summary
+        prefix_to_strip = f"Mức ảnh hưởng: {rec.impact_level}."
+        if clean_sum.startswith(prefix_to_strip):
+            clean_sum = clean_sum[len(prefix_to_strip) :].strip()
+        banner_msg = f"Độ mới dữ liệu, mức ảnh hưởng {rec.impact_level}: {clean_sum}"
+        if rec.impact_level == "ĐÁNG KỂ":
+            st.warning(banner_msg)
+        elif rec.impact_level in ("VỪA PHẢI", "NHỎ"):
+            st.info(banner_msg)
+        else:
+            st.success(banner_msg)
+
+        # 4 Self-check metric cards (keep exact count == 4 per invariant 4.1)
         m1, m2, m3, m4 = st.columns(4)
         m1.metric(
             "Trích dẫn xác minh (RapidFuzz ≥ 90)",
@@ -601,15 +1103,16 @@ def main() -> None:
             active_report.model_dump(), ensure_ascii=False, indent=2
         )
 
-        # Structured tabs for effortless navigation
-        tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(
+        # Structured tabs with Tab 3 = Độ mới & Ảnh hưởng (A2)
+        tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs(
             [
                 "1. Tóm tắt & Khuyến nghị",
                 f"2. Nhận định & Trích dẫn ({len(active_report.insights)})",
-                "3. Tiền đề, Mâu thuẫn & Khoảng trống",
-                f"4. Nguồn thông tin ({len(active_report.sources)})",
-                "5. Nhật ký Pipeline & Tự kiểm",
-                "6. Bản đầy đủ (Markdown & Tải file)",
+                "3. Độ mới & Ảnh hưởng (A2)",
+                "4. Tiền đề, Mâu thuẫn & Khoảng trống",
+                f"5. Nguồn thông tin ({len(active_report.sources)})",
+                "6. Nhật ký Pipeline & Tự kiểm",
+                "7. Bản đầy đủ (Markdown & Tải file)",
             ]
         )
 
@@ -624,6 +1127,58 @@ def main() -> None:
                 f'<div class="rec-card">{html.escape(active_report.recommendation)}</div>',
                 unsafe_allow_html=True,
             )
+
+            # Certainty groups block (BRIEF_M3 4.8)
+            st.markdown("#### Mức chắc chắn của các nhận định (phân nhóm theo độ tin cậy & tuổi dữ liệu)")
+            cg = rec.certainty_groups or {}
+            ins_by_id = {i.id: i for i in active_report.insights}
+            cg_cols = st.columns(3)
+            cg_configs = [
+                (
+                    "Đủ cơ sở",
+                    "Đủ cơ sở (dựa trên nguồn mới)",
+                    "#166534",
+                    "#DCFCE7",
+                ),
+                (
+                    "Cần lưu ý",
+                    "Cần lưu ý (một phần cũ / suy luận)",
+                    "#92400E",
+                    "#FEF3C7",
+                ),
+                (
+                    "Chưa chắc chắn",
+                    "Chưa chắc chắn (thiếu bằng chứng mới / mức THẤP)",
+                    "#475569",
+                    "#F1F5F9",
+                ),
+            ]
+            for col_obj, (g_key, g_label, g_color, g_bg) in zip(cg_cols, cg_configs):
+                iids = cg.get(g_key, [])
+                items_html = ""
+                if not iids:
+                    items_html = "<div style='color:#64748B;font-size:0.84rem;'>Không có nhận định nào trong nhóm này.</div>"
+                else:
+                    for iid in iids:
+                        ins_obj = ins_by_id.get(iid)
+                        snippet = (
+                            (ins_obj.statement[:90] + "...")
+                            if ins_obj and len(ins_obj.statement) > 90
+                            else (ins_obj.statement if ins_obj else "")
+                        )
+                        conf_str = ins_obj.confidence if ins_obj else ""
+                        items_html += (
+                            f"<div style='margin-bottom:6px;font-size:0.84rem;'>"
+                            f"<strong>{html.escape(iid)} ({html.escape(conf_str)}):</strong> {html.escape(snippet)}</div>"
+                        )
+                col_obj.markdown(
+                    f'<div class="certainty-box">'
+                    f'<div style="background-color:{g_bg};color:{g_color};padding:4px 8px;border-radius:4px;font-weight:600;margin-bottom:8px;">'
+                    f"{html.escape(g_label)} ({len(iids)})</div>"
+                    f"{items_html}</div>",
+                    unsafe_allow_html=True,
+                )
+
             if active_report.decision_criteria:
                 st.markdown("#### Tiêu chí ra quyết định đã sử dụng")
                 pills = "".join(
@@ -648,6 +1203,14 @@ def main() -> None:
             _render_insights_interactive(active_report)
 
         with tab3:
+            _render_recency_tab(
+                active_report=active_report,
+                cached_runs=cached_runs,
+                has_key=has_key,
+                max_live_runs=max_live_runs,
+            )
+
+        with tab4:
             col_a, col_b = st.columns(2)
             with col_a:
                 st.markdown("#### 3.1 Kiểm tra tiền đề trong câu hỏi (Premise Check)")
@@ -694,30 +1257,43 @@ def main() -> None:
                 for idx, nc in enumerate(active_report.next_checks, start=1):
                     st.markdown(f"{idx}. {nc}")
 
-        with tab4:
+        with tab5:
             tier_filter = st.radio(
                 "Lọc theo Hạng nguồn:",
                 options=["Tất cả", "Hạng A", "Hạng B", "Hạng C"],
                 horizontal=True,
             )
+            sr_by_id = {sr.source_id: sr for sr in rec.sources}
             for s in active_report.sources:
                 if tier_filter != "Tất cả" and f"Hạng {s.tier}" != tier_filter:
                     continue
-                d_disp = s.published_date or "Không rõ ngày"
+                sr = sr_by_id.get(s.id)
+                d_disp = sr.date_display if sr else (s.published_date or "Không rõ ngày")
+                m_lbl = sr.date_method_label if sr else (s.date_method or "không rõ")
+                age_lbl = sr.age_display if sr else s.freshness_label
+                r_stat = sr.status if sr else "—"
+                conflict_flag = ""
+                if sr and sr.date_conflict:
+                    conflict_flag = (
+                        f' · <span style="color:#B91C1C;font-weight:600;">'
+                        f"⚠ Ngày đăng có thể sai ({html.escape('; '.join(sr.reasons))})</span>"
+                    )
                 st.markdown(
                     f'<div class="insight-card" style="padding:12px 16px;margin-bottom:8px;">'
                     f'<div><strong>{html.escape(s.id)} · <a href="{html.escape(s.url)}" target="_blank" style="color:#1D4ED8;text-decoration:none;">'
-                    f'{html.escape(s.title)} ↗</a></strong></div>'
+                    f"{html.escape(s.title)} ↗</a></strong></div>"
                     f'<div style="font-size:0.83rem;color:#475569;margin-top:4px;">'
-                    f'Domain: <code>{html.escape(s.domain)}</code> · '
-                    f'<strong>Hạng {html.escape(s.tier)}</strong> · '
-                    f'Ngày đăng: <code>{html.escape(d_disp)}</code> ({html.escape(s.freshness_label)}) · '
-                    f'{html.escape(s.tier_reason)}'
+                    f"Domain: <code>{html.escape(s.domain)}</code> · "
+                    f"<strong>Hạng {html.escape(s.tier)}</strong> · "
+                    f"Ngày đăng: <code>{html.escape(d_disp)}</code> ({html.escape(m_lbl)}) · "
+                    f"Tuổi: <code>{html.escape(age_lbl)}</code> · "
+                    f"Trạng thái A2: <strong>{html.escape(r_stat)}</strong>{conflict_flag} · "
+                    f"{html.escape(s.tier_reason)}"
                     f"</div></div>",
                     unsafe_allow_html=True,
                 )
 
-        with tab5:
+        with tab6:
             st.markdown("#### Tiến trình thực thi Pipeline 6 bước")
             for log_line in trace.get("step_logs", []):
                 st.write(f"- {log_line}")
@@ -763,7 +1339,7 @@ def main() -> None:
             else:
                 st.write("100% trích dẫn đều khớp nguyên văn (0 trích dẫn bị loại).")
 
-        with tab6:
+        with tab7:
             dl_col1, dl_col2, _ = st.columns([1, 1, 2])
             dl_col1.download_button(
                 "Tải Báo cáo Markdown (.md)",

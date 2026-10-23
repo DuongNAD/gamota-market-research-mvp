@@ -401,23 +401,25 @@ def retrieve_and_grade_sources(
             )
         )
 
-    # Fetch content & date concurrently
+    # Fetch content & date concurrently while preserving deterministic candidate order
     fetched_items: list[tuple[Source, str]] = []
     with ThreadPoolExecutor(max_workers=6) as pool:
-        future_to_cand = {
-            pool.submit(
-                fetch_page_content_and_date,
-                cand["canonical_url"],
-                cand.get("raw_content") or "",
-                cand.get("snippet") or "",
-                cand.get("published_date"),
-                use_cache,
-                cand.get("title") or "",
-            ): cand
+        futures = [
+            (
+                cand,
+                pool.submit(
+                    fetch_page_content_and_date,
+                    cand["canonical_url"],
+                    cand.get("raw_content") or "",
+                    cand.get("snippet") or "",
+                    cand.get("published_date"),
+                    use_cache,
+                    cand.get("title") or "",
+                ),
+            )
             for cand in fetch_pool
-        }
-        for fut in as_completed(future_to_cand):
-            cand = future_to_cand[fut]
+        ]
+        for cand, fut in futures:
             c_url = cand["canonical_url"]
             try:
                 full_text, pub_date = fut.result()

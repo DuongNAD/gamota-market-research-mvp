@@ -81,5 +81,15 @@ Mỗi quyết định được ghi nhận liên tục trong quá trình xây d�
     - *Quyết định*: Chỉ nối `[Độ mới dữ liệu]` vào `short_answer` khi `impact_level == "ĐÁNG KỂ"`; ở các mức `VỪA PHẢI`/`NHỎ`, thông tin hiển thị ở Banner, badge nhận định và Mục 7. Mọi thao tác nối đều gỡ marker cũ trước khi nối mới (idempotent).
     - *Lý do*: Đảm bảo cảnh báo ở phần tóm tắt chỉ xuất hiện khi các nhận định cốt lõi (`CAO`/`TRUNG BÌNH`) thực sự phụ thuộc vào dữ liệu cũ.
 
+16. **[M3 · P2] Giữ thứ tự ứng viên tất định khi tải trang song song (`ThreadPoolExecutor`) và đánh số nối tiếp `S#`/`E#`/`I#` trong vòng làm mới (`research/refresh.py`)**:
+    - *Bối cảnh*: Khi tải nội dung 18 URL ứng viên bằng `ThreadPoolExecutor`, việc lặp theo `as_completed` làm thứ tự hoàn thành phụ thuộc tốc độ I/O từng luồng; nếu 2 nguồn hạng C có cùng độ mới và số từ khóa khớp (như `brandsvietnam.com` và `dantri.com.vn` ở `TC2`), thứ tự tie-break có thể đảo nhau làm lệch cache. Ngoài ra, khi chạy vòng làm mới, nếu đánh số lại `S1..Sn` từ đầu thì mọi tham chiếu cũ trong báo cáo sẽ bị đứt gãy.
+    - *Quyết định*: Thu kết quả `ThreadPoolExecutor` theo đúng thứ tự danh sách `fetch_pool` tất định; trong `refresh_old_sources`, chỉ lấy tối đa 2 nguồn then chốt cũ đầu tiên (`refresh_max_targets: 2`), lọc nghiêm ngặt nguồn mới phải có ngày đăng rõ ràng mới hơn nguồn cũ, đánh mã nối tiếp `S{len+1}` / `E{max+1}`, giữ nguyên nhận định cũ (chỉ gắn thêm `E#` mới khi `XÁC NHẬN`, hoặc gắn `has_conflict=True` + thêm `ConflictItem` + thêm nhận định mới ở cuối khi `CẬP NHẬT`/`MÂU THUẪN`).
+    - *Lý do*: Đảm bảo phát lại `TC2` từ cache tốn đúng `0` lệnh gọi LLM, đồng thời giữ nguyên 100% bối cảnh báo cáo cũ để so sánh trực tiếp độ tin cậy trước → sau làm mới.
+
+17. **[M3 · P2] Tích hợp Tab "3. Độ mới & Ảnh hưởng (A2)", bộ mô phỏng giả định ngày đăng (What-if Simulator) và khớp nút chọn nhanh theo `stem` trước `question`**:
+    - *Bối cảnh*: Trên giao diện Streamlit (`app.py`), `TC7` (bản làm mới của `TC2`) có cùng câu hỏi nghiên cứu với `TC2`; nếu nút chọn nhanh khớp theo `question` như cũ thì bấm `TC7` sẽ mở nhầm `TC2`. Đồng thời, nếu tính `apply_recency_layer` cho toàn bộ file trong `data/cached_runs/` ngay khi khởi động thì `AppTest` có nguy cơ chậm.
+    - *Quyết định*: Đổi hàm `_find_cached_run_for_preset` ưu tiên khớp `c_path.stem.lower() == preset["stem"]` trước khi fallback sang `question`; chỉ tính `ensure_report_recency` cho `active_report` đang hiển thị kèm `@st.cache_data`; bổ sung What-if Simulator cho phép người dùng thử đổi ngày đăng giả định của bất kỳ nguồn nào trên bản sao trong bộ nhớ mà không ghi đè báo cáo gốc.
+    - *Lý do*: Giúp người dùng kiểm chứng trực tiếp cả 2 báo cáo `TC2` (trước làm mới) và `TC7` (sau làm mới) không cần API key, vẫn giữ nguyên đúng 1 `st.title` và 4 `st.metric` tương thích 100% với bộ test UI của Mission 2.
+
 
 
