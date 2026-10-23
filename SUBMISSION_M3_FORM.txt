@@ -1,0 +1,42 @@
+HỒ SƠ NỘP BÀI — GAMOTA MISSION 3 (VĂN BẢN THUẦN DÁN FORM)
+Hạn nộp: 18:00 ngày 24/10/2026
+Link Source Code (GitHub): https://github.com/DuongNAD/gamota-market-research-mvp
+Link Git Tag Mission 2: https://github.com/DuongNAD/gamota-market-research-mvp/tree/mission2-final
+Link Live Demo (Streamlit): https://gamota-market-research-mvp.streamlit.app
+Link Video Demo Mission 3: (cập nhật sau khi quay)
+
+================================================================================
+Câu 1. Khi nhận yêu cầu thay đổi/mở rộng, bạn đã ưu tiên làm gì và chủ động chưa làm gì? Vì sao?
+
+(1) Ưu tiên 1: Xây dựng lớp phân tích độ mới và định lượng ảnh hưởng bằng code tất định (research/recency.py). Vì Change Request A2 hỏi nguồn > 18 tháng ảnh hưởng thế nào tới độ tin cậy, người dùng cần biết rõ nhận định nào đứng vững hay mất căn cứ qua mô phỏng phản thực tế (Nếu bỏ nguồn / Nếu nguồn còn mới <= 12 tháng).
+(2) Ưu tiên 2: Minh bạch hóa cách xác định ngày đăng (date_precision) và tách kỳ số liệu trong trích dẫn (data_period ở research/dates.py). Kiểm tra 72 nguồn của 6 báo cáo Mission 2 (Bảng B, eval/results/m2_vs_m3.md) cho thấy 14/72 nguồn chỉ biết năm nhưng từng hiện như tháng 6 (như S5, S6 appsflyer.com năm 2024 ở TC2), 11/72 nguồn mới đăng nhưng trích số liệu > 18 tháng (S2 đăng 05/2025 trích Q1/2025, S6 đăng 05/08/2026 trích năm 2024 ở TC1), và 1/72 nguồn mâu thuẫn ngày đăng với kỳ số liệu (TC4-S10).
+(3) Ưu tiên 3: Thực hiện vòng làm mới có mục tiêu giữ nguyên bối cảnh (research/refresh.py, nút TC7 trên app.py), tìm nguồn mới cho tối đa 2 nguồn then chốt cũ nhất, đối chiếu bằng chứng cũ - mới và đánh mã S#/E# nối tiếp.
+(4) Ưu tiên 4 (tự soát trước khi nộp): Phát hiện LLM gắn nhãn CẬP NHẬT cho cặp lệch phạm vi (như ghép 5,3 tỷ USD IAP mọi ứng dụng cả năm với 625 triệu USD IAP game Q1/2025 ở TC7), tôi viết chốt chặn bằng code (research/comparability.py) theo 4 quy tắc Phạm vi - Thị trường - Đơn vị - Kỳ số liệu, chỉ hạ nhãn xuống KHÔNG TƯƠNG ĐƯƠNG thay vì sửa prompt để giữ khả năng phát lại từ cache (0 lệnh gọi LLM mới) vì LLM vẫn có thể sai.
+(5) Chủ động chưa làm: Không đổi quy tắc chấm điểm Mission 2 (giữ hồi quy); không để LLM tự đoán mức ảnh hưởng; không tự sửa published_date khi mâu thuẫn ngày; gác lại đầu đọc CSV/PDF nội bộ (TC6) và khung chat tự do.
+
+================================================================================
+Câu 2. Điểm khác biệt lớn nhất giữa bản mới và bản ở Mission 2 là gì? Bằng chứng nào từ kết quả kiểm thử cho thấy bản mới tốt hơn?
+
+(1) Khác biệt lớn nhất: Độ tin cậy được tính lại theo tuổi dữ liệu bằng mô phỏng phản thực tế trên code, và vòng làm mới chỉ dùng số liệu mới khi code kiểm tra tương đương về phạm vi, thị trường, đơn vị và kỳ số liệu với số cũ, trong khi giữ nguyên quy tắc chấm điểm Mission 2.
+(2) Bảng B (eval/results/m2_vs_m3.md, chạy trên 6 báo cáo Mission 2 ở ngày 2026-10-15, 0 lệnh gọi LLM): phát hiện 4/6 case (TC1, TC2, TC4, TC5) chịu ảnh hưởng ĐÁNG KỂ, 15 lượt nguồn then chốt cũ/không chắc, 22/52 nhận định (42,3%) thiếu bằng chứng mới trong 18 tháng; trả lời ngắn có ghi chú tuổi dữ liệu tăng từ 0/6 lên 4/4 case ĐÁNG KỂ, không cảnh báo giả ở TC3, TC9 (0/8 nhận định thiếu bằng chứng mới).
+(3) TC2 phản thực tế (eval/results/TC2.md): chỉ rõ S5, S6 (appsflyer.com) chỉ biết năm 2024 (22-34 tháng); bỏ S5 hoặc S6 thì I5, I6 MẤT CĂN CỨ; nếu S5 còn mới (<= 12 tháng) thì I4 tăng từ THẤP lên CAO.
+(4) TC7 sau sửa (eval/results/TC7.md, Bảng C & D): thu 6 nguồn mới (S13-S18), 12 trích dẫn mới (E29-E40), 40/40 trích dẫn khớp (100.0%). Có 2 cặp xác nhận (E3->E35, E11->E31,E34,E40) nâng I5 từ THẤP lên TRUNG BÌNH. Code chặn 3 cặp từ CẬP NHẬT xuống KHÔNG TƯƠNG ĐƯƠNG (E2->E29, E12->E34, E13->E31,E32,E40), trong đó 5,3 tỷ USD ở E29 là IAP mọi ứng dụng cả năm nên không thay được 625 triệu USD IAP game Q1/2025 ở E2; I2 không bị hạ oan (giữ TRUNG BÌNH), ConflictItem giảm 4 -> 1, nhận định 13 -> 10.
+(5) TC10 sau sửa (eval/results/TC10.md, Bảng C & D): thu 6 nguồn mới, 15 trích dẫn mới (37/37 khớp 100.0%); code chặn 2 cặp (E2->E23, E16->E23) do ghép 18,1 tỷ lượt tải mọi ứng dụng năm 2025 với 1,93 tỷ lượt tải game Q1/2025; giữ 4 cặp xác nhận; không nhận định nào đổi mức (I4 giữ TRUNG BÌNH), ConflictItem giảm 2 -> 0, nhận định 11 -> 9.
+(6) Hồi quy (Bảng A, pytest): TC2-TC5, TC9 trùng 100% với Mission 2; 60/60 test pass (21 test Mission 2 + 39 test item Mission 3).
+
+================================================================================
+Câu 3. Nếu sản phẩm này được đưa vào sử dụng thật, rủi ro lớn nhất còn lại là gì và bạn sẽ xử lý theo thứ tự nào?
+
+(1) Rủi ro 1 - Độ chính xác ngày đăng và kỳ số liệu trên web mở: Trên 72 nguồn của 6 báo cáo Mission 2 (Bảng B, eval/results/m2_vs_m3.md), có 24/72 nguồn (33,3%) chỉ biết năm hoặc không rõ ngày (14/72 chỉ biết năm), 11/72 nguồn (15,3%) mới đăng nhưng trích số liệu > 18 tháng, và 1/72 nguồn (TC4-S10) mâu thuẫn ngày đăng với kỳ số liệu. Ở TC7, trang S13 (sensortower.com) ghi May 2026 ở dòng tác giả nhưng hệ thống chỉ tách được năm 2026 từ URL/tiêu đề nên chỉ biết năm.
+(2) Rủi ro 2 - Giới hạn của chốt chặn từ khóa: Bộ kiểm tra tương đương (research/comparability.py) và hàm tách kỳ (detect_data_period) dựa trên từ khóa và regex, nên có thể bỏ sót khác biệt phạm vi tinh vi ngoài từ điển hoặc chặn nhầm một cập nhật hợp lệ ghi kỳ thời gian phi chuẩn.
+(3) Rủi ro 3 - Dữ liệu sau tường phí (TC6): Doanh thu tháng 9/2026 của top 3 game gacha tại Thái Lan vẫn CHƯA ĐẠT vì nguồn web mở không có bảng số liệu cấp Quốc gia x Thể loại x Tháng của Sensor Tower hay AppMagic.
+(4) Thứ tự xử lý:
+- Bước 1: Thêm nguồn metadata ngày đăng (published_date của Tavily API, JSON-LD datePublished/dateModified, HTTP Last-Modified, dòng tác giả) rồi đối chiếu chéo thời điểm xuất hiện con số giữa các domain độc lập.
+- Bước 2: Cho phép chuyên viên xác nhận hoặc chỉnh trực tiếp ngày đăng, kỳ số liệu và phạm vi ngay trên giao diện rồi lưu vào bộ nhớ đã duyệt.
+- Bước 3: Bổ sung đầu đọc file CSV/PDF xuất từ tài khoản Sensor Tower, AppMagic của Gamota vào bước thu thập và làm mới.
+
+================================================================================
+Thống kê độ dài ký tự (đếm bằng code Python):
+- Câu 1: 1700 ký tự (kèm tiêu đề câu hỏi: 1798 ký tự; giới hạn <= 1800)
+- Câu 2: 1856 ký tự (kèm tiêu đề câu hỏi: 1988 ký tự; giới hạn <= 2000)
+- Câu 3: 1463 ký tự (kèm tiêu đề câu hỏi: 1578 ký tự; giới hạn <= 1800)

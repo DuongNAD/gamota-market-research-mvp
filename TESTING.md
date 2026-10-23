@@ -6,29 +6,29 @@
 
 > **Change Request A2:** *"Một nguồn quan trọng được phát hành cách đây hơn 18 tháng. Người dùng muốn biết điều đó ảnh hưởng thế nào tới độ tin cậy của kết quả."*
 
-Phần này ghi lại toàn bộ kết quả kiểm thử của **Mission 3** trên ba nhóm bắt buộc:
-1. **Kiểm thử hồi quy (Regression)**: 21 test cũ của Mission 2 giữ nguyên 100%, kèm 8 bài kiểm thử hồi quy mới và chạy lại 6 case `TC1`–`TC6` ở `reference_date = 2026-10-15` so với snapshot [`eval/results/m2/`](eval/results/m2/).
-2. **Kiểm thử yêu cầu mới (Change Request A2) & Vòng làm mới (C4/C1)**: Phân tích độ mới dữ liệu (`research/dates.py`, `research/recency.py`), kiểm tra phản thực tế (*"Nếu bỏ nguồn này"*, *"Nếu nguồn này còn mới"*), và vòng làm mới có mục tiêu (`research/refresh.py`) trên `TC7` và `TC10`.
-3. **Kiểm thử trường hợp biên (Edge Cases)**: Nguồn chỉ biết năm (`precision="year"`), nguồn không rõ ngày (`precision="unknown"`), nguồn mới đăng nhưng trích dẫn kỳ số liệu đã quá 18 tháng (`data_period_end`), nguồn có mâu thuẫn ngày đăng (`date_conflict`), và ranh giới đúng 18 tháng.
+Phần này ghi lại toàn bộ kết quả kiểm thử của **Mission 3** trên ba nhóm bắt buộc cùng **Đợt sửa trước khi nộp (23–24/10/2026)**:
+1. **Kiểm thử hồi quy (Regression)**: 21 test cũ của Mission 2 giữ nguyên 100%, kèm các bài kiểm thử hồi quy mới và chạy lại 6 case `TC1`–`TC6` ở `reference_date = 2026-10-15` so với snapshot [`eval/results/m2/`](eval/results/m2/).
+2. **Kiểm thử yêu cầu mới (Change Request A2) & Vòng làm mới + Chốt chặn đối chiếu (`comparability.py`)**: Phân tích độ mới dữ liệu (`research/dates.py`, `research/recency.py`), kiểm tra phản thực tế (*"Nếu bỏ nguồn này"*, *"Nếu nguồn này còn mới"*), vòng làm mới có mục tiêu (`research/refresh.py`) và chốt chặn kiểm tra tương đương bằng code (`research/comparability.py`) trên `TC7` và `TC10`.
+3. **Kiểm thử trường hợp biên (Edge Cases)**: Nguồn chỉ biết năm (`precision="year"`), nguồn không rõ ngày (`precision="unknown"`), nguồn mới đăng nhưng trích dẫn kỳ số liệu đã quá 18 tháng (`data_period_end`), nguồn có mâu thuẫn ngày đăng (`date_conflict`), ranh giới đúng 18 tháng, và cặp bằng chứng lệch phạm vi/kỳ số liệu.
 
 ---
 
 ## M3.1. Lệnh chạy kiểm thử Mission 3
 
 ```bash
-# 1. Chạy toàn bộ bộ kiểm thử tự động (21 test cũ Mission 2 + 25 test item mới Mission 3 = 46 passed)
+# 1. Chạy toàn bộ bộ kiểm thử tự động (21 test cũ Mission 2 + 39 test item mới Mission 3 = 60 passed)
 .venv\Scripts\python.exe -m pytest -v
 
 # 2. Chạy phân tích độ mới & ảnh hưởng (Change Request A2) offline trên báo cáo JSON sẵn có (0 lần gọi LLM)
 .venv\Scripts\python.exe -m research.recency eval/results/m2/TC2.json --as-of 2026-10-15 --out-json eval/results/m3_offline/TC2.json --out-md eval/results/m3_offline/TC2.md
 
-# 3. Chạy vòng làm mới có mục tiêu cho các nguồn then chốt cũ
-.venv\Scripts\python.exe -m research.refresh eval/results/m3_replay/TC2.json --reference-date 2026-10-23 --out-json data/cached_runs/tc7_cr_a2_refreshed.json --out-md data/cached_runs/tc7_cr_a2_refreshed.md
+# 3. Chạy vòng làm mới có mục tiêu cho các nguồn then chốt cũ (phát lại từ cache, 0 lệnh gọi LLM mới)
+.venv\Scripts\python.exe -m research.refresh eval/results/TC7_before_refresh.json --reference-date 2026-10-23 --out-json data/cached_runs/tc7_cr_a2_refreshed.json --out-md data/cached_runs/tc7_cr_a2_refreshed.md
 
 # 4. Chạy bộ đánh giá End-to-End 10 test case (TC1–TC10)
 .venv\Scripts\python.exe -m eval.run_eval
 
-# 5. Sinh bảng đối chiếu định lượng Mission 2 <-> Mission 3 (eval/results/m2_vs_m3.{json,md})
+# 5. Sinh bảng đối chiếu định lượng Mission 2 <-> Mission 3 (Bảng A, B, C, D tại eval/results/m2_vs_m3.{json,md})
 .venv\Scripts\python.exe -m eval.compare_m2_m3
 ```
 
@@ -36,20 +36,21 @@ Phần này ghi lại toàn bộ kết quả kiểm thử của **Mission 3** tr
 
 ## M3.2. Tổng hợp kết quả `pytest` (Mission 2 vs. Mission 3)
 
-Kết quả chạy thực tế `.venv\Scripts\python.exe -m pytest -q`: **`46 passed in 6.38s`**.
+Kết quả chạy thực tế `.venv\Scripts\python.exe -m pytest -q`: **`60 passed in 2.46s`**.
 
 | Nhóm file test | Số hàm test | Số test item (`pytest`) | Trạng thái | Ghi chú |
 |---|---|---|---|---|
 | **Test cũ Mission 2** (`test_grade.py`, `test_verify_quote.py`, `test_score.py`, `test_pipeline_mock.py`, `test_app_ui.py`) | `21` | `21` | **`21 passed`** | Giữ nguyên 100% không sửa bất kỳ dòng nào (`git diff mission2-final` trống). |
 | **Test mới Mission 3 — Độ mới & Ảnh hưởng** ([`tests/test_recency.py`](tests/test_recency.py)) | `10` | `10` | **`10 passed`** | Kiểm tra Change Request A2 trên `TC2.json` thật, báo cáo tổng hợp, tính bất biến của `confidence`, và 7 trường hợp biên. |
 | **Test mới Mission 3 — Hồi quy M2** ([`tests/test_regression_m2.py`](tests/test_regression_m2.py)) | `4` | `9` | **`9 passed`** | Tham số hóa `TC1`–`TC6` (`6 items`), kiểm tra tương thích ngược schema JSON, golden test `_extract_date_fallback`, và tiêu đề mục 1–7. |
-| **Test mới Mission 3 — Vòng làm mới** ([`tests/test_refresh.py`](tests/test_refresh.py)) | `5` | `5` | **`5 passed`** | Kiểm tra nâng mức tin cậy khi `XÁC NHẬN`, gắn `ConflictItem` khi `CẬP NHẬT`, báo trung thực khi không có nguồn mới, lọc mã/URL lậu. |
+| **Test mới Mission 3 — Vòng làm mới** ([`tests/test_refresh.py`](tests/test_refresh.py)) | `7` | `7` | **`7 passed`** | Kiểm tra nâng mức tin cậy khi `XÁC NHẬN`, gắn `ConflictItem` khi `CẬP NHẬT` hợp lệ, khử trùng nhận định mới, cắt chủ đề theo từ, báo trung thực khi không có nguồn mới, lọc mã/URL lậu. |
+| **Test mới Mission 3 — Chốt chặn đối chiếu & Model dự phòng** ([`tests/test_comparability.py`](tests/test_comparability.py)) | `8` | `12` | **`12 passed`** | Kiểm tra 4 nhóm quy tắc P/T/Đ/K trên cặp thật `TC7 E2↔E29`, `TC10 E16↔E23`, cập nhật hợp lệ, lọc từng phần, bất biến không nâng nhãn (`5 items`), và `OPENROUTER_MODEL`. |
 | **Test mới Mission 3 — Giao diện Streamlit** ([`tests/test_app_ui_m3.py`](tests/test_app_ui_m3.py)) | `1` | `1` | **`1 passed`** | Kiểm tra banner độ mới, tab `"3. Độ mới & Ảnh hưởng (A2)"`, mục 7 Markdown và giữ đúng 4 thẻ `st.metric`. |
-| **Tổng cộng** | **`41` hàm** | **`46` items** | **`46 passed`** | **100% pass**, không cần API key khi chạy `pytest`. |
+| **Tổng cộng** | **`51` hàm** | **`60` items** | **`60 passed`** | **100% pass**, không cần API key khi chạy `pytest`. |
 
 ---
 
-## M3.3. Bảng chi tiết 20 hàm Unit & UI Test mới của Mission 3
+## M3.3. Bảng chi tiết 30 hàm Unit & UI Test mới của Mission 3 (`39` test items)
 
 | STT | File | Tên hàm test | Loại kiểm thử | Nội dung kiểm tra | Kết quả |
 |---|---|---|---|---|---|
@@ -68,17 +69,27 @@ Kết quả chạy thực tế `.venv\Scripts\python.exe -m pytest -q`: **`46 pa
 | 13 | `tests/test_regression_m2.py` | `test_extract_date_fallback_golden_unchanged` | **Regression** | Đóng băng đầu ra của `_extract_date_fallback` trên 11 mẫu URL/title/text trước và sau khi tách sang `research/dates.py`. | **PASS** |
 | 14 | `tests/test_regression_m2.py` | `test_markdown_keeps_m2_sections_and_adds_section_7` | **Regression** | `render_report_markdown` giữ nguyên văn 6 tiêu đề mục 1–6 của Mission 2 và bổ sung mục `## 7. Độ mới của dữ liệu & Ảnh hưởng tới độ tin cậy (Change Request A2)`. | **PASS** |
 | 15 | `tests/test_refresh.py` | `test_refresh_confirm_upgrades_confidence_and_keeps_ids` | **Change request (C4)** | Khi nguồn mới Hạng B (2026) `XÁC NHẬN` bằng chứng của nguồn Hạng A năm 2024: nhận định tăng từ `THẤP` lên `TRUNG BÌNH`, mã `S#`/`E#` nối tiếp không đánh số lại, `trace.version = 2`. | **PASS** |
-| 16 | `tests/test_refresh.py` | `test_refresh_update_adds_conflict_and_new_insight` | **Change request (C1)** | Khi nguồn mới `CẬP NHẬT` số liệu khác kỳ cũ: thêm `ConflictItem` cũ ↔ mới, đánh dấu `has_conflict=True` hạ nhận định cũ xuống `THẤP`, và thêm nhận định mới ở cuối báo cáo. | **PASS** |
+| 16 | `tests/test_refresh.py` | `test_refresh_update_adds_conflict_and_new_insight` | **Change request (C1)** | Khi nguồn mới `CẬP NHẬT` số liệu hợp lệ (cùng game, cùng Indonesia, cùng %, `2024` → `2025`): thêm `ConflictItem` cũ ↔ mới, đánh dấu `has_conflict=True` hạ nhận định cũ xuống `THẤP`, và thêm nhận định mới ở cuối báo cáo. | **PASS** |
 | 17 | `tests/test_refresh.py` | `test_refresh_no_newer_source_reports_honestly` | **Edge case** | Khi các nguồn tìm được đều cũ hơn, không rõ ngày hoặc trùng URL: trả trạng thái `KHÔNG TÌM THẤY DỮ LIỆU MỚI HƠN`, không gọi LLM rút trích/so sánh, ghi rõ vào `gaps`. | **PASS** |
 | 18 | `tests/test_refresh.py` | `test_refresh_rejects_invalid_ids_and_llm_urls` | **Edge case** | Bỏ qua mã `old_evidence_id` / `new_evidence_ids` không hợp lệ và tự động lọc bỏ mọi URL do LLM viết trong lời giải thích so sánh. | **PASS** |
 | 19 | `tests/test_refresh.py` | `test_refresh_without_targets_makes_no_llm_call` | **Edge case** | Báo cáo không có nguồn then chốt cũ trả ngay `KHÔNG CẦN LÀM MỚI` với `0` lần gọi LLM. | **PASS** |
-| 20 | `tests/test_app_ui_m3.py` | `test_app_shows_recency_banner_tab_and_section_7` | **UI (AppTest)** | Giao diện Streamlit hiển thị banner độ mới, tab `"3. Độ mới & Ảnh hưởng (A2)"`, mục 7 trong Markdown, và giữ nguyên đúng 1 `st.title` + 4 `st.metric` (`TC1` đạt `100.0%`). | **PASS** |
+| 20 | `tests/test_refresh.py` | `test_refresh_deduplicates_new_insights_pointing_to_same_evidence` | **Regression (L2)** | Khi 2 cặp `CẬP NHẬT` hợp lệ cùng trỏ tới 1 bằng chứng mới (`E2`): chỉ sinh đúng 1 nhận định mới ở cuối báo cáo (không nhân bản thành `I10, I11`). | **PASS** |
+| 21 | `tests/test_refresh.py` | `test_refresh_conflict_topic_truncates_at_word_boundary` | **Regression (L3)** | Chủ đề `ConflictItem` sinh từ `oev.claim` dài > 16 từ được cắt theo ranh giới từ kèm `...`, không bao giờ cắt cụt giữa từ hay giữa mốc thời gian (`quý 1 năm 2 (`). | **PASS** |
+| 22 | `tests/test_comparability.py` | `test_tc7_e2_vs_e29_downgraded_scope_and_period` | **Change request** | Cặp thật `TC7 E2 ↔ E29` (`S1` vs `S13`): hạ từ `CẬP NHẬT` xuống `KHÔNG TƯƠNG ĐƯƠNG` kèm lý do `"khác phạm vi"` và `"không xác định được kỳ"`. | **PASS** |
+| 23 | `tests/test_comparability.py` | `test_tc10_e16_vs_e23_downgraded_period_granularity` | **Change request** | Cặp thật `TC10 E16 ↔ E23`: hạ từ `CẬP NHẬT` xuống `KHÔNG TƯƠNG ĐƯƠNG` kèm lý do `"khác loại kỳ (Q1/2025 ↔ 2025)"`. | **PASS** |
+| 24 | `tests/test_comparability.py` | `test_valid_update_same_scope_region_unit_quarter` | **Edge case** | Cặp cập nhật hợp lệ (cùng game, cùng Indonesia, cùng USD, `Q1/2025` → `Q1/2026`): giữ nguyên nhãn `CẬP NHẬT`. | **PASS** |
+| 25 | `tests/test_comparability.py` | `test_partial_new_evidence_filtering_keeps_valid_and_notes_rejected` | **Edge case** | Một cặp có 2 bằng chứng mới (`1` đạt, `1` lệch phạm vi): giữ nhãn `CẬP NHẬT` với id đạt và ghi `guard_notes` cho id bị loại. | **PASS** |
+| 26 | `tests/test_comparability.py` | `test_invariant_never_upgrades_status_or_adds_ids` | **Regression** | Tham số hóa 5 kịch bản (`KTĐ`, `KTT`, `XÁC NHẬN`, v.v.): `guard_comparison` không bao giờ nâng nhãn (`XN` không thành `CN`, `KTĐ` không đổi) và không bao giờ thêm id ngoài danh sách LLM trả. | **PASS (5/5)** |
+| 27 | `tests/test_comparability.py` | `test_conflict_different_period_downgraded` | **Edge case** | Nhãn `MÂU THUẪN` nhưng hai bên khác kỳ (`2024` ↔ `2025`): hạ xuống `KHÔNG TƯƠNG ĐƯƠNG`. | **PASS** |
+| 28 | `tests/test_comparability.py` | `test_confirm_same_period_keeps_status_and_adds_repeat_note` | **Edge case** | Nhãn `XÁC NHẬN` khi hai bên có số liệu cùng kỳ `Q1/2025`: giữ `XÁC NHẬN` và thêm ghi chú *"nhắc lại số liệu Q1/2025, không phải dữ liệu mới hơn"*. | **PASS** |
+| 29 | `tests/test_comparability.py` | `test_openrouter_model_override_and_default` | **Regression (L5)** | Mặc định OpenRouter khác `google/gemini-2.0-flash-exp:free` (`google/gemma-4-31b-it:free`); biến môi trường `OPENROUTER_MODEL` ghi đè đúng tên model gửi tới `_call_openai_compatible`. | **PASS** |
+| 30 | `tests/test_app_ui_m3.py` | `test_app_shows_recency_banner_tab_and_section_7` | **UI (AppTest)** | Giao diện Streamlit hiển thị banner độ mới, tab `"3. Độ mới & Ảnh hưởng (A2)"`, mục 7 trong Markdown, và giữ nguyên đúng 1 `st.title` + 4 `st.metric` (`TC1` đạt `100.0%`). | **PASS** |
 
 ---
 
-## M3.4. Đối chiếu định lượng Mission 2 ↔ Mission 3 (Bảng A, B, C)
+## M3.4. Đối chiếu định lượng Mission 2 ↔ Mission 3 (Bảng A, B, C, D)
 
-Dữ liệu dưới đây được trích xuất tự động bằng [`eval/compare_m2_m3.py`](eval/compare_m2_m3.py) từ [`eval/results/m2/`](eval/results/m2/) và [`eval/results/`](eval/results/) (lưu tại [`eval/results/m2_vs_m3.md`](eval/results/m2_vs_m3.md) và [`eval/results/m2_vs_m3.json`](eval/results/m2_vs_m3.json)):
+Dữ liệu dưới đây được trích xuất tự động bằng [`eval/compare_m2_m3.py`](eval/compare_m2_m3.py) từ [`eval/results/m2/`](eval/results/m2/), [`eval/results/m3_before_fix/`](eval/results/m3_before_fix/) và [`eval/results/`](eval/results/) (lưu tại [`eval/results/m2_vs_m3.md`](eval/results/m2_vs_m3.md) và [`eval/results/m2_vs_m3.json`](eval/results/m2_vs_m3.json)):
 
 ### Bảng A — Kiểm thử Hồi quy (`TC1`–`TC6`: Mission 2 so với Mission 3 tại `ref = 2026-10-15`)
 
@@ -106,12 +117,21 @@ Dữ liệu dưới đây được trích xuất tự động bằng [`eval/comp
 | **TC6** | **`VỪA PHẢI`** | `0` | **1/9** (`I8`) | **1** (`S7`) | `0` | `0` | Không → Không (đúng quy tắc) |
 | **Tổng (`TC1`–`TC6`)** | **4 `ĐÁNG KỂ` · 1 `VỪA PHẢI` · 1 `KHÔNG`** | **15 lượt nguồn then chốt** | **22/52 nhận định** (`42,3%`) | **14/72 nguồn** (tổng nguồn chỉ biết năm/không rõ ngày: **24/72** = `33,3%`) | **11/72 nguồn** (`15,3%`) | **1 nguồn** | **0/6 → 4/4 case `ĐÁNG KỂ`** |
 
-### Bảng C — Kết quả Vòng làm mới dữ liệu có mục tiêu (`TC7`, `TC10`)
+### Bảng C — Kết quả Vòng làm mới dữ liệu có mục tiêu sau chốt chặn đối chiếu (`TC7`, `TC10`)
 
-| Case | Ngày làm mới | Trạng thái | Nguồn mục tiêu | Truy vấn | Nguồn mới (Giữ / Loại) | Bằng chứng mới | Đối chiếu (`XÁC NHẬN` / `CẬP NHẬT` / `MÂU THUẪN` / `KHÔNG TĐ` / `KHÔNG TÌM THẤY`) | Nhận định đổi mức (Trước → Sau làm mới) |
-|---|---|---|---|---|---|---|---|---|
-| **TC7** *(Làm mới TC2)* | `2026-10-23` | **`ĐÃ LÀM MỚI`** | `S1, S5` | `6` | `6` giữ (`S13–S18`) / `18` loại | `12` (`E29–E40`) | `2` XN / `3` CN / `0` MT / `2` KTĐ / `0` KTT | `I2`: `TRUNG BÌNH` → `THẤP` *(có số liệu kỳ mới)*; `I5`: `THẤP` → **`TRUNG BÌNH`** *(được xác nhận bởi nguồn 2026)*; thêm `I11` (`TRUNG BÌNH`), `I12` (`THẤP`), `I13` (`TRUNG BÌNH`) |
-| **TC10** *(Câu hỏi mới CPI)* | `2026-10-23` | **`ĐÃ LÀM MỚI`** | `S1, S10` | `6` | `6` giữ (`S13–S18`) / `17` loại | `15` (`E23–E37`) | `4` XN / `2` CN / `0` MT / `1` KTĐ / `0` KTT | `I4`: `TRUNG BÌNH` → `THẤP` *(cập nhật tổng lượt tải cả năm 2025 so với Q1/2025)*; thêm `I10` (`TRUNG BÌNH`), `I11` (`TRUNG BÌNH`) |
+| Case | Ngày làm mới | Trạng thái | Nguồn mục tiêu | Truy vấn | Nguồn mới (Giữ / Loại) | Bằng chứng mới | Đối chiếu (`XÁC NHẬN` / `CẬP NHẬT` / `MÂU THUẪN` / `KHÔNG TĐ` / `KHÔNG TÌM THẤY`) | Cặp bị code hạ nhãn | Nhận định đổi mức (Trước → Sau làm mới) |
+|---|---|---|---|---|---|---|---|---|---|
+| **TC7** *(Làm mới TC2)* | `2026-10-23` | **`ĐÃ LÀM MỚI`** | `S1, S5` | `6` | `6` giữ (`S13–S18`) / `18` loại | `12` (`E29–E40`) | `2` XN / `0` CN / `0` MT / `5` KTĐ / `0` KTT | **3** (`E2→E29`; `E12→E34`; `E13→E31,E32,E40`) | `I5`: `THẤP` → **`TRUNG BÌNH`** (`I2` giữ `TRUNG BÌNH`, không bị hạ oan) |
+| **TC10** *(Câu hỏi mới CPI)* | `2026-10-23` | **`ĐÃ LÀM MỚI`** | `S1, S10` | `6` | `6` giữ (`S13–S18`) / `17` loại | `15` (`E23–E37`) | `4` XN / `0` CN / `0` MT / `3` KTĐ / `0` KTT | **2** (`E2→E23`; `E16→E23`) | Không đổi mức (`I4` giữ `TRUNG BÌNH`, không bị hạ oan) |
+
+### Bảng D — Trước/sau đợt sửa chốt chặn đối chiếu (`TC7`, `TC10`)
+
+*(Bản trước đợt sửa được lưu nguyên vẹn tại [`eval/results/m3_before_fix/`](eval/results/m3_before_fix/)).*
+
+| Case | Nhãn đối chiếu (Trước → Sau sửa) | Cặp bị code hạ nhãn | Số `ConflictItem` (Trước → Sau) | Số nhận định (Trước → Sau) | Thay đổi độ tin cậy (Trước → Sau sửa) |
+|---|---|---|---|---|---|
+| **TC7** | `2 XN / 3 CN / 0 MT / 2 KTĐ / 0 KTT` → **`2 XN / 0 CN / 0 MT / 5 KTĐ / 0 KTT`** | **3** (`E2→E29 (CẬP NHẬT→KHÔNG TƯƠNG ĐƯƠNG); E12→E34 (CẬP NHẬT→KHÔNG TƯƠNG ĐƯƠNG); E13→E31,E32,E40 (CẬP NHẬT→KHÔNG TƯƠNG ĐƯƠNG)`) | `4` → **`1`** | `13` → **`10`** | `I2: TRUNG BÌNH → THẤP; I5: THẤP → TRUNG BÌNH; I11: — → TRUNG BÌNH; I12: — → THẤP; I13: — → TRUNG BÌNH` → **`I5: THẤP → TRUNG BÌNH`** |
+| **TC10** | `4 XN / 2 CN / 0 MT / 1 KTĐ / 0 KTT` → **`4 XN / 0 CN / 0 MT / 3 KTĐ / 0 KTT`** | **2** (`E2→E23 (CẬP NHẬT→KHÔNG TƯƠNG ĐƯƠNG); E16→E23 (CẬP NHẬT→KHÔNG TƯƠNG ĐƯƠNG)`) | `2` → **`0`** | `11` → **`9`** | `I4: TRUNG BÌNH → THẤP; I10: — → TRUNG BÌNH; I11: — → TRUNG BÌNH` → **`0 thay đổi (Không đổi mức)`** |
 
 ---
 
@@ -122,15 +142,16 @@ Dữ liệu dưới đây được trích xuất tự động bằng [`eval/comp
 - **Kỳ vọng (ghi trước khi chạy trong [`eval/cases.yaml`](eval/cases.yaml)):** Phát hiện các nguồn then chốt cũ hơn 18 tháng (`S1`, `S5`, `S2`, `S3`, `S6`), định lượng ảnh hưởng từng nhận định (*"Nếu bỏ nguồn này"*, *"Nếu nguồn này còn mới"*), nối ghi chú `[Độ mới dữ liệu]` vào `short_answer`; sau đó chạy vòng làm mới thực tế (`refresh_old: true`, `refresh_reference_date: 2026-10-23`) để tìm dữ liệu 2025–2026 cho nguồn cũ nhất, đối chiếu với bằng chứng cũ và chấm lại độ tin cậy.
 - **Kết quả thực tế:**
   - **Trước làm mới (`eval/results/TC7_before_refresh.json`, `ref = 2026-10-15`):** Mức ảnh hưởng **`ĐÁNG KỂ`**; 8/10 nhận định thiếu bằng chứng mới ≤ 18 tháng; 5 nguồn then chốt cũ (`S1, S5, S2, S3, S6`), trong đó `S5` và `S6` (`appsflyer.com`) chỉ biết năm `2024` (tuổi `22–34 tháng`, trạng thái `CŨ`). Nếu bỏ `S5` thì `I5` mất căn cứ; nếu bỏ `S6` thì `I6` mất căn cứ.
-  - **Sau vòng làm mới (`eval/results/TC7.json`, `refresh_ref = 2026-10-23`):** Trạng thái **`ĐÃ LÀM MỚI`** (nhắm vào 2 nguồn then chốt đầu bảng `S1` và `S5`, chạy 6 truy vấn, thu thêm 6 nguồn mới `S13`–`S18` từ 2025–2026, xác minh thêm 12 trích dẫn nguyên văn `E29`–`E40`, nâng tổng số trích dẫn xác minh lên **`40/40 (100.0%)`**).
-  - Nhận định **`I5`** (tỷ lệ game di động dùng IAP theo AppsFlyer 2024) được bằng chứng mới năm 2026 xác nhận nên tăng độ tin cậy từ **`THẤP` → `TRUNG BÌNH`**. Nhận định **`I2`** (doanh thu IAP Q1/2025 đạt `625 triệu USD`) được đối chiếu với số liệu mới (`E29`: doanh thu IAP cả năm đạt `5,3 tỷ USD`), nên được gắn `ConflictItem` cũ ↔ mới, hạ `I2` từ `TRUNG BÌNH` → `THẤP` và bổ sung 3 nhận định mới `I11` (`TRUNG BÌNH`), `I12` (`THẤP`), `I13` (`TRUNG BÌNH`).
+  - **Sau vòng làm mới (`eval/results/TC7.json`, `refresh_ref = 2026-10-23`, phát lại từ cache các câu trả lời LLM của lần chạy thật ngày 23/10 rồi áp chốt chặn bằng code nên `refresh.llm_calls_count = 0`; bản trước đợt sửa lưu tại [`eval/results/m3_before_fix/TC7.md`](eval/results/m3_before_fix/TC7.md)):** Trạng thái **`ĐÃ LÀM MỚI`** (nhắm vào 2 nguồn then chốt đầu bảng `S1` và `S5`, chạy 6 truy vấn, thu thêm 6 nguồn mới `S13`–`S18` từ 2025–2026, xác minh thêm 12 trích dẫn nguyên văn `E29`–`E40`, nâng tổng số trích dẫn xác minh lên **`40/40 (100.0%)`**).
+  - Nhận định **`I5`** (xu hướng kết hợp IAP và quảng cáo theo AppsFlyer 2024 `[E11]`) được bằng chứng mới năm 2026 (`E31, E34, E40`) xác nhận nên tăng độ tin cậy từ **`THẤP` → `TRUNG BÌNH`**.
+  - Ở 3 cặp mà LLM từng gắn nhãn `CẬP NHẬT` (`E2 → E29`, `E12 → E34`, `E13 → E31,E32,E40`), chốt chặn bằng code (`research/comparability.py`) đã phát hiện không tương đương và hạ xuống **`KHÔNG TƯƠNG ĐƯƠNG`** (ví dụ `E29` từ `S13` *State of Mobile 2026* nói về `5,3 tỷ USD` doanh thu IAP của mọi ứng dụng di động cả năm và không rõ kỳ, không thể thay thế `625 triệu USD` doanh thu IAP riêng game di động trong `Q1/2025` ở `E2`). Nhờ đó, nhận định **`I2`** không bị gắn mâu thuẫn giả hay hạ oan từ `TRUNG BÌNH` xuống `THẤP`, vẫn giữ mức **`TRUNG BÌNH`** và được liệt kê trung thực trong nhóm `6/10 nhận định chưa có bằng chứng mới trong 18 tháng gần đây (I2, I3, I4, I6, I9, I10); 2 nhận định dựa một phần vào dữ liệu cũ`.
   - Trích output thực tế từ [`eval/results/TC7.md`](eval/results/TC7.md):
-    > **Ghi chú độ mới trong `short_answer`:** *"[Độ mới dữ liệu] 7/13 nhận định chính dựa hoàn toàn vào dữ liệu đã hơn 18 tháng hoặc chưa rõ tuổi (S1, S15, S2; 05/2025, kỳ số liệu Q1/2025); xem mục 7 để biết kết luận nào cần kiểm chứng lại."*
-    > **Mục 7.5 (Kết quả vòng làm mới):** *"Trạng thái: `ĐÃ LÀM MỚI` · Ngày tham chiếu làm mới: `2026-10-23` · Nguồn mục tiêu: `S1, S5` · Nguồn mới bổ sung: `S13, S14, S15, S16, S17, S18` · Số lệnh gọi LLM: `3`"*
-  - File kết quả: [`eval/results/TC7.md`](eval/results/TC7.md) · [`eval/results/TC7.json`](eval/results/TC7.json) · Bản trước làm mới: [`eval/results/TC7_before_refresh.md`](eval/results/TC7_before_refresh.md)
-- **So với Mission 2:** Ở Mission 2, `S5` và `S6` (`appsflyer.com`) bị hiển thị ngày đăng giả tạo là `2024-06` mà không cho biết đó chỉ là năm ước tính (`±6 tháng`), `S1` đăng `05/2025` được gắn nhãn `Mới (<=12 tháng)` dù trích số liệu `Q1/2025` (đã 18,5 tháng), và `short_answer` không hề cảnh báo người đọc rằng 8/10 nhận định dựa trên dữ liệu đã quá 18 tháng. Bản Mission 3 chỉ rõ từng nguồn then chốt cũ, tính bảng phản thực tế và tự động tìm được nguồn 2026 để nâng `I5` từ `THẤP` lên `TRUNG BÌNH` mà vẫn giữ nguyên các mã `S1`–`S12` và `E1`–`E28` cũ.
+    > **Ghi chú độ mới trong `short_answer`:** *"[Độ mới dữ liệu] Mức ảnh hưởng: ĐÁNG KỂ. 6/10 nhận định chưa có bằng chứng mới trong 18 tháng gần đây (I2, I3, I4, I6, I9, I10); 2 nhận định dựa một phần vào dữ liệu cũ. Nguồn cũ then chốt: S1 (cùng S5, S2) (sensortower.com, 05/2025, ~17 tháng, số liệu Q1/2025). Chi tiết ở mục 7."*
+    > **Mục 7.5 (Dòng đối chiếu `E2 ↔ E29`):** *"`E2` ↔ `E29` | Nhãn LLM: `CẬP NHẬT` | Kết quả sau kiểm tra code: `KHÔNG TƯƠNG ĐƯƠNG` | Lý do kiểm tra code: `E29: khác phạm vi (game ↔ không rõ là game); không xác định được kỳ số liệu (Q1/2025 ↔ ?)` | Giải thích của LLM: `(LLM, đã bị code bác bỏ) Bằng chứng mới [E29] cập nhật doanh thu IAP của Đông Nam Á lên 5,3 tỷ USD, tăng đáng kể so với 625 triệu USD trong [E2] (Q1/2025).`"*
+  - File kết quả: [`eval/results/TC7.md`](eval/results/TC7.md) · [`eval/results/TC7.json`](eval/results/TC7.json) · Bản trước làm mới: [`eval/results/TC7_before_refresh.md`](eval/results/TC7_before_refresh.md) · Bản trước đợt sửa: [`eval/results/m3_before_fix/TC7.md`](eval/results/m3_before_fix/TC7.md)
+- **So với Mission 2:** Ở Mission 2, `S5` và `S6` (`appsflyer.com`) bị hiển thị ngày đăng giả tạo là `2024-06` mà không cho biết đó chỉ là năm ước tính (`±6 tháng`), `S1` đăng `05/2025` được gắn nhãn `Mới (<=12 tháng)` dù trích số liệu `Q1/2025` (đã 18,5 tháng), và `short_answer` không cảnh báo người đọc rằng 8/10 nhận định dựa trên dữ liệu đã quá 18 tháng. Bản Mission 3 chỉ rõ từng nguồn then chốt cũ, tính bảng phản thực tế, tự động tìm được nguồn 2026 để nâng `I5` từ `THẤP` lên `TRUNG BÌNH`, và dùng chốt chặn code để ngăn LLM ghép nhầm số liệu IAP mọi ứng dụng cả năm với IAP game theo quý.
 - **Đạt/Chưa đạt:** **ĐẠT**
-- **Điều học được:** Khi có số liệu kỳ mới khác kỳ cũ (`E2` Q1/2025 `625 triệu USD` vs `E29` cả năm `5,3 tỷ USD`), việc không tự ý xóa số cũ mà tạo `ConflictItem` kèm nhận định mới `I11` giúp người làm sản phẩm thấy rõ sự thay đổi theo thời gian và không bị mất ngữ cảnh của báo cáo trước.
+- **Điều học được:** Không thể tin cậy nhãn `CẬP NHẬT` của LLM nếu không có lớp kiểm tra tương đương bằng code về phạm vi ngành (`game` vs `app_all`), thị trường, đơn vị và loại kỳ (`quarter` vs `year`); hiển thị đồng thời cả `Nhãn LLM` và `Kết quả sau kiểm tra code` giúp người dùng kiểm toán minh bạch từng quyết định bác bỏ của hệ thống.
 
 ---
 
@@ -173,13 +194,56 @@ Dữ liệu dưới đây được trích xuất tự động bằng [`eval/comp
 - **Kỳ vọng (ghi trước khi chạy trong [`eval/cases.yaml`](eval/cases.yaml)):** Chứng minh lớp phân tích độ mới và vòng làm mới hoạt động tổng quát trên một câu hỏi hoàn toàn mới ngoài 6 câu của Mission 2: không bịa con số CPI; số liệu cũ > 18 tháng không được trình bày như số hiện tại ở mức `CAO`; trạng thái ghi chú độ mới nhất quán với `impact_level`; vòng làm mới chạy thật và báo cáo trung thực kết quả.
 - **Kết quả thực tế:**
   - **Trước làm mới (`eval/results/TC10_before_refresh.json`, `ref = 2026-10-23`):** Thu thập **12 nguồn**, xác minh **`22/22 (100.0%)`** trích dẫn nguyên văn, tạo **9 nhận định** (`0 CAO`, `6 TRUNG BÌNH`, `3 THẤP`). Hệ thống không bịa CPI riêng của Đông Nam Á khi nguồn mở chỉ có dải CPI toàn cầu (`0.30–6.00 USD` trên Android, `0.50–12.00 USD` trên iOS từ `businessofapps.com` `[E15]`, hoặc `2.18 USD` trên iOS tháng 02/2025 từ `statista.com` `[E4]`) và dữ liệu benchmark của AppsFlyer năm 2024 (`S5`, số liệu năm `2023`). Mức ảnh hưởng độ mới: **`ĐÁNG KỂ`**; nguồn then chốt cũ: `S1` (`sensortower.com`, kỳ `Q1/2025`), `S2` (`statista.com`), `S9` (`icon-era.com`, kỳ `Q1/2025`).
-  - **Sau vòng làm mới (`eval/results/TC10.json`, `refresh_ref = 2026-10-23`):** Trạng thái **`ĐÃ LÀM MỚI`** (nhắm vào `S1` và `S10`, thực thi 6 truy vấn, thu thêm 6 nguồn mới `S13`–`S18` và **15 trích dẫn nguyên văn mới `E23`–`E37`**, nâng tổng trích dẫn xác minh lên **`37/37 (100.0%)`** và **11 nhận định**). Đối chiếu tìm thấy 4 bằng chứng `XÁC NHẬN`, 2 bằng chứng `CẬP NHẬT` (cập nhật tổng lượt tải cả năm 2025 đạt `18,1 tỷ` so với `1,93 tỷ` trong Q1/2025, làm `I4` chuyển từ `TRUNG BÌNH` → `THẤP` và thêm `I10, I11` đạt `TRUNG BÌNH`).
+  - **Sau vòng làm mới (`eval/results/TC10.json`, `refresh_ref = 2026-10-23`, phát lại từ cache các câu trả lời LLM của lần chạy thật ngày 23/10 rồi áp chốt chặn bằng code nên `refresh.llm_calls_count = 0`; bản trước đợt sửa lưu tại [`eval/results/m3_before_fix/TC10.md`](eval/results/m3_before_fix/TC10.md)):** Trạng thái **`ĐÃ LÀM MỚI`** (nhắm vào `S1` và `S10`, thực thi 6 truy vấn, thu thêm 6 nguồn mới `S13`–`S18` và **15 trích dẫn nguyên văn mới `E23`–`E37`**, nâng tổng trích dẫn xác minh lên **`37/37 (100.0%)`** và giữ **9 nhận định**).
+  - Chốt chặn bằng code (`research/comparability.py`) đã hạ 2 cặp `E2 → E23` và `E16 → E23` từ `CẬP NHẬT` xuống **`KHÔNG TƯƠNG ĐƯƠNG`** vì `E23` (`18,1 tỷ` lượt tải của mọi ứng dụng cả năm `2025`) khác phạm vi (`game` ↔ `không rõ là game`) và khác loại kỳ (`Q1/2025` ↔ `2025`) so với `E2, E16` (`1,93 tỷ` lượt tải game trong `Q1/2025`); nhờ đó `I4` giữ nguyên mức **`TRUNG BÌNH`** (không bị hạ oan xuống `THẤP`) và không sinh thêm `I10, I11` trùng lặp. Đồng thời, 4 cặp `XÁC NHẬN` được giữ nguyên (trong đó `E3 → E31` và `E17 → E31` được gắn ghi chú `E31: nhắc lại số liệu Q1/2025, không phải dữ liệu mới hơn`).
   - Trích output thực tế từ [`eval/results/TC10.md`](eval/results/TC10.md):
-    > **Trả lời ngắn:** *"Chi phí cài đặt (CPI) trung bình cho game mobile tại Đông Nam Á có sự biến động đáng kể tùy thuộc vào nền tảng và thể loại game. Vào năm 2025, CPI toàn cầu dao động từ 0.30-6.00 USD trên Android và 0.50-12.00 USD trên iOS... [Độ mới dữ liệu] 2/11 nhận định chính dựa hoàn toàn vào dữ liệu đã hơn 18 tháng hoặc chưa rõ tuổi (S1, S10, S2; 05/2025, kỳ số liệu Q1/2025); xem mục 7 để biết kết luận nào cần kiểm chứng lại."*
-  - File kết quả: [`eval/results/TC10.md`](eval/results/TC10.md) · [`eval/results/TC10.json`](eval/results/TC10.json) · Bản trước làm mới: [`eval/results/TC10_before_refresh.md`](eval/results/TC10_before_refresh.md)
-- **So với Mission 2:** Câu hỏi mới hoàn toàn không nằm trong bộ `TC1`–`TC6` của Mission 2, nhưng toàn bộ quy tắc phát hiện kỳ số liệu (`02/2025`, `Q1/2025`, `2023`), xác định nguồn then chốt cũ và vòng làm mới tự động đều vận hành trơn tru mà không cần bất kỳ dòng code xử lý riêng nào cho chủ đề CPI.
+    > **Trả lời ngắn:** *"Chi phí cài đặt (CPI) trung bình cho game mobile tại Đông Nam Á có sự biến động đáng kể tùy thuộc vào nền tảng và thể loại game. Vào năm 2025, CPI toàn cầu dao động từ 0.30-6.00 USD trên Android và 0.50-12.00 USD trên iOS... [Độ mới dữ liệu] Mức ảnh hưởng: ĐÁNG KỂ. 2/9 nhận định chưa có bằng chứng mới trong 18 tháng gần đây (I4, I5); 4 nhận định dựa một phần vào dữ liệu cũ. Nguồn cũ then chốt: S1 (cùng S10, S2) (sensortower.com, 05/2025, ~17 tháng, số liệu Q1/2025). Chi tiết ở mục 7."*
+  - File kết quả: [`eval/results/TC10.md`](eval/results/TC10.md) · [`eval/results/TC10.json`](eval/results/TC10.json) · Bản trước làm mới: [`eval/results/TC10_before_refresh.md`](eval/results/TC10_before_refresh.md) · Bản trước đợt sửa: [`eval/results/m3_before_fix/TC10.md`](eval/results/m3_before_fix/TC10.md)
+- **So với Mission 2:** Câu hỏi mới ngoài bộ `TC1`–`TC6` của Mission 2, nhưng toàn bộ quy tắc phát hiện kỳ số liệu (`02/2025`, `Q1/2025`, `2023`), xác định nguồn then chốt cũ, vòng làm mới tự động và chốt chặn đối chiếu `comparability.py` đều vận hành trơn tru mà không cần bất kỳ dòng code xử lý riêng nào cho chủ đề CPI.
 - **Đạt/Chưa đạt:** **ĐẠT**
-- **Điều học được:** Với các chỉ số vận hành quảng cáo (UA/CPI), các báo cáo tổng hợp trên web mở thường trộn lẫn benchmark toàn cầu của năm 2023–2024 với nhận định xu hướng năm 2025–2026; lớp kiểm tra kỳ số liệu (`data_period`) giúp tách bạch rõ con số nào thuộc năm 2023 (`S5` AppsFlyer) và con số nào thuộc năm 2025 (`S2` Statista, `S8` Business of Apps).
+- **Điều học được:** Nguồn web mở mới xuất bản (như `S16` `trycatch.gg` năm 2026) thường nhắc lại nguyên văn con số của quý cũ (`1,93 tỷ` lượt tải `Q1/2025`); việc phát hiện `XÁC NHẬN cùng kỳ` giúp ghi chú rõ đây là bài mới xác nhận lại số liệu kỳ cũ chứ không phải dữ liệu của kỳ mới hơn.
+
+---
+
+## M3.6. Đợt sửa trước khi nộp (23–24/10/2026) — Chốt chặn đối chiếu bằng code (`research/comparability.py`)
+
+### 1. Cách phát hiện & 5 lỗi tìm thấy khi tự soát trước khi nộp (`L1`–`L5`)
+Khi tự rà soát lại toàn bộ output của vòng làm mới (`TC7` và `TC10`) trước khi nộp bài, tôi phát hiện bước đối chiếu bằng chứng cũ ↔ mới đang tin hoàn toàn vào nhãn `CẬP NHẬT` do LLM trả về, dẫn tới 5 lỗi cụ thể (snapshot trước khi sửa được lưu tại [`eval/results/m3_before_fix/`](eval/results/m3_before_fix/)):
+- **Lỗi `L1` (LLM gắn `CẬP NHẬT` cho các cặp không tương đương về phạm vi/loại kỳ/đơn vị):**
+  - Ở `TC7` (`E2 → E29`): `E2` (`S1`, *Southeast Asia Mobile Gaming Q1 2025*) nêu doanh thu IAP **game di động** Đông Nam Á quý 1/2025 đạt `625 triệu USD`, trong khi `E29` (`S13`, *State of Mobile 2026*) nêu doanh thu IAP **mọi ứng dụng di động** cả năm đạt `5,3 tỷ USD` và câu trích dẫn không ghi kỳ. LLM gắn nhầm `CẬP NHẬT`, khiến code tạo `ConflictItem`, hạ oan `I2` từ `TRUNG BÌNH` xuống `THẤP` và thêm nhận định lệch phạm vi `I11`.
+  - Ở `TC7` (`E12 → E34`, `E13 → E31,E32,E40`): `E12` có con số tăng trưởng năm 2023 (`+10% IAA`, `+4% IAP`) còn `E34` chỉ là câu khuyến nghị định tính không có số liệu; `E13` có số liệu `Q2/2024` còn `E32` là số liệu năm `2022` (cũ hơn).
+  - Ở `TC10` (`E2 → E23`, `E16 → E23`): `E2, E16` là lượt tải **game di động** Đông Nam Á quý 1/2025 (`1,93 tỷ`), còn `E23` (`S13`, *State of Mobile 2026*) là lượt tải **mọi ứng dụng di động** cả năm 2025 (`18,1 tỷ`). LLM gắn nhầm `CẬP NHẬT`, hạ oan `I4` từ `TRUNG BÌNH` xuống `THẤP`.
+- **Lỗi `L2` (Nhân bản nhận định mới khi nhiều bằng chứng cũ trỏ vào cùng một bằng chứng mới):** Ở `TC10` trước sửa (`eval/results/m3_before_fix/TC10.json`), hai bằng chứng cũ `E2` và `E16` cùng trỏ tới `E23` khiến vòng lặp tạo ra hai nhận định mới `I10` và `I11` giống hệt nhau từng chữ.
+- **Lỗi `L3` (Cắt chủ đề `ConflictItem` theo ký tự `[:80]` làm đứt giữa từ):** Ở `TC7` trước sửa (`eval/results/m3_before_fix/TC7.md`), `oev.claim[:80]` cắt câu tại ký tự thứ 80 tạo ra cụm bị cụt `"Trong quý 1 năm 2 ("` ngay trong `short_answer`.
+- **Lỗi `L4` (`TC10` có `E3 → E31`, `E17 → E31` là bài năm 2026 nhắc lại đúng con số `1,93 tỷ` của `Q1/2025`):** Cần giữ `XÁC NHẬN` nhưng phải có ghi chú rõ *"nhắc lại số liệu Q1/2025, không phải dữ liệu mới hơn"*.
+- **Lỗi `L5` (Model dự phòng OpenRouter):** Mặc định cũ `google/gemini-2.0-flash-exp:free` trong `research/llm.py` đã bị gỡ khỏi danh mục model free của OpenRouter.
+
+### 2. Cách sửa (Không đổi prompt để bảo toàn 100% khả năng phát lại từ cache)
+1. **Viết module [`research/comparability.py`](research/comparability.py):** Kiểm tra tương đương bằng code tất định theo 4 nhóm quy tắc **P** (*Phạm vi game*: `game` / `app_all` / `non_game` / `ambiguous`), **T** (*Thị trường*: các quốc gia ĐNÁ, `sea`, `global`), **Đ** (*Số liệu & Đơn vị*: `money_usd`, `count`, `percent`, `duration`), **K** (*Kỳ số liệu*: `quarter`, `half`, `month`, `year` và thứ tự thời gian `new_end > old_end`). Hàm `guard_comparison` **chỉ được phép hạ nhãn** từ `CẬP NHẬT` / `MÂU THUẪN` / `XÁC NHẬN` xuống `KHÔNG TƯƠNG ĐƯƠNG` (không bao giờ nâng nhãn hay thêm `evidence_id`), đồng thời lưu nhãn gốc vào `llm_status` và lý do vào `guard_notes`.
+2. **Cập nhật [`research/refresh.py`](research/refresh.py) (giữ nguyên 100% 4 chuỗi prompt):** Gọi `guard_comparison` ngay sau khi nhận kết quả đối chiếu từ LLM; khử trùng nhận định mới theo `(tuple(sorted(new_evidence_ids)), claim_norm)`; cắt chủ đề `ConflictItem` theo từ (`_truncate_words(oev.claim, 16)`); ghi vào `report.gaps` và `recommendation` khi có cặp bị code hạ nhãn.
+3. **Hiển thị minh bạch trên [`app.py`](app.py) và [`research/pipeline.py`](research/pipeline.py):** Bảng đối chiếu ở mục 7.5 hiển thị 6 cột (`Bằng chứng cũ`, `Bằng chứng mới`, `Nhãn LLM`, `Kết quả sau kiểm tra code`, `Lý do kiểm tra code`, `Giải thích của LLM` có tiền tố `(LLM, đã bị code bác bỏ)` khi bị hạ nhãn) và ghi chú `(phát lại từ cache của lần chạy thật, 0 lệnh gọi LLM mới)`.
+4. **Cập nhật [`research/llm.py`](research/llm.py) và [`.env.example`](.env.example):** Đổi model dự phòng mặc định của OpenRouter sang `google/gemma-4-31b-it:free` (xác nhận tồn tại và hỗ trợ `response_format` trên danh mục `GET https://openrouter.ai/api/v1/models` ngày 23/10/2026) và cho phép ghi đè qua biến môi trường `OPENROUTER_MODEL`.
+
+### 3. Output Cổng kiểm 5.3 (Chạy lại toàn bộ `eval.run_eval` có chặn mạng & chặn LLM thật)
+Toàn bộ `TC1`–`TC10` được chạy lại qua script chặn `socket.socket.connect` và `LLMClient._raw_completion`. Kết quả so sánh với bản trước khi sửa (bỏ qua các trường timestamp/duration):
+```text
+TC1_offline_replay: exact_match=True | trace.llm_calls_count=0 | refresh.llm_calls_count=None
+TC2_offline_replay: exact_match=True | trace.llm_calls_count=0 | refresh.llm_calls_count=None
+TC3_offline_replay: exact_match=True | trace.llm_calls_count=0 | refresh.llm_calls_count=None
+TC4_offline_replay: exact_match=True | trace.llm_calls_count=0 | refresh.llm_calls_count=None
+TC5_offline_replay: exact_match=True | trace.llm_calls_count=0 | refresh.llm_calls_count=None
+TC6_offline_replay: exact_match=True | trace.llm_calls_count=0 | refresh.llm_calls_count=None
+TC7_before_refresh: exact_match=True | trace.llm_calls_count=0 | refresh.llm_calls_count=None
+TC7_refresh_casual_monetization: exact_match=False | trace.llm_calls_count=0 | refresh.llm_calls_count=0
+  TC7 diffs: cmp_counts={'XÁC NHẬN': 2, 'CẬP NHẬT': 0, 'MÂU THUẪN': 0, 'KHÔNG TƯƠNG ĐƯƠNG': 5}, conflicts=1, insights=10, conf_changes=['I5: THẤP->TRUNG BÌNH']
+TC8_edge_no_dates: exact_match=True | trace.llm_calls_count=0 | refresh.llm_calls_count=0
+TC9_edge_all_fresh: exact_match=True | trace.llm_calls_count=0 | refresh.llm_calls_count=0
+TC10_before_refresh: exact_match=True | trace.llm_calls_count=0 | refresh.llm_calls_count=None
+TC10_refresh_sea_genres: exact_match=False | trace.llm_calls_count=0 | refresh.llm_calls_count=0
+  TC10 diffs: cmp_counts={'XÁC NHẬN': 4, 'CẬP NHẬT': 0, 'MÂU THUẪN': 0, 'KHÔNG TƯƠNG ĐƯƠNG': 3}, conflicts=0, insights=9, conf_changes=[]
+  TC10 refresh.llm_calls_count: before=3 -> after=0
+```
+*(Ghi chú: Ở `TC7` và `TC10`, kết quả sau sửa được phát lại từ cache các câu trả lời LLM của lần chạy thật ngày 23/10 rồi áp chốt chặn bằng code `comparability.py`, nên `refresh.llm_calls_count = 0`).*
 
 ---
 
