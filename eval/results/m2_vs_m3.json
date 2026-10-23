@@ -369,17 +369,19 @@
       "new_verified_evidences_count": 12,
       "comparison_counts": {
         "XÁC NHẬN": 2,
-        "CẬP NHẬT": 3,
+        "CẬP NHẬT": 0,
         "MÂU THUẪN": 0,
-        "KHÔNG TƯƠNG ĐƯƠNG": 2,
+        "KHÔNG TƯƠNG ĐƯƠNG": 5,
         "KHÔNG TÌM THẤY DỮ LIỆU MỚI": 0
       },
+      "downgraded_pairs_count": 3,
+      "downgraded_pairs": [
+        "E2→E29 (CẬP NHẬT→KHÔNG TƯƠNG ĐƯƠNG)",
+        "E12→E34 (CẬP NHẬT→KHÔNG TƯƠNG ĐƯƠNG)",
+        "E13→E31,E32,E40 (CẬP NHẬT→KHÔNG TƯƠNG ĐƯƠNG)"
+      ],
       "confidence_changes": [
-        "I2: TRUNG BÌNH → THẤP",
-        "I5: THẤP → TRUNG BÌNH",
-        "I11: — → TRUNG BÌNH",
-        "I12: — → THẤP",
-        "I13: — → TRUNG BÌNH"
+        "I5: THẤP → TRUNG BÌNH"
       ],
       "llm_calls_count": 0,
       "duration_seconds": 0.03
@@ -414,18 +416,90 @@
       "new_verified_evidences_count": 15,
       "comparison_counts": {
         "XÁC NHẬN": 4,
+        "CẬP NHẬT": 0,
+        "MÂU THUẪN": 0,
+        "KHÔNG TƯƠNG ĐƯƠNG": 3,
+        "KHÔNG TÌM THẤY DỮ LIỆU MỚI": 0
+      },
+      "downgraded_pairs_count": 2,
+      "downgraded_pairs": [
+        "E2→E23 (CẬP NHẬT→KHÔNG TƯƠNG ĐƯƠNG)",
+        "E16→E23 (CẬP NHẬT→KHÔNG TƯƠNG ĐƯƠNG)"
+      ],
+      "confidence_changes": [],
+      "llm_calls_count": 0,
+      "duration_seconds": 0.03
+    }
+  ],
+  "table_d_before_after_fix": [
+    {
+      "case": "TC7",
+      "before_comparison_counts": {
+        "XÁC NHẬN": 2,
+        "CẬP NHẬT": 3,
+        "MÂU THUẪN": 0,
+        "KHÔNG TƯƠNG ĐƯƠNG": 2,
+        "KHÔNG TÌM THẤY DỮ LIỆU MỚI": 0
+      },
+      "after_comparison_counts": {
+        "XÁC NHẬN": 2,
+        "CẬP NHẬT": 0,
+        "MÂU THUẪN": 0,
+        "KHÔNG TƯƠNG ĐƯƠNG": 5,
+        "KHÔNG TÌM THẤY DỮ LIỆU MỚI": 0
+      },
+      "downgraded_pairs_count": 3,
+      "downgraded_pairs": [
+        "E2→E29 (CẬP NHẬT→KHÔNG TƯƠNG ĐƯƠNG)",
+        "E12→E34 (CẬP NHẬT→KHÔNG TƯƠNG ĐƯƠNG)",
+        "E13→E31,E32,E40 (CẬP NHẬT→KHÔNG TƯƠNG ĐƯƠNG)"
+      ],
+      "before_conflicts_count": 4,
+      "after_conflicts_count": 1,
+      "before_insights_count": 13,
+      "after_insights_count": 10,
+      "before_confidence_changes": [
+        "I2: TRUNG BÌNH → THẤP",
+        "I5: THẤP → TRUNG BÌNH",
+        "I11: — → TRUNG BÌNH",
+        "I12: — → THẤP",
+        "I13: — → TRUNG BÌNH"
+      ],
+      "after_confidence_changes": [
+        "I5: THẤP → TRUNG BÌNH"
+      ]
+    },
+    {
+      "case": "TC10",
+      "before_comparison_counts": {
+        "XÁC NHẬN": 4,
         "CẬP NHẬT": 2,
         "MÂU THUẪN": 0,
         "KHÔNG TƯƠNG ĐƯƠNG": 1,
         "KHÔNG TÌM THẤY DỮ LIỆU MỚI": 0
       },
-      "confidence_changes": [
+      "after_comparison_counts": {
+        "XÁC NHẬN": 4,
+        "CẬP NHẬT": 0,
+        "MÂU THUẪN": 0,
+        "KHÔNG TƯƠNG ĐƯƠNG": 3,
+        "KHÔNG TÌM THẤY DỮ LIỆU MỚI": 0
+      },
+      "downgraded_pairs_count": 2,
+      "downgraded_pairs": [
+        "E2→E23 (CẬP NHẬT→KHÔNG TƯƠNG ĐƯƠNG)",
+        "E16→E23 (CẬP NHẬT→KHÔNG TƯƠNG ĐƯƠNG)"
+      ],
+      "before_conflicts_count": 2,
+      "after_conflicts_count": 0,
+      "before_insights_count": 11,
+      "after_insights_count": 9,
+      "before_confidence_changes": [
         "I4: TRUNG BÌNH → THẤP",
         "I10: — → TRUNG BÌNH",
         "I11: — → TRUNG BÌNH"
       ],
-      "llm_calls_count": 3,
-      "duration_seconds": 81.87
+      "after_confidence_changes": []
     }
   ]
 }

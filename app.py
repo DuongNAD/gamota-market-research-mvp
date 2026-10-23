@@ -753,9 +753,14 @@ def _render_recency_tab(
 
     if active_report.refresh is not None:
         rf = active_report.refresh
+        llm_info_str = (
+            f"`{rf.duration_seconds}s` (phát lại từ cache của lần chạy thật, 0 lệnh gọi LLM mới)"
+            if rf.llm_calls_count == 0 and rf.status != "KHÔNG CẦN LÀM MỚI"
+            else f"`{rf.duration_seconds}s` ({rf.llm_calls_count} LLM calls)"
+        )
         st.success(
             f"**Đã thực thi vòng làm mới** · Trạng thái: **`{rf.status}`** · "
-            f"Ngày tham chiếu: `{rf.reference_date}` · Thời gian: `{rf.duration_seconds}s` ({rf.llm_calls_count} LLM calls) · "
+            f"Ngày tham chiếu: `{rf.reference_date}` · Thời gian: {llm_info_str} · "
             f"Nguồn mục tiêu: `{', '.join(rf.target_source_ids) or '—'}` · "
             f"Nguồn mới bổ sung: `{', '.join(rf.new_source_ids) or 'Không có'}`"
         )
@@ -772,16 +777,34 @@ def _render_recency_tab(
 
         if rf.comparisons:
             st.markdown("**Bảng đối chiếu bằng chứng cũ ↔ bằng chứng mới:**")
-            cmp_rows = [
-                {
-                    "Bằng chứng cũ": c.old_evidence_id,
-                    "Bằng chứng mới": ", ".join(c.new_evidence_ids) or "—",
-                    "Kết quả đối chiếu": c.status,
-                    "Giải thích": c.explanation,
-                }
-                for c in rf.comparisons
-            ]
-            st.dataframe(cmp_rows, use_container_width=True, hide_index=True)
+            cmp_rows = []
+            for c in rf.comparisons:
+                llm_lbl = c.llm_status or c.status
+                downgraded = (
+                    llm_lbl in ("XÁC NHẬN", "CẬP NHẬT", "MÂU THUẪN")
+                    and c.status == "KHÔNG TƯƠNG ĐƯƠNG"
+                )
+                guard_str = "; ".join(c.guard_notes) if c.guard_notes else "—"
+                expl_str = (
+                    f"(LLM, đã bị code bác bỏ) {c.explanation}"
+                    if downgraded
+                    else c.explanation
+                )
+                cmp_rows.append(
+                    {
+                        "Bằng chứng cũ": c.old_evidence_id,
+                        "Bằng chứng mới": ", ".join(c.new_evidence_ids) or "—",
+                        "Nhãn LLM": llm_lbl,
+                        "Kết quả sau kiểm tra code": c.status,
+                        "Lý do kiểm tra code": guard_str,
+                        "Giải thích của LLM": expl_str,
+                    }
+                )
+            st.table(cmp_rows)
+            st.caption(
+                "Chú thích: Code chỉ được phép hạ nhãn xuống KHÔNG TƯƠNG ĐƯƠNG (không bao giờ nâng nhãn hay thêm mã bằng chứng) "
+                "theo 4 nhóm quy tắc: P (phạm vi game), T (thị trường), Đ (số liệu & đơn vị), K (kỳ số liệu)."
+            )
 
         if rf.confidence_changes:
             st.markdown(

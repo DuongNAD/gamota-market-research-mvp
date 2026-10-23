@@ -560,22 +560,43 @@ def render_report_markdown(report: Report) -> str:
             )
         else:
             rf = report.refresh
+            llm_call_note = (
+                f"`{rf.llm_calls_count}` ({rf.duration_seconds}s · phát lại từ cache của lần chạy thật, 0 lệnh gọi LLM mới)"
+                if rf.llm_calls_count == 0 and rf.status != "KHÔNG CẦN LÀM MỚI"
+                else f"`{rf.llm_calls_count}` ({rf.duration_seconds}s)"
+            )
             lines.append(
                 f"- **Trạng thái:** `{rf.status}` · **Ngày tham chiếu làm mới:** `{rf.reference_date}` · "
                 f"**Nguồn mục tiêu:** `{', '.join(rf.target_source_ids) or '—'}` · "
                 f"**Nguồn mới bổ sung:** `{', '.join(rf.new_source_ids) or '0'}` · "
-                f"**Số lệnh gọi LLM:** `{rf.llm_calls_count}` ({rf.duration_seconds}s)"
+                f"**Số lệnh gọi LLM:** {llm_call_note}"
             )
             if rf.note:
                 lines.append(f"- **Ghi chú:** {_esc_md(rf.note, False)}")
             if rf.comparisons:
-                lines.append("\n| Bằng chứng cũ | Bằng chứng mới | Kết quả đối chiếu | Giải thích (kỳ cũ vs kỳ mới) |")
-                lines.append("|---|---|---|---|")
+                lines.append(
+                    "\n| Bằng chứng cũ | Bằng chứng mới | Nhãn LLM | Kết quả sau kiểm tra code | Lý do kiểm tra code | Giải thích của LLM |"
+                )
+                lines.append("|---|---|---|---|---|---|")
                 for cmp in rf.comparisons:
                     new_eids = ", ".join(f"`{e}`" for e in cmp.new_evidence_ids) if cmp.new_evidence_ids else "—"
-                    lines.append(
-                        f"| `{cmp.old_evidence_id}` | {new_eids} | **{cmp.status}** | {_esc_md(cmp.explanation)} |"
+                    llm_lbl = cmp.llm_status or cmp.status
+                    downgraded = (
+                        llm_lbl in ("XÁC NHẬN", "CẬP NHẬT", "MÂU THUẪN")
+                        and cmp.status == "KHÔNG TƯƠNG ĐƯƠNG"
                     )
+                    guard_str = "; ".join(cmp.guard_notes) if cmp.guard_notes else "—"
+                    expl_str = (
+                        f"(LLM, đã bị code bác bỏ) {cmp.explanation}"
+                        if downgraded
+                        else cmp.explanation
+                    )
+                    lines.append(
+                        f"| `{cmp.old_evidence_id}` | {new_eids} | `{llm_lbl}` | **{cmp.status}** | {_esc_md(guard_str)} | {_esc_md(expl_str)} |"
+                    )
+                lines.append(
+                    "\n*Chú thích: Code chỉ được phép hạ nhãn xuống `KHÔNG TƯƠNG ĐƯƠNG` (không bao giờ nâng nhãn hay thêm mã bằng chứng) theo 4 nhóm quy tắc: **P** (phạm vi game), **T** (thị trường), **Đ** (số liệu & đơn vị), **K** (kỳ số liệu).*"
+                )
             if rf.confidence_changes:
                 lines.append("\n| Nhận định | Trước làm mới | Sau làm mới | Lý do thay đổi |")
                 lines.append("|---|---|---|---|")

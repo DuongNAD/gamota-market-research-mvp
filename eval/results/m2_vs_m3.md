@@ -24,7 +24,13 @@
 | **Tổng (TC1–TC6)** | **4 ĐÁNG KỂ · 1 VỪA PHẢI · 1 KHÔNG** | **15 lượt nguồn then chốt** | **22/52 nhận định** | **14/72 nguồn** (tổng nguồn chỉ biết năm/không rõ ngày: **24/72**) | **11 nguồn** | **1 nguồn** | **0/6 → 4/4 case ĐÁNG KỂ** |
 
 ## Bảng C — Kết quả Vòng làm mới dữ liệu có mục tiêu (`TC7`, `TC10`)
-| Case | Ngày làm mới | Trạng thái | Nguồn mục tiêu | Truy vấn | Nguồn mới (Giữ / Loại) | Bằng chứng mới | Đối chiếu (XÁC NHẬN / CẬP NHẬT / MÂU THUẪN / KHÔNG TĐ / KHÔNG TÌM THẤY) | Nhận định đổi mức (Trước → Sau làm mới) |
-|---|---|---|---|---|---|---|---|---|
-| **TC7** | `2026-10-23` | **`ĐÃ LÀM MỚI`** | `S1, S5` | `6` | `6` giữ (`S13, S14, S15, S16, S17, S18`) / `18` loại | `12` | 2 XN / 3 CN / 0 MT / 2 KTĐ / 0 KTT | I2: TRUNG BÌNH → THẤP; I5: THẤP → TRUNG BÌNH; I11: — → TRUNG BÌNH; I12: — → THẤP; I13: — → TRUNG BÌNH |
-| **TC10** | `2026-10-23` | **`ĐÃ LÀM MỚI`** | `S1, S10` | `6` | `6` giữ (`S13, S14, S15, S16, S17, S18`) / `17` loại | `15` | 4 XN / 2 CN / 0 MT / 1 KTĐ / 0 KTT | I4: TRUNG BÌNH → THẤP; I10: — → TRUNG BÌNH; I11: — → TRUNG BÌNH |
+| Case | Ngày làm mới | Trạng thái | Nguồn mục tiêu | Truy vấn | Nguồn mới (Giữ / Loại) | Bằng chứng mới | Đối chiếu (XÁC NHẬN / CẬP NHẬT / MÂU THUẪN / KHÔNG TĐ / KHÔNG TÌM THẤY) | Cặp bị code hạ nhãn | Nhận định đổi mức (Trước → Sau làm mới) |
+|---|---|---|---|---|---|---|---|---|---|
+| **TC7** | `2026-10-23` | **`ĐÃ LÀM MỚI`** | `S1, S5` | `6` | `6` giữ (`S13, S14, S15, S16, S17, S18`) / `18` loại | `12` | 2 XN / 0 CN / 0 MT / 5 KTĐ / 0 KTT | **3** (E2→E29 (CẬP NHẬT→KHÔNG TƯƠNG ĐƯƠNG); E12→E34 (CẬP NHẬT→KHÔNG TƯƠNG ĐƯƠNG); E13→E31,E32,E40 (CẬP NHẬT→KHÔNG TƯƠNG ĐƯƠNG)) | I5: THẤP → TRUNG BÌNH |
+| **TC10** | `2026-10-23` | **`ĐÃ LÀM MỚI`** | `S1, S10` | `6` | `6` giữ (`S13, S14, S15, S16, S17, S18`) / `17` loại | `15` | 4 XN / 0 CN / 0 MT / 3 KTĐ / 0 KTT | **2** (E2→E23 (CẬP NHẬT→KHÔNG TƯƠNG ĐƯƠNG); E16→E23 (CẬP NHẬT→KHÔNG TƯƠNG ĐƯƠNG)) | Không đổi mức |
+
+## Bảng D — Trước/sau đợt sửa chốt chặn đối chiếu (`TC7`, `TC10`)
+| Case | Nhãn đối chiếu (Trước → Sau sửa) | Cặp bị code hạ nhãn | Số `ConflictItem` (Trước → Sau) | Số nhận định (Trước → Sau) | Thay đổi độ tin cậy (Trước → Sau sửa) |
+|---|---|---|---|---|---|
+| **TC7** | `2 XN / 3 CN / 0 MT / 2 KTĐ / 0 KTT` → **`2 XN / 0 CN / 0 MT / 5 KTĐ / 0 KTT`** | **3** (`E2→E29 (CẬP NHẬT→KHÔNG TƯƠNG ĐƯƠNG); E12→E34 (CẬP NHẬT→KHÔNG TƯƠNG ĐƯƠNG); E13→E31,E32,E40 (CẬP NHẬT→KHÔNG TƯƠNG ĐƯƠNG)`) | `4` → **`1`** | `13` → **`10`** | `I2: TRUNG BÌNH → THẤP; I5: THẤP → TRUNG BÌNH; I11: — → TRUNG BÌNH; I12: — → THẤP; I13: — → TRUNG BÌNH` → **`I5: THẤP → TRUNG BÌNH`** |
+| **TC10** | `4 XN / 2 CN / 0 MT / 1 KTĐ / 0 KTT` → **`4 XN / 0 CN / 0 MT / 3 KTĐ / 0 KTT`** | **2** (`E2→E23 (CẬP NHẬT→KHÔNG TƯƠNG ĐƯƠNG); E16→E23 (CẬP NHẬT→KHÔNG TƯƠNG ĐƯƠNG)`) | `2` → **`0`** | `11` → **`9`** | `I4: TRUNG BÌNH → THẤP; I10: — → TRUNG BÌNH; I11: — → TRUNG BÌNH` → **`0 thay đổi (Không đổi mức)`** |

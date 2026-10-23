@@ -1,7 +1,7 @@
 {
   "question": "Chi phí cài đặt (CPI) trung bình của game mobile tại Đông Nam Á hiện nay là bao nhiêu?",
-  "short_answer": "Chi phí cài đặt (CPI) trung bình cho game mobile tại Đông Nam Á có sự biến động đáng kể tùy thuộc vào nền tảng và thể loại game. Vào năm 2025, CPI toàn cầu dao động từ 0.30-6.00 USD trên Android và 0.50-12.00 USD trên iOS. Các yếu tố như chất lượng quảng cáo và sự cạnh tranh trên các nền tảng như Meta và TikTok đang đẩy CPI tăng 15-20% hàng năm. Lưu ý chênh lệch số liệu giữa các nguồn theo phạm vi/kỳ báo cáo: Số liệu cũ ↔ mới (CẬP NHẬT): Vào quý 1 năm 2025, Đông Nam Á là thị trường lớn thứ hai toàn cầu về lượt tải game mobile  ([E2/S1, Q1/2025]: \"In the first quarter of 2025, Southeast Asia ranked as the second-largest global market for mobile game downloads, hitting an...\" vs. [E23/S13, 2025]: \"Southeast Asia remains a leading mobile-first market, with 18.1 billion downloads in 2025. Growth is increasingly driven by engagement and...\" — Bằng chứng mới cập nhật tổng lượt tải game mobile tại Đông Nam Á cho cả năm 2025 là 18,1 tỷ, khác biệt so với 1,93 tỷ lượt tải trong Q1/2025 của bằng chứng cũ.); Số liệu cũ ↔ mới (CẬP NHẬT): Người chơi Đông Nam Á đã tải xuống 1.93 tỷ game di động trong Q1 2025 và chi 625 triệu USD ([E16/S10, Q1/2025]: \"Southeast Asian players downloaded 1.93 billion mobile games in Q1 2025 and spent $625 million through app stores. Sensor Tower...\" vs. [E23/S13, 2025]: \"Southeast Asia remains a leading mobile-first market, with 18.1 billion downloads in 2025. Growth is increasingly driven by engagement and...\" — Bằng chứng mới cập nhật tổng lượt tải game mobile tại Đông Nam Á cho cả năm 2025 là 18,1 tỷ, khác biệt so với 1,93 tỷ lượt tải trong Q1/2025 của bằng chứng cũ.) [Độ mới dữ liệu] Mức ảnh hưởng: ĐÁNG KỂ. 2/11 nhận định chưa có bằng chứng mới trong 18 tháng gần đây (I4, I5); 4 nhận định dựa một phần vào dữ liệu cũ. Nguồn cũ then chốt: S1 (cùng S10, S2) (sensortower.com, 05/2025, ~17 tháng, số liệu Q1/2025). Chi tiết ở mục 7.",
-  "recommendation": "Để lập ngân sách UA hiệu quả tại Đông Nam Á, Gamota nên phân bổ ngân sách linh hoạt dựa trên nền tảng (iOS có CPI cao hơn Android) và thể loại game (Hypercasual thấp nhất, RPG Midcore cao nhất). Cần ưu tiên các chiến dịch quảng cáo sáng tạo và tối ưu hóa để vượt trội hơn mức CPI trung bình, đồng thời theo dõi sát sao xu hướng tăng CPI hàng năm để điều chỉnh chiến lược dài hạn. [Sau vòng làm mới 23/10/2026] Kết quả làm mới: đã xác nhận thêm bằng chứng mới cho I5, I6; phát hiện số liệu mới thay đổi/mâu thuẫn tại I4; khuyến nghị gốc được viết trước vòng làm mới, cần đọc lại các nhận định có đánh dấu.",
+  "short_answer": "Chi phí cài đặt (CPI) trung bình cho game mobile tại Đông Nam Á có sự biến động đáng kể tùy thuộc vào nền tảng và thể loại game. Vào năm 2025, CPI toàn cầu dao động từ 0.30-6.00 USD trên Android và 0.50-12.00 USD trên iOS. Các yếu tố như chất lượng quảng cáo và sự cạnh tranh trên các nền tảng như Meta và TikTok đang đẩy CPI tăng 15-20% hàng năm. [Độ mới dữ liệu] Mức ảnh hưởng: ĐÁNG KỂ. 2/9 nhận định chưa có bằng chứng mới trong 18 tháng gần đây (I4, I5); 4 nhận định dựa một phần vào dữ liệu cũ. Nguồn cũ then chốt: S1 (cùng S10, S2) (sensortower.com, 05/2025, ~17 tháng, số liệu Q1/2025). Chi tiết ở mục 7.",
+  "recommendation": "Để lập ngân sách UA hiệu quả tại Đông Nam Á, Gamota nên phân bổ ngân sách linh hoạt dựa trên nền tảng (iOS có CPI cao hơn Android) và thể loại game (Hypercasual thấp nhất, RPG Midcore cao nhất). Cần ưu tiên các chiến dịch quảng cáo sáng tạo và tối ưu hóa để vượt trội hơn mức CPI trung bình, đồng thời theo dõi sát sao xu hướng tăng CPI hàng năm để điều chỉnh chiến lược dài hạn. [Sau vòng làm mới 23/10/2026] Kết quả làm mới: đã xác nhận thêm bằng chứng mới cho I5, I6; code hạ 2 cặp đối chiếu xuống KHÔNG TƯƠNG ĐƯƠNG (E2, E16) vì khác phạm vi, đơn vị hoặc kỳ; khuyến nghị gốc được viết trước vòng làm mới, cần đọc lại các nhận định có đánh dấu.",
   "decision_criteria": [
     "Mức CPI trung bình theo quốc gia và thể loại để lập ngân sách UA hiệu quả.",
     "Xu hướng biến động CPI để dự báo chi phí và tối ưu chiến lược dài hạn.",
@@ -62,11 +62,11 @@
         "E16",
         "E20"
       ],
-      "confidence": "THẤP",
-      "confidence_reason": "Các nguồn đang có số liệu/nhận định mâu thuẫn chưa giải quyết (S1 (Hạng A, sensortower.com), S10 (Hạng C, icon-era.com), S12 (Hạng C, ezyplatform.com)) · Độ mới: KHÔNG CÓ BẰNG CHỨNG MỚI (S1 05/2025, kỳ Q1/2025; S10 Q1/2025, kỳ Q1/2025; S12 13/06/2025, kỳ Q1/2025)",
+      "confidence": "TRUNG BÌNH",
+      "confidence_reason": "Đạt mức TRUNG BÌNH: dữ liệu cũ dần 12–24 tháng (S1 (Hạng A, sensortower.com), S10 (Hạng C, icon-era.com), S12 (Hạng C, ezyplatform.com)) · Độ mới: KHÔNG CÓ BẰNG CHỨNG MỚI (S1 05/2025, kỳ Q1/2025; S10 Q1/2025, kỳ Q1/2025; S12 13/06/2025, kỳ Q1/2025)",
       "assumptions": [],
       "is_forecast": false,
-      "has_conflict": true
+      "has_conflict": false
     },
     {
       "id": "I5",
@@ -139,60 +139,9 @@
       "assumptions": [],
       "is_forecast": false,
       "has_conflict": false
-    },
-    {
-      "id": "I10",
-      "statement": "Đông Nam Á là thị trường ưu tiên di động hàng đầu, với 18,1 tỷ lượt tải xuống vào năm 2025 và doanh thu IAP tăng 16,3% so với cùng kỳ năm trước.",
-      "type": "fact",
-      "evidence_ids": [
-        "E23"
-      ],
-      "confidence": "TRUNG BÌNH",
-      "confidence_reason": "Đạt mức TRUNG BÌNH: dựa trên 1 nguồn uy tín hạng A/B (S13 (Hạng A, sensortower.com))",
-      "assumptions": [],
-      "is_forecast": false,
-      "has_conflict": false
-    },
-    {
-      "id": "I11",
-      "statement": "Đông Nam Á là thị trường ưu tiên di động hàng đầu, với 18,1 tỷ lượt tải xuống vào năm 2025 và doanh thu IAP tăng 16,3% so với cùng kỳ năm trước.",
-      "type": "fact",
-      "evidence_ids": [
-        "E23"
-      ],
-      "confidence": "TRUNG BÌNH",
-      "confidence_reason": "Đạt mức TRUNG BÌNH: dựa trên 1 nguồn uy tín hạng A/B (S13 (Hạng A, sensortower.com))",
-      "assumptions": [],
-      "is_forecast": false,
-      "has_conflict": false
     }
   ],
-  "conflicts": [
-    {
-      "topic": "Số liệu cũ ↔ mới (CẬP NHẬT): Vào quý 1 năm 2025, Đông Nam Á là thị trường lớn thứ hai toàn cầu về lượt tải game mobile ",
-      "values": [
-        "[E2/S1, Q1/2025]: \"In the first quarter of 2025, Southeast Asia ranked as the second-largest global market for mobile game downloads, hitting an...\"",
-        "[E23/S13, 2025]: \"Southeast Asia remains a leading mobile-first market, with 18.1 billion downloads in 2025. Growth is increasingly driven by engagement and...\""
-      ],
-      "explanation": "Bằng chứng mới cập nhật tổng lượt tải game mobile tại Đông Nam Á cho cả năm 2025 là 18,1 tỷ, khác biệt so với 1,93 tỷ lượt tải trong Q1/2025 của bằng chứng cũ.",
-      "evidence_ids": [
-        "E2",
-        "E23"
-      ]
-    },
-    {
-      "topic": "Số liệu cũ ↔ mới (CẬP NHẬT): Người chơi Đông Nam Á đã tải xuống 1.93 tỷ game di động trong Q1 2025 và chi 625 triệu USD",
-      "values": [
-        "[E16/S10, Q1/2025]: \"Southeast Asian players downloaded 1.93 billion mobile games in Q1 2025 and spent $625 million through app stores. Sensor Tower...\"",
-        "[E23/S13, 2025]: \"Southeast Asia remains a leading mobile-first market, with 18.1 billion downloads in 2025. Growth is increasingly driven by engagement and...\""
-      ],
-      "explanation": "Bằng chứng mới cập nhật tổng lượt tải game mobile tại Đông Nam Á cho cả năm 2025 là 18,1 tỷ, khác biệt so với 1,93 tỷ lượt tải trong Q1/2025 của bằng chứng cũ.",
-      "evidence_ids": [
-        "E16",
-        "E23"
-      ]
-    }
-  ],
+  "conflicts": [],
   "premise_checks": [
     {
       "premise": "Dữ liệu CPI trung bình cho game mobile tại Đông Nam Á có sẵn và được cập nhật thường xuyên.",
@@ -220,7 +169,9 @@
   "gaps": [
     "Không có dữ liệu CPI trung bình cụ thể cho từng quốc gia riêng lẻ trong khu vực Đông Nam Á (ví dụ: Việt Nam, Indonesia, Thái Lan, Philippines).",
     "Không có dữ liệu CPI trung bình được phân tích chi tiết cho tất cả các thể loại game phổ biến tại Đông Nam Á, ngoài Hypercasual và RPG Midcore.",
-    "Không có dữ liệu CPI trung bình theo quốc gia và thể loại cho các năm 2024-2026 cụ thể cho khu vực Đông Nam Á, chỉ có dữ liệu toàn cầu hoặc xu hướng chung."
+    "Không có dữ liệu CPI trung bình theo quốc gia và thể loại cho các năm 2024-2026 cụ thể cho khu vực Đông Nam Á, chỉ có dữ liệu toàn cầu hoặc xu hướng chung.",
+    "[Vòng làm mới 2026-10-23] E2 (S1): bằng chứng mới E23 chưa so được với số liệu cũ (E23: khác phạm vi (game ↔ không rõ là game); khác loại kỳ (Q1/2025 ↔ 2025)); số liệu cũ chưa được cập nhật.",
+    "[Vòng làm mới 2026-10-23] E16 (S10): bằng chứng mới E23 chưa so được với số liệu cũ (E23: khác phạm vi (game ↔ không rõ là game); khác loại kỳ (Q1/2025 ↔ 2025)); số liệu cũ chưa được cập nhật."
   ],
   "what_would_change": [
     "Nếu có dữ liệu CPI chi tiết theo từng quốc gia Đông Nam Á và theo từng thể loại game cụ thể, khuyến nghị về phân bổ ngân sách UA sẽ chính xác hơn.",
@@ -935,7 +886,7 @@
     "total_quotes_extracted": 37,
     "verified_quotes_count": 37,
     "verified_quote_rate": 100.0,
-    "total_insights_count": 11,
+    "total_insights_count": 9,
     "insights_with_verified_evidence_rate": 100.0,
     "high_confidence_from_tier_c_only_count": 0,
     "llm_invented_urls_removed_count": 0,
@@ -1111,9 +1062,9 @@
     "rejected_quotes": []
   },
   "trace": {
-    "run_timestamp": "2026-10-23T13:22:35",
+    "run_timestamp": "2026-10-23T20:03:02",
     "current_date": "2026-10-23",
-    "duration_seconds": 0.05,
+    "duration_seconds": 0.03,
     "llm_provider": "gemini",
     "llm_model": "gemini-3.8-flash",
     "llm_calls_count": 0,
@@ -1157,7 +1108,7 @@
       "[Bước 5/6 · Hoàn tất Synthesize] Đã tổng hợp 9 nhận định dự thảo, 0 điểm mâu thuẫn, 2 kiểm tra tiền đề và 3 khoảng trống dữ liệu.",
       "[Bước 6/6 · Chấm điểm độ tin cậy & Tự kiểm (Score & Self-Check)] Áp dụng quy tắc chấm điểm CAO/TRUNG BÌNH/THẤP, gắn link Text Fragment và tính chỉ số tự kiểm...",
       "[Bước 6b/6 · Phân tích độ mới dữ liệu (Change Request A2)] Mức ảnh hưởng: ĐÁNG KỂ | Số nguồn then chốt cũ (> 18 tháng hoặc chưa rõ tuổi): 5.",
-      "[Bước 6/6 · Hoàn tất] Hoàn thành trong 0.05s với 0 lần gọi LLM. Tỷ lệ trích dẫn xác minh: 100.0% | Số nhận định CAO từ nguồn C: 0.",
+      "[Bước 6/6 · Hoàn tất] Hoàn thành trong 0.03s với 0 lần gọi LLM. Tỷ lệ trích dẫn xác minh: 100.0% | Số nhận định CAO từ nguồn C: 0.",
       "[Làm mới 1/4 · Sinh truy vấn] Đang tạo truy vấn tìm dữ liệu mới hơn cho nguồn mục tiêu S1, S10...",
       "[Làm mới 2/4 · Tìm & lọc nguồn mới] Đang chạy 6 truy vấn và lọc các nguồn có ngày đăng mới hơn...",
       "[Làm mới 3/4 · Trích xuất & xác minh trích dẫn mới] Đang rút trích và kiểm chứng RapidFuzz >= 90 từ 6 nguồn mới...",
@@ -1181,15 +1132,15 @@
       "2026"
     ],
     "version": 2,
-    "parent_run_timestamp": "2026-10-23T13:22:35",
+    "parent_run_timestamp": "2026-10-23T20:03:02",
     "rescored_as_of": "2026-10-23",
-    "refresh_timestamp": "2026-10-23T13:23:57"
+    "refresh_timestamp": "2026-10-23T20:03:02"
   },
   "recency": {
     "reference_date": "2026-10-23",
     "alert_months": 18,
     "impact_level": "ĐÁNG KỂ",
-    "summary": "Mức ảnh hưởng: ĐÁNG KỂ. 2/11 nhận định chưa có bằng chứng mới trong 18 tháng gần đây (I4, I5); 4 nhận định dựa một phần vào dữ liệu cũ. Nguồn cũ then chốt: S1 (cùng S10, S2) (sensortower.com, 05/2025, ~17 tháng, số liệu Q1/2025). Chi tiết ở mục 7.",
+    "summary": "Mức ảnh hưởng: ĐÁNG KỂ. 2/9 nhận định chưa có bằng chứng mới trong 18 tháng gần đây (I4, I5); 4 nhận định dựa một phần vào dữ liệu cũ. Nguồn cũ then chốt: S1 (cùng S10, S2) (sensortower.com, 05/2025, ~17 tháng, số liệu Q1/2025). Chi tiết ở mục 7.",
     "sources": [
       {
         "source_id": "S1",
@@ -1211,9 +1162,9 @@
         ],
         "is_key": true,
         "key_reasons": [
-          "nguồn hạng A duy nhất của nhận định I5, I6",
-          "hỗ trợ 3/11 nhận định (I4, I5, I6)",
-          "nếu còn mới sẽ nâng mức I5 (TRUNG BÌNH → CAO), I6 (TRUNG BÌNH → CAO)"
+          "nguồn hạng A duy nhất của nhận định I4, I5, I6",
+          "hỗ trợ 3/9 nhận định (I4, I5, I6)",
+          "nếu còn mới sẽ nâng mức I4 (TRUNG BÌNH → CAO), I5 (TRUNG BÌNH → CAO), I6 (TRUNG BÌNH → CAO)"
         ]
       },
       {
@@ -1395,7 +1346,7 @@
         "is_key": true,
         "key_reasons": [
           "bỏ nguồn làm giảm/mất căn cứ nhận định I7 (TRUNG BÌNH → THẤP)",
-          "hỗ trợ 4/11 nhận định (I4, I5, I6, I7)"
+          "hỗ trợ 4/9 nhận định (I4, I5, I6, I7)"
         ]
       },
       {
@@ -1420,7 +1371,7 @@
         "is_key": true,
         "key_reasons": [
           "bỏ nguồn làm giảm/mất căn cứ nhận định I2 (TRUNG BÌNH → THẤP), I7 (TRUNG BÌNH → THẤP)",
-          "hỗ trợ 4/11 nhận định (I1, I2, I7, I8)"
+          "hỗ trợ 4/9 nhận định (I1, I2, I7, I8)"
         ]
       },
       {
@@ -1443,7 +1394,7 @@
         ],
         "is_key": true,
         "key_reasons": [
-          "hỗ trợ 3/11 nhận định (I4, I5, I6)"
+          "hỗ trợ 3/9 nhận định (I4, I5, I6)"
         ]
       },
       {
@@ -1459,15 +1410,9 @@
         "possibly_older_than_alert": false,
         "data_vintage": "2025",
         "date_conflict": false,
-        "supported_insight_ids": [
-          "I10",
-          "I11"
-        ],
-        "is_key": true,
-        "key_reasons": [
-          "bỏ nguồn làm giảm/mất căn cứ nhận định I10 (TRUNG BÌNH → MẤT CĂN CỨ), I11 (TRUNG BÌNH → MẤT CĂN CỨ)",
-          "nguồn hạng A duy nhất của nhận định I10, I11"
-        ]
+        "supported_insight_ids": [],
+        "is_key": false,
+        "key_reasons": []
       },
       {
         "source_id": "S14",
@@ -1565,9 +1510,9 @@
         "impacts": [
           {
             "insight_id": "I4",
-            "current": "THẤP",
-            "if_source_removed": "THẤP",
-            "if_source_fresh": "THẤP"
+            "current": "TRUNG BÌNH",
+            "if_source_removed": "TRUNG BÌNH",
+            "if_source_fresh": "CAO"
           },
           {
             "insight_id": "I5",
@@ -1582,16 +1527,16 @@
             "if_source_fresh": "CAO"
           }
         ],
-        "summary": "S1 (sensortower.com, hạng A; đăng 05/2025 — tháng/năm trong URL hoặc tiêu đề; tuổi ước tính ~17 tháng; kỳ số liệu mới nhất trong trích dẫn: Q1/2025) là căn cứ của 3/11 nhận định (I4, I5, I6). Nếu bỏ nguồn này: không nhận định nào bị tụt mức. Nếu có bản cập nhật mới (≤ 12 tháng): I5 tăng TRUNG BÌNH → CAO; I6 tăng TRUNG BÌNH → CAO."
+        "summary": "S1 (sensortower.com, hạng A; đăng 05/2025 — tháng/năm trong URL hoặc tiêu đề; tuổi ước tính ~17 tháng; kỳ số liệu mới nhất trong trích dẫn: Q1/2025) là căn cứ của 3/9 nhận định (I4, I5, I6). Nếu bỏ nguồn này: không nhận định nào bị tụt mức. Nếu có bản cập nhật mới (≤ 12 tháng): I4 tăng TRUNG BÌNH → CAO; I5 tăng TRUNG BÌNH → CAO; I6 tăng TRUNG BÌNH → CAO."
       },
       {
         "source_id": "S10",
         "impacts": [
           {
             "insight_id": "I4",
-            "current": "THẤP",
-            "if_source_removed": "THẤP",
-            "if_source_fresh": "THẤP"
+            "current": "TRUNG BÌNH",
+            "if_source_removed": "TRUNG BÌNH",
+            "if_source_fresh": "TRUNG BÌNH"
           },
           {
             "insight_id": "I5",
@@ -1612,7 +1557,7 @@
             "if_source_fresh": "TRUNG BÌNH"
           }
         ],
-        "summary": "S10 (icon-era.com, hạng C; đăng Q1/2025 — suy từ quý ghi trong URL/tiêu đề; tuổi ước tính 19–22 tháng; kỳ số liệu mới nhất trong trích dẫn: Q1/2025) là căn cứ của 4/11 nhận định (I4, I5, I6, I7). Nếu bỏ nguồn này: I7 giảm TRUNG BÌNH → THẤP. Nếu có bản cập nhật mới (≤ 12 tháng): độ tin cậy giữ nguyên."
+        "summary": "S10 (icon-era.com, hạng C; đăng Q1/2025 — suy từ quý ghi trong URL/tiêu đề; tuổi ước tính 19–22 tháng; kỳ số liệu mới nhất trong trích dẫn: Q1/2025) là căn cứ của 4/9 nhận định (I4, I5, I6, I7). Nếu bỏ nguồn này: I7 giảm TRUNG BÌNH → THẤP. Nếu có bản cập nhật mới (≤ 12 tháng): độ tin cậy giữ nguyên."
       },
       {
         "source_id": "S2",
@@ -1624,7 +1569,7 @@
             "if_source_fresh": "CAO"
           }
         ],
-        "summary": "S2 (statista.com, hạng A; đăng 17/06/2025 — ngày ghi trong tiêu đề/đầu bài viết; tuổi ước tính ~16 tháng; kỳ số liệu mới nhất trong trích dẫn: 02/2025) là căn cứ của 1/11 nhận định (I1). Nếu bỏ nguồn này: I1 giảm TRUNG BÌNH → THẤP. Nếu có bản cập nhật mới (≤ 12 tháng): I1 tăng TRUNG BÌNH → CAO."
+        "summary": "S2 (statista.com, hạng A; đăng 17/06/2025 — ngày ghi trong tiêu đề/đầu bài viết; tuổi ước tính ~16 tháng; kỳ số liệu mới nhất trong trích dẫn: 02/2025) là căn cứ của 1/9 nhận định (I1). Nếu bỏ nguồn này: I1 giảm TRUNG BÌNH → THẤP. Nếu có bản cập nhật mới (≤ 12 tháng): I1 tăng TRUNG BÌNH → CAO."
       },
       {
         "source_id": "S5",
@@ -1636,16 +1581,16 @@
             "if_source_fresh": "CAO"
           }
         ],
-        "summary": "S5 (appsflyer.com, hạng B; đăng 2024 (chỉ biết năm) — chỉ có năm trong URL/tiêu đề — ước tính sai số ±6 tháng; tuổi ước tính 22–34 tháng; kỳ số liệu mới nhất trong trích dẫn: 2023) là căn cứ của 1/11 nhận định (I2). Nếu bỏ nguồn này: không nhận định nào bị tụt mức. Nếu có bản cập nhật mới (≤ 12 tháng): I2 tăng TRUNG BÌNH → CAO."
+        "summary": "S5 (appsflyer.com, hạng B; đăng 2024 (chỉ biết năm) — chỉ có năm trong URL/tiêu đề — ước tính sai số ±6 tháng; tuổi ước tính 22–34 tháng; kỳ số liệu mới nhất trong trích dẫn: 2023) là căn cứ của 1/9 nhận định (I2). Nếu bỏ nguồn này: không nhận định nào bị tụt mức. Nếu có bản cập nhật mới (≤ 12 tháng): I2 tăng TRUNG BÌNH → CAO."
       },
       {
         "source_id": "S12",
         "impacts": [
           {
             "insight_id": "I4",
-            "current": "THẤP",
-            "if_source_removed": "THẤP",
-            "if_source_fresh": "THẤP"
+            "current": "TRUNG BÌNH",
+            "if_source_removed": "TRUNG BÌNH",
+            "if_source_fresh": "TRUNG BÌNH"
           },
           {
             "insight_id": "I5",
@@ -1660,7 +1605,7 @@
             "if_source_fresh": "TRUNG BÌNH"
           }
         ],
-        "summary": "S12 (ezyplatform.com, hạng C; đăng 13/06/2025 — ngày ghi trong tiêu đề/đầu bài viết; tuổi ước tính ~16 tháng; kỳ số liệu mới nhất trong trích dẫn: Q1/2025) là căn cứ của 3/11 nhận định (I4, I5, I6). Nếu bỏ nguồn này: không nhận định nào bị tụt mức. Nếu có bản cập nhật mới (≤ 12 tháng): độ tin cậy giữ nguyên."
+        "summary": "S12 (ezyplatform.com, hạng C; đăng 13/06/2025 — ngày ghi trong tiêu đề/đầu bài viết; tuổi ước tính ~16 tháng; kỳ số liệu mới nhất trong trích dẫn: Q1/2025) là căn cứ của 3/9 nhận định (I4, I5, I6). Nếu bỏ nguồn này: không nhận định nào bị tụt mức. Nếu có bản cập nhật mới (≤ 12 tháng): độ tin cậy giữ nguyên."
       }
     ],
     "insights": [
@@ -1736,18 +1681,6 @@
         "status": "MỚI",
         "non_recent_source_ids": [],
         "note": ""
-      },
-      {
-        "insight_id": "I10",
-        "status": "MỚI",
-        "non_recent_source_ids": [],
-        "note": ""
-      },
-      {
-        "insight_id": "I11",
-        "status": "MỚI",
-        "non_recent_source_ids": [],
-        "note": ""
       }
     ],
     "upcoming_changes": [
@@ -1761,6 +1694,15 @@
         ]
       },
       {
+        "date": "2027-05-17",
+        "source_ids": [
+          "S1"
+        ],
+        "changes": [
+          "I4: TRUNG BÌNH → THẤP"
+        ]
+      },
+      {
         "date": "2027-06-15",
         "source_ids": [
           "S12"
@@ -1768,16 +1710,6 @@
         "changes": [
           "I5: TRUNG BÌNH → THẤP",
           "I6: TRUNG BÌNH → THẤP"
-        ]
-      },
-      {
-        "date": "2027-06-17",
-        "source_ids": [
-          "S11",
-          "S13"
-        ],
-        "changes": [
-          "I2: TRUNG BÌNH → THẤP"
         ]
       }
     ],
@@ -1790,10 +1722,7 @@
       "Southeast Asia Mobile Gaming Statistics 2025 site:icon-era.com"
     ],
     "certainty_groups": {
-      "Đủ cơ sở": [
-        "I10",
-        "I11"
-      ],
+      "Đủ cơ sở": [],
       "Cần lưu ý": [
         "I1",
         "I2",
@@ -1811,7 +1740,7 @@
   },
   "refresh": {
     "status": "ĐÃ LÀM MỚI",
-    "refreshed_at": "2026-10-23T13:23:57",
+    "refreshed_at": "2026-10-23T20:03:02",
     "reference_date": "2026-10-23",
     "target_source_ids": [
       "S1",
@@ -1926,16 +1855,24 @@
         "new_evidence_ids": [
           "E23"
         ],
-        "status": "CẬP NHẬT",
-        "explanation": "Bằng chứng mới cập nhật tổng lượt tải game mobile tại Đông Nam Á cho cả năm 2025 là 18,1 tỷ, khác biệt so với 1,93 tỷ lượt tải trong Q1/2025 của bằng chứng cũ."
+        "status": "KHÔNG TƯƠNG ĐƯƠNG",
+        "explanation": "Bằng chứng mới cập nhật tổng lượt tải game mobile tại Đông Nam Á cho cả năm 2025 là 18,1 tỷ, khác biệt so với 1,93 tỷ lượt tải trong Q1/2025 của bằng chứng cũ.",
+        "llm_status": "CẬP NHẬT",
+        "guard_notes": [
+          "E23: khác phạm vi (game ↔ không rõ là game); khác loại kỳ (Q1/2025 ↔ 2025)"
+        ]
       },
       {
         "old_evidence_id": "E16",
         "new_evidence_ids": [
           "E23"
         ],
-        "status": "CẬP NHẬT",
-        "explanation": "Bằng chứng mới cập nhật tổng lượt tải game mobile tại Đông Nam Á cho cả năm 2025 là 18,1 tỷ, khác biệt so với 1,93 tỷ lượt tải trong Q1/2025 của bằng chứng cũ."
+        "status": "KHÔNG TƯƠNG ĐƯƠNG",
+        "explanation": "Bằng chứng mới cập nhật tổng lượt tải game mobile tại Đông Nam Á cho cả năm 2025 là 18,1 tỷ, khác biệt so với 1,93 tỷ lượt tải trong Q1/2025 của bằng chứng cũ.",
+        "llm_status": "CẬP NHẬT",
+        "guard_notes": [
+          "E23: khác phạm vi (game ↔ không rõ là game); khác loại kỳ (Q1/2025 ↔ 2025)"
+        ]
       },
       {
         "old_evidence_id": "E3",
@@ -1943,7 +1880,11 @@
           "E31"
         ],
         "status": "XÁC NHẬN",
-        "explanation": "Bằng chứng mới xác nhận Indonesia dẫn đầu khu vực về lượt tải game mobile với 870 triệu lượt trong Q1/2025, giống với bằng chứng cũ."
+        "explanation": "Bằng chứng mới xác nhận Indonesia dẫn đầu khu vực về lượt tải game mobile với 870 triệu lượt trong Q1/2025, giống với bằng chứng cũ.",
+        "llm_status": "XÁC NHẬN",
+        "guard_notes": [
+          "E31: nhắc lại số liệu Q1/2025, không phải dữ liệu mới hơn"
+        ]
       },
       {
         "old_evidence_id": "E17",
@@ -1951,7 +1892,11 @@
           "E31"
         ],
         "status": "XÁC NHẬN",
-        "explanation": "Bằng chứng mới xác nhận Indonesia dẫn đầu khu vực về lượt tải game mobile với 870 triệu lượt trong Q1/2025, giống với bằng chứng cũ."
+        "explanation": "Bằng chứng mới xác nhận Indonesia dẫn đầu khu vực về lượt tải game mobile với 870 triệu lượt trong Q1/2025, giống với bằng chứng cũ.",
+        "llm_status": "XÁC NHẬN",
+        "guard_notes": [
+          "E31: nhắc lại số liệu Q1/2025, không phải dữ liệu mới hơn"
+        ]
       },
       {
         "old_evidence_id": "E4",
@@ -1959,7 +1904,9 @@
           "E34"
         ],
         "status": "XÁC NHẬN",
-        "explanation": "Bằng chứng mới xác nhận Thái Lan dẫn đầu khu vực Đông Nam Á về doanh thu IAP, phù hợp với dữ liệu Q1/2025 của bằng chứng cũ."
+        "explanation": "Bằng chứng mới xác nhận Thái Lan dẫn đầu khu vực Đông Nam Á về doanh thu IAP, phù hợp với dữ liệu Q1/2025 của bằng chứng cũ.",
+        "llm_status": "XÁC NHẬN",
+        "guard_notes": []
       },
       {
         "old_evidence_id": "E18",
@@ -1967,37 +1914,22 @@
           "E34"
         ],
         "status": "XÁC NHẬN",
-        "explanation": "Bằng chứng mới xác nhận Thái Lan dẫn đầu khu vực về doanh thu IAP, phù hợp với nhận định của bằng chứng cũ."
+        "explanation": "Bằng chứng mới xác nhận Thái Lan dẫn đầu khu vực về doanh thu IAP, phù hợp với nhận định của bằng chứng cũ.",
+        "llm_status": "XÁC NHẬN",
+        "guard_notes": []
       },
       {
         "old_evidence_id": "E19",
         "new_evidence_ids": [],
         "status": "KHÔNG TƯƠNG ĐƯƠNG",
-        "explanation": "Không có bằng chứng mới nào tương đương về tỷ lệ doanh thu theo thể loại game mobile tại Đông Nam Á cho cùng giai đoạn hoặc giai đoạn cập nhật."
+        "explanation": "Không có bằng chứng mới nào tương đương về tỷ lệ doanh thu theo thể loại game mobile tại Đông Nam Á cho cùng giai đoạn hoặc giai đoạn cập nhật.",
+        "llm_status": "KHÔNG TƯƠNG ĐƯƠNG",
+        "guard_notes": []
       }
     ],
-    "confidence_changes": [
-      {
-        "insight_id": "I4",
-        "before": "TRUNG BÌNH",
-        "after": "THẤP",
-        "reason": "Các nguồn đang có số liệu/nhận định mâu thuẫn chưa giải quyết (S1 (Hạng A, sensortower.com), S10 (Hạng C, icon-era.com), S12 (Hạng C, ezyplatform.com)) · Độ mới: KHÔNG CÓ BẰNG CHỨNG MỚI (S1 05/2025, kỳ Q1/2025; S10 Q1/2025, kỳ Q1/2025; S12 13/06/2025, kỳ Q1/2025)"
-      },
-      {
-        "insight_id": "I10",
-        "before": "—",
-        "after": "TRUNG BÌNH",
-        "reason": "Nhận định mới bổ sung từ nguồn làm mới (E23)"
-      },
-      {
-        "insight_id": "I11",
-        "before": "—",
-        "after": "TRUNG BÌNH",
-        "reason": "Nhận định mới bổ sung từ nguồn làm mới (E23)"
-      }
-    ],
-    "llm_calls_count": 3,
-    "duration_seconds": 81.87,
+    "confidence_changes": [],
+    "llm_calls_count": 0,
+    "duration_seconds": 0.03,
     "note": ""
   }
 }

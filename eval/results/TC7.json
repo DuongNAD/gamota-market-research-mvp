@@ -1,7 +1,7 @@
 {
   "question": "Mô hình kiếm tiền nào đang hiệu quả với game casual tại Indonesia và Philippines?",
-  "short_answer": "Tại Indonesia và Philippines, mô hình kiếm tiền kết hợp (hybrid revenue models) đang ngày càng hiệu quả cho game casual, đặc biệt là sự kết hợp giữa quảng cáo trong ứng dụng (IAA) và mua hàng trong ứng dụng (IAP). Quảng cáo trong ứng dụng là chiến lược phổ biến nhất ở Indonesia, trong khi IAP vẫn là mô hình hàng đầu cho game Casual nói chung, với mô hình hybrid bám sát phía sau. Lưu ý chênh lệch số liệu giữa các nguồn theo phạm vi/kỳ báo cáo: Số liệu cũ ↔ mới (CẬP NHẬT): Doanh thu mua hàng trong ứng dụng (IAP) của Đông Nam Á đạt 625 triệu USD trong quý 1 năm 2 ([E2/S1, Q1/2025]: \"While SEA currently ranks seventh globally in in-app purchase (IAP) revenue at $625 million in Q1 2025, this figure signals...\" vs. [E29/S13, 2026-06]: \"In-app purchase revenue reached $5.3 billion, up 16.3% YoY, marking a new high for the market.\" — Bằng chứng mới [E29] cập nhật doanh thu IAP của Đông Nam Á lên 5,3 tỷ USD, tăng đáng kể so với 625 triệu USD trong [E2] (Q1/2025).); Số liệu cũ ↔ mới (CẬP NHẬT): Chi tiêu của người dùng cho mua hàng trong ứng dụng (IAP) giảm trong khi doanh thu từ quản ([E12/S5, Q2/2024]: \"Consumer spending on in-app purchases (IAP) dropped while in-app advertising (IAA) rose. Overall, IAA increased by 4% in Q2-2024 compared...\" vs. [E34/S15, 2026-06]: \"Design your game economy to support both IAP and rewarded ads from inception. Retrofit hybrid monetization is significantly harder and...\" — Bằng chứng mới [E34] khuyến nghị thiết kế kinh tế game hỗ trợ cả IAP và quảng cáo có thưởng, cập nhật xu hướng từ [E12] (Q2/2024) về sự thay đổi giữa IAP và IAA.); Số liệu cũ ↔ mới (CẬP NHẬT): Tăng trưởng IAA trên Android được dẫn dắt bởi các game Hypercasual, Puzzle và Simulation,  ([E13/S5, Q2/2024]: \"Android’s IAA growth was led by Hypercasual, Puzzle and Simulation games. Hypercasual games saw a 5% rise in Q2-2024 (YoY...\" vs. [E31/S15, 2026-06]: \"The most significant narrative of the period is the hybrid-casual revolution: titles that combine casual accessibility with deeper progression and...\" vs. [E32/S15, 2022]: \"By 2027, we expect pure hyper-casual to represent less than 5% of casual gaming revenue, down from an estimated 12%...\" vs. [E40/S18, 2026-07-29]: \"By combining hypercasual accessibility with casual-style progression, LiveOps, and hybrid IAA/IAP monetization, subgenres like Sort, Screw and Block puzzles continue...\" — Bằng chứng mới [E31], [E32], [E40] cập nhật xu hướng tăng trưởng của game hybrid-casual, thay vì chỉ hypercasual như [E13] (Q2/2024).) [Độ mới dữ liệu] Mức ảnh hưởng: ĐÁNG KỂ. 7/13 nhận định chưa có bằng chứng mới trong 18 tháng gần đây (I2, I3, I4, I6, I9, I10, I12); 3 nhận định dựa một phần vào dữ liệu cũ. Nguồn cũ then chốt: S1 (cùng S15, S2) (sensortower.com, 05/2025, ~17 tháng, số liệu Q1/2025). Chi tiết ở mục 7.",
-  "recommendation": "Để tối ưu hóa hiệu quả kiếm tiền cho game casual tại Indonesia và Philippines, Gamota nên tập trung vào mô hình hybrid (IAA + IAP). Cụ thể, hãy tận dụng quảng cáo có thưởng (rewarded ads) để thu hút và giữ chân người chơi miễn phí, đồng thời thiết kế các đường dẫn chuyển đổi rõ ràng sang IAP thông qua các ưu đãi giá trị (ví dụ: gói khởi đầu, ưu đãi giới hạn). Ưu tiên phát triển trên Android do thị trường này dẫn đầu về tăng trưởng cài đặt và IAA, đồng thời cân nhắc các thể loại Hypercasual, Puzzle và Simulation. [Sau vòng làm mới 23/10/2026] Kết quả làm mới: đã xác nhận thêm bằng chứng mới cho I1, I5; phát hiện số liệu mới thay đổi/mâu thuẫn tại I2, I4; khuyến nghị gốc được viết trước vòng làm mới, cần đọc lại các nhận định có đánh dấu.",
+  "short_answer": "Tại Indonesia và Philippines, mô hình kiếm tiền kết hợp (hybrid revenue models) đang ngày càng hiệu quả cho game casual, đặc biệt là sự kết hợp giữa quảng cáo trong ứng dụng (IAA) và mua hàng trong ứng dụng (IAP). Quảng cáo trong ứng dụng là chiến lược phổ biến nhất ở Indonesia, trong khi IAP vẫn là mô hình hàng đầu cho game Casual nói chung, với mô hình hybrid bám sát phía sau. [Độ mới dữ liệu] Mức ảnh hưởng: ĐÁNG KỂ. 6/10 nhận định chưa có bằng chứng mới trong 18 tháng gần đây (I2, I3, I4, I6, I9, I10); 2 nhận định dựa một phần vào dữ liệu cũ. Nguồn cũ then chốt: S1 (cùng S5, S2) (sensortower.com, 05/2025, ~17 tháng, số liệu Q1/2025). Chi tiết ở mục 7.",
+  "recommendation": "Để tối ưu hóa hiệu quả kiếm tiền cho game casual tại Indonesia và Philippines, Gamota nên tập trung vào mô hình hybrid (IAA + IAP). Cụ thể, hãy tận dụng quảng cáo có thưởng (rewarded ads) để thu hút và giữ chân người chơi miễn phí, đồng thời thiết kế các đường dẫn chuyển đổi rõ ràng sang IAP thông qua các ưu đãi giá trị (ví dụ: gói khởi đầu, ưu đãi giới hạn). Ưu tiên phát triển trên Android do thị trường này dẫn đầu về tăng trưởng cài đặt và IAA, đồng thời cân nhắc các thể loại Hypercasual, Puzzle và Simulation. [Sau vòng làm mới 23/10/2026] Kết quả làm mới: đã xác nhận thêm bằng chứng mới cho I1, I5; code hạ 3 cặp đối chiếu xuống KHÔNG TƯƠNG ĐƯƠNG (E2, E12, E13) vì khác phạm vi, đơn vị hoặc kỳ; khuyến nghị gốc được viết trước vòng làm mới, cần đọc lại các nhận định có đánh dấu.",
   "decision_criteria": [
     "Hiệu quả kiếm tiền (ARPU, LTV) của từng mô hình",
     "Mức độ chấp nhận của người chơi đối với từng mô hình kiếm tiền",
@@ -96,11 +96,11 @@
       "evidence_ids": [
         "E2"
       ],
-      "confidence": "THẤP",
-      "confidence_reason": "Các nguồn đang có số liệu/nhận định mâu thuẫn chưa giải quyết (S1 (Hạng A, sensortower.com)) · Độ mới: KHÔNG CÓ BẰNG CHỨNG MỚI (S1 05/2025, kỳ Q1/2025)",
+      "confidence": "TRUNG BÌNH",
+      "confidence_reason": "Đạt mức TRUNG BÌNH: dữ liệu cũ dần 12–24 tháng (S1 (Hạng A, sensortower.com)) · Độ mới: KHÔNG CÓ BẰNG CHỨNG MỚI (S1 05/2025, kỳ Q1/2025)",
       "assumptions": [],
       "is_forecast": false,
-      "has_conflict": true
+      "has_conflict": false
     },
     {
       "id": "I3",
@@ -129,10 +129,10 @@
         "E25"
       ],
       "confidence": "THẤP",
-      "confidence_reason": "Các nguồn đang có số liệu/nhận định mâu thuẫn chưa giải quyết (S10 (Hạng C, 42matters.com), S3 (Hạng A, statista.com), S5 (Hạng B, appsflyer.com)) · Độ mới: KHÔNG CÓ BẰNG CHỨNG MỚI (S3 Không rõ ngày, kỳ 2024; S5 2024 (chỉ biết năm), kỳ Q2/2024; S10 2025 (chỉ biết năm))",
+      "confidence_reason": "Chỉ có 1 nguồn hạng C mới hoặc nguồn A/B không rõ ngày (S10 (Hạng C, 42matters.com), S3 (Hạng A, statista.com), S5 (Hạng B, appsflyer.com)) · Độ mới: KHÔNG CÓ BẰNG CHỨNG MỚI (S3 Không rõ ngày, kỳ 2024; S5 2024 (chỉ biết năm), kỳ Q2/2024; S10 2025 (chỉ biết năm))",
       "assumptions": [],
       "is_forecast": false,
-      "has_conflict": true
+      "has_conflict": false
     },
     {
       "id": "I5",
@@ -216,47 +216,6 @@
       "assumptions": [],
       "is_forecast": false,
       "has_conflict": false
-    },
-    {
-      "id": "I11",
-      "statement": "Doanh thu mua hàng trong ứng dụng (IAP) ở Đông Nam Á đạt 5,3 tỷ USD, tăng 16,3% so với cùng kỳ năm trước, đánh dấu mức cao kỷ lục mới cho thị trường.",
-      "type": "fact",
-      "evidence_ids": [
-        "E29"
-      ],
-      "confidence": "TRUNG BÌNH",
-      "confidence_reason": "Đạt mức TRUNG BÌNH: dựa trên 1 nguồn uy tín hạng A/B (S13 (Hạng A, sensortower.com))",
-      "assumptions": [],
-      "is_forecast": false,
-      "has_conflict": false
-    },
-    {
-      "id": "I12",
-      "statement": "Các nhà phát triển nên thiết kế nền kinh tế game để hỗ trợ cả IAP và quảng cáo có thưởng ngay từ đầu, vì việc điều chỉnh sau này sẽ khó khăn và kém hiệu quả hơn.",
-      "type": "fact",
-      "evidence_ids": [
-        "E34"
-      ],
-      "confidence": "THẤP",
-      "confidence_reason": "Chỉ có 1 nguồn hạng C mới hoặc nguồn A/B không rõ ngày (S15 (Hạng C, ripplereports.com)) · Độ mới: KHÔNG CÓ BẰNG CHỨNG MỚI (S15 2026 (chỉ biết năm), kỳ 2022)",
-      "assumptions": [],
-      "is_forecast": false,
-      "has_conflict": false
-    },
-    {
-      "id": "I13",
-      "statement": "Mô hình game hybrid-casual, kết hợp tính dễ tiếp cận của game casual với chiều sâu tiến trình và kiếm tiền qua IAP, đã tăng doanh thu 37%.",
-      "type": "fact",
-      "evidence_ids": [
-        "E31",
-        "E32",
-        "E40"
-      ],
-      "confidence": "TRUNG BÌNH",
-      "confidence_reason": "Đạt mức TRUNG BÌNH: 2 nguồn hạng C khác domain đồng thuận (S15 (Hạng C, ripplereports.com), S18 (Hạng C, friendlygamedev.com)) · Độ mới: MỘT PHẦN CŨ (S15 2026 (chỉ biết năm), kỳ 2022)",
-      "assumptions": [],
-      "is_forecast": false,
-      "has_conflict": false
     }
   ],
   "conflicts": [
@@ -267,46 +226,6 @@
       "evidence_ids": [
         "E2",
         "E6"
-      ]
-    },
-    {
-      "topic": "Số liệu cũ ↔ mới (CẬP NHẬT): Doanh thu mua hàng trong ứng dụng (IAP) của Đông Nam Á đạt 625 triệu USD trong quý 1 năm 2",
-      "values": [
-        "[E2/S1, Q1/2025]: \"While SEA currently ranks seventh globally in in-app purchase (IAP) revenue at $625 million in Q1 2025, this figure signals...\"",
-        "[E29/S13, 2026-06]: \"In-app purchase revenue reached $5.3 billion, up 16.3% YoY, marking a new high for the market.\""
-      ],
-      "explanation": "Bằng chứng mới [E29] cập nhật doanh thu IAP của Đông Nam Á lên 5,3 tỷ USD, tăng đáng kể so với 625 triệu USD trong [E2] (Q1/2025).",
-      "evidence_ids": [
-        "E2",
-        "E29"
-      ]
-    },
-    {
-      "topic": "Số liệu cũ ↔ mới (CẬP NHẬT): Chi tiêu của người dùng cho mua hàng trong ứng dụng (IAP) giảm trong khi doanh thu từ quản",
-      "values": [
-        "[E12/S5, Q2/2024]: \"Consumer spending on in-app purchases (IAP) dropped while in-app advertising (IAA) rose. Overall, IAA increased by 4% in Q2-2024 compared...\"",
-        "[E34/S15, 2026-06]: \"Design your game economy to support both IAP and rewarded ads from inception. Retrofit hybrid monetization is significantly harder and...\""
-      ],
-      "explanation": "Bằng chứng mới [E34] khuyến nghị thiết kế kinh tế game hỗ trợ cả IAP và quảng cáo có thưởng, cập nhật xu hướng từ [E12] (Q2/2024) về sự thay đổi giữa IAP và IAA.",
-      "evidence_ids": [
-        "E12",
-        "E34"
-      ]
-    },
-    {
-      "topic": "Số liệu cũ ↔ mới (CẬP NHẬT): Tăng trưởng IAA trên Android được dẫn dắt bởi các game Hypercasual, Puzzle và Simulation, ",
-      "values": [
-        "[E13/S5, Q2/2024]: \"Android’s IAA growth was led by Hypercasual, Puzzle and Simulation games. Hypercasual games saw a 5% rise in Q2-2024 (YoY...\"",
-        "[E31/S15, 2026-06]: \"The most significant narrative of the period is the hybrid-casual revolution: titles that combine casual accessibility with deeper progression and...\"",
-        "[E32/S15, 2022]: \"By 2027, we expect pure hyper-casual to represent less than 5% of casual gaming revenue, down from an estimated 12%...\"",
-        "[E40/S18, 2026-07-29]: \"By combining hypercasual accessibility with casual-style progression, LiveOps, and hybrid IAA/IAP monetization, subgenres like Sort, Screw and Block puzzles continue...\""
-      ],
-      "explanation": "Bằng chứng mới [E31], [E32], [E40] cập nhật xu hướng tăng trưởng của game hybrid-casual, thay vì chỉ hypercasual như [E13] (Q2/2024).",
-      "evidence_ids": [
-        "E13",
-        "E31",
-        "E32",
-        "E40"
       ]
     }
   ],
@@ -339,7 +258,10 @@
     "Tỷ lệ người chơi chi tiêu (payer conversion rate) và doanh thu trung bình trên mỗi người dùng (ARPU) của game casual theo từng mô hình kiếm tiền (IAA, IAP, Hybrid) ở Indonesia và Philippines.",
     "Chi phí phát triển và vận hành cụ thể liên quan đến từng mô hình kiếm tiền cho game casual tại hai thị trường này.",
     "Mức độ cạnh tranh và rào cản gia nhập cụ thể cho từng mô hình kiếm tiền trong phân khúc game casual ở Indonesia và Philippines.",
-    "Sự khác biệt chi tiết về hiệu quả kiếm tiền giữa các thể loại game casual cụ thể (ví dụ: hyper-casual, puzzle, arcade) tại Indonesia và Philippines."
+    "Sự khác biệt chi tiết về hiệu quả kiếm tiền giữa các thể loại game casual cụ thể (ví dụ: hyper-casual, puzzle, arcade) tại Indonesia và Philippines.",
+    "[Vòng làm mới 2026-10-23] E2 (S1): bằng chứng mới E29 chưa so được với số liệu cũ (E29: khác phạm vi (game ↔ không rõ là game); không xác định được kỳ số liệu (Q1/2025 ↔ ?)); số liệu cũ chưa được cập nhật.",
+    "[Vòng làm mới 2026-10-23] E12 (S5): bằng chứng mới E34 chưa so được với số liệu cũ (E34: một bên không có số liệu để so; không xác định được kỳ số liệu (Q2/2024 ↔ ?)); số liệu cũ chưa được cập nhật.",
+    "[Vòng làm mới 2026-10-23] E13 (S5): bằng chứng mới E31, E32, E40 chưa so được với số liệu cũ (E31: không xác định được kỳ số liệu (Q2/2024 ↔ ?); E32: khác loại kỳ (Q2/2024 ↔ 2022); E40: một bên không có số liệu để so; không xác định được kỳ số liệu (Q2/2024 ↔ ?)); số liệu cũ chưa được cập nhật."
   ],
   "what_would_change": [
     "Nếu có dữ liệu chi tiết về ARPU và tỷ lệ chuyển đổi người chơi theo từng mô hình kiếm tiền và thể loại game casual cụ thể ở Indonesia và Philippines, khuyến nghị có thể tập trung hơn vào mô hình mang lại lợi nhuận cao nhất cho từng phân khúc.",
@@ -1088,7 +1010,7 @@
     "total_quotes_extracted": 40,
     "verified_quotes_count": 40,
     "verified_quote_rate": 100.0,
-    "total_insights_count": 13,
+    "total_insights_count": 10,
     "insights_with_verified_evidence_rate": 100.0,
     "high_confidence_from_tier_c_only_count": 0,
     "llm_invented_urls_removed_count": 0,
@@ -1254,7 +1176,7 @@
     "rejected_quotes": []
   },
   "trace": {
-    "run_timestamp": "2026-10-23T13:22:35",
+    "run_timestamp": "2026-10-23T20:03:02",
     "current_date": "2026-10-15",
     "duration_seconds": 0.03,
     "llm_provider": "gemini",
@@ -1325,15 +1247,15 @@
       "Đông Nam Á"
     ],
     "version": 2,
-    "parent_run_timestamp": "2026-10-23T13:22:35",
+    "parent_run_timestamp": "2026-10-23T20:03:02",
     "rescored_as_of": "2026-10-23",
-    "refresh_timestamp": "2026-10-23T13:22:35"
+    "refresh_timestamp": "2026-10-23T20:03:02"
   },
   "recency": {
     "reference_date": "2026-10-23",
     "alert_months": 18,
     "impact_level": "ĐÁNG KỂ",
-    "summary": "Mức ảnh hưởng: ĐÁNG KỂ. 7/13 nhận định chưa có bằng chứng mới trong 18 tháng gần đây (I2, I3, I4, I6, I9, I10, I12); 3 nhận định dựa một phần vào dữ liệu cũ. Nguồn cũ then chốt: S1 (cùng S15, S2) (sensortower.com, 05/2025, ~17 tháng, số liệu Q1/2025). Chi tiết ở mục 7.",
+    "summary": "Mức ảnh hưởng: ĐÁNG KỂ. 6/10 nhận định chưa có bằng chứng mới trong 18 tháng gần đây (I2, I3, I4, I6, I9, I10); 2 nhận định dựa một phần vào dữ liệu cũ. Nguồn cũ then chốt: S1 (cùng S5, S2) (sensortower.com, 05/2025, ~17 tháng, số liệu Q1/2025). Chi tiết ở mục 7.",
     "sources": [
       {
         "source_id": "S1",
@@ -1355,7 +1277,9 @@
         ],
         "is_key": true,
         "key_reasons": [
-          "bỏ nguồn làm giảm/mất căn cứ nhận định I3 (TRUNG BÌNH → THẤP)",
+          "bỏ nguồn làm giảm/mất căn cứ nhận định I2 (TRUNG BÌNH → MẤT CĂN CỨ), I3 (TRUNG BÌNH → THẤP)",
+          "nguồn hạng A duy nhất của nhận định I2",
+          "hỗ trợ 3/10 nhận định (I1, I2, I3)",
           "nếu còn mới sẽ nâng mức I1 (TRUNG BÌNH → CAO)"
         ]
       },
@@ -1400,8 +1324,10 @@
         "supported_insight_ids": [
           "I4"
         ],
-        "is_key": false,
-        "key_reasons": []
+        "is_key": true,
+        "key_reasons": [
+          "nếu còn mới sẽ nâng mức I4 (THẤP → CAO)"
+        ]
       },
       {
         "source_id": "S4",
@@ -1442,7 +1368,7 @@
         "is_key": true,
         "key_reasons": [
           "nguồn hạng B duy nhất của nhận định I5",
-          "nếu còn mới sẽ nâng mức I5 (TRUNG BÌNH → CAO)"
+          "nếu còn mới sẽ nâng mức I4 (THẤP → CAO), I5 (TRUNG BÌNH → CAO)"
         ]
       },
       {
@@ -1592,14 +1518,9 @@
         "possibly_older_than_alert": false,
         "data_vintage": "",
         "date_conflict": false,
-        "supported_insight_ids": [
-          "I11"
-        ],
-        "is_key": true,
-        "key_reasons": [
-          "bỏ nguồn làm giảm/mất căn cứ nhận định I11 (TRUNG BÌNH → MẤT CĂN CỨ)",
-          "nguồn hạng A duy nhất của nhận định I11"
-        ]
+        "supported_insight_ids": [],
+        "is_key": false,
+        "key_reasons": []
       },
       {
         "source_id": "S14",
@@ -1632,13 +1553,11 @@
         "data_vintage": "2022",
         "date_conflict": false,
         "supported_insight_ids": [
-          "I5",
-          "I12",
-          "I13"
+          "I5"
         ],
         "is_key": true,
         "key_reasons": [
-          "bỏ nguồn làm giảm/mất căn cứ nhận định I5 (TRUNG BÌNH → THẤP), I13 (TRUNG BÌNH → THẤP)"
+          "bỏ nguồn làm giảm/mất căn cứ nhận định I5 (TRUNG BÌNH → THẤP)"
         ]
       },
       {
@@ -1691,12 +1610,11 @@
         "data_vintage": "",
         "date_conflict": false,
         "supported_insight_ids": [
-          "I5",
-          "I13"
+          "I5"
         ],
         "is_key": true,
         "key_reasons": [
-          "bỏ nguồn làm giảm/mất căn cứ nhận định I5 (TRUNG BÌNH → THẤP), I13 (TRUNG BÌNH → THẤP)"
+          "bỏ nguồn làm giảm/mất căn cứ nhận định I5 (TRUNG BÌNH → THẤP)"
         ]
       }
     ],
@@ -1712,9 +1630,9 @@
           },
           {
             "insight_id": "I2",
-            "current": "THẤP",
+            "current": "TRUNG BÌNH",
             "if_source_removed": "MẤT CĂN CỨ",
-            "if_source_fresh": "THẤP"
+            "if_source_fresh": "TRUNG BÌNH"
           },
           {
             "insight_id": "I3",
@@ -1723,31 +1641,25 @@
             "if_source_fresh": "TRUNG BÌNH"
           }
         ],
-        "summary": "S1 (sensortower.com, hạng A; đăng 05/2025 — tháng/năm trong URL hoặc tiêu đề; tuổi ước tính ~17 tháng; kỳ số liệu mới nhất trong trích dẫn: Q1/2025) là căn cứ của 3/13 nhận định (I1, I2, I3). Nếu bỏ nguồn này: I2 mất căn cứ (không còn nguồn nào khác); I3 giảm TRUNG BÌNH → THẤP. Nếu có bản cập nhật mới (≤ 12 tháng): I1 tăng TRUNG BÌNH → CAO."
+        "summary": "S1 (sensortower.com, hạng A; đăng 05/2025 — tháng/năm trong URL hoặc tiêu đề; tuổi ước tính ~17 tháng; kỳ số liệu mới nhất trong trích dẫn: Q1/2025) là căn cứ của 3/10 nhận định (I1, I2, I3). Nếu bỏ nguồn này: I2 mất căn cứ (không còn nguồn nào khác); I3 giảm TRUNG BÌNH → THẤP. Nếu có bản cập nhật mới (≤ 12 tháng): I1 tăng TRUNG BÌNH → CAO."
       },
       {
-        "source_id": "S15",
+        "source_id": "S5",
         "impacts": [
+          {
+            "insight_id": "I4",
+            "current": "THẤP",
+            "if_source_removed": "THẤP",
+            "if_source_fresh": "CAO"
+          },
           {
             "insight_id": "I5",
             "current": "TRUNG BÌNH",
-            "if_source_removed": "THẤP",
-            "if_source_fresh": "TRUNG BÌNH"
-          },
-          {
-            "insight_id": "I12",
-            "current": "THẤP",
-            "if_source_removed": "MẤT CĂN CỨ",
-            "if_source_fresh": "THẤP"
-          },
-          {
-            "insight_id": "I13",
-            "current": "TRUNG BÌNH",
-            "if_source_removed": "THẤP",
-            "if_source_fresh": "TRUNG BÌNH"
+            "if_source_removed": "TRUNG BÌNH",
+            "if_source_fresh": "CAO"
           }
         ],
-        "summary": "S15 (ripplereports.com, hạng C; đăng 2026 (chỉ biết năm) — chỉ có năm trong URL/tiêu đề — ước tính sai số ±6 tháng; tuổi ước tính 0–10 tháng; kỳ số liệu mới nhất trong trích dẫn: 2022) là căn cứ của 3/13 nhận định (I5, I12, I13). Nếu bỏ nguồn này: I5 giảm TRUNG BÌNH → THẤP; I12 mất căn cứ (không còn nguồn nào khác); I13 giảm TRUNG BÌNH → THẤP. Nếu có bản cập nhật mới (≤ 12 tháng): độ tin cậy giữ nguyên."
+        "summary": "S5 (appsflyer.com, hạng B; đăng 2024 (chỉ biết năm) — chỉ có năm trong URL/tiêu đề — ước tính sai số ±6 tháng; tuổi ước tính 22–34 tháng; kỳ số liệu mới nhất trong trích dẫn: 2024) là căn cứ của 2/10 nhận định (I4, I5). Nếu bỏ nguồn này: không nhận định nào bị tụt mức. Nếu có bản cập nhật mới (≤ 12 tháng): I4 tăng THẤP → CAO; I5 tăng TRUNG BÌNH → CAO."
       },
       {
         "source_id": "S2",
@@ -1765,25 +1677,19 @@
             "if_source_fresh": "TRUNG BÌNH"
           }
         ],
-        "summary": "S2 (sensortower.com, hạng A; đăng 10/2024 — tháng/năm trong URL hoặc tiêu đề; tuổi ước tính ~24 tháng; kỳ số liệu mới nhất trong trích dẫn: 2024) là căn cứ của 2/13 nhận định (I1, I3). Nếu bỏ nguồn này: không nhận định nào bị tụt mức. Nếu có bản cập nhật mới (≤ 12 tháng): I1 tăng TRUNG BÌNH → CAO."
+        "summary": "S2 (sensortower.com, hạng A; đăng 10/2024 — tháng/năm trong URL hoặc tiêu đề; tuổi ước tính ~24 tháng; kỳ số liệu mới nhất trong trích dẫn: 2024) là căn cứ của 2/10 nhận định (I1, I3). Nếu bỏ nguồn này: không nhận định nào bị tụt mức. Nếu có bản cập nhật mới (≤ 12 tháng): I1 tăng TRUNG BÌNH → CAO."
       },
       {
-        "source_id": "S5",
+        "source_id": "S3",
         "impacts": [
           {
             "insight_id": "I4",
             "current": "THẤP",
             "if_source_removed": "THẤP",
-            "if_source_fresh": "THẤP"
-          },
-          {
-            "insight_id": "I5",
-            "current": "TRUNG BÌNH",
-            "if_source_removed": "TRUNG BÌNH",
             "if_source_fresh": "CAO"
           }
         ],
-        "summary": "S5 (appsflyer.com, hạng B; đăng 2024 (chỉ biết năm) — chỉ có năm trong URL/tiêu đề — ước tính sai số ±6 tháng; tuổi ước tính 22–34 tháng; kỳ số liệu mới nhất trong trích dẫn: 2024) là căn cứ của 2/13 nhận định (I4, I5). Nếu bỏ nguồn này: không nhận định nào bị tụt mức. Nếu có bản cập nhật mới (≤ 12 tháng): I5 tăng TRUNG BÌNH → CAO."
+        "summary": "S3 (statista.com, hạng A; đăng Không rõ ngày — không xác định được; tuổi ước tính không rõ; kỳ số liệu mới nhất trong trích dẫn: 2024) là căn cứ của 1/10 nhận định (I4). Nếu bỏ nguồn này: không nhận định nào bị tụt mức. Nếu có bản cập nhật mới (≤ 12 tháng): I4 tăng THẤP → CAO."
       },
       {
         "source_id": "S6",
@@ -1795,7 +1701,19 @@
             "if_source_fresh": "TRUNG BÌNH"
           }
         ],
-        "summary": "S6 (appsflyer.com, hạng B; đăng 2024 (chỉ biết năm) — chỉ có năm trong URL/tiêu đề — ước tính sai số ±6 tháng; tuổi ước tính 22–34 tháng) là căn cứ của 1/13 nhận định (I6). Nếu bỏ nguồn này: I6 mất căn cứ (không còn nguồn nào khác). Nếu có bản cập nhật mới (≤ 12 tháng): I6 tăng THẤP → TRUNG BÌNH."
+        "summary": "S6 (appsflyer.com, hạng B; đăng 2024 (chỉ biết năm) — chỉ có năm trong URL/tiêu đề — ước tính sai số ±6 tháng; tuổi ước tính 22–34 tháng) là căn cứ của 1/10 nhận định (I6). Nếu bỏ nguồn này: I6 mất căn cứ (không còn nguồn nào khác). Nếu có bản cập nhật mới (≤ 12 tháng): I6 tăng THẤP → TRUNG BÌNH."
+      },
+      {
+        "source_id": "S15",
+        "impacts": [
+          {
+            "insight_id": "I5",
+            "current": "TRUNG BÌNH",
+            "if_source_removed": "THẤP",
+            "if_source_fresh": "TRUNG BÌNH"
+          }
+        ],
+        "summary": "S15 (ripplereports.com, hạng C; đăng 2026 (chỉ biết năm) — chỉ có năm trong URL/tiêu đề — ước tính sai số ±6 tháng; tuổi ước tính 0–10 tháng; kỳ số liệu mới nhất trong trích dẫn: 2022) là căn cứ của 1/10 nhận định (I5). Nếu bỏ nguồn này: I5 giảm TRUNG BÌNH → THẤP. Nếu có bản cập nhật mới (≤ 12 tháng): độ tin cậy giữ nguyên."
       }
     ],
     "insights": [
@@ -1880,28 +1798,6 @@
           "S11"
         ],
         "note": "S11 01/11/2024, kỳ 08/2024"
-      },
-      {
-        "insight_id": "I11",
-        "status": "MỚI",
-        "non_recent_source_ids": [],
-        "note": ""
-      },
-      {
-        "insight_id": "I12",
-        "status": "KHÔNG CÓ BẰNG CHỨNG MỚI",
-        "non_recent_source_ids": [
-          "S15"
-        ],
-        "note": "S15 2026 (chỉ biết năm), kỳ 2022"
-      },
-      {
-        "insight_id": "I13",
-        "status": "MỘT PHẦN CŨ",
-        "non_recent_source_ids": [
-          "S15"
-        ],
-        "note": "S15 2026 (chỉ biết năm), kỳ 2022"
       }
     ],
     "upcoming_changes": [
@@ -1912,6 +1808,7 @@
         ],
         "changes": [
           "I1: TRUNG BÌNH → THẤP",
+          "I2: TRUNG BÌNH → THẤP",
           "I3: TRUNG BÌNH → THẤP"
         ]
       }
@@ -1920,18 +1817,15 @@
       "Sensor Tower Southeast Asia Mobile Game Market Insights 2026 site:sensortower.com",
       "Sensor Tower Southeast Asia Mobile Game Market Insights 2026",
       "Sensor Tower Southeast Asia Mobile Game Market Insights 2025 site:sensortower.com",
-      "Casual Mobile Gaming 2026 site:ripplereports.com",
-      "Casual Mobile Gaming 2026",
-      "Casual Mobile Gaming 2025 site:ripplereports.com"
+      "The 2026 state of gaming app marketing [Report] I AppsFlyer site:appsflyer.com",
+      "The 2026 state of gaming app marketing [Report] I AppsFlyer",
+      "The 2025 state of gaming app marketing [Report] I AppsFlyer site:appsflyer.com"
     ],
     "certainty_groups": {
-      "Đủ cơ sở": [
-        "I11"
-      ],
+      "Đủ cơ sở": [],
       "Cần lưu ý": [
         "I1",
-        "I5",
-        "I13"
+        "I5"
       ],
       "Chưa chắc chắn": [
         "I2",
@@ -1941,14 +1835,13 @@
         "I7",
         "I8",
         "I9",
-        "I10",
-        "I12"
+        "I10"
       ]
     }
   },
   "refresh": {
     "status": "ĐÃ LÀM MỚI",
-    "refreshed_at": "2026-10-23T13:22:35",
+    "refreshed_at": "2026-10-23T20:03:02",
     "reference_date": "2026-10-23",
     "target_source_ids": [
       "S1",
@@ -2067,7 +1960,9 @@
         "old_evidence_id": "E1",
         "new_evidence_ids": [],
         "status": "KHÔNG TƯƠNG ĐƯƠNG",
-        "explanation": "Bằng chứng mới [E29] tập trung vào doanh thu IAP, không phải lượt tải xuống game di động toàn cầu của Đông Nam Á như [E1] (Q1/2025)."
+        "explanation": "Bằng chứng mới [E29] tập trung vào doanh thu IAP, không phải lượt tải xuống game di động toàn cầu của Đông Nam Á như [E1] (Q1/2025).",
+        "llm_status": "KHÔNG TƯƠNG ĐƯƠNG",
+        "guard_notes": []
       },
       {
         "old_evidence_id": "E3",
@@ -2075,29 +1970,41 @@
           "E35"
         ],
         "status": "XÁC NHẬN",
-        "explanation": "Bằng chứng mới [E35] xác nhận Indonesia dẫn đầu về lượt tải xuống, tương tự [E3] (Q1/2025), mặc dù không có số liệu cụ thể."
+        "explanation": "Bằng chứng mới [E35] xác nhận Indonesia dẫn đầu về lượt tải xuống, tương tự [E3] (Q1/2025), mặc dù không có số liệu cụ thể.",
+        "llm_status": "XÁC NHẬN",
+        "guard_notes": []
       },
       {
         "old_evidence_id": "E2",
         "new_evidence_ids": [
           "E29"
         ],
-        "status": "CẬP NHẬT",
-        "explanation": "Bằng chứng mới [E29] cập nhật doanh thu IAP của Đông Nam Á lên 5,3 tỷ USD, tăng đáng kể so với 625 triệu USD trong [E2] (Q1/2025)."
+        "status": "KHÔNG TƯƠNG ĐƯƠNG",
+        "explanation": "Bằng chứng mới [E29] cập nhật doanh thu IAP của Đông Nam Á lên 5,3 tỷ USD, tăng đáng kể so với 625 triệu USD trong [E2] (Q1/2025).",
+        "llm_status": "CẬP NHẬT",
+        "guard_notes": [
+          "E29: khác phạm vi (game ↔ không rõ là game); không xác định được kỳ số liệu (Q1/2025 ↔ ?)"
+        ]
       },
       {
         "old_evidence_id": "E4",
         "new_evidence_ids": [],
         "status": "KHÔNG TƯƠNG ĐƯƠNG",
-        "explanation": "Bằng chứng mới không so sánh cụ thể các thể loại game dễ tiếp cận với các thể loại chuyên sâu hơn về doanh thu IAP ở Đông Nam Á như [E4]."
+        "explanation": "Bằng chứng mới không so sánh cụ thể các thể loại game dễ tiếp cận với các thể loại chuyên sâu hơn về doanh thu IAP ở Đông Nam Á như [E4].",
+        "llm_status": "KHÔNG TƯƠNG ĐƯƠNG",
+        "guard_notes": []
       },
       {
         "old_evidence_id": "E12",
         "new_evidence_ids": [
           "E34"
         ],
-        "status": "CẬP NHẬT",
-        "explanation": "Bằng chứng mới [E34] khuyến nghị thiết kế kinh tế game hỗ trợ cả IAP và quảng cáo có thưởng, cập nhật xu hướng từ [E12] (Q2/2024) về sự thay đổi giữa IAP và IAA."
+        "status": "KHÔNG TƯƠNG ĐƯƠNG",
+        "explanation": "Bằng chứng mới [E34] khuyến nghị thiết kế kinh tế game hỗ trợ cả IAP và quảng cáo có thưởng, cập nhật xu hướng từ [E12] (Q2/2024) về sự thay đổi giữa IAP và IAA.",
+        "llm_status": "CẬP NHẬT",
+        "guard_notes": [
+          "E34: một bên không có số liệu để so; không xác định được kỳ số liệu (Q2/2024 ↔ ?)"
+        ]
       },
       {
         "old_evidence_id": "E13",
@@ -2106,8 +2013,14 @@
           "E32",
           "E40"
         ],
-        "status": "CẬP NHẬT",
-        "explanation": "Bằng chứng mới [E31], [E32], [E40] cập nhật xu hướng tăng trưởng của game hybrid-casual, thay vì chỉ hypercasual như [E13] (Q2/2024)."
+        "status": "KHÔNG TƯƠNG ĐƯƠNG",
+        "explanation": "Bằng chứng mới [E31], [E32], [E40] cập nhật xu hướng tăng trưởng của game hybrid-casual, thay vì chỉ hypercasual như [E13] (Q2/2024).",
+        "llm_status": "CẬP NHẬT",
+        "guard_notes": [
+          "E31: không xác định được kỳ số liệu (Q2/2024 ↔ ?)",
+          "E32: khác loại kỳ (Q2/2024 ↔ 2022)",
+          "E40: một bên không có số liệu để so; không xác định được kỳ số liệu (Q2/2024 ↔ ?)"
+        ]
       },
       {
         "old_evidence_id": "E11",
@@ -2117,39 +2030,17 @@
           "E40"
         ],
         "status": "XÁC NHẬN",
-        "explanation": "Bằng chứng mới [E31], [E34], [E40] xác nhận sự phổ biến của mô hình doanh thu kết hợp, đặc biệt là hybrid-casual, tương tự [E11] (2024)."
+        "explanation": "Bằng chứng mới [E31], [E34], [E40] xác nhận sự phổ biến của mô hình doanh thu kết hợp, đặc biệt là hybrid-casual, tương tự [E11] (2024).",
+        "llm_status": "XÁC NHẬN",
+        "guard_notes": []
       }
     ],
     "confidence_changes": [
-      {
-        "insight_id": "I2",
-        "before": "TRUNG BÌNH",
-        "after": "THẤP",
-        "reason": "Các nguồn đang có số liệu/nhận định mâu thuẫn chưa giải quyết (S1 (Hạng A, sensortower.com)) · Độ mới: KHÔNG CÓ BẰNG CHỨNG MỚI (S1 05/2025, kỳ Q1/2025)"
-      },
       {
         "insight_id": "I5",
         "before": "THẤP",
         "after": "TRUNG BÌNH",
         "reason": "Đạt mức TRUNG BÌNH: 2 nguồn hạng C khác domain đồng thuận (S15 (Hạng C, ripplereports.com), S18 (Hạng C, friendlygamedev.com), S5 (Hạng B, appsflyer.com)) · Độ mới: MỘT PHẦN CŨ (S5 2024 (chỉ biết năm), kỳ 2024; S15 2026 (chỉ biết năm), kỳ 2022)"
-      },
-      {
-        "insight_id": "I11",
-        "before": "—",
-        "after": "TRUNG BÌNH",
-        "reason": "Nhận định mới bổ sung từ nguồn làm mới (E29)"
-      },
-      {
-        "insight_id": "I12",
-        "before": "—",
-        "after": "THẤP",
-        "reason": "Nhận định mới bổ sung từ nguồn làm mới (E34)"
-      },
-      {
-        "insight_id": "I13",
-        "before": "—",
-        "after": "TRUNG BÌNH",
-        "reason": "Nhận định mới bổ sung từ nguồn làm mới (E31, E32, E40)"
       }
     ],
     "llm_calls_count": 0,

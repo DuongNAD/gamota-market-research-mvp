@@ -1,4 +1,4 @@
-"""Generate Mission 2 vs Mission 3 comparison tables A, B, C (`python -m eval.compare_m2_m3`)."""
+"""Generate Mission 2 vs Mission 3 comparison tables A, B, C, D (`python -m eval.compare_m2_m3`)."""
 
 from __future__ import annotations
 
@@ -15,6 +15,7 @@ from research.schemas import Report
 EVAL_DIR = Path(__file__).resolve().parent
 RESULTS_DIR = EVAL_DIR / "results"
 M2_DIR = RESULTS_DIR / "m2"
+BEFORE_FIX_DIR = RESULTS_DIR / "m3_before_fix"
 
 
 def _dist_str(rep: Report) -> str:
@@ -171,6 +172,7 @@ def build_comparison() -> dict[str, Any]:
         )
 
     # Table C: Refresh loop cases (TC7, TC10)
+    table_d: list[dict[str, Any]] = []
     for r_cid in ("TC7", "TC10"):
         r_path = RESULTS_DIR / f"{r_cid}.json"
         if not r_path.exists():
@@ -198,6 +200,11 @@ def build_comparison() -> dict[str, Any]:
                 1 for c in rf.comparisons if c.status == "KHÔNG TÌM THẤY DỮ LIỆU MỚI"
             ),
         }
+        downgraded_pairs = [
+            f"{c.old_evidence_id}→{','.join(c.new_evidence_ids) or '—'} ({c.llm_status}→{c.status})"
+            for c in rf.comparisons
+            if c.llm_status and c.llm_status != c.status
+        ]
         changes_desc = [
             f"{cc.insight_id}: {cc.before} → {cc.after}"
             for cc in rf.confidence_changes
@@ -215,11 +222,50 @@ def build_comparison() -> dict[str, Any]:
                 "rejected_new_sources_count": len(rf.rejected_new_sources),
                 "new_verified_evidences_count": new_ev_count,
                 "comparison_counts": cmp_counts,
+                "downgraded_pairs_count": len(downgraded_pairs),
+                "downgraded_pairs": downgraded_pairs,
                 "confidence_changes": changes_desc,
                 "llm_calls_count": rf.llm_calls_count,
                 "duration_seconds": rf.duration_seconds,
             }
         )
+
+        # Table D: Before/after comparability fix (TC7, TC10)
+        bf_path = BEFORE_FIX_DIR / f"{r_cid}.json"
+        if bf_path.exists():
+            bf_rep = Report.model_validate_json(bf_path.read_text(encoding="utf-8"))
+            bf_rf = bf_rep.refresh
+            if bf_rf is not None:
+                bf_counts = {
+                    "XÁC NHẬN": sum(1 for c in bf_rf.comparisons if c.status == "XÁC NHẬN"),
+                    "CẬP NHẬT": sum(1 for c in bf_rf.comparisons if c.status == "CẬP NHẬT"),
+                    "MÂU THUẪN": sum(1 for c in bf_rf.comparisons if c.status == "MÂU THUẪN"),
+                    "KHÔNG TƯƠNG ĐƯƠNG": sum(
+                        1 for c in bf_rf.comparisons if c.status == "KHÔNG TƯƠNG ĐƯƠNG"
+                    ),
+                    "KHÔNG TÌM THẤY DỮ LIỆU MỚI": sum(
+                        1 for c in bf_rf.comparisons if c.status == "KHÔNG TÌM THẤY DỮ LIỆU MỚI"
+                    ),
+                }
+                bf_changes = [
+                    f"{cc.insight_id}: {cc.before} → {cc.after}"
+                    for cc in bf_rf.confidence_changes
+                ]
+                table_d.append(
+                    {
+                        "case": r_cid,
+                        "before_comparison_counts": bf_counts,
+                        "after_comparison_counts": cmp_counts,
+                        "downgraded_pairs_count": len(downgraded_pairs),
+                        "downgraded_pairs": downgraded_pairs,
+                        "before_conflicts_count": len(bf_rep.conflicts),
+                        "after_conflicts_count": len(r_rep.conflicts),
+                        "before_insights_count": len(bf_rep.insights),
+                        "after_insights_count": len(r_rep.insights),
+                        "before_confidence_changes": bf_changes,
+                        "after_confidence_changes": changes_desc,
+                    }
+                )
 
     totals_b = {
         "total_sources": tot_sources,
@@ -238,6 +284,7 @@ def build_comparison() -> dict[str, Any]:
         "table_b_change_request": table_b,
         "table_b_totals": totals_b,
         "table_c_refresh": table_c,
+        "table_d_before_after_fix": table_d,
     }
 
 
@@ -327,23 +374,62 @@ def render_comparison_markdown(data: dict[str, Any]) -> str:
     # Table C
     lines.append("## Bảng C — Kết quả Vòng làm mới dữ liệu có mục tiêu (`TC7`, `TC10`)")
     lines.append(
-        "| Case | Ngày làm mới | Trạng thái | Nguồn mục tiêu | Truy vấn | Nguồn mới (Giữ / Loại) | Bằng chứng mới | Đối chiếu (XÁC NHẬN / CẬP NHẬT / MÂU THUẪN / KHÔNG TĐ / KHÔNG TÌM THẤY) | Nhận định đổi mức (Trước → Sau làm mới) |"
+        "| Case | Ngày làm mới | Trạng thái | Nguồn mục tiêu | Truy vấn | Nguồn mới (Giữ / Loại) | Bằng chứng mới | Đối chiếu (XÁC NHẬN / CẬP NHẬT / MÂU THUẪN / KHÔNG TĐ / KHÔNG TÌM THẤY) | Cặp bị code hạ nhãn | Nhận định đổi mức (Trước → Sau làm mới) |"
     )
-    lines.append("|---|---|---|---|---|---|---|---|---|")
+    lines.append("|---|---|---|---|---|---|---|---|---|---|")
     for r in data["table_c_refresh"]:
         cc = r["comparison_counts"]
         cmp_str = (
             f"{cc['XÁC NHẬN']} XN / {cc['CẬP NHẬT']} CN / {cc['MÂU THUẪN']} MT / "
             f"{cc['KHÔNG TƯƠNG ĐƯƠNG']} KTĐ / {cc['KHÔNG TÌM THẤY DỮ LIỆU MỚI']} KTT"
         )
+        dg_str = (
+            f"**{r['downgraded_pairs_count']}** ({'; '.join(r['downgraded_pairs'])})"
+            if r["downgraded_pairs"]
+            else "0"
+        )
         chg_str = "; ".join(r["confidence_changes"]) if r["confidence_changes"] else "Không đổi mức"
         lines.append(
             f"| **{r['case']}** | `{r['reference_date']}` | **`{r['status']}`** | "
             f"`{', '.join(r['target_source_ids']) or '—'}` | `{r['queries_count']}` | "
             f"`{r['kept_new_sources_count']}` giữ (`{', '.join(r['kept_new_source_ids']) or '—'}`) / `{r['rejected_new_sources_count']}` loại | "
-            f"`{r['new_verified_evidences_count']}` | {cmp_str} | {chg_str} |"
+            f"`{r['new_verified_evidences_count']}` | {cmp_str} | {dg_str} | {chg_str} |"
         )
     lines.append("")
+
+    # Table D
+    if data.get("table_d_before_after_fix"):
+        lines.append("## Bảng D — Trước/sau đợt sửa chốt chặn đối chiếu (`TC7`, `TC10`)")
+        lines.append(
+            "| Case | Nhãn đối chiếu (Trước → Sau sửa) | Cặp bị code hạ nhãn | Số `ConflictItem` (Trước → Sau) | Số nhận định (Trước → Sau) | Thay đổi độ tin cậy (Trước → Sau sửa) |"
+        )
+        lines.append("|---|---|---|---|---|---|")
+        for r in data["table_d_before_after_fix"]:
+            bc = r["before_comparison_counts"]
+            ac = r["after_comparison_counts"]
+            bc_str = (
+                f"`{bc['XÁC NHẬN']} XN / {bc['CẬP NHẬT']} CN / {bc['MÂU THUẪN']} MT / "
+                f"{bc['KHÔNG TƯƠNG ĐƯƠNG']} KTĐ / {bc['KHÔNG TÌM THẤY DỮ LIỆU MỚI']} KTT`"
+            )
+            ac_str = (
+                f"**`{ac['XÁC NHẬN']} XN / {ac['CẬP NHẬT']} CN / {ac['MÂU THUẪN']} MT / "
+                f"{ac['KHÔNG TƯƠNG ĐƯƠNG']} KTĐ / {ac['KHÔNG TÌM THẤY DỮ LIỆU MỚI']} KTT`**"
+            )
+            dg_str = (
+                f"**{r['downgraded_pairs_count']}** (`{'; '.join(r['downgraded_pairs'])}`)"
+                if r["downgraded_pairs"]
+                else "0"
+            )
+            b_chg = "; ".join(r["before_confidence_changes"]) if r["before_confidence_changes"] else "0 thay đổi"
+            a_chg = "; ".join(r["after_confidence_changes"]) if r["after_confidence_changes"] else "0 thay đổi (Không đổi mức)"
+            lines.append(
+                f"| **{r['case']}** | {bc_str} → {ac_str} | {dg_str} | "
+                f"`{r['before_conflicts_count']}` → **`{r['after_conflicts_count']}`** | "
+                f"`{r['before_insights_count']}` → **`{r['after_insights_count']}`** | "
+                f"`{b_chg}` → **`{a_chg}`** |"
+            )
+        lines.append("")
+
     return "\n".join(lines)
 
 

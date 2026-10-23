@@ -1,7 +1,7 @@
 # Báo cáo Nghiên cứu Thị trường Game
 **Câu hỏi nghiên cứu:** Thể loại game mobile nào có tiềm năng tại Đông Nam Á trong 12 tháng tới?
 
-> **Thời điểm chạy:** `2026-10-23T13:22:35` · **Thời gian xử lý:** `0.03s` · **Model:** `gemini/gemini-3.8-flash` (0 lệnh gọi LLM) · **Search:** `ddgs`
+> **Thời điểm chạy:** `2026-10-23T20:03:02` · **Thời gian xử lý:** `0.03s` · **Model:** `gemini/gemini-3.8-flash` (0 lệnh gọi LLM) · **Search:** `ddgs`
 
 ## 1. Trả lời ngắn & Khuyến nghị ra quyết định
 ### Trả lời ngắn

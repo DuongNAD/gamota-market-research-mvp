@@ -1,7 +1,7 @@
 # Báo cáo Nghiên cứu Thị trường Game
 **Câu hỏi nghiên cứu:** Chi phí cài đặt (CPI) trung bình của game mobile tại Đông Nam Á hiện nay là bao nhiêu?
 
-> **Thời điểm chạy:** `2026-10-23T13:22:35` · **Thời gian xử lý:** `0.05s` · **Model:** `gemini/gemini-3.8-flash` (0 lệnh gọi LLM) · **Search:** `ddgs`
+> **Thời điểm chạy:** `2026-10-23T20:03:02` · **Thời gian xử lý:** `0.03s` · **Model:** `gemini/gemini-3.8-flash` (0 lệnh gọi LLM) · **Search:** `ddgs`
 
 ## 1. Trả lời ngắn & Khuyến nghị ra quyết định
 ### Trả lời ngắn
