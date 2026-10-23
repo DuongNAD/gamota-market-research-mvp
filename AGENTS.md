@@ -1,15 +1,14 @@
-# AGENTS.md: quy tắc luôn áp dụng (Gamota · Mission 2)
+# AGENTS.md: quy tắc luôn áp dụng (Gamota · Mission 3)
 
-Đặc tả đầy đủ nằm ở `BRIEF.md`. Đọc toàn bộ trước khi bắt đầu, và đọc lại mục liên quan ở đầu mỗi phase. Nếu có mâu thuẫn, `BRIEF.md` thắng. Nếu còn mơ hồ, hỏi tôi thay vì đoán.
+Đặc tả Mission 3 nằm ở `BRIEF_M3.md` (`BRIEF.md` là đặc tả Mission 2, chỉ để tra cứu). Đọc toàn bộ trước khi bắt đầu, và đọc lại mục liên quan ở đầu mỗi phase. Nếu có mâu thuẫn, `BRIEF_M3.md` thắng. Nếu còn mơ hồ, hỏi tôi thay vì đoán.
 
 ## Cách làm việc
-- Làm đúng thứ tự P0 → P5 (BRIEF mục 6). Đầu mỗi phase: Implementation Plan + Task List. Cuối mỗi phase: cập nhật Walkthrough (đã làm, bằng chứng, việc còn lại, rủi ro).
+- Làm đúng thứ tự P0 → P5 (BRIEF_M3 mục 7). Đầu mỗi phase: Implementation Plan + Task List. Cuối mỗi phase: cập nhật Walkthrough (đã làm, bằng chứng, việc còn lại, rủi ro).
 - Tại CHECKPOINT 1, 2, 3: dừng hẳn, chờ tôi trả lời "OK" mới làm tiếp.
-- Mục 2 của BRIEF còn ô `{{...}}` chưa điền → hỏi tôi trước khi bắt đầu.
-- Hạn của bạn: 16:00 ngày 15/10/2026. Chậm hơn kế hoạch quá 1 giờ → báo tôi và đề xuất phần cắt theo BRIEF mục 5.
+- Hạn của bạn: 16:00 ngày 24/10/2026. Chậm hơn kế hoạch quá 1 giờ → báo tôi và đề xuất phần cắt theo BRIEF_M3 mục 9.
 - Kiểm tra giao diện bằng trình duyệt tích hợp của Antigravity trước mỗi checkpoint có UI.
 - Hỏi tôi trước: lần `git push` đầu tiên, xóa file, cài công cụ toàn cục. Việc cần tài khoản (GitHub, Streamlit Cloud, Gemini, Tavily): hướng dẫn tôi làm, không tự làm.
-- Không sửa `BRIEF.md` và `AGENTS.md` trừ khi tôi yêu cầu.
+- Không sửa `BRIEF.md`, `BRIEF_M3.md` và `AGENTS.md` trừ khi tôi yêu cầu.
 
 ## Không bao giờ vi phạm
 1. Không bịa: kết quả test, số liệu, ảnh chụp đều phải từ lần chạy thật. Không hardcode đáp án cho câu hỏi mẫu.
