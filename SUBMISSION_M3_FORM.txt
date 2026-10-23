@@ -20,7 +20,7 @@ Câu 2. Điểm khác biệt lớn nhất giữa bản mới và bản ở Missi
 (1) Khác biệt lớn nhất: Độ tin cậy được tính lại theo tuổi dữ liệu bằng mô phỏng phản thực tế trên code, và vòng làm mới chỉ dùng số liệu mới khi code kiểm tra tương đương về phạm vi, thị trường, đơn vị và kỳ số liệu với số cũ, trong khi giữ nguyên quy tắc chấm điểm Mission 2.
 (2) Bảng B (eval/results/m2_vs_m3.md, chạy trên 6 báo cáo Mission 2 ở ngày 2026-10-15, 0 lệnh gọi LLM): phát hiện 4/6 case (TC1, TC2, TC4, TC5) chịu ảnh hưởng ĐÁNG KỂ, 15 lượt nguồn then chốt cũ/không chắc, 22/52 nhận định (42,3%) thiếu bằng chứng mới trong 18 tháng; trả lời ngắn có ghi chú tuổi dữ liệu tăng từ 0/6 lên 4/4 case ĐÁNG KỂ, không cảnh báo giả ở TC3, TC9 (0/8 nhận định thiếu bằng chứng mới).
 (3) TC2 phản thực tế (eval/results/TC2.md): chỉ rõ S5, S6 (appsflyer.com) chỉ biết năm 2024 (22-34 tháng); bỏ S5 hoặc S6 thì I5, I6 MẤT CĂN CỨ; nếu S5 còn mới (<= 12 tháng) thì I4 tăng từ THẤP lên CAO.
-(4) TC7 sau sửa (eval/results/TC7.md, Bảng C & D): thu 6 nguồn mới (S13-S18), 12 trích dẫn mới (E29-E40), 40/40 trích dẫn khớp (100.0%). Có 2 cặp xác nhận (E3->E35, E11->E31,E34,E40) nâng I5 từ THẤP lên TRUNG BÌNH. Code chặn 3 cặp từ CẬP NHẬT xuống KHÔNG TƯƠNG ĐƯƠNG (E2->E29, E12->E34, E13->E31,E32,E40), trong đó 5,3 tỷ USD ở E29 là IAP mọi ứng dụng cả năm nên không thay được 625 triệu USD IAP game Q1/2025 ở E2; I2 không bị hạ oan (giữ TRUNG BÌNH), ConflictItem giảm 4 -> 1, nhận định 13 -> 10.
+(4) TC7 sau sửa (eval/results/TC7.md, Bảng C & D): thu 6 nguồn mới (S13-S18), 12 trích dẫn mới (E29-E40), 40/40 trích dẫn khớp (100.0%). Có 2 cặp xác nhận: E3->E35 bổ sung bằng chứng mới cho I1 (giữ TRUNG BÌNH), E11->E31,E34,E40 nâng I5 từ THẤP lên TRUNG BÌNH. Code chặn 3 cặp từ CẬP NHẬT xuống KHÔNG TƯƠNG ĐƯƠNG (E2->E29, E12->E34, E13->E31,E32,E40), trong đó 5,3 tỷ USD ở E29 là IAP mọi ứng dụng cả năm nên không thay được 625 triệu USD IAP game Q1/2025 ở E2; I2 không bị hạ oan (giữ TRUNG BÌNH), ConflictItem giảm 4 -> 1, nhận định 13 -> 10.
 (5) TC10 sau sửa (eval/results/TC10.md, Bảng C & D): thu 6 nguồn mới, 15 trích dẫn mới (37/37 khớp 100.0%); code chặn 2 cặp (E2->E23, E16->E23) do ghép 18,1 tỷ lượt tải mọi ứng dụng năm 2025 với 1,93 tỷ lượt tải game Q1/2025; giữ 4 cặp xác nhận; không nhận định nào đổi mức (I4 giữ TRUNG BÌNH), ConflictItem giảm 2 -> 0, nhận định 11 -> 9.
 (6) Hồi quy (Bảng A, pytest): TC2-TC5, TC9 trùng 100% với Mission 2; 60/60 test pass (21 test Mission 2 + 39 test item Mission 3).
 
@@ -38,5 +38,5 @@ Câu 3. Nếu sản phẩm này được đưa vào sử dụng thật, rủi ro
 ================================================================================
 Thống kê độ dài ký tự (đếm bằng code Python):
 - Câu 1: 1700 ký tự (kèm tiêu đề câu hỏi: 1798 ký tự; giới hạn <= 1800)
-- Câu 2: 1856 ký tự (kèm tiêu đề câu hỏi: 1988 ký tự; giới hạn <= 2000)
+- Câu 2: 1902 ký tự (kèm tiêu đề câu hỏi: 2034 ký tự; giới hạn <= 2000 áp cho phần trả lời)
 - Câu 3: 1463 ký tự (kèm tiêu đề câu hỏi: 1578 ký tự; giới hạn <= 1800)

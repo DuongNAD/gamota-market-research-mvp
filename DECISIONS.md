@@ -150,6 +150,11 @@ Mỗi quyết định được ghi nhận liên tục trong quá trình xây d�
     - *Quyết định*: Lưu nguyên trạng các file kết quả trước khi sửa vào `eval/results/m3_before_fix/` và cập nhật `eval/compare_m2_m3.py` để tự động sinh **Bảng D — Trước/sau đợt sửa** bên cạnh Bảng A, B, C.
     - *Lý do*: Đảm bảo tính trung thực khoa học (không xóa kết quả cũ) và cung cấp bằng chứng định lượng rõ ràng về tác dụng của chốt chặn đối chiếu bằng code.
 
+29. **[M3-FIX] Sửa tài liệu cho khớp code và kết quả chạy sau khi soát lại**:
+    - *Bối cảnh*: Soát lại sau đợt sửa thấy 4 chỗ lệch: `TESTING.md` ghi code cũ cắt `[:80]` (thực tế `[:90]`) và mô tả nhóm phân loại của chốt chặn khác với `research/comparability.py`; lỗi `401` khi gọi thử model dự phòng chỉ có ở `DECISIONS.md`; câu (4) của Câu 2 viết như thể cả 2 cặp xác nhận đều nâng `I5`.
+    - *Quyết định*: Sửa `TESTING.md` cho khớp code; ghi lỗi `401` vào `TESTING.md` và mục Hạn chế của `README.md`; viết lại câu (4) trong `SUBMISSION_M3.md`, `SUBMISSION_M3_FORM.txt`, `README.md`: `E3→E35` bổ sung bằng chứng cho `I1` (giữ `TRUNG BÌNH`), chỉ `E11` làm `I5` lên `TRUNG BÌNH`; đếm lại ký tự Câu 2 (`1902`).
+    - *Lý do*: Quy tắc 1 và 7 của `AGENTS.md`: tài liệu nộp không được nói khác kết quả chạy thật, và hạn chế phải ghi rõ trong `TESTING.md` và README.
+
 
 
 
