@@ -1,10 +1,62 @@
 # Gamota · Hệ thống Nghiên cứu Thị trường Game có Căn cứ (Evidence-Grounded Market Research MVP)
 
-**Mô tả 1 câu:** Công cụ nghiên cứu thị trường game tự động phân rã câu hỏi kinh doanh, thu thập và xếp hạng nguồn (`A/B/C`), ép buộc xác minh từng câu trích dẫn nguyên văn bằng thuật toán (`RapidFuzz >= 90`) kèm link tô sáng tận nguồn (`#:~:text=`), và tính điểm độ tin cậy (`CAO / TRUNG BÌNH / THẤP`) bằng quy tắc code tất định để hỗ trợ ra quyết định phát hành game tại Gamota.
+**Mô tả 1 câu:** Công cụ nghiên cứu thị trường game tự động phân rã câu hỏi kinh doanh, thu thập và xếp hạng nguồn (`A/B/C`), ép buộc xác minh từng câu trích dẫn nguyên văn bằng thuật toán (`RapidFuzz >= 90`) kèm link tô sáng tận nguồn (`#:~:text=`), tính điểm độ tin cậy (`CAO / TRUNG BÌNH / THẤP`) bằng quy tắc code tất định, đồng thời định lượng ảnh hưởng của dữ liệu cũ (`> 18 tháng`) và tự động làm mới có mục tiêu để hỗ trợ ra quyết định phát hành game tại Gamota.
 
 - **Link Demo (Streamlit Cloud):** [https://gamota-market-research-mvp.streamlit.app](https://gamota-market-research-mvp.streamlit.app) *(Nếu ứng dụng đang ở trạng thái ngủ khi mở bằng trình duyệt ẩn danh, vui lòng bấm **"Yes, get this app back up!"** và chờ khoảng 1 phút)*
 - **Link Source Code (GitHub Public):** [https://github.com/DuongNAD/gamota-market-research-mvp](https://github.com/DuongNAD/gamota-market-research-mvp)
-- **Link Video Walkthrough (≤ 5 phút):** [https://youtu.be/WZhY9xlLmMY](https://youtu.be/WZhY9xlLmMY)
+- **Link Video Walkthrough Mission 2 (≤ 5 phút):** [https://youtu.be/WZhY9xlLmMY](https://youtu.be/WZhY9xlLmMY)
+- **Link Video Demo Mission 3 (≤ 5 phút):** *(cập nhật sau khi quay)*
+- **Link Tag đóng băng Mission 2 (`mission2-final`):** [https://github.com/DuongNAD/gamota-market-research-mvp/tree/mission2-final](https://github.com/DuongNAD/gamota-market-research-mvp/tree/mission2-final)
+
+---
+
+## Mission 3: Cải tiến theo Change Request A2 (Dữ liệu cũ > 18 tháng)
+
+> **Change Request A2:** *"Một nguồn quan trọng được phát hành cách đây hơn 18 tháng. Người dùng muốn biết điều đó ảnh hưởng thế nào tới độ tin cậy của kết quả."*
+>
+> **Tóm tắt 1 câu:** Bổ sung lớp phân tích độ mới dữ liệu và mô phỏng phản thực tế bằng code tất định (`research/dates.py`, `research/recency.py`) kết hợp vòng làm mới có mục tiêu giữ nguyên bối cảnh (`research/refresh.py`), giúp người dùng biết chính xác nhận định nào phụ thuộc vào nguồn cũ `> 18 tháng`, điều gì xảy ra nếu bỏ hoặc cập nhật nguồn đó, và tự động tìm dữ liệu mới hơn mà không làm thay đổi logic chấm điểm của Mission 2.
+
+### Các thay đổi cốt lõi ở Mission 3
+- **Minh bạch hóa cách xác định ngày đăng (`date_precision`) & bóc tách kỳ số liệu thực tế trong câu trích dẫn (`data_period`):** Phân biệt rõ ngày chính xác (`day`), tháng (`month`), quý (`quarter`), chỉ biết năm (`year` — hiển thị `2024 (chỉ biết năm)` kèm dải tuổi `22–34 tháng` thay vì gán cứng tháng 6 như Mission 2) và không rõ ngày (`unknown`). Tự động phát hiện nguồn mới đăng nhưng trích dẫn số liệu cũ `> 18 tháng` (ví dụ bài đăng `08/2026` nhưng dẫn số liệu `2024`) và gắn cờ cảnh báo khi ngày đăng mâu thuẫn với kỳ số liệu (`date_conflict`).
+- **Định lượng ảnh hưởng tới từng nhận định bằng mô phỏng phản thực tế (Counterfactual Scoring):** Không để LLM đánh giá cảm tính và không sửa đổi điểm `confidence` của Mission 2; code tự động chạy lại hàm `score_single_insight` cho từng nguồn then chốt cũ trong 2 kịch bản: *(1) Nếu bỏ nguồn này* (`MẤT CĂN CỨ` hoặc tụt bậc) và *(2) Nếu nguồn này có bản cập nhật mới (`<= 12 tháng`)* (tăng bậc độ tin cậy).
+- **Cảnh báo thông minh không gây nhiễu & Mục 7 báo cáo:** Tự động phân loại mức ảnh hưởng (`KHÔNG / NHỎ / VỪA PHẢI / ĐÁNG KỂ`), chỉ nối ghi chú `[Độ mới dữ liệu]` vào `short_answer` khi mức ảnh hưởng là `ĐÁNG KỂ` (`4/6` case), và xuất thêm **Mục 7 (Độ mới của dữ liệu & Ảnh hưởng tới độ tin cậy)** trong báo cáo.
+- **Vòng làm mới dữ liệu có mục tiêu giữ nguyên bối cảnh (`research/refresh.py`):** Tự động lấy tối đa 2 nguồn then chốt cũ nhất, sinh truy vấn tìm dữ liệu năm mới hơn, lọc nghiêm ngặt nguồn có ngày đăng mới hơn, đánh mã nối tiếp (`S13..S18`, `E29..E40`), đối chiếu bằng chứng cũ ↔ mới (`XÁC NHẬN`, `CẬP NHẬT`, `MÂU THUẪN`, `KHÔNG TƯƠNG ĐƯƠNG`) và cập nhật độ tin cậy trước → sau (`TC7`, `TC10`).
+- **Giao diện Streamlit nâng cấp (`app.py`):** Thêm Banner độ mới, khối 3 nhóm mức chắc chắn ở Tab 1 (*Đủ cơ sở / Cần lưu ý / Chưa chắc chắn*), bộ lọc nhận định cũ ở Tab 2, **Tab `3. Độ mới & Ảnh hưởng (A2)`**, bộ thử giả định ngày đăng (What-if Simulator) và nút chọn nhanh **`🔄 TC7 · Làm mới nguồn cũ (A2)`** chạy ngay không cần API key.
+
+### Bảng đối chiếu định lượng Trước (Mission 2) ↔ Sau (Mission 3)
+
+*(Trích từ [`eval/results/m2_vs_m3.md`](eval/results/m2_vs_m3.md) — sinh tự động bởi `python -m eval.compare_m2_m3`)*
+
+| Chỉ số đo lường thực nghiệm | Bản Mission 2 (`mission2-final`) | Bản Mission 3 (`HEAD`) | Bằng chứng / File kết quả |
+|---|---|---|---|
+| **Bộ kiểm thử tự động (`pytest`)** | `21 passed` (5 file test) | **`46 passed`** (`21` test cũ giữ nguyên + `25` test item mới trong 4 file test mới) | [`TESTING.md`](TESTING.md) mục M3.2–M3.3 |
+| **Kiểm thử hồi quy `TC1`–`TC6` (`ref = 2026-10-15`)** | 5 Đạt (`TC1`–`TC5`), 1 Chưa đạt (`TC6`) | **5 Đạt (`TC1`–`TC5`), 1 Chưa đạt (`TC6`)**; `TC2`–`TC5` & `TC9` trùng 100% nhận định, độ tin cậy và `short_answer` | [`eval/results/m2_vs_m3.md`](eval/results/m2_vs_m3.md) (Bảng A) |
+| **Phát hiện nhận định thiếu bằng chứng mới (`<= 18 tháng`) trên 6 báo cáo M2** | Không tách bạch (`0/6` `short_answer` nêu tuổi dữ liệu) | Phát hiện **`22/52` nhận định (`42,3%`)** và **`15` lượt nguồn then chốt cũ/không chắc** trên `4/6` case có mức `ĐÁNG KỂ` (`TC1, TC2, TC4, TC5`); `0` cảnh báo giả ở `TC3` (`KHÔNG`) | [`eval/results/m2_vs_m3.md`](eval/results/m2_vs_m3.md) (Bảng B) |
+| **Phát hiện nguồn chỉ biết năm & nguồn mới đăng nhưng trích số liệu cũ** | Hiển thị `14/72` nguồn chỉ biết năm như tháng 6 (`YYYY-06`); không tách kỳ số liệu trong câu trích dẫn | Chỉ rõ **`14/72` nguồn chỉ biết năm** (tổng `24/72` = `33,3%` nguồn chỉ biết năm/không rõ ngày), **`11/72` nguồn mới trích số liệu > 18 tháng**, và **`1` nguồn mâu thuẫn ngày (`TC4-S10`)** | [`eval/results/m2_vs_m3.md`](eval/results/m2_vs_m3.md) (Bảng B) |
+| **Vòng làm mới có mục tiêu trên `TC2` → `TC7` (`2026-10-23`)** | Chưa có vòng làm mới (`12` nguồn, `28/28` trích dẫn, `I5 = THẤP`) | **`ĐÃ LÀM MỚI`** (`S1, S5`): thu thêm **`6` nguồn mới (`S13–S18`)**, **`12` trích dẫn mới (`40/40 = 100.0%`)**; xác nhận nâng **`I5: THẤP → TRUNG BÌNH`**, cập nhật số liệu mới cho `I2` + thêm `I11–I13` | [`eval/results/TC7.md`](eval/results/TC7.md), [`data/cached_runs/tc7_cr_a2_refreshed.md`](data/cached_runs/tc7_cr_a2_refreshed.md) |
+| **Tổng quát hóa câu hỏi mới `TC10` (CPI Đông Nam Á + Làm mới)** | Chưa có | **`ĐÃ LÀM MỚI`** (`S1, S10`): thu thêm **`6` nguồn mới (`S13–S18`)**, xác minh **`37/37 (100.0%)` trích dẫn**, `4` xác nhận / `2` cập nhật, bổ sung `I10, I11` (`TRUNG BÌNH`) | [`eval/results/TC10.md`](eval/results/TC10.md) (Bảng C) |
+
+### Lệnh CLI mới ở Mission 3
+
+```bash
+# 1. Phân tích độ mới & ảnh hưởng (Change Request A2) trên báo cáo JSON bất kỳ (0 lần gọi LLM)
+.venv\Scripts\python.exe -m research.recency eval/results/m2/TC2.json --as-of 2026-10-15 --out-json eval/results/m3_offline/TC2.json --out-md eval/results/m3_offline/TC2.md
+
+# 2. Chạy vòng làm mới có mục tiêu cho các nguồn then chốt cũ
+.venv\Scripts\python.exe -m research.refresh eval/results/m3_replay/TC2.json --reference-date 2026-10-23 --out-json data/cached_runs/tc7_cr_a2_refreshed.json --out-md data/cached_runs/tc7_cr_a2_refreshed.md
+
+# 3. Chạy CLI nghiên cứu kèm ngày tham chiếu hoặc tự động làm mới nguồn cũ
+.venv\Scripts\python.exe -m research.cli "Mô hình kiếm tiền nào đang hiệu quả với game casual tại Indonesia và Philippines?" --reference-date 2026-10-15 --refresh-old
+
+# 4. Chạy bộ kiểm thử 10 case (TC1–TC10) và xuất bảng đối chiếu định lượng M2 <-> M3
+.venv\Scripts\python.exe -m eval.run_eval
+.venv\Scripts\python.exe -m eval.compare_m2_m3
+```
+
+### Nguồn gốc các file báo cáo mẫu trong `data/cached_runs/` (dùng cho Demo không cần API key)
+- `tc1_sea_genres.{json,md}` và `tc6_thailand_gacha.{json,md}`: Bản áp lớp phân tích độ mới offline (`python -m research.recency --as-of 2026-10-15`) trực tiếp lên JSON đã nộp ở Mission 2 (`eval/results/m3_offline/TC1,TC6`), giữ nguyên 100% nhận định đã nộp ở Mission 2 và đảm bảo test UI cũ kiểm tra báo cáo đầu tiên (`TC1`) đạt `100.0%` trích dẫn xác minh.
+- `tc2_casual_monetization.{json,md}`, `tc3_vn_market_size.{json,md}`, `tc4_cambodia_mmorpg.{json,md}`, `tc5_sea_drop_50_premise.{json,md}`: Bản chạy lại từ `eval/results/TC2..TC5.{json,md}` (`ref = 2026-10-15`), trùng 100% nhận định và độ tin cậy với Mission 2, có đầy đủ `date_method`, `date_precision` và Mục 7.
+- `tc7_cr_a2_refreshed.{json,md}`: Bản chạy vòng làm mới thực tế (`eval/results/TC7.{json,md}`) từ báo cáo `TC2` tại ngày tham chiếu làm mới `2026-10-23`.
 
 ---
 
@@ -32,18 +84,20 @@ Trong khuôn khổ MVP, tôi không xây dựng một hệ thống thu thập d�
 
 ---
 
-## 4. Cách hoạt động: Sơ đồ Pipeline 6 bước & Quy tắc Hạng nguồn / Độ tin cậy
+## 4. Cách hoạt động: Sơ đồ Pipeline 6 bước (+ Bước 6b & Vòng làm mới M3)
 
-### 4.1 Sơ đồ kiến trúc Pipeline 6 bước
+### 4.1 Sơ đồ kiến trúc Pipeline
 
 ```mermaid
 flowchart LR
     Q["Câu hỏi nghiên cứu\n(Bất kỳ loại nào)"] --> S1["1. Plan (LLM #1)\nPhân rã 3-5 câu hỏi phụ,\ntiêu chí quyết định,\n4-5 truy vấn & tiền đề ngầm"]
-    S1 --> S2["2. Retrieve (Code)\nTavily API -> fallback ddgs\nKhử trùng lặp URL, tải bài bằng\ntrafilatura, cắt ~6.000 ký tự ưu tiên số liệu"]
+    S1 --> S2["2. Retrieve (Code)\nTavily API -> fallback ddgs\nKhử trùng lặp URL, tải bài bằng\ntrafilatura, tách ngày & precision"]
     S2 --> S3["3. Grade (Code)\nTra config/source_tiers.yaml\nXếp hạng A / B / C & Độ mới\nGiữ <= 12 nguồn tốt/đa dạng nhất"]
-    S3 --> S4["4. Extract & Verify (LLM #2-3 + Code)\nTrích câu nguyên văn <= 40 từ\nCode kiểm chứng RapidFuzz >= 90\nTạo link tô sáng #:~:text="]
+    S3 --> S4["4. Extract & Verify (LLM #2-3 + Code)\nTrích câu nguyên văn <= 40 từ\nCode kiểm chứng RapidFuzz >= 90\nTách kỳ số liệu & tạo link #:~:text="]
     S4 --> S5["5. Synthesize (LLM #4)\nTổng hợp từ Evidence đã xác minh\n(Cấm viết URL; tách Fact/Inference;\nkiểm tra tiền đề & xung đột)"]
-    S5 --> S6["6. Score & Self-Check (Code)\nTính CAO / TRUNG BÌNH / THẤP\nLọc URL lậu, chuyển insight thiếu chứng cứ\nsang Khoảng trống & xuất Báo cáo 6 phần"]
+    S5 --> S6["6. Score & Self-Check (Code)\nTính CAO / TRUNG BÌNH / THẤP\nLọc URL lậu, chuyển insight thiếu chứng cứ\nsang Khoảng trống"]
+    S6 --> S6B["6b. Độ mới & Ảnh hưởng (Code M3)\nĐánh giá ngưỡng > 18 tháng, kỳ số liệu,\nnguồn then chốt & mô phỏng phản thực tế\nXuất Mục 7 báo cáo"]
+    S6B -. "Tùy chọn: Làm mới nguồn cũ (M3)" .-> S7["7. Vòng làm mới có mục tiêu (Refresh)\nTìm nguồn mới cho <= 2 nguồn cũ nhất\nĐối chiếu XÁC NHẬN / CẬP NHẬT\nChấm lại độ tin cậy Trước -> Sau"]
 ```
 
 ### 4.2 Quy tắc xếp hạng nguồn (`research/grade.py` & `config/source_tiers.yaml`)
@@ -64,17 +118,30 @@ flowchart LR
 | **`TRUNG BÌNH`** | Có **1 nguồn Hạng `A/B`** không cũ; **HOẶC** có **`>= 2` nguồn Hạng `C` khác domain** cùng đồng thuận (không cũ); **HOẶC** dữ liệu thuộc nhóm `Cũ dần (12–24 tháng)`. **Quy tắc trần:** Mọi nhận định **Suy luận (`inference`)** hoặc **Dự báo tương lai (`is_forecast`)** đều bị khóa trần tối đa ở mức **`TRUNG BÌNH`** và bắt buộc phải hiển thị giả định đi kèm (`assumptions`). |
 | **`THẤP`** | Chỉ có **1 nguồn Hạng `C`** đơn lẻ; **HOẶC** toàn bộ nguồn dẫn chứng đều `Cũ (> 24 tháng / không rõ ngày)`; **HOẶC** các nguồn đang có số liệu mâu thuẫn chưa giải quyết (`has_conflict == True`). *(Lưu ý: Nhận định không có bất kỳ `evidence_id` hợp lệ nào sẽ bị code tự động loại khỏi bảng nhận định và chuyển thẳng xuống mục 4.1 Khoảng trống dữ liệu)*. |
 
+### 4.4 Quy tắc phân tích Độ mới & Ảnh hưởng hơn 18 tháng (`research/recency.py` & `config/recency_policy.yaml`)
+
+- **Trạng thái độ mới của nguồn (ngưỡng cảnh báo `alert_months = 18`):**
+  - `CŨ`: Khoảng ngày đăng chắc chắn hơn 18 tháng (`min_days > 548`) **hoặc** tất cả các câu trích dẫn từ nguồn này chỉ chứa kỳ số liệu (`data_period_end`) đã kết thúc cách đây hơn 18 tháng.
+  - `KHÔNG CHẮC`: Không rõ ngày đăng (`precision = "unknown"`), hoặc chỉ biết năm/quý/tháng mà khoảng tuổi vắt qua mốc 18 tháng (`min_days <= 548 < max_days`), hoặc ngày đăng mâu thuẫn với kỳ số liệu trong bài (`date_conflict = True`).
+  - `MỚI`: Đã biết ngày/tháng/quý đăng và chắc chắn `<= 18 tháng` (`max_days <= 548`), không vướng kỳ số liệu cũ.
+- **Nguồn then chốt (`is_key`):** Nguồn được trích dẫn bởi ít nhất 1 nhận định và thỏa mãn một trong các điều kiện: (a) là nguồn duy nhất của một nhận định, (b) bỏ nguồn này làm ít nhất 1 nhận định bị tụt mức độ tin cậy, (c) là nguồn Hạng A/B mà nếu còn mới (`<= 12 tháng`) sẽ giúp ít nhất 1 nhận định tăng mức độ tin cậy, hoặc (d) hỗ trợ `>= 25%` tổng số nhận định (tối thiểu 2 nhận định).
+- **Mức ảnh hưởng cấp báo cáo (`impact_level`):**
+  - `ĐÁNG KỂ`: Có ít nhất 1 nguồn then chốt ở trạng thái `CŨ`, hoặc có nhận định mức `CAO`/`TRUNG BÌNH` chưa có bằng chứng mới (`<= 18 tháng`), hoặc `>= 50%` nhận định thiếu bằng chứng mới. Khi `ĐÁNG KỂ`, hệ thống tự động nối ghi chú `[Độ mới dữ liệu]` vào cuối `short_answer`.
+  - `VỪA PHẢI`: Có nguồn then chốt `KHÔNG CHẮC` hoặc có nhận định mức `THẤP` thiếu bằng chứng mới.
+  - `NHỎ`: Chỉ có nhận định `MỘT PHẦN CŨ` (vẫn có ít nhất 1 bằng chứng mới đi kèm).
+  - `KHÔNG`: Mọi nhận định đều dựa trên nguồn và số liệu mới `<= 18 tháng`.
+
 ---
 
 ## 5. Bảng ánh xạ Yêu cầu R1–R5 → Giải pháp trong MVP → Bằng chứng thực tế
 
-| Mã | Yêu cầu cốt lõi (`BRIEF.md` mục 3) | Cách MVP đáp ứng | Bằng chứng kiểm chứng (Test ID / File kết quả) |
+| Mã | Yêu cầu cốt lõi (`BRIEF.md` mục 3) | Cách MVP đáp ứng (Mission 2 + Mission 3) | Bằng chứng kiểm chứng (Test ID / File kết quả) |
 |---|---|---|---|
-| **R1** | **Xử lý được nhiều loại câu hỏi nghiên cứu** (cơ hội thể loại, mô hình kiếm tiền, quy mô thị trường, đối thủ/doanh thu, kiểm tra tiền đề). | Bước 1 (`plan_research` trong [`research/synthesize.py`](research/synthesize.py)) tự động phân loại câu hỏi (`option_selection`, `market_sizing`, `premise_check`, `competitor_or_metric`), sinh tiêu chí ra quyết định phù hợp và lập bảng so sánh Phương án × Tiêu chí khi câu hỏi có nhiều lựa chọn. | 6 test case thuộc 4 nhóm câu hỏi khác nhau chạy trên cùng 1 pipeline: [`TC1`](eval/results/TC1.md) (thể loại), [`TC2`](eval/results/TC2.md) (kiếm tiền), [`TC3`](eval/results/TC3.md) & [`TC4`](eval/results/TC4.md) (quy mô), [`TC5`](eval/results/TC5.md) (tiền đề sai), [`TC6`](eval/results/TC6.md) (đối thủ/doanh thu). |
-| **R2** | **Kết luận có căn cứ, truy được về nguồn gốc** (trích dẫn nguyên văn `<= 40` từ, kiểm chứng bằng code, link mở đúng đoạn văn bản gốc). | Hàm `verify_quote` trong [`research/extract.py`](research/extract.py) chuẩn hóa dấu câu Unicode và đối khớp `rapidfuzz.fuzz.partial_ratio >= 90` trên văn bản nguồn; hàm `build_text_fragment_url` tự tạo link `url#:~:text=...` để trình duyệt cuộn và tô sáng câu trích dẫn. | Unit tests [`tests/test_verify_quote.py`](tests/test_verify_quote.py) (7/7 pass); tỷ lệ xác minh trích dẫn đạt `100.0%` trên toàn bộ `TC1`–`TC6` (tổng cộng 166 câu trích dẫn nguyên văn đã xác minh). |
-| **R3** | **Phân biệt độ tin cậy của nguồn** (`A/B/C`) và **độ mới của dữ liệu** (`<=12m`, `12-24m`, `>24m`). | [`config/source_tiers.yaml`](config/source_tiers.yaml) + [`research/grade.py`](research/grade.py) chấm hạng nguồn theo domain và ngày đăng (kèm fallback tách tháng/quý/năm từ URL slug & tiêu đề trong [`research/retrieve.py`](research/retrieve.py)). Nguồn Hạng C không bao giờ tạo được nhận định `CAO`. | Unit tests [`tests/test_grade.py`](tests/test_grade.py) (4/4 pass) & [`tests/test_score.py`](tests/test_score.py) (8/8 pass); chỉ số `high_confidence_from_tier_c_only_count = 0` trên toàn bộ 6 test case. |
-| **R4** | **Chỉ ra khoảng trống dữ liệu, mâu thuẫn, tiền đề sai và bước kiểm chứng tiếp theo** (từ rẻ đến đắt). | Báo cáo đầu ra luôn có المục 3 (`Kiểm tra tiền đề` & `Mâu thuẫn số liệu`) và Mục 4 (`Khoảng trống dữ liệu`, `Điều kiện đảo chiều kết luận`, `Bước kiểm chứng tiếp theo`). Khi có mâu thuẫn số liệu, code tự động nối cảnh báo dải số liệu vào ngay `short_answer`. | [`TC3`](eval/results/TC3.md) (hiển thị nhiều mốc quy mô VN: `825M USD` vs `500M USD` vs `315M USD` xuất khẩu vs `1.100M USD`), [`TC4`](eval/results/TC4.md) (báo thiếu số liệu MMORPG Campuchia), [`TC5`](eval/results/TC5.md) (`BÁC BỎ` tiền đề giảm 50%), [`TC6`](eval/results/TC6.md) (báo thiếu dữ liệu tháng trước sau paywall). |
-| **R5** | **Kiểm tra chất lượng có hệ thống** (chỉ số tự kiểm trên mỗi báo cáo + bộ test tự động `>= 5` case có `>= 1` case chưa đạt thật + vòng cải tiến Before → After). | Mỗi báo cáo tự động tính `QualityMetrics` (Mục 6); bộ kiểm thử tự động `pytest` (21 tests) và `python -m eval.run_eval` (6 test cases `TC1`–`TC6`), ghi nhận đầy đủ vòng cải tiến Before → After và so sánh với LLM trần. | [`TESTING.md`](TESTING.md), [`eval/cases.yaml`](eval/cases.yaml), [`eval/run_eval.py`](eval/run_eval.py), [`eval/results/before_summary.json`](eval/results/before_summary.json), [`eval/results/after_summary.json`](eval/results/after_summary.json). |
+| **R1** | **Xử lý được nhiều loại câu hỏi nghiên cứu** (cơ hội thể loại, mô hình kiếm tiền, quy mô thị trường, đối thủ/doanh thu, kiểm tra tiền đề, chi phí CPI). | Bước 1 (`plan_research` trong [`research/synthesize.py`](research/synthesize.py)) tự động phân loại câu hỏi (`option_selection`, `market_sizing`, `premise_check`, `competitor_or_metric`), sinh tiêu chí ra quyết định phù hợp và lập bảng so sánh Phương án × Tiêu chí khi câu hỏi có nhiều lựa chọn. | 10 test case (`TC1`–`TC10`) chạy trên cùng 1 pipeline: [`TC1`](eval/results/TC1.md), [`TC2`](eval/results/TC2.md), [`TC3`](eval/results/TC3.md), [`TC4`](eval/results/TC4.md), [`TC5`](eval/results/TC5.md), [`TC6`](eval/results/TC6.md), [`TC7`](eval/results/TC7.md), [`TC10`](eval/results/TC10.md) (câu hỏi mới về CPI). |
+| **R2** | **Kết luận có căn cứ, truy được về nguồn gốc** (trích dẫn nguyên văn `<= 40` từ, kiểm chứng bằng code, link mở đúng đoạn văn bản gốc). | Hàm `verify_quote` trong [`research/extract.py`](research/extract.py) chuẩn hóa dấu câu Unicode và đối khớp `rapidfuzz.fuzz.partial_ratio >= 90` trên văn bản nguồn; hàm `build_text_fragment_url` tự tạo link `url#:~:text=...` để trình duyệt cuộn và tô sáng câu trích dẫn. | Unit tests [`tests/test_verify_quote.py`](tests/test_verify_quote.py) (7/7 pass); `TC2`–`TC7`, `TC9`, `TC10` đạt `100.0%` trích dẫn xác minh; `TC1`/`TC8` đạt `92.6%` (`25/27`). |
+| **R3** | **Phân biệt độ tin cậy của nguồn** (`A/B/C`) và **độ mới của dữ liệu** (`<=12m`, `12-24m`, `>24m`, kèm phân tích ngưỡng `>18m`, `date_precision` và `data_period` ở Mission 3). | [`config/source_tiers.yaml`](config/source_tiers.yaml) + [`research/grade.py`](research/grade.py) chấm hạng nguồn; [`research/dates.py`](research/dates.py) + [`research/recency.py`](research/recency.py) xác định độ chính xác ngày đăng (`day/month/quarter/year/unknown`), tách kỳ số liệu trong câu trích dẫn và tính bảng phản thực tế (*nếu bỏ nguồn / nếu nguồn còn mới*). | Unit tests [`tests/test_grade.py`](tests/test_grade.py) (4/4), [`tests/test_score.py`](tests/test_score.py) (8/8), [`tests/test_recency.py`](tests/test_recency.py) (10/10); [`TC7`](eval/results/TC7.md), [`TC8`](eval/results/TC8.md), [`TC9`](eval/results/TC9.md). |
+| **R4** | **Chỉ ra khoảng trống dữ liệu, mâu thuẫn, tiền đề sai, bước kiểm chứng tiếp theo và tự động làm mới nguồn cũ** (Mission 3). | Báo cáo luôn có Mục 3 (`Premise Check` & `Conflicts`), Mục 4 (`Gaps`, `What would change`, `Next checks`) và Mục 7 (`Độ mới & Ảnh hưởng` + `Kết quả vòng làm mới`). Module [`research/refresh.py`](research/refresh.py) tự động tìm nguồn mới cho nguồn then chốt cũ, đối chiếu `XÁC NHẬN`/`CẬP NHẬT` và cập nhật `Conflicts`/`Gaps`. | Unit tests [`tests/test_refresh.py`](tests/test_refresh.py) (5/5 pass); [`TC3`](eval/results/TC3.md) (mâu thuẫn quy mô VN), [`TC4`](eval/results/TC4.md) (thiếu dữ liệu ngách), [`TC5`](eval/results/TC5.md) (bác bỏ tiền đề sai), [`TC7`](eval/results/TC7.md) & [`TC10`](eval/results/TC10.md) (làm mới nguồn cũ). |
+| **R5** | **Kiểm tra chất lượng có hệ thống** (chỉ số tự kiểm + bộ test tự động `46 passed` + `10` eval cases + bảng đối chiếu định lượng M2 ↔ M3). | Mỗi báo cáo tự động tính `QualityMetrics` (Mục 6); bộ kiểm thử tự động `pytest` (`46 passed`) và `python -m eval.run_eval` (`TC1`–`TC10`), kèm script `python -m eval.compare_m2_m3` xuất Bảng A, B, C đối chiếu trực tiếp Mission 2 và Mission 3. | [`TESTING.md`](TESTING.md), [`eval/cases.yaml`](eval/cases.yaml), [`eval/results/m2_vs_m3.md`](eval/results/m2_vs_m3.md), [`tests/test_regression_m2.py`](tests/test_regression_m2.py), [`tests/test_app_ui_m3.py`](tests/test_app_ui_m3.py). |
 
 ---
 
@@ -83,7 +150,7 @@ flowchart LR
 ### 6.1 Xem bản Demo Online (Streamlit Community Cloud)
 - Truy cập: `https://gamota-market-research-mvp.streamlit.app`
 - **Lưu ý khi mở lần đầu:** Nếu ứng dụng trên Streamlit Community Cloud đang ở trạng thái ngủ (sleep) do không có truy cập trong vài giờ, hãy bấm nút **"Yes, get this app back up!"** và chờ khoảng 45–60 giây để container khởi động lại.
-- **Chế độ mặc định (`📦 Kết quả đã lưu`):** Mở lên dùng được ngay **mà không cần bất kỳ API key nào**. Bạn có thể bấm chọn 4 nút câu hỏi mẫu hoặc chọn toàn bộ 6 báo cáo chạy thật (`TC1`–`TC6`) trong danh sách thả xuống để kiểm tra bảng nhận định, bấm thử các link tô sáng `#:~:text=` và xem nhật ký từng bước của pipeline.
+- **Chế độ mặc định (`📦 Kết quả đã lưu`):** Mở lên dùng được ngay **mà không cần bất kỳ API key nào**. Bạn có thể bấm chọn 5 nút câu hỏi mẫu (bao gồm nút **`🔄 TC7 · Làm mới nguồn cũ (A2)`**) hoặc chọn 7 báo cáo chạy thật (`TC1`–`TC7`) trong danh sách thả xuống để kiểm tra Banner độ mới, **Tab `3. Độ mới & Ảnh hưởng (A2)`**, thử đổi ngày đăng giả định (What-if) và bấm thử các link tô sáng `#:~:text=`.
 
 ### 6.2 Chạy thử ở máy Local (Windows / macOS / Linux)
 
@@ -104,7 +171,7 @@ pip install -r requirements.txt
 # Bước 3: Tạo file cấu hình môi trường từ file mẫu
 cp .env.example .env
 # (Tùy chọn) Mở file .env và điền GEMINI_API_KEY miễn phí từ https://aistudio.google.com/app/apikey
-# Nếu KHÔNG điền key, ứng dụng vẫn chạy hoàn chỉnh ở chế độ "📦 Kết quả đã lưu" với 6 báo cáo thực tế!
+# Nếu KHÔNG điền key, ứng dụng vẫn chạy hoàn chỉnh ở chế độ "📦 Kết quả đã lưu" với 7 báo cáo thực tế (TC1–TC7)!
 
 # Bước 4: Khởi chạy giao diện web Streamlit
 python -m streamlit run app.py
@@ -113,84 +180,110 @@ python -m streamlit run app.py
 ### 6.3 Chạy qua dòng lệnh (CLI) và chạy bộ kiểm thử tự động
 
 ```bash
-# Chạy 1 câu hỏi bất kỳ qua CLI (cần GEMINI_API_KEY trong .env)
-python -m research.cli "Thể loại game mobile nào có tiềm năng tại Đông Nam Á trong 12 tháng tới?" --save data/cached_runs/custom_run
+# Chạy 1 câu hỏi bất kỳ qua CLI (hỗ trợ --reference-date và --refresh-old)
+python -m research.cli "Thể loại game mobile nào có tiềm năng tại Đông Nam Á trong 12 tháng tới?" --reference-date 2026-10-15
 
-# Chạy 21 bài kiểm thử đơn vị (Unit Tests) & kiểm thử giao diện (AppTest) — không cần API key
+# Phân tích độ mới & ảnh hưởng (Change Request A2) offline trên báo cáo JSON sẵn có (0 lần gọi LLM)
+python -m research.recency eval/results/m2/TC2.json --as-of 2026-10-15 --out-json eval/results/m3_offline/TC2.json --out-md eval/results/m3_offline/TC2.md
+
+# Chạy vòng làm mới có mục tiêu trên một báo cáo JSON đã có
+python -m research.refresh eval/results/m3_replay/TC2.json --reference-date 2026-10-23 --out-json data/cached_runs/tc7_cr_a2_refreshed.json --out-md data/cached_runs/tc7_cr_a2_refreshed.md
+
+# Chạy toàn bộ 46 bài kiểm thử tự động (21 test Mission 2 + 25 test item Mission 3) — không cần API key
 pytest -v
 
-# Chạy bộ đánh giá 6 test case thực nghiệm (hoặc chạy 1 case với --case TC3)
+# Chạy bộ đánh giá 10 test case thực nghiệm (TC1–TC10) và sinh bảng đối chiếu M2 <-> M3
 python -m eval.run_eval
-python -m eval.run_eval --case TC3
+python -m eval.compare_m2_m3
 ```
 
 ---
 
-## 7. Tóm tắt kết quả kiểm thử (`TC1`–`TC6`)
+## 7. Tóm tắt kết quả kiểm thử (`TC1`–`TC10`)
 
-Chi tiết đầy đủ (bao gồm trích dẫn output từng case, bảng đối chiếu vòng cải tiến **Before → After** và so sánh với **LLM trần**) nằm tại **[`TESTING.md`](TESTING.md)**.
+Chi tiết đầy đủ (bao gồm trích dẫn output từng case, Bảng A/B/C đối chiếu **Mission 2 ↔ Mission 3**, vòng cải tiến **Before → After** và so sánh với **LLM trần**) nằm tại **[`TESTING.md`](TESTING.md)** và **[`eval/results/m2_vs_m3.md`](eval/results/m2_vs_m3.md)**.
 
-| ID | Nhóm kết quả thật | Kết quả | Trích dẫn xác minh | Thời gian | Điều học được (1 dòng) |
+| ID | Nhóm kiểm thử | Kết quả | Trích dẫn xác minh | Độ mới & Làm mới (M3) | Điều học được (1 dòng) |
 |---|---|---|---|---|---|
-| **[TC1](eval/results/TC1.md)** | **Làm tốt** (Cơ hội thể loại) | **ĐẠT** | `30/30` (`100.0%`) | `82.46s` | Trần quy tắc giữ mọi dự báo 12 tháng tới ở mức `<= TRUNG BÌNH` kèm giả định rõ ràng và bảng so sánh 4 thể loại × 5 tiêu chí. |
-| **[TC2](eval/results/TC2.md)** | **Làm tốt** (Mô hình kiếm tiền) | **ĐẠT** | `28/28` (`100.0%`) | `40.89s` | Pipeline tự thích ứng sang bài toán IAA vs IAP vs Hybrid tại Indonesia & Philippines mà không cần sửa code hay prompt riêng. |
-| **[TC3](eval/results/TC3.md)** | **Khó** (Nguồn mâu thuẫn) | **ĐẠT** | `28/28` (`100.0%`) | `30.50s` | Ép code tự nối cảnh báo dải số liệu (`825M USD` 2025 vs `500M USD` 2024 vs `315M USD` xuất khẩu vs `1.100M USD` 2033) vào `short_answer` giúp người đọc không bị chốt nhầm 1 con số. |
-| **[TC4](eval/results/TC4.md)** | **Khó** (Thiếu dữ liệu ngách) | **ĐẠT** | `29/29` (`100.0%`) | `68.43s` | Trong khi LLM trần tự bịa doanh thu MMORPG Campuchia là `"3,5–6 triệu USD"`, pipeline từ chối đoán mò và chỉ cung cấp số liệu proxy có trích dẫn (`131,44M USD` toàn ngành). |
-| **[TC5](eval/results/TC5.md)** | **Khó** (Tiền đề sai) | **ĐẠT** | `31/31` (`100.0%`) | `33.80s` | Bước `Premise Check` giúp hệ thống `BÁC BỎ` thẳng giả định sai ("giảm 50%") và chỉ ra doanh thu ĐNÁ thực tế vẫn tăng trưởng (`5,4 tỷ USD`, `+13,8%/năm`). |
-| **[TC6](eval/results/TC6.md)** | **Chưa đạt thật** (Giới hạn paywall) | **CHƯA ĐẠT** | `20/20` (`100.0%`) | `23.39s` | Dữ liệu doanh thu tháng 9/2026 của riêng top 3 game gacha tại Thái Lan bị khóa sau paywall Sensor Tower/AppMagic; hệ thống báo thiếu trung thực thay vì lấy số toàn cầu (`50,23M USD`) gắn nhầm cho Thái Lan. |
+| **[TC1](eval/results/TC1.md)** | **Làm tốt** (Cơ hội thể loại) | **ĐẠT** | `25/27` (`92.6%`) *(bản offline M2: `30/30` `100.0%`)* | Mức **`ĐÁNG KỂ`** (`S2, S3, S12`) | Trần quy tắc giữ mọi dự báo 12 tháng tới ở mức `<= TRUNG BÌNH` kèm giả định rõ ràng và bảng so sánh 4 thể loại × 5 tiêu chí. |
+| **[TC2](eval/results/TC2.md)** | **Làm tốt** (Mô hình kiếm tiền) | **ĐẠT** | `28/28` (`100.0%`) | Mức **`ĐÁNG KỂ`** (`S1, S5, S2, S3, S6`) | Phát hiện `8/10` nhận định phụ thuộc nguồn cũ; nếu bỏ `S5`/`S6` (`AppsFlyer 2024`) thì `I5`/`I6` mất căn cứ; nếu `S5` còn mới thì `I4` lên `CAO`. |
+| **[TC3](eval/results/TC3.md)** | **Khó** (Nguồn mâu thuẫn) | **ĐẠT** | `28/28` (`100.0%`) | Mức **`KHÔNG`** (`0` nguồn cũ then chốt) | Ép code tự nối cảnh báo dải số liệu (`825M USD` 2025 vs `500M USD` 2024 vs `315M USD` xuất khẩu vs `1.100M USD` 2033) vào `short_answer`. |
+| **[TC4](eval/results/TC4.md)** | **Khó** (Thiếu dữ liệu ngách) | **ĐẠT** | `29/29` (`100.0%`) | Mức **`ĐÁNG KỂ`** (`6` nguồn; `S10` mâu thuẫn ngày) | Từ chối đoán mò doanh thu MMORPG Campuchia, chỉ cung cấp số liệu proxy có trích dẫn (`131,44M USD` toàn ngành) và gắn cờ `date_conflict` cho `S10`. |
+| **[TC5](eval/results/TC5.md)** | **Khó** (Tiền đề sai) | **ĐẠT** | `31/31` (`100.0%`) | Mức **`ĐÁNG KỂ`** (`S1` kỳ `Q1/2025`) | Bước `Premise Check` giúp hệ thống `BÁC BỎ` thẳng giả định sai ("giảm 50%") và chỉ ra doanh thu ĐNÁ thực tế vẫn tăng trưởng (`5,4 tỷ USD`, `+13,8%/năm`). |
+| **[TC6](eval/results/TC6.md)** | **Chưa đạt thật** (Giới hạn paywall) | **CHƯA ĐẠT** | `20/20` (`100.0%`) | Mức **`VỪA PHẢI`** (`1/8` nhận định cũ) | Dữ liệu doanh thu tháng 9/2026 của riêng top 3 game gacha tại Thái Lan bị khóa sau paywall Sensor Tower/AppMagic; hệ thống báo thiếu trung thực thay vì bịa số. |
+| **[TC7](eval/results/TC7.md)** | **Change Request A2** (Làm mới `TC2`) | **ĐẠT** | `40/40` (`100.0%`) | **`ĐÃ LÀM MỚI`** (`+6` nguồn `S13–S18`, `+12` trích dẫn) | Vòng làm mới xác nhận bằng chứng cũ giúp nâng `I5: THẤP → TRUNG BÌNH`, cập nhật doanh thu IAP mới (`5,3 tỷ USD` vs `625M USD` Q1/2025 ở `I2`) và thêm `I11–I13`. |
+| **[TC8](eval/results/TC8.md)** | **Edge Case** (Chỉ biết năm & Số cũ trong bài mới) | **ĐẠT** | `25/27` (`92.6%`) | Mức **`ĐÁNG KỂ`** (`S3` chỉ biết năm; `S2, S6` số liệu cũ) | Tách bạch tuổi bài báo và kỳ số liệu trong câu trích dẫn (`data_period`), phát hiện bài đăng `08/2026` (`S6`) nhưng dẫn số liệu năm `2024`. |
+| **[TC9](eval/results/TC9.md)** | **Regression & Control** (`TC3` không cảnh báo giả) | **ĐẠT** | `28/28` (`100.0%`) | Mức **`KHÔNG`** (`0` cảnh báo giả) | Trùng khớp 100% với baseline Mission 2 (`3 CAO / 1 TB / 4 THẤP`) và không chèn cảnh báo `[Độ mới dữ liệu]` khi toàn bộ nhận định đã có bằng chứng mới. |
+| **[TC10](eval/results/TC10.md)** | **Tổng quát hóa** (Câu hỏi mới về CPI ĐNÁ + Làm mới) | **ĐẠT** | `37/37` (`100.0%`) | **`ĐÃ LÀM MỚI`** (`+6` nguồn `S13–S18`, `+15` trích dẫn) | Pipeline và vòng làm mới tự vận hành trên câu hỏi mới về CPI (`0.30–6.00 USD` Android, `0.50–12.00 USD` iOS), cập nhật lượt tải cả năm 2025 (`18,1 tỷ`) và thêm `I10, I11`. |
 
 ---
 
-## 8. Trả lời 3 câu hỏi bắt buộc
+## 8. Trả lời các câu hỏi bắt buộc (Mission 3 & Mission 2)
 
-### Câu 1: Phần quan trọng nhất bạn chọn để hiện thực hóa trong MVP là gì? Vì sao nếu phần này hoạt động, bạn tin rằng hướng giải quyết của mình là khả thi?
-Tôi chọn hiện thực hóa sâu **lớp kiểm chứng bằng chứng nguyên văn và tính điểm độ tin cậy tất định bằng code** (`Extract & Verify` trong [`research/extract.py`](research/extract.py) kết hợp `Score` trong [`research/score.py`](research/score.py)). Cụ thể, thay vì để LLM vừa viết báo cáo vừa tự đính kèm link và tự đánh giá mức độ chắc chắn, tôi bắt buộc mọi nhận định phải trỏ về mã `evidence_id` chứa câu trích dẫn nguyên văn `<= 40` từ đạt điểm khớp chuỗi `rapidfuzz.fuzz.partial_ratio >= 90` ngay trên văn bản nguồn đã thu thập. Nếu phần này hoạt động trơn tru, tôi tin hướng giải quyết của mình hoàn toàn khả thi vì nó giải quyết tận gốc rào cản lớn nhất khiến các đội phát hành game không dám dùng AI cho nghiên cứu thị trường: **ảo giác số liệu (hallucination) và ngụy tạo nguồn**. Thực nghiệm trên cả 6 test case (`TC1`–`TC6`) cho thấy hệ thống đã xác minh thành công `166/166` (`100.0%`) câu trích dẫn nguyên văn, tạo link tô sáng trực tiếp `#:~:text=` mở đúng câu gốc trên trình duyệt, giữ số URL do LLM tự viết ở mức `0` và số nhận định `CAO` dựa trên nguồn hạng C ở mức `0`. Đặc biệt, khi đối chiếu trực tiếp với LLM trần ở `TC3` và `TC4` ([`eval/results/baseline_raw_llm.json`](eval/results/baseline_raw_llm.json)), lớp kiểm chứng này đã chặn đứng hành vi tự bịa 3 URL cũ ở `TC3` và tự nhân tỷ lệ giả định để bịa ra con số `"3,5 đến 6 triệu USD"` cho MMORPG Campuchia ở `TC4`.
+### 8.1. Ba câu hỏi bắt buộc của Mission 3 (Change Request A2)
 
-### Câu 2: So với kế hoạch ở Mission 1, bạn đã thay đổi quyết định hoặc thiết kế nào? Điều gì trong quá trình làm khiến bạn thay đổi?
+*(Bản đầy đủ kèm kịch bản video 4 phút 30 giây và checklist nộp bài nằm tại **[`SUBMISSION_M3.md`](SUBMISSION_M3.md)**)*
+
+#### Câu 1 (Mission 3): Khi nhận yêu cầu thay đổi/mở rộng, bạn đã ưu tiên làm gì và chủ động chưa làm gì? Vì sao?
+(1) Khi nhận Change Request A2 về nguồn dữ liệu cũ hơn 18 tháng, ưu tiên số 1 của tôi là xây dựng **lớp phân tích độ mới và định lượng ảnh hưởng bằng code tất định** ([`research/recency.py`](research/recency.py)), vì người dùng hỏi trực tiếp *"ảnh hưởng thế nào tới độ tin cậy của kết quả"* nên cần biết chính xác nhận định nào còn đứng vững và nhận định nào sẽ mất căn cứ thông qua mô phỏng phản thực tế (*"Nếu bỏ nguồn này"* / *"Nếu nguồn này còn mới ≤ 12 tháng"*).
+(2) Ưu tiên số 2 là **minh bạch hóa phương pháp xác định ngày đăng (`date_precision`) và bóc tách kỳ số liệu thực tế trong câu trích dẫn (`data_period`)** ([`research/dates.py`](research/dates.py)), bởi khi kiểm tra lại 72 nguồn của 6 báo cáo Mission 2 ([`eval/results/m2_vs_m3.md`](eval/results/m2_vs_m3.md) — Bảng B), tôi phát hiện `14/72` nguồn chỉ biết năm trong URL/tiêu đề nhưng từng bị hiển thị như tháng 6 cụ thể (như `S5, S6` `appsflyer.com` năm 2024 ở `TC2`), `11/72` nguồn mới đăng nhưng trích dẫn số liệu đã quá 18 tháng (như `S2` đăng `05/2025` nhưng trích số liệu `Q1/2025` và `S6` đăng `05/08/2026` nhưng trích số liệu năm `2024` ở `TC1`), cùng `1` nguồn có ngày đăng mâu thuẫn với kỳ số liệu (`TC4-S10`).
+(3) Ưu tiên số 3 là hiện thực hóa **vòng làm mới dữ liệu có mục tiêu giữ nguyên bối cảnh** ([`research/refresh.py`](research/refresh.py) và nút `TC7` trên [`app.py`](app.py)), giúp chuyển hóa cảnh báo nguồn cũ thành hành động tìm nguồn mới hơn cho tối đa 2 nguồn then chốt cũ nhất, đối chiếu bằng chứng cũ ↔ mới và đánh mã `S#`/`E#` nối tiếp mà không làm đứt gãy tham chiếu cũ.
+(4) Ngược lại, tôi chủ động **chưa làm** việc sửa đổi ngưỡng độ mới hay quy tắc chấm điểm của Mission 2 (ví dụ không hạ thẳng mọi nguồn > 18 tháng xuống `THẤP`), vì làm vậy sẽ xóa mất khả năng so sánh định lượng trước/sau trên cùng bộ báo cáo và phá vỡ các kiểm thử hồi quy.
+(5) Tôi cũng chủ động không để LLM tự đánh giá cảm tính mức độ ảnh hưởng của nguồn cũ, không tự động sửa `published_date` khi phát hiện mâu thuẫn ngày, và không tự ý ghi đè số liệu mới lên số liệu cũ trong câu trả lời mà hiển thị song song cả hai kỳ kèm `ConflictItem`.
+(6) Ngoài ra, tôi chủ động gác lại tính năng upload CSV/PDF nội bộ và đọc file PDF (vốn là ưu tiên số 1 trong Câu 3 của Mission 2 cho bài toán paywall ở `TC6`) cũng như không làm khung chat hỏi-đáp tự do, để tập trung giải quyết trọn vẹn bài toán độ mới dữ liệu của Change Request A2 với kết quả đo lường được trước và sau.
+
+#### Câu 2 (Mission 3): Điểm khác biệt lớn nhất giữa bản mới và bản ở Mission 2 là gì? Bằng chứng nào từ kết quả kiểm thử cho thấy bản mới tốt hơn?
+(1) Điểm khác biệt lớn nhất là hệ thống chuyển từ việc chỉ gắn nhãn độ mới tĩnh ở cấp độ nguồn sang **định lượng trực tiếp mức độ phụ thuộc của từng nhận định vào dữ liệu cũ (> 18 tháng) bằng kiểm thử phản thực tế trên code và tự động làm mới có mục tiêu mà vẫn bảo toàn nguyên vẹn logic chấm điểm của Mission 2**.
+(2) Bằng chứng thực nghiệm thứ nhất đến từ Bảng B ([`eval/results/m2_vs_m3.md`](eval/results/m2_vs_m3.md)): khi áp lớp phân tích mới lên đúng 6 báo cáo JSON của Mission 2 (`ref = 2026-10-15`, `0` lần gọi LLM), hệ thống phát hiện `4/6` case (`TC1, TC2, TC4, TC5`) chịu mức ảnh hưởng `ĐÁNG KỂ` với tổng cộng `15` lượt nguồn then chốt cũ/không chắc và `22/52` nhận định (`42,3%`) chưa có bằng chứng mới trong 18 tháng gần đây.
+(3) Ngay trên các báo cáo này, bản Mission 3 tự động bổ sung ghi chú `[Độ mới dữ liệu]` nêu rõ tỷ lệ nhận định bị ảnh hưởng và mã nguồn cũ ngay trong `short_answer` ở cả `4/4` case có mức `ĐÁNG KỂ` (so với `0/6` ở Mission 2), đồng thời kiểm soát chặt không gây cảnh báo giả ở `TC3` và `TC9` (`impact_level = "KHÔNG"`, `0/8` nhận định thiếu bằng chứng mới).
+(4) Bằng chứng thứ hai thể hiện ở chi tiết phân tích phản thực tế của `TC2` ([`eval/results/m3_offline/TC2.md`](eval/results/m3_offline/TC2.md)): thay vì chỉ ghi nhãn `Cũ (>24 tháng)` như Mission 2, hệ thống chỉ rõ hai nguồn `S5` và `S6` (`appsflyer.com`) chỉ xác định được năm `2024` (tuổi `22–34 tháng`), nếu loại bỏ `S5` hoặc `S6` thì nhận định `I5` và `I6` sẽ rơi vào trạng thái `MẤT CĂN CỨ`, còn nếu `S5` có bản cập nhật mới (`<= 12 tháng`) thì nhận định `I4` sẽ tăng từ `THẤP` lên `CAO`.
+(5) Bằng chứng thứ ba đến từ vòng làm mới thực tế ở `TC7` và `TC10` (Bảng C trong [`eval/results/m2_vs_m3.md`](eval/results/m2_vs_m3.md)): tại `TC7` (`refresh_reference_date = 2026-10-23`), hệ thống tự động sinh `6` truy vấn cho hai nguồn then chốt `S1` và `S5`, thu thêm `6` nguồn mới (`S13–S18`) và xác minh thêm `12` trích dẫn nguyên văn (`E29–E40`, nâng tổng trích dẫn xác minh từ `28/28` lên `40/40`), qua đó xác nhận bằng chứng cũ để nâng `I5` từ `THẤP` lên `TRUNG BÌNH` và phát hiện số liệu doanh thu IAP mới (`5,3 tỷ USD` ở `E29` so với `625 triệu USD` Q1/2025 ở `E2`) để gắn cảnh báo mâu thuẫn kỳ báo cáo cho `I2` (`TRUNG BÌNH` → `THẤP`) kèm 3 nhận định mới (`I11–I13`).
+(6) Tương tự, trên câu hỏi mới `TC10` về chi phí cài đặt CPI tại Đông Nam Á ([`eval/results/TC10.md`](eval/results/TC10.md)), vòng làm mới cũng thu thêm `6` nguồn mới (`S13–S18`) và `15` bằng chứng xác minh (`37/37` trích dẫn khớp nguyên văn `100.0%`), cập nhật tổng lượt tải cả năm 2025 (`18,1 tỷ` so với `1,93 tỷ` Q1/2025) và bổ sung 2 nhận định mới (`I10, I11` đạt `TRUNG BÌNH`).
+(7) Cuối cùng, về kiểm thử tự động và hồi quy (Bảng A trong [`eval/results/m2_vs_m3.md`](eval/results/m2_vs_m3.md)), toàn bộ `21/21` test cũ của Mission 2 cùng `25/25` test item mới (`46 passed` trong `pytest`) đều vượt qua, và các báo cáo `TC2, TC3, TC4, TC5, TC9` khi chạy lại đều trùng khớp 100% từng nhận định, điểm độ tin cậy và chỉ số tự kiểm so với baseline Mission 2 (`0` nhận định `CAO` từ nguồn C, `0` URL do LLM tự viết).
+
+#### Câu 3 (Mission 3): Nếu sản phẩm này được đưa vào sử dụng thật, rủi ro lớn nhất còn lại là gì và bạn sẽ xử lý theo thứ tự nào?
+(1) Rủi ro lớn nhất còn lại khi đưa sản phẩm vào sử dụng thực tế là **độ bất định của ngày đăng bài viết trên web mở và giới hạn của bộ nhận diện kỳ số liệu bằng biểu thức chính quy (regex)**.
+(2) Số liệu thực nghiệm trên `72` nguồn của 6 báo cáo Mission 2 (Bảng B trong [`eval/results/m2_vs_m3.md`](eval/results/m2_vs_m3.md)) cho thấy có tới `24/72` nguồn (`33,3%`) chỉ xác định được năm đăng hoặc không rõ ngày (trong đó `14/72` nguồn chỉ biết năm), `11/72` nguồn (`15,3%`) mới đăng nhưng trích dẫn lại số liệu đã quá 18 tháng, và `1/72` nguồn (`TC4-S10` `icon-era.com`) có ngày đăng thu thập được mâu thuẫn trực tiếp với kỳ số liệu trong bài.
+(3) Nguyên nhân là công cụ tìm kiếm dự phòng `ddgs` không trả về metadata ngày xuất bản, nhiều trang báo cáo ngành (`sensortower.com`, `appsflyer.com`) nhúng ngày đăng trong script động mà `trafilatura` không đọc được, còn hàm `detect_data_period` bằng regex dù đã loại trừ các mẫu dự báo (`by 2030`, `2022–2027`, `since 2020`) vẫn có thể bỏ sót cách ghi kỳ thời gian phi chuẩn hoặc bắt nhầm mốc so sánh lịch sử trong câu ghép phức tạp.
+(4) Bên cạnh đó, như kết quả `CHƯA ĐẠT` ở `TC6` (doanh thu tháng 9/2026 của top 3 game gacha tại Thái Lan) thể hiện rõ, cả bước thu thập ban đầu lẫn vòng làm mới tự động hiện chỉ truy cập web mở nên không thể lấy các bảng telemetry cấp độ `Quốc gia × Thể loại × Tháng gần nhất` nằm sau tường phí của Sensor Tower hay AppMagic.
+(5) Để xử lý theo thứ tự ưu tiên, bước 1 tôi sẽ tăng độ chính xác của ngày xuất bản bằng cách kết hợp `published_date` từ Tavily API, trích xuất trực tiếp các trường `datePublished` / `dateModified` trong cấu trúc JSON-LD (`schema.org`) và HTTP header `Last-Modified`, sau đó đối chiếu chéo thời điểm xuất hiện đầu tiên của cùng một con số giữa các domain độc lập.
+(6) Bước 2, tôi sẽ nâng cấp công cụ "Thử giả định ngày đăng" hiện có ở Tab 3 của giao diện Streamlit thành tính năng cho phép chuyên viên nghiên cứu xác nhận hoặc hiệu chỉnh trực tiếp ngày đăng và kỳ số liệu của nguồn rồi lưu cố định vào bộ nhớ đệm đã kiểm duyệt của đội.
+(7) Bước 3, tôi sẽ bổ sung đầu đọc cho phép tải lên các bảng dữ liệu xuất nội bộ (CSV/Excel/PDF từ tài khoản Sensor Tower, AppMagic của Gamota) vào bước `Retrieve` và `Refresh` để giải quyết các câu hỏi dữ liệu đóng như `TC6`.
+
+---
+
+### 8.2. Ba câu hỏi bắt buộc của Mission 2 (Giữ nguyên để đối chiếu)
+
+#### Câu 1 (Mission 2): Phần quan trọng nhất bạn chọn để hiện thực hóa trong MVP là gì? Vì sao nếu phần này hoạt động, bạn tin rằng hướng giải quyết của mình là khả thi?
+Tôi chọn hiện thực hóa sâu **lớp kiểm chứng bằng chứng nguyên văn và tính điểm độ tin cậy tất định bằng code** (`Extract & Verify` trong [`research/extract.py`](research/extract.py) kết hợp `Score` trong [`research/score.py`](research/score.py)). Cụ thể, thay vì để LLM vừa viết báo cáo vừa tự đính kèm link và tự đánh giá mức độ chắc chắn, tôi bắt buộc mọi nhận định phải trỏ về mã `evidence_id` chứa câu trích dẫn nguyên văn `<= 40` từ đạt điểm khớp chuỗi `rapidfuzz.fuzz.partial_ratio >= 90` ngay trên văn bản nguồn đã thu thập. Nếu phần này hoạt động trơn tru, tôi tin hướng giải quyết của mình khả thi vì nó giải quyết trực tiếp rào cản lớn nhất khiến các đội phát hành game không dám dùng AI cho nghiên cứu thị trường: **ảo giác số liệu (hallucination) và ngụy tạo nguồn**. Thực nghiệm trên cả 6 test case của Mission 2 (`TC1`–`TC6` tại [`eval/results/m2/`](eval/results/m2/)) cho thấy hệ thống đã xác minh thành công `166/166` (`100.0%`) câu trích dẫn nguyên văn, tạo link tô sáng trực tiếp `#:~:text=` mở đúng câu gốc trên trình duyệt, giữ số URL do LLM tự viết ở mức `0` và số nhận định `CAO` dựa trên nguồn hạng C ở mức `0`. Đặc biệt, khi đối chiếu trực tiếp với LLM trần ở `TC3` và `TC4` ([`eval/results/baseline_raw_llm.json`](eval/results/baseline_raw_llm.json)), lớp kiểm chứng này đã ngăn chặn hành vi tự bịa 3 URL cũ ở `TC3` và tự nhân tỷ lệ giả định để bịa ra con số `"3,5 đến 6 triệu USD"` cho MMORPG Campuchia ở `TC4`.
+
+#### Câu 2 (Mission 2): So với kế hoạch ở Mission 1, bạn đã thay đổi quyết định hoặc thiết kế nào? Điều gì trong quá trình làm khiến bạn thay đổi?
 So với ý tưởng ban đầu ở Mission 1 về một hệ thống nghiên cứu thị trường đa tác tử (multi-agent) có cơ sở dữ liệu lưu trữ dài hạn và thu thập đa kênh, tôi đã thực hiện **4 thay đổi thiết kế quan trọng** (ghi nhận chi tiết tại [`DECISIONS.md`](DECISIONS.md)):
-1. **Thu gọn phạm vi sang pipeline tuyến tính 6 bước bằng Python thuần** (không dùng LangChain/CrewAI, không dùng database) để dồn toàn bộ thời gian chứng minh độ tin cậy của từng nhận định.
+1. **Thu gọn phạm vi sang pipeline tuyến tính 6 bước bằng Python thuần** (không dùng LangChain/CrewAI, không dùng database) để dồn thời gian chứng minh độ tin cậy của từng nhận định.
 2. **Bổ sung cơ chế xoay vòng key và tự động chuyển đổi model Flash dự phòng kèm `thinkingBudget=0` trong [`research/llm.py`](research/llm.py)**: Khi chạy thực tế ở P1, model mặc định `gemini-3.8-flash` đôi lúc trả về `HTTP 503 (Service Unavailable)` và `gemini-2.5-flash` bật chế độ suy nghĩ mặc định làm bước tổng hợp mất hơn 35 giây; việc tự động failover và tắt `thinkingBudget` đã kéo thời gian mỗi lệnh gọi LLM xuống ~2,7 giây (tổng thời gian chạy mỗi báo cáo còn `23–82s`).
 3. **Mở rộng bộ tách ngày xuất bản dự phòng (`_extract_date_fallback`) và siết quy tắc chấm điểm `CAO` sau vòng chạy kiểm thử đầu tiên (Before → After)**: Ở lượt chạy Before của P3, có tới `3–8/12` bài báo ngành (`Sensor Tower`, `AppsFlyer`) thiếu thẻ HTML meta date nên bị gán nhầm thành nguồn cũ (`stale`), trong khi ở `TC6` một câu thông báo "không có dữ liệu" ghép 1 nguồn A mất ngày và 1 nguồn C mới lại bị chấm nhầm là `CAO`. Tôi đã bổ sung regex tách tháng/quý/năm từ URL slug & tiêu đề (giảm nguồn mất ngày ở `TC3`, `TC5` về `0/12`) và sửa [`research/score.py`](research/score.py) yêu cầu nguồn hạng A/B phải còn mới (`fresh`) mới được lên `CAO`.
-4. **Ép code tự động nối cảnh báo dải số liệu mâu thuẫn vào ngay `short_answer` và escape ký tự `\$` khi xuất bảng**: Sau khi thấy `short_answer` ở lượt chạy Before của `TC3` chỉ nêu một con số `825 triệu USD` dù mục 3.2 có nhiều mốc khác nhau, và thấy ảnh chụp màn hình trình duyệt ở P2 bị lỗi hiển thị phông chữ KaTeX khi một ô bảng có hai dấu `$` (`$625 million`), tôi đã sửa [`research/score.py`](research/score.py) và [`research/pipeline.py`](research/pipeline.py) để xử lý triệt để bằng code.
+4. **Ép code tự động nối cảnh báo dải số liệu mâu thuẫn vào ngay `short_answer` và escape ký tự `\$` khi xuất bảng**: Sau khi thấy `short_answer` ở lượt chạy Before của `TC3` chỉ nêu một con số `825 triệu USD` dù mục 3.2 có nhiều mốc khác nhau, và thấy ảnh chụp màn hình trình duyệt ở P2 bị lỗi hiển thị phông chữ KaTeX khi một ô bảng có hai dấu `$` (`$625 million`), tôi đã sửa [`research/score.py`](research/score.py) và [`research/pipeline.py`](research/pipeline.py) để xử lý tự động bằng code.
 
-### Câu 3: MVP hiện xử lý chưa tốt nhất ở tình huống nào? Theo bạn nguyên nhân nằm ở đâu và nếu có thêm thời gian bạn sẽ ưu tiên cải thiện điều gì?
+#### Câu 3 (Mission 2): MVP hiện xử lý chưa tốt nhất ở tình huống nào? Theo bạn nguyên nhân nằm ở đâu và nếu có thêm thời gian bạn sẽ ưu tiên cải thiện điều gì?
 MVP hiện xử lý chưa tốt nhất ở **các câu hỏi đòi hỏi số liệu đo lường (telemetry) giao cắt sâu theo `Quốc gia × Thể loại ngách × Tháng gần nhất`**, thể hiện rõ nhất ở **[`TC6`](eval/results/TC6.md)** (*"Doanh thu tháng trước của 3 game gacha top đầu Thái Lan là bao nhiêu?"* — kết quả **CHƯA ĐẠT**) và một phần ở **[`TC4`](eval/results/TC4.md)** (*"Doanh thu MMORPG mobile tại Campuchia năm 2025"*). Ở `TC6`, dù hệ thống thu thập được 12 nguồn và xác minh `20/20` câu trích dẫn về doanh thu gacha toàn cầu tháng 9/2026 (`Genshin Impact` `50,23 triệu USD`, `Honkai: Star Rail` `35,735 triệu USD` từ `game8.co`) cũng như quy mô thị trường game Thái Lan nói chung (`192 triệu USD` từ `6wresearch.com`), hệ thống vẫn không thể trả lời được con số doanh thu tháng 9/2026 của riêng top 3 game gacha tại Thái Lan. Nguyên nhân gốc rễ nằm ở **giới hạn của nguồn dữ liệu web mở**: các bảng số liệu doanh thu cấp độ từng tựa game theo từng quốc gia và từng tháng không được công bố dưới dạng bài viết HTML công khai mà nằm sau tường phí (paywall) hoặc trang dashboard dựng bằng JavaScript động (SPA) của Sensor Tower, AppMagic và Data.ai. Bên cạnh đó, công cụ trích xuất `trafilatura` hiện chỉ đọc HTML tĩnh và bỏ qua các báo cáo định dạng PDF chuyên sâu (như 3 file PDF báo cáo thị trường Việt Nam của `investgame.net` bị bỏ qua ở `TC3`). Nếu có thêm thời gian, tôi sẽ ưu tiên cải thiện theo thứ tự: **(1)** Tích hợp đầu đọc dữ liệu nội bộ (CSV/Excel export từ tài khoản Sensor Tower/AppMagic của Gamota) và parser PDF (`pypdf`/`pdfplumber`) vào bước `Retrieve` để tận dụng các báo cáo ngành dạng PDF; **(2)** Bổ sung cơ chế truy vấn vòng 2 (iterative search) tự động sinh thêm truy vấn chuyên biệt khi bước `Extract` phát hiện thiếu số liệu cho câu hỏi phụ chính.
 
 ---
 
-## 9. Hạn chế đã biết và hướng cải thiện (theo thứ tự ưu tiên)
+## 9. Hạn chế đã biết và hướng cải thiện (Cập nhật sau Mission 3 theo thứ tự ưu tiên)
 
-1. **Giới hạn trước dữ liệu khóa sau Paywall & trang SPA động (`TC6`, `TC4`):**
-   - *Hạn chế:* Nguồn tìm kiếm web mở (`Tavily` / `ddgs`) và bộ cào HTML tĩnh (`trafilatura`) không lấy được bảng số liệu doanh thu tháng gần nhất theo từng quốc gia/tựa game nằm trong dashboard trả phí của Sensor Tower, AppMagic hay Data.ai.
-   - *Hướng cải thiện (Ưu tiên #1):* Cho phép người dùng tải lên (upload) thêm file CSV/PDF báo cáo nội bộ của Gamota ngay trên giao diện Streamlit và đưa vào cùng luồng kiểm chứng trích dẫn `Extract & Verify` như một nguồn Hạng A.
-2. **Bỏ qua nguồn tài liệu định dạng PDF trực tuyến (`TC3`):**
-   - *Hạn chế:* Để đảm bảo thời gian phản hồi `< 90 giây`, bước `Retrieve` hiện đang bỏ qua các URL trỏ tới file `.pdf` (ví dụ ở `TC3` đã bỏ qua 3 báo cáo PDF của `investgame.net`).
-   - *Hướng cải thiện (Ưu tiên #2):* Tích hợp `pypdf` để bóc tách văn bản từ các báo cáo PDF có dung lượng `< 5MB` thuộc các domain Hạng A/B.
-3. **Độ trễ khi chạy Live qua nhiều bước tuần tự (`23s – 82s`):**
-   - *Hạn chế:* Do phải thực hiện tìm kiếm, tải 12–18 trang web, gọi LLM trích xuất bằng chứng theo lô và tổng hợp báo cáo, mỗi lượt chạy Live mất trung bình 30–80 giây và phụ thuộc vào hạn mức RPM của gói Gemini Free Tier.
-   - *Hướng cải thiện (Ưu tiên #3):* Chuyển bước gọi LLM `Extract` của từng lô 4 nguồn sang chạy bất đồng bộ song song (`asyncio.gather`) trên các API key khác nhau để rút ngắn tổng thời gian chạy Live xuống dưới 25 giây.
+1. **Độ bất định của ngày đăng bài viết trên web mở (`24/72` = `33,3%` nguồn chỉ biết năm hoặc không rõ ngày) và giới hạn của regex tách kỳ số liệu (`detect_data_period`):**
+   - *Hạn chế:* Tìm kiếm qua `ddgs` không trả về metadata ngày đăng và nhiều trang báo ngành ẩn ngày xuất bản trong script động, khiến `14/72` nguồn chỉ xác định được năm từ URL/tiêu đề (sai số `±6 tháng`) và `10/72` nguồn không rõ ngày; đồng thời bộ regex tách kỳ số liệu trong câu trích dẫn có thể bỏ sót các cách viết thời gian phi chuẩn hoặc bắt nhầm mốc so sánh lịch sử trong câu ghép dài.
+   - *Hướng cải thiện (Ưu tiên #1):* Kết hợp thêm `published_date` từ Tavily API, trường `datePublished`/`dateModified` của JSON-LD (`schema.org`), HTTP header `Last-Modified`, đối chiếu chéo thời điểm xuất hiện đầu tiên của con số giữa các domain, và cho phép chuyên viên lưu xác nhận ngày đăng từ công cụ "Thử giả định ngày đăng" trên UI.
+2. **Vòng làm mới tự động (`research/refresh.py`) vẫn phụ thuộc vào nguồn web mở và giới hạn trước dữ liệu sau Paywall (`TC6`, `TC4`):**
+   - *Hạn chế:* Cả bước `Retrieve` lẫn vòng làm mới đều chỉ truy cập được bài viết HTML công khai, nên không thể lấy bảng số liệu doanh thu tháng gần nhất theo từng quốc gia/tựa game nằm sau tường phí của Sensor Tower, AppMagic hay Data.ai (`TC6` vẫn là **CHƯA ĐẠT**).
+   - *Hướng cải thiện (Ưu tiên #2):* Cho phép người dùng tải lên (upload) file CSV/Excel/PDF xuất từ tài khoản Sensor Tower / AppMagic nội bộ của Gamota ngay trên giao diện Streamlit và đưa vào cùng luồng `Extract & Verify` / `Refresh` như nguồn Hạng A.
+3. **Bỏ qua nguồn tài liệu định dạng PDF trực tuyến (`TC3`) & Độ trễ khi chạy Live + Làm mới tuần tự (`23s – 110s`):**
+   - *Hạn chế:* Bước `Retrieve` hiện bỏ qua các URL `.pdf` để giữ thời gian phản hồi, và khi chạy đồng thời cả pipeline lẫn vòng làm mới Live (`--refresh-old` như ở `TC10`) tổng thời gian có thể lên tới ~80–110 giây do gọi tuần tự các bước tìm kiếm, tải trang và LLM.
+   - *Hướng cải thiện (Ưu tiên #3):* Tích hợp `pypdf` đọc báo cáo PDF `< 5MB` của các domain Hạng A/B và song song hóa bước gọi LLM `Extract` bằng `asyncio.gather`.
 
 ---
 
-## Phụ lục nộp bài: Đoạn "Trình bày bài làm" & Kịch bản Video Walkthrough
+## Phụ lục: Hồ sơ nộp bài Mission 3 & Mission 2
 
-*(Bản đầy đủ kèm checklist bước cuối cho người nộp nằm tại [`SUBMISSION.md`](SUBMISSION.md))*
-
-### A. Đoạn "Trình bày bài làm" (dán trực tiếp vào form nộp bài — 1.163 ký tự, nằm chuẩn trong khung 600–1.200 ký tự)
-
-```text
-Tôi xây dựng Hệ thống Nghiên cứu Thị trường Game có Căn cứ (Gamota MVP) nhằm giải quyết rủi ro lớn nhất khi dùng AI nghiên cứu thị trường: ảo giác số liệu và ngụy tạo nguồn. Thay vì để LLM tự trả lời và tự chấm điểm, sản phẩm chạy pipeline 6 bước (Plan -> Retrieve -> Grade -> Extract & Verify -> Synthesize -> Score), ép mọi nhận định truy về trích dẫn nguyên văn <=40 từ được code xác minh (RapidFuzz >=90) kèm link tô sáng (#:~:text=), xếp hạng nguồn A/B/C và tính độ tin cậy (CAO/TRUNG BÌNH/THẤP) bằng code tất định.
-Cách chạy: Mở link Demo Streamlit (chế độ Kết quả đã lưu chạy ngay không cần key với 6 báo cáo thật TC1-TC6) hoặc chạy local: `pip install -r requirements.txt` -> `streamlit run app.py` (`pytest` 21/21 pass, `python -m eval.run_eval`).
-Quyết định chính: (1) Cấm LLM viết URL, khóa trần dự báo ở mức TRUNG BÌNH; (2) Tự động hiển thị dải số liệu mâu thuẫn ngay ở tóm tắt (TC3); (3) Bổ sung tách ngày đăng từ URL/tiêu đề và xoay vòng key/model Flash.
-Hạn chế: (1) Nguồn mở không lấy được doanh thu tháng trước theo quốc gia sau paywall Sensor Tower/AppMagic (TC6 chưa đạt thật, báo thiếu thay vì bịa số); (2) Chưa đọc file PDF; (3) Chạy Live mất 23-82s.
-```
-
-### B. Kịch bản Video Walkthrough (Mục tiêu 4 phút 30 giây — `<= 5 phút`)
-
-| Thời lượng | Màn hình cần quay | Lời nói (Voice-over gợi ý) |
-|---|---|---|
-| **`0:00 – 0:30`**<br>*(Bài toán)* | Mở trang chủ ứng dụng Streamlit hoặc phần đầu `README.md`. | *"Chào anh/chị hội đồng chấm thi Gamota. Khi đội Publishing hoặc BD cần nghiên cứu nhanh một thị trường hay thể loại game mới, thông tin trên mạng thường phân mảnh và mâu thuẫn. Nếu hỏi thẳng các chatbot AI thông thường, chúng rất hay trộn số liệu thật với suy diễn, tự bịa link báo cáo và tự nhận độ tin cậy cao khiến chúng ta không dám dùng để ra quyết định đầu tư."* |
-| **`0:30 – 1:00`**<br>*(Phần chọn để chứng minh)* | Cuộn tới sơ đồ Mermaid Pipeline 6 bước và bảng quy tắc Độ tin cậy trong `README.md`. | *"Vì vậy, trong MVP này, em không làm dàn trải mà chọn chứng minh sâu lớp 'Nhận định có căn cứ' qua pipeline 6 bước. Mọi nhận định bắt buộc phải trỏ về câu trích dẫn nguyên văn tối đa 40 từ, được code kiểm chứng bằng RapidFuzz đạt từ 90 điểm trở lên, gắn với hạng nguồn A/B/C từ file cấu hình, và độ tin cậy CAO, TRUNG BÌNH, THẤP được tính 100% bằng code tất định — LLM tuyệt đối không được tự viết URL và không được tự chấm điểm."* |
-| **`1:00 – 2:45`**<br>*(Demo 2 câu hỏi khác loại + Bấm mở 1 trích dẫn kiểm chứng tận nguồn)* | Quay giao diện Streamlit (`app.py`):<br>1. Bấm nút mẫu **🎯 Cơ hội thể loại (TC1)**, chỉ vào 4 thẻ chỉ số tự kiểm (`100%` trích dẫn xác minh, `0` CAO từ nguồn C), bảng Phương án × Tiêu chí và bảng Nhận định.<br>2. **Bấm trực tiếp vào link `[E2 · S2 (sensortower.com)]` ở nhận định `I1`** để mở tab mới trên trình duyệt, cho thấy trình duyệt tự cuộn tới và tô sáng câu trích dẫn *"In the first quarter of 2025, Southeast Asia ranked as the second-largest global market..."*.<br>3. Quay lại app, bấm sang **💰 Mô hình kiếm tiền (TC2)** để cho thấy cùng pipeline tự sinh bộ tiêu chí mới và phân tích IAA vs IAP vs Hybrid tại Indonesia & Philippines. | *"Trên giao diện ứng dụng, chế độ Kết quả đã lưu hoạt động ngay mà không cần API key. Với câu hỏi loại 1 (TC1) về thể loại game tiềm năng tại Đông Nam Á 12 tháng tới, hệ thống xác minh 30/30 câu trích dẫn nguyên văn, lập bảng so sánh 4 thể loại trên 5 tiêu chí, và khóa trần mọi nhận định dự báo ở mức TRUNG BÌNH kèm giả định. Em xin bấm thử vào link bằng chứng E2 của nguồn Hạng A Sensor Tower: trình duyệt mở trực tiếp bài báo gốc và tô sáng đúng câu nguyên văn tiếng Anh đã trích xuất. Khi chuyển sang câu hỏi loại 2 (TC2) về mô hình kiếm tiền game casual tại Indonesia và Philippines, cùng một pipeline tự động đổi bộ tiêu chí sang ARPU, tỷ lệ nhà phát hành dùng IAA (86%) và IAP (29%) mà không hề hardcode."* |
-| **`2:45 – 3:45`**<br>*(Tình huống khó: TC3, TC4, TC5)* | Chọn lần lượt các báo cáo **`TC3`**, **`TC4`**, **`TC5`** trên dropdown của Streamlit (hoặc mở tab `TESTING.md` mục 4 & 5). Chỉ vào phần `Trả lời ngắn`, `Mâu thuẫn số liệu` và `Kiểm tra tiền đề`. | *"Ở các tình huống khó: Với TC3 về quy mô game mobile Việt Nam, thay vì chốt bừa một con số hay lấy trung bình cộng, hệ thống trình bày cả mốc 825 triệu USD năm 2025, 500 triệu USD năm 2024 và giải thích sự khác biệt giữa lượt tải nội địa (272 triệu) với sản lượng xuất khẩu toàn cầu của studio Việt (4,9 tỷ lượt tải). Với TC4 về doanh thu MMORPG Campuchia 2025, trong khi LLM trần tự bịa ra con số 3,5 đến 6 triệu USD, hệ thống của em nói rõ nguồn mở không có số liệu này, chỉ cung cấp số liệu proxy 131,44 triệu USD toàn ngành game Campuchia và gợi ý các bước kiểm chứng từ rẻ đến đắt. Với TC5 hỏi vì sao doanh thu Đông Nam Á giảm 50%, bước Premise Check bác bỏ thẳng tiền đề sai này bằng số liệu tăng trưởng thực tế."* |
-| **`3:45 – 4:30`**<br>*(Hạn chế, Case chưa đạt thật TC6 & Bước tiếp theo)* | Chọn **`TC6`** trên giao diện Streamlit và mở phần cuối `TESTING.md` / `README.md`. | *"Về hạn chế và case chưa đạt thật: Ở TC6 hỏi doanh thu tháng trước (tháng 9/2026) của top 3 game gacha tại riêng Thái Lan, nguồn web mở chỉ có số liệu toàn cầu của Genshin Impact (50,23 triệu USD) và Honkai: Star Rail (35,735 triệu USD), còn bảng tách riêng theo quốc gia Thái Lan tháng gần nhất bị khóa sau paywall của Sensor Tower và AppMagic. Hệ thống đã trung thực báo thiếu dữ liệu thay vì lấy số toàn cầu gắn nhầm cho Thái Lan, và đánh dấu TC6 là Chưa đạt. Nếu có thêm thời gian, ưu tiên số 1 của em là cho phép upload file CSV/PDF xuất từ tài khoản Sensor Tower nội bộ của Gamota vào bước Retrieve, tiếp theo là đọc báo cáo PDF trực tuyến và song song hóa bước Extract để giảm thời gian chạy xuống dưới 25 giây. Em xin cảm ơn!"* |
+- **Hồ sơ nộp bài Mission 3 (Đường dẫn, 3 câu trả lời Mission 3, Kịch bản Video ≤ 5 phút, Checklist):** Xem chi tiết tại **[`SUBMISSION_M3.md`](SUBMISSION_M3.md)**.
+- **Hồ sơ nộp bài Mission 2 (Lưu trữ để tra cứu):** Xem tại **[`SUBMISSION.md`](SUBMISSION.md)**.
