@@ -11,6 +11,21 @@ FreshnessCode = Literal["fresh", "aging", "stale"]
 InsightType = Literal["fact", "inference"]
 ConfidenceLevel = Literal["CAO", "TRUNG BÌNH", "THẤP"]
 PremiseStatus = Literal["XÁC NHẬN", "BÁC BỎ", "MỘT PHẦN", "CHƯA ĐỦ BẰNG CHỨNG"]
+DatePrecision = Literal["day", "month", "quarter", "year", "unknown"]
+RecencyStatus = Literal["MỚI", "KHÔNG CHẮC", "CŨ"]
+InsightRecencyStatus = Literal["MỚI", "MỘT PHẦN CŨ", "KHÔNG CÓ BẰNG CHỨNG MỚI"]
+ImpactLevel = Literal["KHÔNG", "NHỎ", "VỪA PHẢI", "ĐÁNG KỂ"]
+CounterfactualLevel = Literal["CAO", "TRUNG BÌNH", "THẤP", "MẤT CĂN CỨ"]
+RefreshStatus = Literal[
+    "ĐÃ LÀM MỚI", "KHÔNG TÌM THẤY DỮ LIỆU MỚI HƠN", "KHÔNG CẦN LÀM MỚI", "LỖI"
+]
+ComparisonStatus = Literal[
+    "XÁC NHẬN",
+    "CẬP NHẬT",
+    "MÂU THUẪN",
+    "KHÔNG TƯƠNG ĐƯƠNG",
+    "KHÔNG TÌM THẤY DỮ LIỆU MỚI",
+]
 
 
 class Source(BaseModel):
@@ -35,6 +50,11 @@ class Source(BaseModel):
         default="Cũ (>24 tháng hoặc không rõ ngày)",
         description="Vietnamese human-readable recency label",
     )
+    date_method: str = ""
+    date_precision: DatePrecision = "unknown"
+    age_months: Optional[float] = None
+    age_months_min: Optional[float] = None
+    age_months_max: Optional[float] = None
 
 
 class Evidence(BaseModel):
@@ -60,6 +80,8 @@ class Evidence(BaseModel):
         default="",
         description="Code-generated URL with #:~:text=... fragment for browser highlighting",
     )
+    data_period: str = ""
+    data_period_end: Optional[str] = None
 
 
 class Insight(BaseModel):
@@ -191,6 +213,93 @@ class PipelineTrace(BaseModel):
     deduped_sources_count: int = 0
     kept_sources_count: int = 0
     step_logs: list[str] = Field(default_factory=list)
+    keywords: list[str] = Field(default_factory=list)
+    version: int = 1
+    parent_run_timestamp: str = ""
+
+
+class SourceRecency(BaseModel):
+    source_id: str
+    status: RecencyStatus = "KHÔNG CHẮC"
+    reasons: list[str] = Field(default_factory=list)
+    date_display: str = "Không rõ ngày"
+    date_method_label: str = "không xác định được"
+    age_display: str = "không rõ"
+    older_than_alert: bool = False
+    possibly_older_than_alert: bool = True
+    data_vintage: str = ""
+    date_conflict: bool = False
+    supported_insight_ids: list[str] = Field(default_factory=list)
+    is_key: bool = False
+    key_reasons: list[str] = Field(default_factory=list)
+
+
+class InsightImpact(BaseModel):
+    insight_id: str
+    current: ConfidenceLevel
+    if_source_removed: CounterfactualLevel
+    if_source_fresh: ConfidenceLevel
+
+
+class KeySourceImpact(BaseModel):
+    source_id: str
+    impacts: list[InsightImpact] = Field(default_factory=list)
+    summary: str = ""
+
+
+class InsightRecency(BaseModel):
+    insight_id: str
+    status: InsightRecencyStatus = "MỚI"
+    non_recent_source_ids: list[str] = Field(default_factory=list)
+    note: str = ""
+
+
+class ThresholdEvent(BaseModel):
+    date: str
+    source_ids: list[str] = Field(default_factory=list)
+    changes: list[str] = Field(default_factory=list)
+
+
+class RecencyImpact(BaseModel):
+    reference_date: str
+    alert_months: int = 18
+    impact_level: ImpactLevel = "KHÔNG"
+    summary: str = ""
+    sources: list[SourceRecency] = Field(default_factory=list)
+    key_old_sources: list[KeySourceImpact] = Field(default_factory=list)
+    insights: list[InsightRecency] = Field(default_factory=list)
+    upcoming_changes: list[ThresholdEvent] = Field(default_factory=list)
+    suggested_refresh_queries: list[str] = Field(default_factory=list)
+    certainty_groups: dict[str, list[str]] = Field(default_factory=dict)
+
+
+class RefreshComparison(BaseModel):
+    old_evidence_id: str
+    new_evidence_ids: list[str] = Field(default_factory=list)
+    status: ComparisonStatus = "KHÔNG TÌM THẤY DỮ LIỆU MỚI"
+    explanation: str = ""
+
+
+class ConfidenceChange(BaseModel):
+    insight_id: str
+    before: str
+    after: str
+    reason: str = ""
+
+
+class RefreshResult(BaseModel):
+    status: RefreshStatus
+    refreshed_at: str = ""
+    reference_date: str = ""
+    target_source_ids: list[str] = Field(default_factory=list)
+    queries: list[str] = Field(default_factory=list)
+    new_source_ids: list[str] = Field(default_factory=list)
+    rejected_new_sources: list[RejectedItem] = Field(default_factory=list)
+    comparisons: list[RefreshComparison] = Field(default_factory=list)
+    confidence_changes: list[ConfidenceChange] = Field(default_factory=list)
+    llm_calls_count: int = 0
+    duration_seconds: float = 0.0
+    note: str = ""
 
 
 class Report(BaseModel):
@@ -211,6 +320,8 @@ class Report(BaseModel):
     evidences: list[Evidence] = Field(default_factory=list)
     quality: QualityMetrics = Field(default_factory=QualityMetrics)
     trace: dict[str, Any] = Field(default_factory=dict)
+    recency: Optional[RecencyImpact] = None
+    refresh: Optional[RefreshResult] = None
 
 
 # --- Intermediate Schemas for LLM Structured Output ---
@@ -325,3 +436,18 @@ class SynthesisLLMOutput(BaseModel):
         default_factory=list,
         description="Ordered list of next verification steps, from cheapest/fastest to most expensive",
     )
+
+
+class RefreshQueriesLLMOutput(BaseModel):
+    queries: list[str] = Field(default_factory=list)
+
+
+class RefreshComparisonItemLLM(BaseModel):
+    old_evidence_id: str
+    new_evidence_ids: list[str] = Field(default_factory=list)
+    status: Literal["XÁC NHẬN", "CẬP NHẬT", "MÂU THUẪN", "KHÔNG TƯƠNG ĐƯƠNG"]
+    explanation: str
+
+
+class RefreshComparisonLLMOutput(BaseModel):
+    items: list[RefreshComparisonItemLLM] = Field(default_factory=list)

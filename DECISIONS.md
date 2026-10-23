@@ -52,4 +52,34 @@ Mỗi quyết định được ghi nhận liên tục trong quá trình xây d�
     - *Quyết định*: Bổ sung hàm `_esc_md()` trong `research/pipeline.py` để tự động chuyển `$` thành `\$` trong toàn bộ nội dung văn bản và ô bảng trước khi render Markdown.
     - *Lý do*: Giữ nguyên độ chính xác của câu trích dẫn số liệu tiền tệ đồng thời đảm bảo hiển thị chuẩn xác trên cả Streamlit UI và GitHub Markdown.
 
+---
+
+## Các quyết định thiết kế ở Mission 3 (Change Request A2: Dữ liệu cũ)
+
+11. **[M3 · P1] Ngưỡng "hơn 18 tháng" (`alert_months: 18`) đóng vai trò lớp phân tích hậu xử lý, giữ nguyên 100% quy tắc chấm điểm Mission 2**:
+    - *Bối cảnh*: Change Request A2 hỏi *"Một nguồn quan trọng được phát hành cách đây hơn 18 tháng. Người dùng muốn biết điều đó ảnh hưởng thế nào tới độ tin cậy của kết quả"*. Nếu tự ý sửa ngưỡng trong `compute_freshness` hoặc hạ thẳng mọi nhận định có nguồn > 18 tháng xuống `THẤP`, ta sẽ làm hỏng khả năng so sánh trực tiếp trước/sau và phá vỡ bộ kiểm thử regression của Mission 2.
+    - *Quyết định*: Giữ nguyên bất biến `score_single_insight` và `compute_freshness` (`<=366` ngày là mới, `<=731` ngày là cũ dần) của Mission 2; xây dựng `RecencyImpact` (`research/recency.py`) như một lớp hậu xử lý tất định không bao giờ tự thay đổi `Insight.confidence`.
+    - *Lý do*: Trả lời trực tiếp câu hỏi "ảnh hưởng thế nào" bằng phân tích minh bạch đồng thời bảo toàn 100% tính tương thích ngược với 6 báo cáo Mission 2.
+
+12. **[M3 · P1] Xác định nguồn then chốt (`is_key`) và định lượng ảnh hưởng bằng mô phỏng phản thực tế (Counterfactual Scoring) bằng code**:
+    - *Bối cảnh*: Nếu hỏi LLM "nguồn cũ này ảnh hưởng nhiều hay ít", LLM sẽ trả lời cảm tính và không nhất quán với quy tắc chấm điểm của hệ thống.
+    - *Quyết định*: Với mỗi cặp `(nguồn S#, nhận định I#)`, code chạy lại chính hàm `score_single_insight` trong hai kịch bản phản thực tế: (1) *Nếu bỏ nguồn này* (`if_source_removed`, trả về `MẤT CĂN CỨ` nếu nhận định không còn bằng chứng nào khác) và (2) *Nếu nguồn này còn mới (`<= 12 tháng`)* (`if_source_fresh`).
+    - *Lý do*: Cho người ra quyết định thấy chính xác nhận định nào sẽ sụp đổ nếu nguồn cũ không còn giá trị (ví dụ bỏ `S5`/`S6` ở `TC2` làm `I5`/`I6` mất căn cứ) và nhận định nào đang bị tuổi dữ liệu kìm hãm độ tin cậy (ví dụ nếu `S5` còn mới thì `I4` ở `TC2` tăng từ `THẤP` lên `CAO`).
+
+13. **[M3 · P1] Minh bạch hóa độ chính xác ngày đăng (`date_precision`) và bóc tách kỳ số liệu thực tế (`data_period`) trong trích dẫn**:
+    - *Bối cảnh*: Ở Mission 2, các báo cáo chỉ có năm trong URL/tiêu đề (như `AppsFlyer 2024` ở `TC2` hay `Sensor Tower 2025` ở `TC1`) được gán ngày ước tính `YYYY-06` nên hiển thị giống hệt một bài viết biết rõ tháng 6; ngoài ra có bài đăng tháng 8/2026 (`TC1-S6`) nhưng trích dẫn lại nói về số liệu năm 2024.
+    - *Quyết định*: Trong `research/dates.py`, lưu rõ `date_method` và `date_precision` (`day`, `month`, `quarter`, `year`, `unknown`), hiển thị `2024 (chỉ biết năm)` kèm dải tuổi `22–34 tháng`; đồng thời dùng regex tất định `detect_data_period` tách kỳ số liệu trong câu trích dẫn (loại trừ năm dự báo/tương lai và từ khóa `since`/`by`/`forecast`).
+    - *Lý do*: Giúp người dùng phân biệt rõ "tuổi bài báo" với "kỳ của con số thống kê", phát hiện cả nguồn mới trích số liệu cũ (`TC1-S6`) lẫn nguồn chỉ biết năm (`TC1-S3`, `TC2-S5/S6`).
+
+14. **[M3 · P1] Gắn cờ mâu thuẫn ngày đăng (`date_conflict`) thay vì tự ý sửa `published_date` của nguồn**:
+    - *Bối cảnh*: Ở `TC4-S10` (`icon-era.com`), ngày đăng suy từ URL/metadata là `03/2025`, nhưng câu trích dẫn nguyên văn lại nhắc tới kết quả `"Q2 2026"`, chứng tỏ ngày đăng `03/2025` gần như chắc chắn sai.
+    - *Quyết định*: Khi nguồn không có độ chính xác cấp ngày (`precision != "day"`) mà trích dẫn chứa kỳ số liệu bắt đầu sau khoảng ngày đăng, hệ thống bật cờ `date_conflict = True` và ghi rõ lý do `"ngày đăng có thể sai"`, nhưng không tự động sửa `published_date`.
+    - *Lý do*: Tự sửa ngày đăng bằng heuristic sẽ làm thay đổi điểm `confidence` gốc (vi phạm bất biến kỹ thuật); thay vào đó, hệ thống cảnh báo minh bạch và cung cấp tính năng "Thử giả định ngày đăng" trên UI để người dùng chủ động kiểm tra.
+
+15. **[M3 · P1] Chỉ nối ghi chú `[Độ mới dữ liệu]` vào `short_answer` khi mức ảnh hưởng là `ĐÁNG KỂ` (và đảm bảo tính idempotent)**:
+    - *Bối cảnh*: Nếu báo cáo nào cũng chèn cảnh báo độ mới vào `short_answer` (kể cả khi toàn bộ nguồn đều mới như `TC3` hoặc chỉ có 1 nhận định phụ mức `THẤP` thiếu ngày như `TC6`), người dùng sẽ bị cảnh báo giả (alert fatigue).
+    - *Quyết định*: Chỉ nối `[Độ mới dữ liệu]` vào `short_answer` khi `impact_level == "ĐÁNG KỂ"`; ở các mức `VỪA PHẢI`/`NHỎ`, thông tin hiển thị ở Banner, badge nhận định và Mục 7. Mọi thao tác nối đều gỡ marker cũ trước khi nối mới (idempotent).
+    - *Lý do*: Đảm bảo cảnh báo ở phần tóm tắt chỉ xuất hiện khi các nhận định cốt lõi (`CAO`/`TRUNG BÌNH`) thực sự phụ thuộc vào dữ liệu cũ.
+
+
 

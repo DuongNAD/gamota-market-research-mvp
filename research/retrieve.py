@@ -16,6 +16,7 @@ from dotenv import load_dotenv
 import httpx
 import trafilatura
 
+from research.dates import detect_date_with_method, infer_date_method, precision_of
 from research.grade import grade_source
 from research.schemas import RejectedItem, Source
 
@@ -84,87 +85,8 @@ def canonicalize_url(url: str) -> str:
 
 def _extract_date_fallback(url: str, text: str, title: str = "") -> Optional[str]:
     """Fallback date detector from URL path, title, or leading article text."""
-    # 1. Check URL for /YYYY/MM/DD/ or /YYYY-MM-DD
-    m_url_full = re.search(r"/(202[0-6])[/-](0[1-9]|1[0-2])[/-](0[1-9]|[12]\d|3[01])", url)
-    if m_url_full:
-        return f"{m_url_full.group(1)}-{m_url_full.group(2)}-{m_url_full.group(3)}"
-    m_url_month = re.search(r"/(202[0-6])/(0[1-9]|1[0-2])(?:/|$)", url)
-    if m_url_month:
-        return f"{m_url_month.group(1)}-{m_url_month.group(2)}"
-
-    # 2. Check text header for ISO date YYYY-MM-DD
-    head = f"{title}\n{(text or '')[:1500]}"
-    m_iso = re.search(r"\b(202[0-6])-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])\b", head)
-    if m_iso:
-        return f"{m_iso.group(1)}-{m_iso.group(2)}-{m_iso.group(3)}"
-
-    months_map = {
-        "january": "01",
-        "february": "02",
-        "march": "03",
-        "april": "04",
-        "may": "05",
-        "june": "06",
-        "july": "07",
-        "august": "08",
-        "september": "09",
-        "october": "10",
-        "november": "11",
-        "december": "12",
-        "jan": "01",
-        "feb": "02",
-        "mar": "03",
-        "apr": "04",
-        "jun": "06",
-        "jul": "07",
-        "aug": "08",
-        "sep": "09",
-        "oct": "10",
-        "nov": "11",
-        "dec": "12",
-    }
-
-    # 3. Check English Month DD, YYYY in header/title
-    m_en = re.search(
-        r"\b(Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|"
-        r"Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)"
-        r"\s+(\d{1,2}),?\s+(202[0-6])\b",
-        head,
-        re.IGNORECASE,
-    )
-    if m_en:
-        mm = months_map.get(m_en.group(1).lower(), "06")
-        dd = int(m_en.group(2))
-        yyyy = m_en.group(3)
-        return f"{yyyy}-{mm}-{dd:02d}"
-
-    # 4. Check Month YYYY in URL or title/header (e.g. "september-2026", "September 2026")
-    combined_slug = f"{url} {title} {head[:600]}"
-    m_month_yr = re.search(
-        r"\b(january|february|march|april|may|june|july|august|september|october|november|december)"
-        r"[\s\-_/]+(202[0-6])\b",
-        combined_slug,
-        re.IGNORECASE,
-    )
-    if m_month_yr:
-        mm = months_map.get(m_month_yr.group(1).lower(), "06")
-        return f"{m_month_yr.group(2)}-{mm}"
-
-    # 5. Check Quarter YYYY in URL or title (e.g. "q1-2026", "Q3 2025")
-    q_map = {"1": "03", "2": "06", "3": "09", "4": "12"}
-    m_q_yr = re.search(r"\bq([1-4])[\s\-_/]+(202[0-6])\b", combined_slug, re.IGNORECASE)
-    if m_q_yr:
-        return f"{m_q_yr.group(2)}-{q_map[m_q_yr.group(1)]}"
-
-    # 6. Check explicit report year in URL slug or title (e.g. "-2025", "2026-report", "(2025)")
-    m_url_yr = re.search(r"(?:[\-_/]|report[\-_/]?)(202[2-6])(?:[\-_/]|$)", url.lower())
-    if m_url_yr:
-        return f"{m_url_yr.group(1)}-06"
-    m_title_yr = re.search(r"\b(202[2-6])\b", title)
-    if m_title_yr:
-        return f"{m_title_yr.group(1)}-06"
-
-    return None
+    detected_date, _method = detect_date_with_method(url, text, title)
+    return detected_date
 
 
 
@@ -517,13 +439,23 @@ def retrieve_and_grade_sources(
                 )
                 continue
 
+            title_clean = (cand.get("title") or c_url).strip()
+            d_method = infer_date_method(
+                c_url,
+                full_text,
+                title_clean,
+                pub_date,
+                cand.get("published_date"),
+            )
             graded = grade_source(
                 Source(
                     id="pending",
                     url=c_url,
                     domain="",
-                    title=(cand.get("title") or c_url).strip(),
+                    title=title_clean,
                     published_date=pub_date,
+                    date_method=d_method,
+                    date_precision=precision_of(d_method, pub_date),
                 ),
                 reference_date=ref_date,
             )

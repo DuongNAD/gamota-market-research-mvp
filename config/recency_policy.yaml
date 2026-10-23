@@ -1,0 +1,7 @@
+# Chính sách độ mới dữ liệu (Mission 3 · Change Request A2). Không đổi các ngưỡng chấm điểm của Mission 2.
+alert_months: 18            # "hơn 18 tháng" theo change request (so sánh lớn hơn chặt)
+key_source_min_share: 0.25  # nguồn hỗ trợ >= 25% số nhận định (tối thiểu 2) là nguồn then chốt
+upcoming_window_months: 12  # chỉ báo mốc thay đổi trong 12 tháng tới
+refresh_max_targets: 2
+refresh_max_queries: 6
+refresh_max_new_sources: 6

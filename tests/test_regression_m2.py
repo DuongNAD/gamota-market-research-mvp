@@ -2,7 +2,19 @@
 
 from __future__ import annotations
 
+from datetime import date
+import json
+from pathlib import Path
+import pytest
+
+from research.pipeline import render_report_markdown
+from research.recency import RECENCY_SHORT_MARKER, apply_recency_layer, rescore_report_as_of
 from research.retrieve import _extract_date_fallback
+from research.schemas import Report
+
+REPO_ROOT = Path(__file__).resolve().parent.parent
+M2_RESULTS_DIR = REPO_ROOT / "eval" / "results" / "m2"
+CACHED_RUNS_DIR = REPO_ROOT / "data" / "cached_runs"
 
 # Golden table frozen in P0 BEFORE refactoring _extract_date_fallback (16 samples)
 GOLDEN_EXTRACT_DATE_SAMPLES: list[tuple[str, str, str, str | None]] = [
@@ -112,3 +124,55 @@ def test_extract_date_fallback_golden_unchanged() -> None:
     for url, text, title, expected in GOLDEN_EXTRACT_DATE_SAMPLES:
         actual = _extract_date_fallback(url, text, title)
         assert actual == expected, f"Mismatch for ({url!r}, {title!r}): got {actual!r}, expected {expected!r}"
+
+
+@pytest.mark.parametrize("tc_id", ["TC1", "TC2", "TC3", "TC4", "TC5", "TC6"])
+def test_m2_reports_rescored_at_run_date_are_identical(tc_id: str) -> None:
+    """Re-scoring M2 reports at their original run date (2026-10-15) produces 100% identical confidence & quality metrics."""
+    path = M2_RESULTS_DIR / f"{tc_id}.json"
+    orig = Report.model_validate(json.loads(path.read_text(encoding="utf-8")))
+    rescored = rescore_report_as_of(orig, as_of=date(2026, 10, 15))
+
+    assert [(i.id, i.confidence) for i in rescored.insights] == [
+        (i.id, i.confidence) for i in orig.insights
+    ]
+    assert rescored.quality.model_dump() == orig.quality.model_dump()
+
+    base_short = rescored.short_answer.split(RECENCY_SHORT_MARKER)[0].rstrip()
+    assert base_short == orig.short_answer.strip()
+
+
+def test_m2_json_loads_with_m3_schema() -> None:
+    """All JSON reports in eval/results/m2/ and data/cached_runs/ validate cleanly under M3 schema."""
+    m2_files = sorted(M2_RESULTS_DIR.glob("TC*.json"))
+    assert len(m2_files) == 6
+    for f in m2_files:
+        rep = Report.model_validate(json.loads(f.read_text(encoding="utf-8")))
+        assert rep.question
+
+    cached_files = sorted(CACHED_RUNS_DIR.glob("*.json"))
+    assert len(cached_files) >= 6
+    for f in cached_files:
+        rep = Report.model_validate(json.loads(f.read_text(encoding="utf-8")))
+        assert rep.question
+
+
+def test_markdown_keeps_m2_sections_and_adds_section_7() -> None:
+    """Rendered markdown preserves exact M2 headings 1-6 and appends section 7 when recency is present."""
+    orig = Report.model_validate(
+        json.loads((M2_RESULTS_DIR / "TC2.json").read_text(encoding="utf-8"))
+    )
+    updated = apply_recency_layer(orig, reference_date=date(2026, 10, 15))
+    md = render_report_markdown(updated)
+
+    expected_headings = [
+        "## 1. Trả lời ngắn & Khuyến nghị ra quyết định",
+        "## 2. Bảng nhận định có căn cứ (Verified Insights)",
+        "## 3. Mâu thuẫn giữa các nguồn & Kiểm tra tiền đề câu hỏi",
+        "## 4. Khoảng trống dữ liệu, Điều kiện đảo chiều & Bước kiểm chứng tiếp theo",
+        "## 5. Danh sách nguồn thông tin (Source Grading)",
+        "## 6. Tự kiểm chất lượng (Self-Check Quality Metrics)",
+        "## 7. Độ mới của dữ liệu & Ảnh hưởng tới độ tin cậy (Change Request A2)",
+    ]
+    for h in expected_headings:
+        assert h in md, f"Missing heading: {h}"

@@ -1,0 +1,1359 @@
+{
+  "question": "Thể loại game mobile nào có tiềm năng tại Đông Nam Á trong 12 tháng tới?",
+  "short_answer": "Trong 12 tháng tới, các thể loại game mobile có tiềm năng cao tại Đông Nam Á là Chiến thuật (đặc biệt 4X và MOBA), RPG và Bắn súng, do khả năng tạo doanh thu IAP vượt trội. Mặc dù các thể loại dễ tiếp cận như Arcade và Simulation có lượng tải xuống cao, nhưng tiềm năng kiếm tiền của chúng thấp hơn. Thị trường Đông Nam Á tiếp tục tăng trưởng mạnh mẽ về lượt tải xuống và doanh thu, với MOBA chiếm 38% tổng chi tiêu của người tiêu dùng di động trong khu vực. Lưu ý chênh lệch số liệu giữa các nguồn theo phạm vi/kỳ báo cáo: Doanh thu game mobile toàn cầu 2025 ([E14/S6]: 103,0 tỷ USD vs. [E1/S1]: Vượt qua ước tính trước đây — E14 cung cấp một con số dự kiến cụ thể từ Newzoo cho doanh thu game mobile toàn cầu năm 2025 (103,0 tỷ USD), trong khi E1 chỉ nói rằng doanh thu mobile vượt qua các ước tính trước đây mà không đưa ra con số cụ thể. Cả hai đều chỉ ra xu hướng tích cực nhưng E14 cung cấp dữ liệu định lượng rõ ràng hơn.) [Độ mới dữ liệu] Mức ảnh hưởng: ĐÁNG KỂ. 4/8 nhận định chưa có bằng chứng mới trong 18 tháng gần đây (I1, I2, I3, I6); 1 nhận định dựa một phần vào dữ liệu cũ. Nguồn cũ then chốt: S2 (cùng S3, S12) (sensortower.com, 05/2025, ~17 tháng, số liệu Q1/2025). Chi tiết ở mục 7.",
+  "recommendation": "Để tối đa hóa tiềm năng tại thị trường Đông Nam Á trong 12 tháng tới, Gamota nên tập trung vào các thể loại game Chiến thuật (đặc biệt là 4X và MOBA), RPG và Bắn súng, vì đây là những thể loại có khả năng tạo doanh thu IAP cao nhất. Cần ưu tiên các mô hình live-ops để duy trì doanh thu và xem xét các thị trường có tiềm năng kiếm tiền chưa được khai thác, đồng thời tận dụng sự phổ biến của smartphone 4G/5G và xu hướng eSports di động.",
+  "decision_criteria": [
+    "Quy mô & tốc độ tăng trưởng thị trường của từng thể loại game",
+    "Hiệu quả kiếm tiền (ARPU, IAP, IAA) và khả năng duy trì doanh thu",
+    "Mức độ cạnh tranh hiện tại và rào cản gia nhập đối với các thể loại game tiềm năng",
+    "Chi phí thu hút người dùng (UA) và khả năng giữ chân người chơi (retention rate)",
+    "Mức độ phù hợp với văn hóa và sở thích đặc trưng của người chơi Đông Nam Á"
+  ],
+  "option_matrix": [
+    {
+      "option": "Chiến thuật (4X, MOBA)",
+      "criteria_assessment": {
+        "Quy mô & tốc độ tăng trưởng thị trường của từng thể loại game": "MOBA chiếm 38% tổng chi tiêu của người tiêu dùng di động trong khu vực [E21]. Các thể loại Chiến thuật (đặc biệt 4X và MOBA) mang lại doanh thu IAP cao nhất [E7, E10].",
+        "Hiệu quả kiếm tiền (ARPU, IAP, IAA) và khả năng duy trì doanh thu": "Doanh thu IAP chủ yếu đến từ các thể loại này [E7, E10]. Các trò chơi sử dụng mô hình live-ops chiếm 84% doanh thu IAP game di động toàn cầu vào năm 2024 [E17], cho thấy tiềm năng duy trì doanh thu cao.",
+        "Mức độ cạnh tranh hiện tại và rào cản gia nhập đối với các thể loại game tiềm năng": "Không có thông tin cụ thể về mức độ cạnh tranh và rào cản gia nhập cho từng thể loại. Tuy nhiên, số lượng nhà quảng cáo game mobile tại Đông Nam Á tăng 19,7% YoY vào năm 2026 [E25], cho thấy thị trường đang cạnh tranh.",
+        "Chi phí thu hút người dùng (UA) và khả năng giữ chân người chơi (retention rate)": "Không có dữ liệu cụ thể về UA và retention rate cho từng thể loại.",
+        "Mức độ phù hợp với văn hóa và sở thích đặc trưng của người chơi Đông Nam Á": "MOBA là thể loại có chi tiêu cao nhất, cho thấy sự phù hợp mạnh mẽ với sở thích khu vực [E21]."
+      },
+      "suitability": "Rất tiềm năng về doanh thu IAP và phù hợp với sở thích người chơi khu vực. Nên ưu tiên phát triển.",
+      "evidence_ids": [
+        "E7",
+        "E10",
+        "E17",
+        "E21",
+        "E25"
+      ]
+    },
+    {
+      "option": "RPG",
+      "criteria_assessment": {
+        "Quy mô & tốc độ tăng trưởng thị trường của từng thể loại game": "RPG là một trong những thể loại mang lại doanh thu cao nhất [E7, E10].",
+        "Hiệu quả kiếm tiền (ARPU, IAP, IAA) và khả năng duy trì doanh thu": "Doanh thu IAP chủ yếu đến từ các thể loại nhập vai như RPG [E7, E10]. Mô hình live-ops hiệu quả cho IAP [E17].",
+        "Mức độ cạnh tranh hiện tại và rào cản gia nhập đối với các thể loại game tiềm năng": "Không có thông tin cụ thể về mức độ cạnh tranh và rào cản gia nhập cho từng thể loại. Số lượng nhà quảng cáo tăng cho thấy cạnh tranh chung [E25].",
+        "Chi phí thu hút người dùng (UA) và khả năng giữ chân người chơi (retention rate)": "Không có dữ liệu cụ thể về UA và retention rate cho từng thể loại.",
+        "Mức độ phù hợp với văn hóa và sở thích đặc trưng của người chơi Đông Nam Á": "Là thể loại nhập vai, cho thấy sự hấp dẫn đối với người chơi có xu hướng chi tiêu cao [E7]."
+      },
+      "suitability": "Tiềm năng doanh thu IAP cao. Cần nghiên cứu thêm về mức độ cạnh tranh cụ thể.",
+      "evidence_ids": [
+        "E7",
+        "E10",
+        "E17",
+        "E25"
+      ]
+    },
+    {
+      "option": "Bắn súng (Shooters, Battle Royale)",
+      "criteria_assessment": {
+        "Quy mô & tốc độ tăng trưởng thị trường của từng thể loại game": "Thể loại Bắn súng mang lại doanh thu cao nhất [E7, E10]. Battle Royale (đứng đầu là Garena Free Fire) ghi nhận tăng trưởng doanh thu đáng kể 35,8% QoQ [E30].",
+        "Hiệu quả kiếm tiền (ARPU, IAP, IAA) và khả năng duy trì doanh thu": "Doanh thu IAP chủ yếu đến từ các thể loại này [E7, E10]. Tăng trưởng doanh thu mạnh mẽ của Battle Royale cho thấy hiệu quả kiếm tiền [E30]. Mô hình live-ops hiệu quả cho IAP [E17].",
+        "Mức độ cạnh tranh hiện tại và rào cản gia nhập đối với các thể loại game tiềm năng": "Không có thông tin cụ thể về mức độ cạnh tranh và rào cản gia nhập cho từng thể loại. Số lượng nhà quảng cáo tăng cho thấy cạnh tranh chung [E25].",
+        "Chi phí thu hút người dùng (UA) và khả năng giữ chân người chơi (retention rate)": "Không có dữ liệu cụ thể về UA và retention rate cho từng thể loại.",
+        "Mức độ phù hợp với văn hóa và sở thích đặc trưng của người chơi Đông Nam Á": "Sự phổ biến của Garena Free Fire cho thấy sự phù hợp với thị hiếu khu vực [E30]. Khu vực này là trung tâm của eSports di động cạnh tranh [E18]."
+      },
+      "suitability": "Tiềm năng doanh thu IAP và tăng trưởng cao, đặc biệt là Battle Royale. Phù hợp với xu hướng eSports di động.",
+      "evidence_ids": [
+        "E7",
+        "E10",
+        "E17",
+        "E18",
+        "E25",
+        "E30"
+      ]
+    },
+    {
+      "option": "Arcade & Simulation",
+      "criteria_assessment": {
+        "Quy mô & tốc độ tăng trưởng thị trường của từng thể loại game": "Có lượng tải xuống cao ở Đông Nam Á nhờ tính dễ chơi [E6, E10].",
+        "Hiệu quả kiếm tiền (ARPU, IAP, IAA) và khả năng duy trì doanh thu": "Mặc dù có lượng tải xuống cao, doanh thu IAP chủ yếu đến từ các thể loại nhập vai hơn [E7, E10], cho thấy tiềm năng kiếm tiền thấp hơn.",
+        "Mức độ cạnh tranh hiện tại và rào cản gia nhập đối với các thể loại game tiềm năng": "Không có thông tin cụ thể về mức độ cạnh tranh và rào cản gia nhập cho từng thể loại. Số lượng nhà quảng cáo tăng cho thấy cạnh tranh chung [E25].",
+        "Chi phí thu hút người dùng (UA) và khả năng giữ chân người chơi (retention rate)": "Không có dữ liệu cụ thể về UA và retention rate cho từng thể loại.",
+        "Mức độ phù hợp với văn hóa và sở thích đặc trưng của người chơi Đông Nam Á": "Tính dễ tiếp cận phù hợp với một bộ phận lớn người chơi [E6]."
+      },
+      "suitability": "Tiềm năng về lượt tải xuống cao nhưng khả năng kiếm tiền IAP hạn chế. Phù hợp cho chiến lược tăng trưởng người dùng hơn là doanh thu IAP.",
+      "evidence_ids": [
+        "E6",
+        "E7",
+        "E10",
+        "E25"
+      ]
+    }
+  ],
+  "insights": [
+    {
+      "id": "I1",
+      "statement": "Thị trường game mobile Đông Nam Á là một cường quốc toàn cầu, đứng thứ hai về lượt tải xuống game mobile trong Q1 2025 với 1,93 tỷ lượt cài đặt mới và đứng đầu thế giới về lượt tải xuống game mobile vào năm 2024 với hơn 5,8 tỷ lượt cài đặt.",
+      "type": "fact",
+      "evidence_ids": [
+        "E2",
+        "E8",
+        "E9",
+        "E27"
+      ],
+      "confidence": "TRUNG BÌNH",
+      "confidence_reason": "Đạt mức TRUNG BÌNH: dữ liệu cũ dần 12–24 tháng (S12 (Hạng C, investgame.net), S2 (Hạng A, sensortower.com), S3 (Hạng A, sensortower.com)) · Độ mới: KHÔNG CÓ BẰNG CHỨNG MỚI (S2 05/2025, kỳ Q1/2025; S3 2025 (chỉ biết năm); S12 2025 (chỉ biết năm), kỳ Q1/2025)",
+      "assumptions": [],
+      "is_forecast": false,
+      "has_conflict": false
+    },
+    {
+      "id": "I2",
+      "statement": "Mặc dù có lượng tải xuống cao, Đông Nam Á chỉ đứng thứ bảy toàn cầu về doanh thu IAP với 625 triệu đô la trong Q1 2025, cho thấy tiềm năng kiếm tiền đáng kể chưa được khai thác.",
+      "type": "fact",
+      "evidence_ids": [
+        "E3",
+        "E9",
+        "E28"
+      ],
+      "confidence": "TRUNG BÌNH",
+      "confidence_reason": "Đạt mức TRUNG BÌNH: dữ liệu cũ dần 12–24 tháng (S12 (Hạng C, investgame.net), S2 (Hạng A, sensortower.com), S3 (Hạng A, sensortower.com)) · Độ mới: KHÔNG CÓ BẰNG CHỨNG MỚI (S2 05/2025, kỳ Q1/2025; S3 2025 (chỉ biết năm); S12 2025 (chỉ biết năm), kỳ Q1/2025)",
+      "assumptions": [],
+      "is_forecast": false,
+      "has_conflict": false
+    },
+    {
+      "id": "I3",
+      "statement": "Các thể loại game dễ tiếp cận như Arcade và Simulation thống trị về lượt tải xuống ở Đông Nam Á, trong khi các thể loại nhập vai hơn như Chiến thuật (đặc biệt 4X và MOBA), Bắn súng và RPG mang lại doanh thu IAP cao nhất.",
+      "type": "fact",
+      "evidence_ids": [
+        "E6",
+        "E7",
+        "E10"
+      ],
+      "confidence": "TRUNG BÌNH",
+      "confidence_reason": "Đạt mức TRUNG BÌNH: dữ liệu cũ dần 12–24 tháng (S2 (Hạng A, sensortower.com), S3 (Hạng A, sensortower.com)) · Độ mới: KHÔNG CÓ BẰNG CHỨNG MỚI (S2 05/2025, kỳ Q1/2025; S3 2025 (chỉ biết năm))",
+      "assumptions": [],
+      "is_forecast": false,
+      "has_conflict": false
+    },
+    {
+      "id": "I4",
+      "statement": "Thể loại MOBA chiếm 38% tổng chi tiêu của người tiêu dùng di động trong khu vực Đông Nam Á, cho thấy sự thống trị về doanh thu trong phân khúc này.",
+      "type": "fact",
+      "evidence_ids": [
+        "E21"
+      ],
+      "confidence": "THẤP",
+      "confidence_reason": "Chỉ có 1 nguồn hạng C mới hoặc nguồn A/B không rõ ngày (S7 (Hạng C, voxbooster.com))",
+      "assumptions": [],
+      "is_forecast": false,
+      "has_conflict": false
+    },
+    {
+      "id": "I5",
+      "statement": "Thị trường game mobile Đông Nam Á đang trải qua tốc độ tăng trưởng doanh thu hàng năm 13,8%, là một trong những tốc độ tăng trưởng kép hàng năm nhanh nhất thế giới trong lĩnh vực giải trí kỹ thuật số.",
+      "type": "fact",
+      "evidence_ids": [
+        "E20"
+      ],
+      "confidence": "THẤP",
+      "confidence_reason": "Chỉ có 1 nguồn hạng C mới hoặc nguồn A/B không rõ ngày (S7 (Hạng C, voxbooster.com))",
+      "assumptions": [],
+      "is_forecast": false,
+      "has_conflict": false
+    },
+    {
+      "id": "I6",
+      "statement": "Các trò chơi sử dụng mô hình live-ops chiếm 84% doanh thu mua hàng trong ứng dụng (IAP) của game di động toàn cầu vào năm 2024, cho thấy đây là mô hình kiếm tiền hiệu quả để duy trì doanh thu.",
+      "type": "fact",
+      "evidence_ids": [
+        "E17"
+      ],
+      "confidence": "THẤP",
+      "confidence_reason": "Chỉ có 1 nguồn hạng C mới hoặc nguồn A/B không rõ ngày (S6 (Hạng C, thegamersmag.com)) · Độ mới: KHÔNG CÓ BẰNG CHỨNG MỚI (S6 05/08/2026, kỳ 2024)",
+      "assumptions": [],
+      "is_forecast": false,
+      "has_conflict": false
+    },
+    {
+      "id": "I7",
+      "statement": "Trong 12 tháng tới, các thể loại game Chiến thuật (đặc biệt 4X và MOBA), RPG và Bắn súng sẽ tiếp tục là những thể loại có tiềm năng doanh thu cao nhất tại Đông Nam Á, nhờ vào khả năng tạo ra IAP mạnh mẽ và sự phù hợp với xu hướng eSports di động.",
+      "type": "inference",
+      "evidence_ids": [
+        "E7",
+        "E10",
+        "E18",
+        "E21",
+        "E30"
+      ],
+      "confidence": "TRUNG BÌNH",
+      "confidence_reason": "Đạt mức TRUNG BÌNH: nguồn tham chiếu (S12 (Hạng C, investgame.net), S2 (Hạng A, sensortower.com), S3 (Hạng A, sensortower.com), S7 (Hạng C, voxbooster.com)); loại suy luận/dự báo (trần tối đa TRUNG BÌNH) · Độ mới: MỘT PHẦN CŨ (S2 05/2025, kỳ Q1/2025; S3 2025 (chỉ biết năm); S12 2025 (chỉ biết năm), kỳ Q1/2025)",
+      "assumptions": [
+        "Xu hướng chi tiêu của người chơi đối với các thể loại game nhập vai và cạnh tranh sẽ tiếp tục duy trì hoặc tăng trưởng.",
+        "Sự phát triển của hạ tầng 4G/5G và eSports di động sẽ tiếp tục thúc đẩy sự phổ biến của các thể loại này."
+      ],
+      "is_forecast": true,
+      "has_conflict": false
+    },
+    {
+      "id": "I8",
+      "statement": "Việt Nam có tiềm năng lớn trở thành trung tâm sản xuất và xuất khẩu game mobile, đứng thứ 33 toàn cầu về sản lượng game mobile.",
+      "type": "fact",
+      "evidence_ids": [
+        "E26"
+      ],
+      "confidence": "THẤP",
+      "confidence_reason": "Chỉ có 1 nguồn hạng C mới hoặc nguồn A/B không rõ ngày (S10 (Hạng C, laodong.vn))",
+      "assumptions": [],
+      "is_forecast": false,
+      "has_conflict": false
+    }
+  ],
+  "conflicts": [
+    {
+      "topic": "Doanh thu game mobile toàn cầu 2025",
+      "values": [
+        "[E14/S6]: 103,0 tỷ USD",
+        "[E1/S1]: Vượt qua ước tính trước đây"
+      ],
+      "explanation": "E14 cung cấp một con số dự kiến cụ thể từ Newzoo cho doanh thu game mobile toàn cầu năm 2025 (103,0 tỷ USD), trong khi E1 chỉ nói rằng doanh thu mobile vượt qua các ước tính trước đây mà không đưa ra con số cụ thể. Cả hai đều chỉ ra xu hướng tích cực nhưng E14 cung cấp dữ liệu định lượng rõ ràng hơn.",
+      "evidence_ids": [
+        "E1",
+        "E14"
+      ]
+    }
+  ],
+  "premise_checks": [
+    {
+      "premise": "Có những thể loại game mobile cụ thể sẽ có tiềm năng rõ rệt và khác biệt so với các thể loại khác trong 12 tháng tới.",
+      "status": "XÁC NHẬN",
+      "explanation": "Bằng chứng cho thấy các thể loại như Chiến thuật (4X, MOBA), RPG và Bắn súng có tiềm năng doanh thu IAP cao hơn đáng kể so với các thể loại dễ tiếp cận như Arcade và Simulation, vốn chỉ mạnh về lượt tải xuống [E7, E10, E21].",
+      "evidence_ids": [
+        "E7",
+        "E10",
+        "E21"
+      ]
+    },
+    {
+      "premise": "Dữ liệu thị trường đủ chi tiết và đáng tin cậy để xác định 'tiềm năng' của từng thể loại game ở cấp độ khu vực Đông Nam Á.",
+      "status": "MỘT PHẦN",
+      "explanation": "Có dữ liệu chi tiết về lượt tải xuống và doanh thu IAP theo thể loại ở cấp độ khu vực Đông Nam Á (Q1 2025) [E6, E7, E10, E21]. Tuy nhiên, dữ liệu về mức độ cạnh tranh, rào cản gia nhập, chi phí UA và retention rate cho từng thể loại cụ thể còn hạn chế trong các bằng chứng được cung cấp.",
+      "evidence_ids": [
+        "E6",
+        "E7",
+        "E10",
+        "E21"
+      ]
+    },
+    {
+      "premise": "Tiềm năng được đánh giá chủ yếu dựa trên các yếu tố như tăng trưởng doanh thu, lượt tải xuống và mức độ tương tác của người chơi.",
+      "status": "XÁC NHẬN",
+      "explanation": "Các bằng chứng đã sử dụng các yếu tố này để đánh giá thị trường, bao gồm lượt tải xuống (1,93 tỷ lượt trong Q1 2025) [E2, E27], doanh thu IAP (625 triệu USD trong Q1 2025) [E3, E28], tăng trưởng doanh thu hàng năm (13,8%) [E20] và chi tiêu của người tiêu dùng theo thể loại (MOBA chiếm 38%) [E21].",
+      "evidence_ids": [
+        "E2",
+        "E3",
+        "E20",
+        "E21",
+        "E27",
+        "E28"
+      ]
+    }
+  ],
+  "gaps": [
+    "Dữ liệu cụ thể về mức độ cạnh tranh và rào cản gia nhập cho từng thể loại game mobile riêng lẻ tại Đông Nam Á.",
+    "Dữ liệu về chi phí thu hút người dùng (UA) và tỷ lệ giữ chân người chơi (retention rate) cho từng thể loại game mobile cụ thể tại Đông Nam Á.",
+    "Thông tin chi tiết về sự thay đổi sở thích và hành vi chi tiêu của người chơi đối với các thể loại game khác nhau trong 12 tháng gần nhất, ngoài các số liệu doanh thu và lượt tải xuống chung.",
+    "Dữ liệu về hiệu quả của mô hình kiếm tiền IAA (In-App Advertising) và hybrid cho các thể loại game đang lên tại Đông Nam Á."
+  ],
+  "what_would_change": [
+    "Nếu có dữ liệu mới cho thấy sự thay đổi đáng kể trong hành vi chi tiêu của người chơi, ưu tiên các thể loại game dễ tiếp cận (Arcade, Simulation) có thể tăng lên.",
+    "Nếu có bằng chứng về sự gia tăng đột biến về chi phí UA hoặc rào cản gia nhập đối với các thể loại game có doanh thu cao (Chiến thuật, RPG, Bắn súng), chiến lược có thể cần điều chỉnh để tìm kiếm các ngách thị trường ít cạnh tranh hơn.",
+    "Nếu các mô hình kiếm tiền khác ngoài IAP (ví dụ: IAA thuần túy) trở nên hiệu quả hơn đáng kể cho các thể loại game cụ thể, khuyến nghị về mô hình kiếm tiền sẽ thay đổi."
+  ],
+  "next_checks": [
+    "Phân tích báo cáo 'Xu hướng Marketing Game Mobile Đông Nam Á 2026' của SocialPeta và Gamota (nếu có bản đầy đủ) để tìm kiếm dữ liệu chi tiết hơn về cạnh tranh quảng cáo và hiệu suất subgenre [E22].",
+    "Tìm kiếm các báo cáo thị trường chuyên sâu hơn từ Sensor Tower hoặc Newzoo tập trung vào chi phí UA, retention rate và mức độ cạnh tranh theo thể loại tại Đông Nam Á.",
+    "Tiến hành khảo sát người chơi tại các thị trường trọng điểm Đông Nam Á (Thái Lan, Indonesia, Việt Nam) để hiểu rõ hơn về sở thích, hành vi chi tiêu và mức độ chấp nhận các thể loại game mới nổi."
+  ],
+  "sources": [
+    {
+      "id": "S1",
+      "url": "https://newzoo.com/articles/global-games-market-2025",
+      "domain": "newzoo.com",
+      "title": "Global games revenue cracked $200 billion in 2025 | Newzoo",
+      "published_date": "2026-06-18",
+      "tier": "A",
+      "tier_reason": "Đơn vị nghiên cứu dữ liệu chuyên sâu ngành game toàn cầu (Newzoo)",
+      "freshness": "fresh",
+      "freshness_label": "Mới (<=12 tháng)",
+      "date_method": "legacy_metadata",
+      "date_precision": "day",
+      "age_months": 3.9,
+      "age_months_min": 3.9,
+      "age_months_max": 3.9
+    },
+    {
+      "id": "S2",
+      "url": "https://sensortower.com/blog/southeast-asia-mobile-gaming-2025",
+      "domain": "sensortower.com",
+      "title": "Sensor Tower Southeast Asia Mobile Game Market Insights 2025",
+      "published_date": "2025-05",
+      "tier": "A",
+      "tier_reason": "Nhà cung cấp dữ liệu đo lường thị trường ứng dụng & game mobile hàng đầu (Sensor Tower)",
+      "freshness": "aging",
+      "freshness_label": "Cũ dần (12-24 tháng)",
+      "date_method": "legacy_metadata",
+      "date_precision": "month",
+      "age_months": 17.0,
+      "age_months_min": 16.5,
+      "age_months_max": 17.5
+    },
+    {
+      "id": "S3",
+      "url": "https://sensortower.com/state-of-mobile-games-in-sea-2025-report",
+      "domain": "sensortower.com",
+      "title": "Southeast Asia: Mobile Game Market Insights 2025 Report",
+      "published_date": "2025-06",
+      "tier": "A",
+      "tier_reason": "Nhà cung cấp dữ liệu đo lường thị trường ứng dụng & game mobile hàng đầu (Sensor Tower)",
+      "freshness": "aging",
+      "freshness_label": "Cũ dần (12-24 tháng)",
+      "date_method": "legacy_year_only",
+      "date_precision": "year",
+      "age_months": 16.0,
+      "age_months_min": 9.5,
+      "age_months_max": 21.4
+    },
+    {
+      "id": "S4",
+      "url": "https://newzoo.com/reports/global-games-market-report",
+      "domain": "newzoo.com",
+      "title": "Newzoo's Global Games Market Report 2025",
+      "published_date": "2025-09-09",
+      "tier": "A",
+      "tier_reason": "Đơn vị nghiên cứu dữ liệu chuyên sâu ngành game toàn cầu (Newzoo)",
+      "freshness": "aging",
+      "freshness_label": "Cũ dần (12-24 tháng)",
+      "date_method": "legacy_metadata",
+      "date_precision": "day",
+      "age_months": 13.2,
+      "age_months_min": 13.2,
+      "age_months_max": 13.2
+    },
+    {
+      "id": "S5",
+      "url": "https://www.statista.com/topics/9916/gaming-market-in-southeast-asia",
+      "domain": "statista.com",
+      "title": "Gaming market in Southeast Asia - statistics & facts | Statista",
+      "published_date": null,
+      "tier": "A",
+      "tier_reason": "Nền tảng tổng hợp thống kê và dữ liệu thị trường định lượng (Statista)",
+      "freshness": "stale",
+      "freshness_label": "Cũ (>24 tháng hoặc không rõ ngày)",
+      "date_method": "unknown",
+      "date_precision": "unknown",
+      "age_months": null,
+      "age_months_min": null,
+      "age_months_max": null
+    },
+    {
+      "id": "S6",
+      "url": "https://thegamersmag.com/mobile-gaming-revenue-statistics",
+      "domain": "thegamersmag.com",
+      "title": "Mobile Gaming Revenue Statistics 2026 - thegamersmag.com",
+      "published_date": "2026-08-05",
+      "tier": "C",
+      "tier_reason": "Nguồn hạng C (mặc định): Blog, trang tổng hợp SEO, diễn đàn, thông cáo báo chí hoặc domain chưa trong danh mục kiểm chứng (thegamersmag.com)",
+      "freshness": "fresh",
+      "freshness_label": "Mới (<=12 tháng)",
+      "date_method": "legacy_metadata",
+      "date_precision": "day",
+      "age_months": 2.3,
+      "age_months_min": 2.3,
+      "age_months_max": 2.3
+    },
+    {
+      "id": "S7",
+      "url": "https://voxbooster.com/blog/southeast-asia-mobile-gaming-statistics-2026",
+      "domain": "voxbooster.com",
+      "title": "Southeast Asia Mobile Esports and Gaming Statistics (2026): 48 Data ...",
+      "published_date": "2026-06",
+      "tier": "C",
+      "tier_reason": "Nguồn hạng C (mặc định): Blog, trang tổng hợp SEO, diễn đàn, thông cáo báo chí hoặc domain chưa trong danh mục kiểm chứng (voxbooster.com)",
+      "freshness": "fresh",
+      "freshness_label": "Mới (<=12 tháng)",
+      "date_method": "legacy_year_only",
+      "date_precision": "year",
+      "age_months": 4.0,
+      "age_months_min": 0.0,
+      "age_months_max": 9.4
+    },
+    {
+      "id": "S8",
+      "url": "https://gamota.com/gamota-lab/reports/socialpeta-and-gamota-launch-the-2026-southeast-asia-mobile-game-marketing-report",
+      "domain": "gamota.com",
+      "title": "SocialPeta và Gamota ra mắt Báo cáo Xu hướng Marketing Game ...",
+      "published_date": "2026-08-26",
+      "tier": "C",
+      "tier_reason": "Nguồn hạng C (mặc định): Blog, trang tổng hợp SEO, diễn đàn, thông cáo báo chí hoặc domain chưa trong danh mục kiểm chứng (gamota.com)",
+      "freshness": "fresh",
+      "freshness_label": "Mới (<=12 tháng)",
+      "date_method": "legacy_metadata",
+      "date_precision": "day",
+      "age_months": 1.6,
+      "age_months_min": 1.6,
+      "age_months_max": 1.6
+    },
+    {
+      "id": "S9",
+      "url": "https://www.brandsvietnam.com/congdong/topic/bao-cao-marketing-game-mobile-dong-nam-a-2026",
+      "domain": "brandsvietnam.com",
+      "title": "Báo cáo Marketing Game Mobile Đông Nam Á năm 2026",
+      "published_date": "2026-09-09",
+      "tier": "C",
+      "tier_reason": "Nguồn hạng C (mặc định): Blog, trang tổng hợp SEO, diễn đàn, thông cáo báo chí hoặc domain chưa trong danh mục kiểm chứng (brandsvietnam.com)",
+      "freshness": "fresh",
+      "freshness_label": "Mới (<=12 tháng)",
+      "date_method": "legacy_metadata",
+      "date_precision": "day",
+      "age_months": 1.2,
+      "age_months_min": 1.2,
+      "age_months_max": 1.2
+    },
+    {
+      "id": "S10",
+      "url": "https://laodong.vn/cong-nghe/nganh-game-viet-nam-vuon-tam-khang-dinh-vi-the-lon-tren-the-gioi-1690320.ldo",
+      "domain": "laodong.vn",
+      "title": "Ngành game Việt Nam vươn tầm, khẳng định vị thế lớn trên thế giới",
+      "published_date": "2026-04-23",
+      "tier": "C",
+      "tier_reason": "Nguồn hạng C (mặc định): Blog, trang tổng hợp SEO, diễn đàn, thông cáo báo chí hoặc domain chưa trong danh mục kiểm chứng (laodong.vn)",
+      "freshness": "fresh",
+      "freshness_label": "Mới (<=12 tháng)",
+      "date_method": "legacy_metadata",
+      "date_precision": "day",
+      "age_months": 5.7,
+      "age_months_min": 5.7,
+      "age_months_max": 5.7
+    },
+    {
+      "id": "S11",
+      "url": "https://games.gg/vi/news/xu-hướng-thể-loại-game-mobile-2026-phân-tích-khu-vực-cho-nhà-phát-triển",
+      "domain": "games.gg",
+      "title": "Xu hướng thể loại game mobile 2026: Thông tin cho nhà phát ...",
+      "published_date": "2026-06-10",
+      "tier": "C",
+      "tier_reason": "Nguồn hạng C (mặc định): Blog, trang tổng hợp SEO, diễn đàn, thông cáo báo chí hoặc domain chưa trong danh mục kiểm chứng (games.gg)",
+      "freshness": "fresh",
+      "freshness_label": "Mới (<=12 tháng)",
+      "date_method": "legacy_metadata",
+      "date_precision": "day",
+      "age_months": 4.2,
+      "age_months_min": 4.2,
+      "age_months_max": 4.2
+    },
+    {
+      "id": "S12",
+      "url": "https://investgame.net/news/pdf/southeast-asian-mobile-game-market-insights-2025",
+      "domain": "investgame.net",
+      "title": "Southeast Asian Mobile Game Market Insights 2025",
+      "published_date": "2025-06",
+      "tier": "C",
+      "tier_reason": "Nguồn hạng C (mặc định): Blog, trang tổng hợp SEO, diễn đàn, thông cáo báo chí hoặc domain chưa trong danh mục kiểm chứng (investgame.net)",
+      "freshness": "aging",
+      "freshness_label": "Cũ dần (12-24 tháng)",
+      "date_method": "legacy_year_only",
+      "date_precision": "year",
+      "age_months": 16.0,
+      "age_months_min": 9.5,
+      "age_months_max": 21.4
+    }
+  ],
+  "evidences": [
+    {
+      "id": "E1",
+      "source_id": "S1",
+      "quote": "The result came in above prior estimates, with PC delivering its strongest growth rate on record and mobile outperforming prior estimates on D2C, mini-game, and Tencent revenues.",
+      "claim": "Doanh thu từ game mobile đã vượt qua các ước tính trước đây, đặc biệt nhờ vào doanh thu từ D2C, mini-game và Tencent.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://newzoo.com/articles/global-games-market-2025#:~:text=The%20result%20came%20in%20above%20prior%20estimates%2C%20with%20PC%20delivering",
+      "data_period": "",
+      "data_period_end": null
+    },
+    {
+      "id": "E2",
+      "source_id": "S2",
+      "quote": "In the first quarter of 2025, Southeast Asia ranked as the second-largest global market for mobile game downloads, hitting an impressive 1.93 billion new installs.",
+      "claim": "Trong quý 1 năm 2025, Đông Nam Á đứng thứ hai toàn cầu về lượt tải game mobile, đạt 1,93 tỷ lượt cài đặt mới.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://sensortower.com/blog/southeast-asia-mobile-gaming-2025#:~:text=In%20the%20first%20quarter%20of%202025%2C%20Southeast%20Asia%20ranked%20as",
+      "data_period": "Q1/2025",
+      "data_period_end": "2025-03-31"
+    },
+    {
+      "id": "E3",
+      "source_id": "S2",
+      "quote": "While SEA currently ranks seventh globally in in-app purchase (IAP) revenue at $625 million in Q1 2025, this figure signals significant untapped monetization potential.",
+      "claim": "Đông Nam Á đứng thứ bảy toàn cầu về doanh thu mua hàng trong ứng dụng (IAP) với 625 triệu đô la trong quý 1 năm 2025, cho thấy tiềm năng kiếm tiền chưa được khai thác đáng kể.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://sensortower.com/blog/southeast-asia-mobile-gaming-2025#:~:text=While%20SEA%20currently%20ranks%20seventh%20globally%20in%20in-app%20purchase%20%28IAP%29",
+      "data_period": "Q1/2025",
+      "data_period_end": "2025-03-31"
+    },
+    {
+      "id": "E4",
+      "source_id": "S2",
+      "quote": "Indonesia stands out as the leader in mobile game downloads, reaching 870 million in Q1 2025, a 9% increase from the prior quarter.",
+      "claim": "Indonesia dẫn đầu về lượt tải game mobile với 870 triệu lượt trong quý 1 năm 2025, tăng 9% so với quý trước.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://sensortower.com/blog/southeast-asia-mobile-gaming-2025#:~:text=Indonesia%20stands%20out%20as%20the%20leader%20in%20mobile%20game%20downloads%2C",
+      "data_period": "Q1/2025",
+      "data_period_end": "2025-03-31"
+    },
+    {
+      "id": "E5",
+      "source_id": "S2",
+      "quote": "When it comes to revenue, Thailand takes the lead in the region, generating $162 million in IAP revenue during Q1 2025.",
+      "claim": "Thái Lan dẫn đầu khu vực về doanh thu, tạo ra 162 triệu đô la doanh thu IAP trong quý 1 năm 2025.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://sensortower.com/blog/southeast-asia-mobile-gaming-2025#:~:text=When%20it%20comes%20to%20revenue%2C%20Thailand%20takes%20the%20lead%20in",
+      "data_period": "Q1/2025",
+      "data_period_end": "2025-03-31"
+    },
+    {
+      "id": "E6",
+      "source_id": "S2",
+      "quote": "Across SEA, accessible genres like Arcade and Simulation games drive high download volumes due to their ease of play.",
+      "claim": "Các thể loại game dễ tiếp cận như Arcade và Simulation có lượng tải xuống cao ở Đông Nam Á nhờ tính dễ chơi.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://sensortower.com/blog/southeast-asia-mobile-gaming-2025#:~:text=Across%20SEA%2C%20accessible%20genres%20like%20Arcade%20and%20Simulation%20games%20drive",
+      "data_period": "",
+      "data_period_end": null
+    },
+    {
+      "id": "E7",
+      "source_id": "S2",
+      "quote": "However, in-app purchase revenue is primarily dominated by more immersive genres such as Strategy (especially 4X and MOBA), Shooters, and RPGs.",
+      "claim": "Doanh thu mua hàng trong ứng dụng chủ yếu đến từ các thể loại game nhập vai hơn như Chiến thuật (đặc biệt là 4X và MOBA), Bắn súng và RPG.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://sensortower.com/blog/southeast-asia-mobile-gaming-2025#:~:text=However%2C%20in-app%20purchase%20revenue%20is%20primarily%20dominated%20by%20more%20immersive",
+      "data_period": "",
+      "data_period_end": null
+    },
+    {
+      "id": "E8",
+      "source_id": "S2",
+      "quote": "In 2024, SEA-based mobile game publishers collectively ranked first worldwide for mobile game downloads, generating over 5.8 billion installs.",
+      "claim": "Năm 2024, các nhà phát hành game mobile ở Đông Nam Á đứng đầu thế giới về lượt tải game mobile, tạo ra hơn 5,8 tỷ lượt cài đặt.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://sensortower.com/blog/southeast-asia-mobile-gaming-2025#:~:text=In%202024%2C%20SEA-based%20mobile%20game%20publishers%20collectively%20ranked%20first%20worldwide",
+      "data_period": "2024",
+      "data_period_end": "2024-12-31"
+    },
+    {
+      "id": "E9",
+      "source_id": "S3",
+      "quote": "The Southeast Asian mobile gaming market is a global powerhouse, experiencing phenomenal growth in downloads and presenting significant untapped revenue potential.",
+      "claim": "Thị trường game mobile Đông Nam Á là một cường quốc toàn cầu, đang trải qua sự tăng trưởng vượt bậc về lượt tải xuống và có tiềm năng doanh thu lớn chưa được khai thác.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://sensortower.com/state-of-mobile-games-in-sea-2025-report#:~:text=The%20Southeast%20Asian%20mobile%20gaming%20market%20is%20a%20global%20powerhouse%2C",
+      "data_period": "",
+      "data_period_end": null
+    },
+    {
+      "id": "E10",
+      "source_id": "S3",
+      "quote": "Learn which game genres and subgenres are dominating downloads (like Arcade and Simulation) versus those capturing the most revenue (such as Strategy, RPG, and Shooters).",
+      "claim": "Các thể loại game như Arcade và Simulation đang thống trị về lượt tải xuống, trong khi Chiến thuật, RPG và Bắn súng mang lại doanh thu cao nhất.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://sensortower.com/state-of-mobile-games-in-sea-2025-report#:~:text=Learn%20which%20game%20genres%20and%20subgenres%20are%20dominating%20downloads%20%28like",
+      "data_period": "",
+      "data_period_end": null
+    },
+    {
+      "id": "E11",
+      "source_id": "S4",
+      "quote": "Console is the fastest-growing platform, PC gains in Asia, and mobile growth is slowing in mature markets.",
+      "claim": "Console là nền tảng phát triển nhanh nhất, PC đang tăng trưởng ở châu Á, và tăng trưởng di động đang chậm lại ở các thị trường trưởng thành.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://newzoo.com/reports/global-games-market-report#:~:text=Console%20is%20the%20fastest-growing%20platform%2C%20PC%20gains%20in%20Asia%2C%20and",
+      "data_period": "",
+      "data_period_end": null
+    },
+    {
+      "id": "E12",
+      "source_id": "S5",
+      "quote": "Digital video games market revenue ASEAN 2020-2030, by segment - Fastest-growing digital video games market segment - Gaming networks",
+      "claim": "Mạng lưới trò chơi (Gaming networks) là phân khúc thị trường trò chơi điện tử kỹ thuật số có tốc độ tăng trưởng nhanh nhất tại ASEAN từ năm 2020 đến 2030.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://www.statista.com/topics/9916/gaming-market-in-southeast-asia#:~:text=Digital%20video%20games%20market%20revenue%20ASEAN%202020-2030%2C%20by%20segment%20-",
+      "data_period": "",
+      "data_period_end": null
+    },
+    {
+      "id": "E13",
+      "source_id": "S5",
+      "quote": "Digital video games market revenue growth rate ASEAN 2018-2030, by segment - Biggest playerbase in SEA - Indonesia",
+      "claim": "Indonesia có lượng người chơi game lớn nhất ở Đông Nam Á.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://www.statista.com/topics/9916/gaming-market-in-southeast-asia#:~:text=Digital%20video%20games%20market%20revenue%20growth%20rate%20ASEAN%202018-2030%2C%20by",
+      "data_period": "",
+      "data_period_end": null
+    },
+    {
+      "id": "E14",
+      "source_id": "S6",
+      "quote": "Newzoo projected global mobile gaming revenue at $103.0 billion in 2025, up from $92.6 billion in 2024.",
+      "claim": "Doanh thu game di động toàn cầu được Newzoo dự kiến đạt 103,0 tỷ USD vào năm 2025, tăng từ 92,6 tỷ USD vào năm 2024.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://thegamersmag.com/mobile-gaming-revenue-statistics#:~:text=Newzoo%20projected%20global%20mobile%20gaming%20revenue%20at%20%24103.0%20billion%20in",
+      "data_period": "2025",
+      "data_period_end": "2025-12-31"
+    },
+    {
+      "id": "E15",
+      "source_id": "S6",
+      "quote": "Mobile was expected to make up 55% of the global games market in 2025, keeping it the largest gaming segment.",
+      "claim": "Game di động dự kiến chiếm 55% thị trường game toàn cầu vào năm 2025, duy trì vị thế là phân khúc game lớn nhất.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://thegamersmag.com/mobile-gaming-revenue-statistics#:~:text=Mobile%20was%20expected%20to%20make%20up%2055%25%20of%20the%20global",
+      "data_period": "2025",
+      "data_period_end": "2025-12-31"
+    },
+    {
+      "id": "E16",
+      "source_id": "S6",
+      "quote": "Sensor Tower said players spent $82 billion on mobile game in-app purchases in 2024, a 4% year-over-year increase.",
+      "claim": "Người chơi đã chi 82 tỷ USD cho các giao dịch mua trong ứng dụng game di động vào năm 2024, tăng 4% so với năm trước.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://thegamersmag.com/mobile-gaming-revenue-statistics#:~:text=Sensor%20Tower%20said%20players%20spent%20%2482%20billion%20on%20mobile%20game",
+      "data_period": "2024",
+      "data_period_end": "2024-12-31"
+    },
+    {
+      "id": "E17",
+      "source_id": "S6",
+      "quote": "Sensor Tower said games that used live-ops models captured 84% of mobile game IAP revenue in 2024.",
+      "claim": "Các trò chơi sử dụng mô hình live-ops chiếm 84% doanh thu mua hàng trong ứng dụng (IAP) của game di động vào năm 2024.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://thegamersmag.com/mobile-gaming-revenue-statistics#:~:text=Sensor%20Tower%20said%20games%20that%20used%20live-ops%20models%20captured%2084%25",
+      "data_period": "2024",
+      "data_period_end": "2024-12-31"
+    },
+    {
+      "id": "E18",
+      "source_id": "S7",
+      "quote": "Southeast Asia’s mobile gaming market surged to $5.4 billion, establishing the region as the undisputed epicentre of competitive mobile esports and mobile-first consumer gaming.",
+      "claim": "Thị trường game di động Đông Nam Á đã tăng lên 5,4 tỷ USD, trở thành trung tâm của thể thao điện tử di động cạnh tranh và game di động dành cho người tiêu dùng.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://voxbooster.com/blog/southeast-asia-mobile-gaming-statistics-2026#:~:text=Southeast%20Asia%E2%80%99s%20mobile%20gaming%20market%20surged%20to%20%245.4%20billion%2C%20establishing",
+      "data_period": "",
+      "data_period_end": null
+    },
+    {
+      "id": "E19",
+      "source_id": "S7",
+      "quote": "Home to more than 290 million active gamers, Southeast Asia (ASEAN) has bypassed legacy console hardware in favor of ubiquitous, accessible 4G and 5G smartphones.",
+      "claim": "Đông Nam Á có hơn 290 triệu game thủ di động đang hoạt động, đã vượt qua phần cứng console truyền thống để ưu tiên điện thoại thông minh 4G và 5G phổ biến, dễ tiếp cận.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://voxbooster.com/blog/southeast-asia-mobile-gaming-statistics-2026#:~:text=Home%20to%20more%20than%20290%20million%20active%20gamers%2C%20Southeast%20Asia",
+      "data_period": "",
+      "data_period_end": null
+    },
+    {
+      "id": "E20",
+      "source_id": "S7",
+      "quote": "13.8% annual revenue growth: The region maintains one of the fastest digital entertainment compound annual growth rates worldwide.",
+      "claim": "Khu vực Đông Nam Á duy trì tốc độ tăng trưởng doanh thu hàng năm 13,8%, là một trong những tốc độ tăng trưởng kép hàng năm nhanh nhất thế giới trong lĩnh vực giải trí kỹ thuật số.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://voxbooster.com/blog/southeast-asia-mobile-gaming-statistics-2026#:~:text=13.8%25%20annual%20revenue%20growth%3A%20The%20region%20maintains%20one%20of%20the",
+      "data_period": "",
+      "data_period_end": null
+    },
+    {
+      "id": "E21",
+      "source_id": "S7",
+      "quote": "MOBA genre share of regional mobile consumer spend | 38.0% | Sensor Tower Gaming Reports",
+      "claim": "Thể loại MOBA chiếm 38% tổng chi tiêu của người tiêu dùng di động trong khu vực Đông Nam Á.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://voxbooster.com/blog/southeast-asia-mobile-gaming-statistics-2026#:~:text=MOBA%20genre%20share%20of%20regional%20mobile%20consumer%20spend%20%7C%2038.0%25",
+      "data_period": "",
+      "data_period_end": null
+    },
+    {
+      "id": "E22",
+      "source_id": "S8",
+      "quote": "SocialPeta và Gamota ra mắt Báo cáo Xu hướng Marketing Game Mobile Đông Nam Á 2026, phân tích những thay đổi về quy mô, monetization và cạnh tranh quảng cáo trong khu vực.",
+      "claim": "Báo cáo Xu hướng Marketing Game Mobile Đông Nam Á 2026 của SocialPeta và Gamota phân tích quy mô, khả năng kiếm tiền và cạnh tranh quảng cáo trong thị trường game mobile khu vực.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://gamota.com/gamota-lab/reports/socialpeta-and-gamota-launch-the-2026-southeast-asia-mobile-game-marketing-report#:~:text=SocialPeta%20v%C3%A0%20Gamota%20ra%20m%E1%BA%AFt%20B%C3%A1o%20c%C3%A1o%20Xu%20h%C6%B0%E1%BB%9Bng%20Marketing",
+      "data_period": "",
+      "data_period_end": null
+    },
+    {
+      "id": "E23",
+      "source_id": "S8",
+      "quote": "Một số thị trường tạo ra lượng người chơi lớn nhưng vẫn còn khoảng trống monetization, trong khi những thị trường nhỏ hơn lại cho thấy khả năng tạo doanh thu đáng chú ý.",
+      "claim": "Một số thị trường game mobile ở Đông Nam Á có lượng người chơi lớn nhưng khả năng kiếm tiền còn hạn chế, trong khi các thị trường nhỏ hơn lại có tiềm năng doanh thu đáng kể.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://gamota.com/gamota-lab/reports/socialpeta-and-gamota-launch-the-2026-southeast-asia-mobile-game-marketing-report#:~:text=M%E1%BB%99t%20s%E1%BB%91%20th%E1%BB%8B%20tr%C6%B0%E1%BB%9Dng%20t%E1%BA%A1o%20ra%20l%C6%B0%E1%BB%A3ng%20ng%C6%B0%E1%BB%9Di%20ch%C6%A1i%20l%E1%BB%9Bn",
+      "data_period": "",
+      "data_period_end": null
+    },
+    {
+      "id": "E24",
+      "source_id": "S8",
+      "quote": "Việt Nam cũng xuất hiện những tín hiệu đáng chú ý khi downloads và revenue trong nửa đầu năm 2026 không hoàn toàn dịch chuyển theo cùng một hướng, đồng thời hiệu suất giữa các subgenre ngày càng phân hóa",
+      "claim": "Tại Việt Nam, lượt tải xuống và doanh thu game mobile trong nửa đầu năm 2026 không đồng nhất, và hiệu suất giữa các thể loại phụ ngày càng có sự phân hóa rõ rệt.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://gamota.com/gamota-lab/reports/socialpeta-and-gamota-launch-the-2026-southeast-asia-mobile-game-marketing-report#:~:text=Vi%E1%BB%87t%20Nam%20c%C5%A9ng%20xu%E1%BA%A5t%20hi%E1%BB%87n%20nh%E1%BB%AFng%20t%C3%ADn%20hi%E1%BB%87u%20%C4%91%C3%A1ng%20ch%C3%BA",
+      "data_period": "H1/2026",
+      "data_period_end": "2026-06-30"
+    },
+    {
+      "id": "E25",
+      "source_id": "S9",
+      "quote": "Theo SocialPeta, số lượng nhà quảng cáo game mobile trung bình đang tích cực chạy chiến dịch tại Đông Nam Á đạt khoảng 46.200 trong năm 2026, tăng 19,7% YoY và 5,2% MoM",
+      "claim": "Số lượng nhà quảng cáo game mobile tại Đông Nam Á đạt khoảng 46.200 vào năm 2026, tăng 19,7% so với cùng kỳ năm trước và 5,2% so với tháng trước.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://www.brandsvietnam.com/congdong/topic/bao-cao-marketing-game-mobile-dong-nam-a-2026#:~:text=Theo%20SocialPeta%2C%20s%E1%BB%91%20l%C6%B0%E1%BB%A3ng%20nh%C3%A0%20qu%E1%BA%A3ng%20c%C3%A1o%20game%20mobile%20trung",
+      "data_period": "",
+      "data_period_end": null
+    },
+    {
+      "id": "E26",
+      "source_id": "S10",
+      "quote": "Với vị trí 33 toàn cầu về sản lượng, Việt Nam đang chứng minh mình là một trung tâm sản xuất game mobile trên toàn cầu và có tiềm năng rất lớn",
+      "claim": "Việt Nam đứng thứ 33 toàn cầu về sản lượng game mobile, cho thấy tiềm năng lớn trở thành trung tâm sản xuất và xuất khẩu game.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://laodong.vn/cong-nghe/nganh-game-viet-nam-vuon-tam-khang-dinh-vi-the-lon-tren-the-gioi-1690320.ldo#:~:text=V%E1%BB%9Bi%20v%E1%BB%8B%20tr%C3%AD%2033%20to%C3%A0n%20c%E1%BA%A7u%20v%E1%BB%81%20s%E1%BA%A3n%20l%C6%B0%E1%BB%A3ng%2C%20Vi%E1%BB%87t",
+      "data_period": "",
+      "data_period_end": null
+    },
+    {
+      "id": "E27",
+      "source_id": "S12",
+      "quote": "Collectively, the region ranked #2 globally for mobile game downloads in Q1 2025, hitting 1.93 billion new installs—a 3% quarter-over-quarter rise from Q4 2024.",
+      "claim": "Đông Nam Á đứng thứ 2 toàn cầu về lượt tải game mobile trong Q1 2025 với 1,93 tỷ lượt cài đặt mới, tăng 3% so với quý trước.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://investgame.net/news/pdf/southeast-asian-mobile-game-market-insights-2025#:~:text=Collectively%2C%20the%20region%20ranked%20%232%20globally%20for%20mobile%20game%20downloads",
+      "data_period": "Q1/2025",
+      "data_period_end": "2025-03-31"
+    },
+    {
+      "id": "E28",
+      "source_id": "S12",
+      "quote": "Despite ranking #7th globally in Q1 2025 with $625M in IAP revenue, Southeast Asia nonetheless demonstrates strong monetization potential.",
+      "claim": "Mặc dù đứng thứ 7 toàn cầu về doanh thu IAP với 625 triệu USD trong Q1 2025, Đông Nam Á vẫn cho thấy tiềm năng kiếm tiền mạnh mẽ.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://investgame.net/news/pdf/southeast-asian-mobile-game-market-insights-2025#:~:text=Despite%20ranking%20%237th%20globally%20in%20Q1%202025%20with%20%24625M%20in",
+      "data_period": "Q1/2025",
+      "data_period_end": "2025-03-31"
+    },
+    {
+      "id": "E29",
+      "source_id": "S12",
+      "quote": "Thailand’s unique revenue landscape was defined by Realistic Sports (spearheaded by eFootball ) ranking as the quarter’s top-grossing subgenre.",
+      "claim": "Tại Thái Lan, thể loại phụ Realistic Sports (đứng đầu là eFootball) là thể loại có doanh thu cao nhất trong quý.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://investgame.net/news/pdf/southeast-asian-mobile-game-market-insights-2025#:~:text=Thailand%E2%80%99s%20unique%20revenue%20landscape%20was%20defined%20by%20Realistic%20Sports%20%28spearheaded",
+      "data_period": "",
+      "data_period_end": null
+    },
+    {
+      "id": "E30",
+      "source_id": "S12",
+      "quote": "Significant revenue growth also came from Battle Royale (led by Garena Free Fire), at 35.8% QoQ growth and Coin Looters (led by Coin Master) , at 23.6% QoQ growth.",
+      "claim": "Các thể loại Battle Royale (Garena Free Fire) và Coin Looters (Coin Master) cũng ghi nhận tăng trưởng doanh thu đáng kể lần lượt là 35,8% và 23,6% so với quý trước.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://investgame.net/news/pdf/southeast-asian-mobile-game-market-insights-2025#:~:text=Significant%20revenue%20growth%20also%20came%20from%20Battle%20Royale%20%28led%20by",
+      "data_period": "",
+      "data_period_end": null
+    }
+  ],
+  "quality": {
+    "total_quotes_extracted": 30,
+    "verified_quotes_count": 30,
+    "verified_quote_rate": 100.0,
+    "total_insights_count": 8,
+    "insights_with_verified_evidence_rate": 100.0,
+    "high_confidence_from_tier_c_only_count": 0,
+    "llm_invented_urls_removed_count": 0,
+    "rejected_sources_count": 12,
+    "rejected_quotes_count": 0,
+    "rejected_sources": [
+      {
+        "item_id": "https://files.gameindustrylibrary.com/documents/southeast-asia-mobile-game-marke",
+        "reason": "Bỏ qua định dạng file nhị phân/tải xuống",
+        "detail": ""
+      },
+      {
+        "item_id": "https://files.gameindustrylibrary.com/documents/global-games-market-report-2025.",
+        "reason": "Bỏ qua định dạng file nhị phân/tải xuống",
+        "detail": ""
+      },
+      {
+        "item_id": "https://investgame.net/wp-content/uploads/2024/10/State-of-Mobile-Games-in-SEA-2",
+        "reason": "Bỏ qua định dạng file nhị phân/tải xuống",
+        "detail": ""
+      },
+      {
+        "item_id": "https://daibieunhandan.vn/game-viet-vuon-tam-tu-thi-truong-noi-dia-den-vi-the-to",
+        "reason": "Ngoài top 18 ứng viên ưu tiên sau khi khử trùng lặp",
+        "detail": ""
+      },
+      {
+        "item_id": "https://vietnamnet.vn/95-luot-tai-game-mobile-viet-nam-den-tu-nuoc-ngoai-2511251",
+        "reason": "Ngoài top 18 ứng viên ưu tiên sau khi khử trùng lặp",
+        "detail": ""
+      },
+      {
+        "item_id": "https://vietnamfinance.vn/bao-cao-tong-quan-nganh-game-mobile-viet-nam-nam-2025-",
+        "reason": "Ngoài top 18 ứng viên ưu tiên sau khi khử trùng lặp",
+        "detail": ""
+      },
+      {
+        "item_id": "https://www.gamigion.com/sensortower-southeast-asian-mobile-gaming-market-report",
+        "reason": "Vượt quá giới hạn 12 nguồn tốt nhất hoặc trùng lặp domain (Hạng C, Cũ dần (12-24 tháng))",
+        "detail": ""
+      },
+      {
+        "item_id": "https://ezyplatform.com/blog/dien-bien-thi-truong-mobile-gaming-dong-nam-a-2025",
+        "reason": "Vượt quá giới hạn 12 nguồn tốt nhất hoặc trùng lặp domain (Hạng C, Cũ dần (12-24 tháng))",
+        "detail": ""
+      },
+      {
+        "item_id": "https://icon-era.com/statistics/southeast-asia-mobile-gaming",
+        "reason": "Vượt quá giới hạn 12 nguồn tốt nhất hoặc trùng lặp domain (Hạng C, Cũ dần (12-24 tháng))",
+        "detail": ""
+      },
+      {
+        "item_id": "https://engagement.z.com/resource/survey-report/game-player-202407.html",
+        "reason": "Vượt quá giới hạn 12 nguồn tốt nhất hoặc trùng lặp domain (Hạng C, Cũ (>24 tháng hoặc không rõ ngày))",
+        "detail": ""
+      },
+      {
+        "item_id": "https://gamota.com/gamota-lab/reports/gamota-launches-vietnam-mobile-gaming-indu",
+        "reason": "Vượt quá giới hạn 12 nguồn tốt nhất hoặc trùng lặp domain (Hạng C, Mới (<=12 tháng))",
+        "detail": ""
+      },
+      {
+        "item_id": "https://www.brandsvietnam.com/congdong/topic/xu-huong-game-di-dong-2025-tang-tru",
+        "reason": "Vượt quá giới hạn 12 nguồn tốt nhất hoặc trùng lặp domain (Hạng C, Cũ dần (12-24 tháng))",
+        "detail": ""
+      }
+    ],
+    "rejected_quotes": []
+  },
+  "trace": {
+    "run_timestamp": "2026-10-15T01:15:07",
+    "current_date": "2026-10-15",
+    "duration_seconds": 82.46,
+    "llm_provider": "gemini",
+    "llm_model": "gemini-3.8-flash",
+    "llm_calls_count": 3,
+    "search_provider": "ddgs",
+    "queries_executed": [
+      "Southeast Asia mobile game market trends 2025 2026 Sensor Tower",
+      "Top mobile game genres SEA revenue growth Newzoo 2025",
+      "Data.ai mobile gaming report Southeast Asia player preferences",
+      "Thể loại game mobile tiềm năng Đông Nam Á 2025 2026",
+      "Xu hướng game mobile Việt Nam Philippines Indonesia 2025"
+    ],
+    "sub_questions": [
+      "Các thể loại game mobile nào đang có doanh thu và lượt tải xuống cao nhất tại Đông Nam Á trong 12 tháng gần đây?",
+      "Những thể loại game mobile nào đang cho thấy xu hướng tăng trưởng mạnh mẽ về doanh thu và số lượng người chơi tại khu vực này?",
+      "Sở thích và hành vi chi tiêu của người chơi game mobile tại Đông Nam Á đang thay đổi như thế nào đối với các thể loại game khác nhau?",
+      "Mức độ cạnh tranh và rào cản gia nhập thị trường đối với các thể loại game tiềm năng là gì?",
+      "Các mô hình kiếm tiền (IAP, IAA, hybrid) nào đang hoạt động hiệu quả nhất cho các thể loại game đang lên tại Đông Nam Á?"
+    ],
+    "decision_criteria": [
+      "Quy mô & tốc độ tăng trưởng thị trường của từng thể loại game",
+      "Hiệu quả kiếm tiền (ARPU, IAP, IAA) và khả năng duy trì doanh thu",
+      "Mức độ cạnh tranh hiện tại và rào cản gia nhập đối với các thể loại game tiềm năng",
+      "Chi phí thu hút người dùng (UA) và khả năng giữ chân người chơi (retention rate)",
+      "Mức độ phù hợp với văn hóa và sở thích đặc trưng của người chơi Đông Nam Á"
+    ],
+    "implicit_premises": [
+      "Có những thể loại game mobile cụ thể sẽ có tiềm năng rõ rệt và khác biệt so với các thể loại khác trong 12 tháng tới.",
+      "Dữ liệu thị trường đủ chi tiết và đáng tin cậy để xác định 'tiềm năng' của từng thể loại game ở cấp độ khu vực Đông Nam Á.",
+      "Tiềm năng được đánh giá chủ yếu dựa trên các yếu tố như tăng trưởng doanh thu, lượt tải xuống và mức độ tương tác của người chơi."
+    ],
+    "raw_search_results_count": 25,
+    "deduped_sources_count": 21,
+    "kept_sources_count": 12,
+    "step_logs": [
+      "[Bước 1/6 · Lập kế hoạch (Plan)] Phân tách câu hỏi con, tiêu chí ra quyết định, truy vấn tìm kiếm EN/VI và tiền đề ngầm...",
+      "[Bước 1/6 · Hoàn tất Plan] Đã tạo 5 câu hỏi con, 5 tiêu chí quyết định, 5 truy vấn tìm kiếm và 3 tiền đề cần kiểm chứng.",
+      "[Bước 2–3/6 · Thu thập & Xếp hạng nguồn (Retrieve & Grade)] Đang tìm kiếm 5 truy vấn (top 5/truy vấn), khử trùng lặp, trích xuất nội dung và chấm hạng A/B/C...",
+      "[Bước 2–3/6 · Hoàn tất Retrieve & Grade] Tìm thấy 25 kết quả thô -> 21 URL duy nhất -> Giữ 12 nguồn tốt nhất (Hạng A: 5, Hạng B: 0, Hạng C: 7); Loại 12 nguồn.",
+      "[Bước 4/6 · Rút trích & Xác minh trích dẫn (Extract & Verify)] Đang rút trích claim kèm trích dẫn nguyên văn <= 40 từ từ 12 nguồn (gom 4 nguồn/lần gọi LLM) và kiểm tra bằng RapidFuzz >= 90...",
+      "[Bước 4/6 · Hoàn tất Extract & Verify] Xác minh thành công 30/30 trích dẫn nguyên văn (Loại 0 trích dẫn không đạt chuẩn).",
+      "[Bước 5/6 · Tổng hợp nhận định (Synthesize)] Đang tổng hợp nhận định, kiểm tra tiền đề, phát hiện mâu thuẫn và khoảng trống dữ liệu từ 30 bằng chứng đã xác minh...",
+      "[Bước 5/6 · Hoàn tất Synthesize] Đã tổng hợp 8 nhận định dự thảo, 1 điểm mâu thuẫn, 3 kiểm tra tiền đề và 4 khoảng trống dữ liệu.",
+      "[Bước 6/6 · Chấm điểm độ tin cậy & Tự kiểm (Score & Self-Check)] Áp dụng quy tắc chấm điểm CAO/TRUNG BÌNH/THẤP, gắn link Text Fragment và tính chỉ số tự kiểm...",
+      "[Bước 6/6 · Hoàn tất] Hoàn thành trong 82.45s với 3 lần gọi LLM. Tỷ lệ trích dẫn xác minh: 100.0% | Số nhận định CAO từ nguồn C: 0."
+    ]
+  },
+  "recency": {
+    "reference_date": "2026-10-15",
+    "alert_months": 18,
+    "impact_level": "ĐÁNG KỂ",
+    "summary": "Mức ảnh hưởng: ĐÁNG KỂ. 4/8 nhận định chưa có bằng chứng mới trong 18 tháng gần đây (I1, I2, I3, I6); 1 nhận định dựa một phần vào dữ liệu cũ. Nguồn cũ then chốt: S2 (cùng S3, S12) (sensortower.com, 05/2025, ~17 tháng, số liệu Q1/2025). Chi tiết ở mục 7.",
+    "sources": [
+      {
+        "source_id": "S1",
+        "status": "MỚI",
+        "reasons": [
+          "đăng 18/06/2026 (~4 tháng)"
+        ],
+        "date_display": "18/06/2026",
+        "date_method_label": "metadata — báo cáo cũ không lưu chi tiết",
+        "age_display": "~4 tháng",
+        "older_than_alert": false,
+        "possibly_older_than_alert": false,
+        "data_vintage": "",
+        "date_conflict": false,
+        "supported_insight_ids": [],
+        "is_key": false,
+        "key_reasons": []
+      },
+      {
+        "source_id": "S2",
+        "status": "CŨ",
+        "reasons": [
+          "kỳ số liệu Q1/2025, ~18 tháng",
+          "kỳ số liệu 2024, ~21 tháng"
+        ],
+        "date_display": "05/2025",
+        "date_method_label": "metadata — báo cáo cũ không lưu chi tiết",
+        "age_display": "~17 tháng",
+        "older_than_alert": false,
+        "possibly_older_than_alert": false,
+        "data_vintage": "Q1/2025",
+        "date_conflict": false,
+        "supported_insight_ids": [
+          "I1",
+          "I2",
+          "I3",
+          "I7"
+        ],
+        "is_key": true,
+        "key_reasons": [
+          "hỗ trợ 4/8 nhận định (I1, I2, I3, I7)",
+          "nếu còn mới sẽ nâng mức I1 (TRUNG BÌNH → CAO), I2 (TRUNG BÌNH → CAO)"
+        ]
+      },
+      {
+        "source_id": "S3",
+        "status": "KHÔNG CHẮC",
+        "reasons": [
+          "chỉ biết năm 2025 → 10–22 tháng"
+        ],
+        "date_display": "2025 (chỉ biết năm)",
+        "date_method_label": "chỉ có năm trong URL/tiêu đề — ước tính sai số ±6 tháng",
+        "age_display": "10–22 tháng",
+        "older_than_alert": false,
+        "possibly_older_than_alert": true,
+        "data_vintage": "",
+        "date_conflict": false,
+        "supported_insight_ids": [
+          "I1",
+          "I2",
+          "I3",
+          "I7"
+        ],
+        "is_key": true,
+        "key_reasons": [
+          "hỗ trợ 4/8 nhận định (I1, I2, I3, I7)",
+          "nếu còn mới sẽ nâng mức I1 (TRUNG BÌNH → CAO), I2 (TRUNG BÌNH → CAO)"
+        ]
+      },
+      {
+        "source_id": "S4",
+        "status": "MỚI",
+        "reasons": [
+          "đăng 09/09/2025 (~13 tháng)"
+        ],
+        "date_display": "09/09/2025",
+        "date_method_label": "metadata — báo cáo cũ không lưu chi tiết",
+        "age_display": "~13 tháng",
+        "older_than_alert": false,
+        "possibly_older_than_alert": false,
+        "data_vintage": "",
+        "date_conflict": false,
+        "supported_insight_ids": [],
+        "is_key": false,
+        "key_reasons": []
+      },
+      {
+        "source_id": "S5",
+        "status": "KHÔNG CHẮC",
+        "reasons": [
+          "không rõ ngày đăng"
+        ],
+        "date_display": "Không rõ ngày",
+        "date_method_label": "không xác định được",
+        "age_display": "không rõ",
+        "older_than_alert": false,
+        "possibly_older_than_alert": true,
+        "data_vintage": "",
+        "date_conflict": false,
+        "supported_insight_ids": [],
+        "is_key": false,
+        "key_reasons": []
+      },
+      {
+        "source_id": "S6",
+        "status": "CŨ",
+        "reasons": [
+          "kỳ số liệu 2024, ~21 tháng"
+        ],
+        "date_display": "05/08/2026",
+        "date_method_label": "metadata — báo cáo cũ không lưu chi tiết",
+        "age_display": "~2 tháng",
+        "older_than_alert": false,
+        "possibly_older_than_alert": false,
+        "data_vintage": "2025",
+        "date_conflict": false,
+        "supported_insight_ids": [
+          "I6"
+        ],
+        "is_key": false,
+        "key_reasons": []
+      },
+      {
+        "source_id": "S7",
+        "status": "MỚI",
+        "reasons": [
+          "đăng 2026 (chỉ biết năm) (0–10 tháng)"
+        ],
+        "date_display": "2026 (chỉ biết năm)",
+        "date_method_label": "chỉ có năm trong URL/tiêu đề — ước tính sai số ±6 tháng",
+        "age_display": "0–10 tháng",
+        "older_than_alert": false,
+        "possibly_older_than_alert": false,
+        "data_vintage": "",
+        "date_conflict": false,
+        "supported_insight_ids": [
+          "I4",
+          "I5",
+          "I7"
+        ],
+        "is_key": true,
+        "key_reasons": [
+          "hỗ trợ 3/8 nhận định (I4, I5, I7)"
+        ]
+      },
+      {
+        "source_id": "S8",
+        "status": "MỚI",
+        "reasons": [
+          "đăng 26/08/2026 (~2 tháng), kỳ số liệu H1/2026"
+        ],
+        "date_display": "26/08/2026",
+        "date_method_label": "metadata — báo cáo cũ không lưu chi tiết",
+        "age_display": "~2 tháng",
+        "older_than_alert": false,
+        "possibly_older_than_alert": false,
+        "data_vintage": "H1/2026",
+        "date_conflict": false,
+        "supported_insight_ids": [],
+        "is_key": false,
+        "key_reasons": []
+      },
+      {
+        "source_id": "S9",
+        "status": "MỚI",
+        "reasons": [
+          "đăng 09/09/2026 (~1 tháng)"
+        ],
+        "date_display": "09/09/2026",
+        "date_method_label": "metadata — báo cáo cũ không lưu chi tiết",
+        "age_display": "~1 tháng",
+        "older_than_alert": false,
+        "possibly_older_than_alert": false,
+        "data_vintage": "",
+        "date_conflict": false,
+        "supported_insight_ids": [],
+        "is_key": false,
+        "key_reasons": []
+      },
+      {
+        "source_id": "S10",
+        "status": "MỚI",
+        "reasons": [
+          "đăng 23/04/2026 (~6 tháng)"
+        ],
+        "date_display": "23/04/2026",
+        "date_method_label": "metadata — báo cáo cũ không lưu chi tiết",
+        "age_display": "~6 tháng",
+        "older_than_alert": false,
+        "possibly_older_than_alert": false,
+        "data_vintage": "",
+        "date_conflict": false,
+        "supported_insight_ids": [
+          "I8"
+        ],
+        "is_key": false,
+        "key_reasons": []
+      },
+      {
+        "source_id": "S11",
+        "status": "MỚI",
+        "reasons": [
+          "đăng 10/06/2026 (~4 tháng)"
+        ],
+        "date_display": "10/06/2026",
+        "date_method_label": "metadata — báo cáo cũ không lưu chi tiết",
+        "age_display": "~4 tháng",
+        "older_than_alert": false,
+        "possibly_older_than_alert": false,
+        "data_vintage": "",
+        "date_conflict": false,
+        "supported_insight_ids": [],
+        "is_key": false,
+        "key_reasons": []
+      },
+      {
+        "source_id": "S12",
+        "status": "CŨ",
+        "reasons": [
+          "kỳ số liệu Q1/2025, ~18 tháng"
+        ],
+        "date_display": "2025 (chỉ biết năm)",
+        "date_method_label": "chỉ có năm trong URL/tiêu đề — ước tính sai số ±6 tháng",
+        "age_display": "10–22 tháng",
+        "older_than_alert": false,
+        "possibly_older_than_alert": true,
+        "data_vintage": "Q1/2025",
+        "date_conflict": false,
+        "supported_insight_ids": [
+          "I1",
+          "I2",
+          "I7"
+        ],
+        "is_key": true,
+        "key_reasons": [
+          "hỗ trợ 3/8 nhận định (I1, I2, I7)"
+        ]
+      }
+    ],
+    "key_old_sources": [
+      {
+        "source_id": "S2",
+        "impacts": [
+          {
+            "insight_id": "I1",
+            "current": "TRUNG BÌNH",
+            "if_source_removed": "TRUNG BÌNH",
+            "if_source_fresh": "CAO"
+          },
+          {
+            "insight_id": "I2",
+            "current": "TRUNG BÌNH",
+            "if_source_removed": "TRUNG BÌNH",
+            "if_source_fresh": "CAO"
+          },
+          {
+            "insight_id": "I3",
+            "current": "TRUNG BÌNH",
+            "if_source_removed": "TRUNG BÌNH",
+            "if_source_fresh": "TRUNG BÌNH"
+          },
+          {
+            "insight_id": "I7",
+            "current": "TRUNG BÌNH",
+            "if_source_removed": "TRUNG BÌNH",
+            "if_source_fresh": "TRUNG BÌNH"
+          }
+        ],
+        "summary": "S2 (sensortower.com, hạng A; đăng 05/2025 — metadata — báo cáo cũ không lưu chi tiết; tuổi ước tính ~17 tháng; kỳ số liệu mới nhất trong trích dẫn: Q1/2025) là căn cứ của 4/8 nhận định (I1, I2, I3, I7). Nếu bỏ nguồn này: không nhận định nào bị tụt mức. Nếu có bản cập nhật mới (≤ 12 tháng): I1 tăng TRUNG BÌNH → CAO; I2 tăng TRUNG BÌNH → CAO."
+      },
+      {
+        "source_id": "S3",
+        "impacts": [
+          {
+            "insight_id": "I1",
+            "current": "TRUNG BÌNH",
+            "if_source_removed": "TRUNG BÌNH",
+            "if_source_fresh": "CAO"
+          },
+          {
+            "insight_id": "I2",
+            "current": "TRUNG BÌNH",
+            "if_source_removed": "TRUNG BÌNH",
+            "if_source_fresh": "CAO"
+          },
+          {
+            "insight_id": "I3",
+            "current": "TRUNG BÌNH",
+            "if_source_removed": "TRUNG BÌNH",
+            "if_source_fresh": "TRUNG BÌNH"
+          },
+          {
+            "insight_id": "I7",
+            "current": "TRUNG BÌNH",
+            "if_source_removed": "TRUNG BÌNH",
+            "if_source_fresh": "TRUNG BÌNH"
+          }
+        ],
+        "summary": "S3 (sensortower.com, hạng A; đăng 2025 (chỉ biết năm) — chỉ có năm trong URL/tiêu đề — ước tính sai số ±6 tháng; tuổi ước tính 10–22 tháng) là căn cứ của 4/8 nhận định (I1, I2, I3, I7). Nếu bỏ nguồn này: không nhận định nào bị tụt mức. Nếu có bản cập nhật mới (≤ 12 tháng): I1 tăng TRUNG BÌNH → CAO; I2 tăng TRUNG BÌNH → CAO."
+      },
+      {
+        "source_id": "S12",
+        "impacts": [
+          {
+            "insight_id": "I1",
+            "current": "TRUNG BÌNH",
+            "if_source_removed": "TRUNG BÌNH",
+            "if_source_fresh": "TRUNG BÌNH"
+          },
+          {
+            "insight_id": "I2",
+            "current": "TRUNG BÌNH",
+            "if_source_removed": "TRUNG BÌNH",
+            "if_source_fresh": "TRUNG BÌNH"
+          },
+          {
+            "insight_id": "I7",
+            "current": "TRUNG BÌNH",
+            "if_source_removed": "TRUNG BÌNH",
+            "if_source_fresh": "TRUNG BÌNH"
+          }
+        ],
+        "summary": "S12 (investgame.net, hạng C; đăng 2025 (chỉ biết năm) — chỉ có năm trong URL/tiêu đề — ước tính sai số ±6 tháng; tuổi ước tính 10–22 tháng; kỳ số liệu mới nhất trong trích dẫn: Q1/2025) là căn cứ của 3/8 nhận định (I1, I2, I7). Nếu bỏ nguồn này: không nhận định nào bị tụt mức. Nếu có bản cập nhật mới (≤ 12 tháng): độ tin cậy giữ nguyên."
+      }
+    ],
+    "insights": [
+      {
+        "insight_id": "I1",
+        "status": "KHÔNG CÓ BẰNG CHỨNG MỚI",
+        "non_recent_source_ids": [
+          "S2",
+          "S3",
+          "S12"
+        ],
+        "note": "S2 05/2025, kỳ Q1/2025; S3 2025 (chỉ biết năm); S12 2025 (chỉ biết năm), kỳ Q1/2025"
+      },
+      {
+        "insight_id": "I2",
+        "status": "KHÔNG CÓ BẰNG CHỨNG MỚI",
+        "non_recent_source_ids": [
+          "S2",
+          "S3",
+          "S12"
+        ],
+        "note": "S2 05/2025, kỳ Q1/2025; S3 2025 (chỉ biết năm); S12 2025 (chỉ biết năm), kỳ Q1/2025"
+      },
+      {
+        "insight_id": "I3",
+        "status": "KHÔNG CÓ BẰNG CHỨNG MỚI",
+        "non_recent_source_ids": [
+          "S2",
+          "S3"
+        ],
+        "note": "S2 05/2025, kỳ Q1/2025; S3 2025 (chỉ biết năm)"
+      },
+      {
+        "insight_id": "I4",
+        "status": "MỚI",
+        "non_recent_source_ids": [],
+        "note": ""
+      },
+      {
+        "insight_id": "I5",
+        "status": "MỚI",
+        "non_recent_source_ids": [],
+        "note": ""
+      },
+      {
+        "insight_id": "I6",
+        "status": "KHÔNG CÓ BẰNG CHỨNG MỚI",
+        "non_recent_source_ids": [
+          "S6"
+        ],
+        "note": "S6 05/08/2026, kỳ 2024"
+      },
+      {
+        "insight_id": "I7",
+        "status": "MỘT PHẦN CŨ",
+        "non_recent_source_ids": [
+          "S2",
+          "S3",
+          "S12"
+        ],
+        "note": "S2 05/2025, kỳ Q1/2025; S3 2025 (chỉ biết năm); S12 2025 (chỉ biết năm), kỳ Q1/2025"
+      },
+      {
+        "insight_id": "I8",
+        "status": "MỚI",
+        "non_recent_source_ids": [],
+        "note": ""
+      }
+    ],
+    "upcoming_changes": [
+      {
+        "date": "2027-06-17",
+        "source_ids": [
+          "S3",
+          "S7",
+          "S12"
+        ],
+        "changes": [
+          "I1: TRUNG BÌNH → THẤP",
+          "I2: TRUNG BÌNH → THẤP",
+          "I3: TRUNG BÌNH → THẤP",
+          "I7: TRUNG BÌNH → THẤP"
+        ]
+      }
+    ],
+    "suggested_refresh_queries": [
+      "Sensor Tower Southeast Asia Mobile Game Market Insights 2026 site:sensortower.com",
+      "Sensor Tower Southeast Asia Mobile Game Market Insights 2026",
+      "Sensor Tower Southeast Asia Mobile Game Market Insights 2025 site:sensortower.com",
+      "Southeast Asia: Mobile Game Market Insights 2026 Report site:sensortower.com",
+      "Southeast Asia: Mobile Game Market Insights 2026 Report",
+      "Southeast Asia: Mobile Game Market Insights 2025 Report site:sensortower.com"
+    ],
+    "certainty_groups": {
+      "Đủ cơ sở": [],
+      "Cần lưu ý": [
+        "I7"
+      ],
+      "Chưa chắc chắn": [
+        "I1",
+        "I2",
+        "I3",
+        "I4",
+        "I5",
+        "I6",
+        "I8"
+      ]
+    }
+  },
+  "refresh": null
+}

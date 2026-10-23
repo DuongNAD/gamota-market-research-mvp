@@ -6,8 +6,10 @@ from datetime import date, datetime
 import time
 from typing import Callable, Optional
 
+from research.dates import DATE_METHOD_LABELS, format_date_display
 from research.extract import extract_claims_from_sources
 from research.llm import LLMClient
+from research.recency import apply_recency_layer
 from research.retrieve import retrieve_and_grade_sources
 from research.schemas import (
     Insight,
@@ -30,6 +32,7 @@ def run(
     use_cache: bool = True,
     reference_date: Optional[date] = None,
     llm_client: Optional[LLMClient] = None,
+    alert_months: Optional[int] = None,
 ) -> Report:
     """Execute the 6-step market research pipeline: Plan -> Retrieve -> Grade -> Extract -> Synthesize -> Score."""
     t0 = time.perf_counter()
@@ -165,6 +168,8 @@ def run(
         deduped_sources_count=int(retrieve_stats.get("deduped_sources_count", 0)),
         kept_sources_count=len(kept_sources),
         step_logs=step_logs,
+        keywords=plan.keywords,
+        version=1,
     )
 
     raw_report = Report(
@@ -191,6 +196,20 @@ def run(
         rejected_quotes=rejected_quotes,
     )
 
+    final_report = apply_recency_layer(
+        report=final_report,
+        reference_date=ref_date,
+        alert_months=alert_months,
+    )
+    if final_report.recency is not None:
+        _log(
+            "Bước 6b/6 · Phân tích độ mới dữ liệu (Change Request A2)",
+            f"Mức ảnh hưởng: {final_report.recency.impact_level} | "
+            f"Số nguồn then chốt cũ (> {final_report.recency.alert_months} tháng hoặc chưa rõ tuổi): "
+            f"{len(final_report.recency.key_old_sources)}.",
+        )
+
+    duration_sec = round(time.perf_counter() - t0, 2)
     _log(
         "Bước 6/6 · Hoàn tất",
         f"Hoàn thành trong {duration_sec}s với {llm.calls_count} lần gọi LLM. "
@@ -198,7 +217,7 @@ def run(
         f"Số nhận định CAO từ nguồn C: {final_report.quality.high_confidence_from_tier_c_only_count}.",
     )
     final_report.trace["step_logs"] = step_logs
-    final_report.trace["duration_seconds"] = round(time.perf_counter() - t0, 2)
+    final_report.trace["duration_seconds"] = duration_sec
     return final_report
 
 
@@ -210,9 +229,14 @@ def _esc_md(text: str, is_table: bool = True) -> str:
 
 
 def render_report_markdown(report: Report) -> str:
-    """Render Report into a structured 6-part Vietnamese Markdown document (BRIEF section 4.3)."""
+    """Render Report into a structured 6-part (plus Section 7 Recency Impact) Vietnamese Markdown document."""
     source_map = {s.id: s for s in report.sources}
     evidence_map = {e.id: e for e in report.evidences}
+    src_rec_map = (
+        {sr.source_id: sr for sr in report.recency.sources}
+        if report.recency is not None
+        else {}
+    )
 
     lines: list[str] = []
     lines.append(f"# Báo cáo Nghiên cứu Thị trường Game")
@@ -289,11 +313,18 @@ def render_report_markdown(report: Report) -> str:
                     continue
                 src = source_map.get(ev.source_id)
                 if src:
-                    date_disp = src.published_date or "Không rõ ngày"
+                    sr_info = src_rec_map.get(src.id)
+                    if sr_info:
+                        date_part = f"`{sr_info.date_display}` · {sr_info.age_display}"
+                        if ev.data_period:
+                            date_part += f" (số liệu `{ev.data_period}`)"
+                    else:
+                        date_disp = src.published_date or "Không rõ ngày"
+                        date_part = f"`{date_disp}`"
                     link_url = ev.highlight_url or src.url
                     src_links.append(
                         f"[{eid} · {src.id} ({src.domain})]({link_url}) "
-                        f"— **Hạng {src.tier}**, `{date_disp}`"
+                        f"— **Hạng {src.tier}**, {date_part}"
                     )
                 q_clean = _esc_md(ev.quote)
                 quotes_cells.append(f"**[{eid}]** *\"{q_clean}\"* (`match={ev.match_score}%`)")
@@ -358,14 +389,24 @@ def render_report_markdown(report: Report) -> str:
     if not report.sources:
         lines.append("*Không có nguồn nào được giữ lại.*\n")
     else:
-        lines.append("| Mã nguồn | Tiêu đề & Link gốc | Domain | Hạng | Ngày đăng & Độ mới | Lý do xếp hạng |")
-        lines.append("|---|---|---|---|---|---|")
+        lines.append(
+            "| Mã nguồn | Tiêu đề & Link gốc | Domain | Hạng | Ngày đăng & Độ mới | Cách xác định ngày & tuổi | Lý do xếp hạng |"
+        )
+        lines.append("|---|---|---|---|---|---|---|")
         for s in report.sources:
             t_clean = _esc_md(s.title)
-            d_disp = s.published_date or "Không rõ"
+            sr_info = src_rec_map.get(s.id)
+            d_disp = sr_info.date_display if sr_info else format_date_display(s.published_date, s.date_precision)
+            method_lbl = (
+                sr_info.date_method_label
+                if sr_info
+                else DATE_METHOD_LABELS.get(s.date_method or "unknown", "không xác định được")
+            )
+            age_str = sr_info.age_display if sr_info else "không rõ"
             r_clean = _esc_md(s.tier_reason)
             lines.append(
-                f"| **{s.id}** | [{t_clean}]({s.url}) | `{s.domain}` | **Hạng {s.tier}** | `{d_disp}` ({s.freshness_label}) | {r_clean} |"
+                f"| **{s.id}** | [{t_clean}]({s.url}) | `{s.domain}` | **Hạng {s.tier}** | "
+                f"`{d_disp}` ({s.freshness_label}) | {_esc_md(method_lbl)} · `{age_str}` | {r_clean} |"
             )
         lines.append("")
 
@@ -399,5 +440,138 @@ def render_report_markdown(report: Report) -> str:
         for rs in q.rejected_sources:
             lines.append(f"- `{rs.item_id}`: {rs.reason}")
         lines.append("\n</details>")
+
+    # --- SECTION 7 (Mission 3 · Change Request A2) ---
+    if report.recency is not None:
+        rec = report.recency
+        lines.append("")
+        lines.append(
+            "## 7. Độ mới của dữ liệu & Ảnh hưởng tới độ tin cậy (Change Request A2)"
+        )
+        lines.append(
+            f"> **Ngày tham chiếu:** `{rec.reference_date}` · "
+            f"**Ngưỡng cảnh báo:** `> {rec.alert_months} tháng` · "
+            f"**Mức ảnh hưởng:** **{rec.impact_level}**\n"
+        )
+        lines.append(f"{_esc_md(rec.summary, False)}\n")
+
+        lines.append("### 7.1 Nguồn và tuổi dữ liệu")
+        lines.append(
+            "| Nguồn | Hạng | Ngày đăng (cách xác định) | Tuổi | Kỳ số liệu trong trích dẫn | Trạng thái | Then chốt | Hỗ trợ nhận định |"
+        )
+        lines.append("|---|---|---|---|---|---|---|---|")
+        for sr in rec.sources:
+            s_obj = source_map.get(sr.source_id)
+            dom_str = s_obj.domain if s_obj else ""
+            tier_str = f"Hạng {s_obj.tier}" if s_obj else "—"
+            conflict_flag = " ⚠️ *(ngày đăng có thể sai)*" if sr.date_conflict else ""
+            date_cell = f"`{sr.date_display}` ({_esc_md(sr.date_method_label)}){conflict_flag}"
+            vint_cell = f"`{sr.data_vintage}`" if sr.data_vintage else "—"
+            reasons_str = _esc_md("; ".join(sr.reasons)) if sr.reasons else ""
+            st_cell = f"**{sr.status}**" + (f"<br><small>{reasons_str}</small>" if reasons_str else "")
+            key_cell = (
+                f"**Có**<br><small>{_esc_md('; '.join(sr.key_reasons))}</small>"
+                if sr.is_key
+                else "Không"
+            )
+            supp_cell = ", ".join(f"`{iid}`" for iid in sr.supported_insight_ids) if sr.supported_insight_ids else "—"
+            lines.append(
+                f"| **{sr.source_id}** (`{dom_str}`) | {tier_str} | {date_cell} | `{sr.age_display}` | "
+                f"{vint_cell} | {st_cell} | {key_cell} | {supp_cell} |"
+            )
+        lines.append("")
+
+        lines.append("### 7.2 Ảnh hưởng tới từng nhận định (tính bằng code)")
+        if not rec.key_old_sources:
+            lines.append(
+                "- Không có nguồn then chốt nào vượt ngưỡng 18 tháng hoặc chưa rõ tuổi gây ảnh hưởng tới các nhận định.\n"
+            )
+        else:
+            for kos in rec.key_old_sources:
+                lines.append(f"- **{_esc_md(kos.summary, False)}**")
+            lines.append("")
+            lines.append(
+                "| Nguồn | Nhận định | Độ tin cậy hiện tại | Nếu bỏ nguồn này | Nếu nguồn này còn mới (≤ 12 tháng) |"
+            )
+            lines.append("|---|---|---|---|---|")
+            for kos in rec.key_old_sources:
+                s_obj = source_map.get(kos.source_id)
+                sr_obj = src_rec_map.get(kos.source_id)
+                src_label = (
+                    f"**{kos.source_id}** (`{s_obj.domain}`, `{sr_obj.date_display}`)"
+                    if s_obj and sr_obj
+                    else f"**{kos.source_id}**"
+                )
+                for imp in kos.impacts:
+                    rem_cell = (
+                        f"**{imp.if_source_removed}**"
+                        if imp.if_source_removed != imp.current
+                        else imp.if_source_removed
+                    )
+                    fresh_cell = (
+                        f"**{imp.if_source_fresh}**"
+                        if imp.if_source_fresh != imp.current
+                        else imp.if_source_fresh
+                    )
+                    lines.append(
+                        f"| {src_label} | **{imp.insight_id}** | `{imp.current}` | {rem_cell} | {fresh_cell} |"
+                    )
+            lines.append("")
+
+        lines.append("### 7.3 Mốc thời gian độ tin cậy sẽ thay đổi")
+        if not rec.upcoming_changes:
+            lines.append(
+                "- Trong 12 tháng tới không có nguồn dẫn chứng nào chuyển nhóm độ mới làm thay đổi điểm độ tin cậy.\n"
+            )
+        else:
+            for ev_item in rec.upcoming_changes:
+                sids_str = ", ".join(ev_item.source_ids)
+                chg_str = "; ".join(ev_item.changes)
+                lines.append(
+                    f"- **Từ `{ev_item.date}`** (nguồn `{sids_str}` chuyển nhóm độ mới), nếu chưa có dữ liệu mới: {_esc_md(chg_str, False)}"
+                )
+            lines.append("")
+
+        lines.append("### 7.4 Gợi ý làm mới dữ liệu")
+        if not rec.suggested_refresh_queries:
+            lines.append("- Báo cáo không cần truy vấn làm mới bổ sung.\n")
+        else:
+            lines.append(
+                "Các truy vấn tìm kiếm tự động sinh để tìm bản báo cáo/số liệu mới hơn cho các nguồn then chốt cũ:"
+            )
+            for q_str in rec.suggested_refresh_queries:
+                lines.append(f"- `{q_str}`")
+            lines.append("")
+
+        lines.append("### 7.5 Kết quả vòng làm mới (nếu đã chạy)")
+        if report.refresh is None:
+            lines.append(
+                "- *Chưa chạy vòng làm mới trên báo cáo này. Có thể chạy qua CLI `python -m research.refresh <report.json>` hoặc bấm nút trên giao diện Streamlit.*"
+            )
+        else:
+            rf = report.refresh
+            lines.append(
+                f"- **Trạng thái:** `{rf.status}` · **Ngày tham chiếu làm mới:** `{rf.reference_date}` · "
+                f"**Nguồn mục tiêu:** `{', '.join(rf.target_source_ids) or '—'}` · "
+                f"**Nguồn mới bổ sung:** `{', '.join(rf.new_source_ids) or '0'}` · "
+                f"**Số lệnh gọi LLM:** `{rf.llm_calls_count}` ({rf.duration_seconds}s)"
+            )
+            if rf.note:
+                lines.append(f"- **Ghi chú:** {_esc_md(rf.note, False)}")
+            if rf.comparisons:
+                lines.append("\n| Bằng chứng cũ | Bằng chứng mới | Kết quả đối chiếu | Giải thích (kỳ cũ vs kỳ mới) |")
+                lines.append("|---|---|---|---|")
+                for cmp in rf.comparisons:
+                    new_eids = ", ".join(f"`{e}`" for e in cmp.new_evidence_ids) if cmp.new_evidence_ids else "—"
+                    lines.append(
+                        f"| `{cmp.old_evidence_id}` | {new_eids} | **{cmp.status}** | {_esc_md(cmp.explanation)} |"
+                    )
+            if rf.confidence_changes:
+                lines.append("\n| Nhận định | Trước làm mới | Sau làm mới | Lý do thay đổi |")
+                lines.append("|---|---|---|---|")
+                for cc in rf.confidence_changes:
+                    lines.append(
+                        f"| **{cc.insight_id}** | `{cc.before}` | **{cc.after}** | {_esc_md(cc.reason)} |"
+                    )
 
     return "\n".join(lines)

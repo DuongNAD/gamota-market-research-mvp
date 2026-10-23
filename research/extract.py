@@ -140,6 +140,7 @@ def extract_claims_from_sources(
     llm: LLMClient,
     current_date: str,
     batch_size: int = 4,
+    evidence_id_start: int = 1,
 ) -> tuple[list[Evidence], list[RejectedItem], int]:
     """Batch sources (3-4 per LLM call), extract verbatim quotes + claims, and verify with code.
 
@@ -149,7 +150,7 @@ def extract_claims_from_sources(
     verified_evidences: list[Evidence] = []
     rejected_quotes: list[RejectedItem] = []
     total_extracted = 0
-    evidence_counter = 1
+    evidence_counter = evidence_id_start
 
     # Filter sources that actually have text
     valid_sources = [s for s in sources if (source_texts.get(s.id) or "").strip()]
