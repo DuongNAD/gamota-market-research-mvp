@@ -1,0 +1,247 @@
+[
+  {
+    "id": "TC1",
+    "name": "Tiềm năng thể loại game mobile Đông Nam Á",
+    "expected_group": "Làm tốt",
+    "question": "Thể loại game mobile nào có tiềm năng tại Đông Nam Á trong 12 tháng tới?",
+    "reference_date": "2026-10-15",
+    "duration_seconds": 0.04,
+    "sources_count": 12,
+    "verified_quotes_count": 25,
+    "total_quotes_extracted": 27,
+    "verified_quote_rate": 92.6,
+    "insights_count": 10,
+    "high_conf_from_tier_c": 0,
+    "impact_level": "ĐÁNG KỂ",
+    "key_old_sources": [
+      "S2",
+      "S3",
+      "S12"
+    ],
+    "refresh_status": "—",
+    "passed": true,
+    "notes": [
+      "Đạt toàn bộ tiêu chí kiểm tự động"
+    ]
+  },
+  {
+    "id": "TC2",
+    "name": "Mô hình kiếm tiền game casual tại Indonesia và Philippines",
+    "expected_group": "Làm tốt (loại câu hỏi khác)",
+    "question": "Mô hình kiếm tiền nào đang hiệu quả với game casual tại Indonesia và Philippines?",
+    "reference_date": "2026-10-15",
+    "duration_seconds": 0.03,
+    "sources_count": 12,
+    "verified_quotes_count": 28,
+    "total_quotes_extracted": 28,
+    "verified_quote_rate": 100.0,
+    "insights_count": 10,
+    "high_conf_from_tier_c": 0,
+    "impact_level": "ĐÁNG KỂ",
+    "key_old_sources": [
+      "S1",
+      "S5",
+      "S2",
+      "S3",
+      "S6"
+    ],
+    "refresh_status": "—",
+    "passed": true,
+    "notes": [
+      "Đạt toàn bộ tiêu chí kiểm tự động"
+    ]
+  },
+  {
+    "id": "TC3",
+    "name": "Quy mô thị trường game mobile Việt Nam (Nguồn mâu thuẫn)",
+    "expected_group": "Khó: nguồn mâu thuẫn",
+    "question": "Quy mô thị trường game mobile Việt Nam hiện nay là bao nhiêu?",
+    "reference_date": "2026-10-15",
+    "duration_seconds": 0.04,
+    "sources_count": 12,
+    "verified_quotes_count": 28,
+    "total_quotes_extracted": 28,
+    "verified_quote_rate": 100.0,
+    "insights_count": 8,
+    "high_conf_from_tier_c": 0,
+    "impact_level": "KHÔNG",
+    "key_old_sources": [],
+    "refresh_status": "—",
+    "passed": true,
+    "notes": [
+      "Đạt toàn bộ tiêu chí kiểm tự động"
+    ]
+  },
+  {
+    "id": "TC4",
+    "name": "Doanh thu MMORPG mobile tại Campuchia năm 2025 (Thiếu dữ liệu)",
+    "expected_group": "Khó: thiếu dữ liệu",
+    "question": "Doanh thu thể loại MMORPG mobile tại Campuchia năm 2025 là bao nhiêu?",
+    "reference_date": "2026-10-15",
+    "duration_seconds": 0.03,
+    "sources_count": 12,
+    "verified_quotes_count": 29,
+    "total_quotes_extracted": 29,
+    "verified_quote_rate": 100.0,
+    "insights_count": 8,
+    "high_conf_from_tier_c": 0,
+    "impact_level": "ĐÁNG KỂ",
+    "key_old_sources": [
+      "S1",
+      "S2",
+      "S5",
+      "S7",
+      "S10",
+      "S11"
+    ],
+    "refresh_status": "—",
+    "passed": true,
+    "notes": [
+      "Đạt toàn bộ tiêu chí kiểm tự động"
+    ]
+  },
+  {
+    "id": "TC5",
+    "name": "Kiểm tra tiền đề sai: Doanh thu game mobile ĐNÁ giảm 50%",
+    "expected_group": "Khó: tiền đề sai",
+    "question": "Vì sao doanh thu game mobile Đông Nam Á giảm 50% trong năm qua?",
+    "reference_date": "2026-10-15",
+    "duration_seconds": 0.03,
+    "sources_count": 12,
+    "verified_quotes_count": 31,
+    "total_quotes_extracted": 31,
+    "verified_quote_rate": 100.0,
+    "insights_count": 9,
+    "high_conf_from_tier_c": 0,
+    "impact_level": "ĐÁNG KỂ",
+    "key_old_sources": [
+      "S1"
+    ],
+    "refresh_status": "—",
+    "passed": true,
+    "notes": [
+      "Đạt toàn bộ tiêu chí kiểm tự động"
+    ]
+  },
+  {
+    "id": "TC6",
+    "name": "Doanh thu tháng trước của 3 game gacha top đầu Thái Lan (Dễ thất bại)",
+    "expected_group": "Dễ thất bại",
+    "question": "Doanh thu tháng trước của 3 game gacha top đầu Thái Lan là bao nhiêu?",
+    "reference_date": "2026-10-15",
+    "duration_seconds": 0.02,
+    "sources_count": 12,
+    "verified_quotes_count": 20,
+    "total_quotes_extracted": 20,
+    "verified_quote_rate": 100.0,
+    "insights_count": 8,
+    "high_conf_from_tier_c": 0,
+    "impact_level": "VỪA PHẢI",
+    "key_old_sources": [],
+    "refresh_status": "—",
+    "passed": false,
+    "notes": [
+      "CHƯA ĐẠT (Đúng giới hạn nguồn mở): Nguồn web mở không có bảng số liệu doanh thu đúng 'tháng trước' của top 3 game gacha tại riêng Thái Lan (bị khóa sau paywall Sensor Tower/AppMagic); hệ thống đã trung thực báo thiếu dữ liệu thay vì bịa số"
+    ]
+  },
+  {
+    "id": "TC7",
+    "name": "Change Request A2: Ảnh hưởng nguồn cũ > 18 tháng & Vòng làm mới (TC2)",
+    "expected_group": "Change request",
+    "question": "Mô hình kiếm tiền nào đang hiệu quả với game casual tại Indonesia và Philippines?",
+    "reference_date": "2026-10-23",
+    "duration_seconds": 0.07,
+    "sources_count": 18,
+    "verified_quotes_count": 40,
+    "total_quotes_extracted": 40,
+    "verified_quote_rate": 100.0,
+    "insights_count": 13,
+    "high_conf_from_tier_c": 0,
+    "impact_level": "ĐÁNG KỂ",
+    "key_old_sources": [
+      "S1",
+      "S15",
+      "S2",
+      "S5",
+      "S6"
+    ],
+    "refresh_status": "ĐÃ LÀM MỚI",
+    "passed": true,
+    "notes": [
+      "Đạt toàn bộ tiêu chí kiểm tự động"
+    ]
+  },
+  {
+    "id": "TC8",
+    "name": "Edge case: Nguồn chỉ biết năm & Nguồn mới đăng nhưng trích số liệu cũ (TC1)",
+    "expected_group": "Edge case",
+    "question": "Thể loại game mobile nào có tiềm năng tại Đông Nam Á trong 12 tháng tới?",
+    "reference_date": "2026-10-15",
+    "duration_seconds": 0.03,
+    "sources_count": 12,
+    "verified_quotes_count": 25,
+    "total_quotes_extracted": 27,
+    "verified_quote_rate": 92.6,
+    "insights_count": 10,
+    "high_conf_from_tier_c": 0,
+    "impact_level": "ĐÁNG KỂ",
+    "key_old_sources": [
+      "S2",
+      "S3",
+      "S12"
+    ],
+    "refresh_status": "—",
+    "passed": true,
+    "notes": [
+      "Đạt toàn bộ tiêu chí kiểm tự động"
+    ]
+  },
+  {
+    "id": "TC9",
+    "name": "Regression & Control: Toàn bộ nguồn mới ≤ 18 tháng không gây cảnh báo giả (TC3)",
+    "expected_group": "Regression",
+    "question": "Quy mô thị trường game mobile Việt Nam hiện nay là bao nhiêu?",
+    "reference_date": "2026-10-15",
+    "duration_seconds": 0.03,
+    "sources_count": 12,
+    "verified_quotes_count": 28,
+    "total_quotes_extracted": 28,
+    "verified_quote_rate": 100.0,
+    "insights_count": 8,
+    "high_conf_from_tier_c": 0,
+    "impact_level": "KHÔNG",
+    "key_old_sources": [],
+    "refresh_status": "—",
+    "passed": true,
+    "notes": [
+      "Đạt toàn bộ tiêu chí kiểm tự động"
+    ]
+  },
+  {
+    "id": "TC10",
+    "name": "Tổng quát hóa câu hỏi mới: Chi phí cài đặt (CPI) game mobile tại Đông Nam Á",
+    "expected_group": "Tổng quát hóa",
+    "question": "Chi phí cài đặt (CPI) trung bình của game mobile tại Đông Nam Á hiện nay là bao nhiêu?",
+    "reference_date": "2026-10-23",
+    "duration_seconds": 81.93,
+    "sources_count": 18,
+    "verified_quotes_count": 37,
+    "total_quotes_extracted": 37,
+    "verified_quote_rate": 100.0,
+    "insights_count": 11,
+    "high_conf_from_tier_c": 0,
+    "impact_level": "ĐÁNG KỂ",
+    "key_old_sources": [
+      "S1",
+      "S10",
+      "S2",
+      "S5",
+      "S12"
+    ],
+    "refresh_status": "ĐÃ LÀM MỚI",
+    "passed": true,
+    "notes": [
+      "Đạt toàn bộ tiêu chí kiểm tự động"
+    ]
+  }
+]
