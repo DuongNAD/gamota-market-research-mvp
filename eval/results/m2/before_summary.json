@@ -1,0 +1,92 @@
+[
+  {
+    "id": "TC1",
+    "sources": 12,
+    "unknown_date_sources": 3,
+    "verified_quotes": 27,
+    "total_quotes": 27,
+    "verified_rate": 100.0,
+    "insights_count": 14,
+    "conf_dist": {
+      "TRUNG BÌNH": 5,
+      "THẤP": 9
+    },
+    "conflicts_count": 0,
+    "short_answer": "Trong 12 tháng tới, các thể loại game mobile có tiềm năng cao tại Đông Nam Á bao gồm Chiến thuật (đặc biệt là 4X và MOBA), RPG và Bắn súng, do khả năng tạo ra doanh thu IAP mạnh mẽ. Các thể loại dễ tiếp cận như Arcade và Simulation vẫn sẽ dẫn đầu về lượt tải xuống, nhưng tiềm năng kiếm tiền cần được khai thác thông qua các chiến lược phù hợp."
+  },
+  {
+    "id": "TC2",
+    "sources": 12,
+    "unknown_date_sources": 8,
+    "verified_quotes": 32,
+    "total_quotes": 32,
+    "verified_rate": 100.0,
+    "insights_count": 26,
+    "conf_dist": {
+      "THẤP": 22,
+      "TRUNG BÌNH": 4
+    },
+    "conflicts_count": 0,
+    "short_answer": "Mô hình kiếm tiền kết hợp (hybrid monetization) đang trở nên hiệu quả và phổ biến cho game casual tại Indonesia và Philippines. Mô hình này kết hợp quảng cáo trong ứng dụng (IAA) và mua hàng trong ứng dụng (IAP), giúp mở rộng lượng người chơi và tăng ARPU tổng thể. Quảng cáo trong ứng dụng (IAA) vẫn là chiến lược phổ biến nhất ở Indonesia, đặc biệt đối với game casual và hyper-casual."
+  },
+  {
+    "id": "TC3",
+    "sources": 11,
+    "unknown_date_sources": 3,
+    "verified_quotes": 28,
+    "total_quotes": 28,
+    "verified_rate": 100.0,
+    "insights_count": 17,
+    "conf_dist": {
+      "TRUNG BÌNH": 4,
+      "THẤP": 13
+    },
+    "conflicts_count": 3,
+    "short_answer": "Thị trường game mobile Việt Nam đạt doanh thu 825 triệu USD và có 54 triệu người chơi vào năm 2025, với tốc độ tăng trưởng 9,16% so với năm trước. Các thể loại MMORPG và Chiến thuật 4X chiếm ưu thế về doanh thu, trong khi Simulation, Puzzle và Arcade dẫn đầu về lượt tải xuống."
+  },
+  {
+    "id": "TC4",
+    "sources": 12,
+    "unknown_date_sources": 5,
+    "verified_quotes": 28,
+    "total_quotes": 28,
+    "verified_rate": 100.0,
+    "insights_count": 13,
+    "conf_dist": {
+      "THẤP": 12,
+      "TRUNG BÌNH": 1
+    },
+    "conflicts_count": 0,
+    "short_answer": "Dựa trên các bằng chứng hiện có, không thể xác định chính xác doanh thu thể loại MMORPG mobile tại Campuchia vào năm 2025. Tuy nhiên, thị trường game tổng thể tại Campuchia dự kiến đạt 131,44 triệu USD vào năm 2025, với game mobile là động lực tăng trưởng chính. Các thể loại nhập vai (RPG), bao gồm MMORPG, được xác định là những thể loại mang lại doanh thu cao nhất ở Đông Nam Á."
+  },
+  {
+    "id": "TC5",
+    "sources": 12,
+    "unknown_date_sources": 3,
+    "verified_quotes": 31,
+    "total_quotes": 31,
+    "verified_rate": 100.0,
+    "insights_count": 16,
+    "conf_dist": {
+      "TRUNG BÌNH": 3,
+      "THẤP": 13
+    },
+    "conflicts_count": 1,
+    "short_answer": "Không có bằng chứng nào cho thấy doanh thu game mobile Đông Nam Á giảm 50% trong năm qua (2025-2026). Ngược lại, các bằng chứng cho thấy thị trường này vẫn đang tăng trưởng hoặc có dấu hiệu phục hồi ở một số quốc gia, mặc dù tốc độ tăng trưởng có thể chậm lại ở các thị trường phát triển."
+  },
+  {
+    "id": "TC6",
+    "sources": 12,
+    "unknown_date_sources": 8,
+    "verified_quotes": 24,
+    "total_quotes": 24,
+    "verified_rate": 100.0,
+    "insights_count": 12,
+    "conf_dist": {
+      "CAO": 1,
+      "THẤP": 11
+    },
+    "conflicts_count": 1,
+    "short_answer": "Dữ liệu doanh thu tháng 9/2026 của các game gacha top đầu tại Thái Lan không có sẵn trong các nguồn đã xác minh. Các nguồn hiện có chỉ cung cấp dữ liệu doanh thu toàn cầu hoặc theo khu vực lớn (như Trung Quốc, Nhật Bản, Mỹ) cho các game gacha hàng đầu, và thường là ước tính chứ không phải số liệu chính thức."
+  }
+]

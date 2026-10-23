@@ -1,0 +1,48 @@
+[
+  {
+    "id": "TC3",
+    "question": "Quy mô thị trường game mobile Việt Nam hiện nay là bao nhiêu?",
+    "raw_llm_output": {
+      "short_answer": "Quy mô thị trường game mobile Việt Nam hiện nay ước tính khoảng 500-600 triệu USD và dự kiến sẽ tiếp tục tăng trưởng trong những năm tới.",
+      "key_claims": [
+        "Thị trường game mobile Việt Nam đạt doanh thu khoảng 500-600 triệu USD vào năm 2023.",
+        "Việt Nam là một trong những thị trường game mobile lớn nhất Đông Nam Á.",
+        "Số lượng người chơi game mobile tại Việt Nam ước tính khoảng 40-50 triệu người.",
+        "Tốc độ tăng trưởng hàng năm (CAGR) của thị trường game mobile Việt Nam dự kiến đạt khoảng 10-15% trong giai đoạn 2024-2028.",
+        "Các yếu tố thúc đẩy tăng trưởng bao gồm sự phổ biến của smartphone, internet giá rẻ và sự phát triển của các nhà phát triển game trong nước."
+      ],
+      "cited_urls_or_sources": [
+        "https://vietnamnet.vn/thi-truong-game-viet-nam-dat-doanh-thu-gan-600-trieu-usd-nam-2023-2254060.html",
+        "https://vnexpress.net/thi-truong-game-viet-nam-dat-doanh-thu-gan-600-trieu-usd-4716766.html",
+        "https://www.statista.com/outlook/amo/video-games/mobile-games/vietnam"
+      ],
+      "self_rated_confidence": "CAO"
+    },
+    "unverified_urls_count": 3,
+    "unverified_numbers_count": 3,
+    "verified_quotes_count": 0
+  },
+  {
+    "id": "TC4",
+    "question": "Doanh thu thể loại MMORPG mobile tại thị trường Campuchia năm 2025 là bao nhiêu?",
+    "raw_llm_output": {
+      "short_answer": "Rất khó để đưa ra con số doanh thu chính xác cho thể loại MMORPG mobile tại thị trường Campuchia vào năm 2025 do thiếu dữ liệu công khai cụ thể và chi tiết cho một thị trường nhỏ như Campuchia, đặc biệt là dự báo cho một thể loại game cụ thể. Tuy nhiên, có thể ước tính dựa trên xu hướng tăng trưởng chung của thị trường game mobile và MMORPG trong khu vực Đông Nam Á.",
+      "key_claims": [
+        "Thị trường game mobile Campuchia đang tăng trưởng, với doanh thu game mobile toàn thị trường đạt khoảng 30 triệu USD vào năm 2023 (ước tính).",
+        "MMORPG là một thể loại phổ biến ở Đông Nam Á, chiếm một phần đáng kể trong doanh thu game mobile, thường từ 10-20% tổng doanh thu game mobile ở các thị trường tương tự.",
+        "Với tốc độ tăng trưởng kép hàng năm (CAGR) của thị trường game mobile Đông Nam Á dự kiến khoảng 8-12% trong những năm tới, thị trường Campuchia cũng có thể theo xu hướng này.",
+        "Nếu giả định doanh thu game mobile Campuchia đạt khoảng 35-40 triệu USD vào năm 2025 và MMORPG chiếm 10-15% trong số đó, doanh thu MMORPG mobile có thể nằm trong khoảng 3.5 triệu USD đến 6 triệu USD.",
+        "Các yếu tố như sự thâm nhập của smartphone, kết nối internet và sự ra mắt của các tựa game MMORPG mới sẽ ảnh hưởng lớn đến con số này."
+      ],
+      "cited_urls_or_sources": [
+        "Newzoo (dữ liệu chung về thị trường game Đông Nam Á)",
+        "Statista (dữ liệu chung về thị trường game mobile)",
+        "Báo cáo thị trường game khu vực Đông Nam Á từ các công ty nghiên cứu thị trường (ví dụ: Niko Partners, Sensor Tower - tuy nhiên, dữ liệu cụ thể cho Campuchia thường không được công bố rộng rãi)."
+      ],
+      "self_rated_confidence": "TRUNG BÌNH"
+    },
+    "unverified_urls_count": 0,
+    "unverified_numbers_count": 4,
+    "verified_quotes_count": 0
+  }
+]

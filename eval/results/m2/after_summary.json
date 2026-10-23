@@ -1,0 +1,93 @@
+[
+  {
+    "id": "TC1",
+    "sources": 12,
+    "unknown_date_sources": 1,
+    "verified_quotes": 30,
+    "total_quotes": 30,
+    "verified_rate": 100.0,
+    "insights_count": 8,
+    "conf_dist": {
+      "TRUNG BÌNH": 4,
+      "THẤP": 4
+    },
+    "conflicts_count": 1,
+    "short_answer": "Trong 12 tháng tới, các thể loại game mobile có tiềm năng cao tại Đông Nam Á là Chiến thuật (đặc biệt 4X và MOBA), RPG và Bắn súng, do khả năng tạo doanh thu IAP vượt trội. Mặc dù các thể loại dễ tiếp cận như Arcade và Simulation có lượng tải xuống cao, nhưng tiềm năng kiếm tiền của chúng thấp hơn. Thị trường Đông Nam Á tiếp tục tăng trưởng mạnh mẽ về lượt tải xuống và doanh thu, với MOBA chiếm 38% tổng chi tiêu của người tiêu dùng di động trong khu vực. Lưu ý chênh lệch số liệu giữa các nguồn theo phạm vi/kỳ báo cáo: Doanh thu game mobile toàn cầu 2025 ([E14/S6]: 103,0 tỷ USD vs. [E1/S1]: Vượt qua ước tính trước đây — E14 cung cấp một con số dự kiến cụ thể từ Newzoo cho doanh thu game mobile toàn cầu năm 2025 (103,0 tỷ USD), trong khi E1 chỉ nói rằng doanh thu mobile vượt qua các ước tính trước đây mà không đưa ra con số cụ thể. Cả hai đều chỉ ra xu hướng tích cực nhưng E14 cung cấp dữ liệu định lượng rõ ràng hơn.)"
+  },
+  {
+    "id": "TC2",
+    "sources": 12,
+    "unknown_date_sources": 1,
+    "verified_quotes": 28,
+    "total_quotes": 28,
+    "verified_rate": 100.0,
+    "insights_count": 10,
+    "conf_dist": {
+      "TRUNG BÌNH": 3,
+      "THẤP": 7
+    },
+    "conflicts_count": 1,
+    "short_answer": "Tại Indonesia và Philippines, mô hình kiếm tiền kết hợp (hybrid revenue models) đang ngày càng hiệu quả cho game casual, đặc biệt là sự kết hợp giữa quảng cáo trong ứng dụng (IAA) và mua hàng trong ứng dụng (IAP). Quảng cáo trong ứng dụng là chiến lược phổ biến nhất ở Indonesia, trong khi IAP vẫn là mô hình hàng đầu cho game Casual nói chung, với mô hình hybrid bám sát phía sau."
+  },
+  {
+    "id": "TC3",
+    "sources": 12,
+    "unknown_date_sources": 0,
+    "verified_quotes": 28,
+    "total_quotes": 28,
+    "verified_rate": 100.0,
+    "insights_count": 8,
+    "conf_dist": {
+      "THẤP": 4,
+      "TRUNG BÌNH": 1,
+      "CAO": 3
+    },
+    "conflicts_count": 1,
+    "short_answer": "Thị trường game mobile Việt Nam năm 2025 đạt doanh thu 825 triệu USD với 54 triệu người chơi, tăng trưởng 9,16% so với năm trước. Doanh thu IAP dự kiến tăng 83% vào năm 2025. Tuy nhiên, có sự khác biệt về dự báo doanh thu cho năm 2025 và 2026 giữa các nguồn. Lưu ý chênh lệch số liệu giữa các nguồn theo phạm vi/kỳ báo cáo: Tổng doanh thu thị trường game mobile Việt Nam năm 2025 ([E9/S5]: 825 triệu USD vs. [E10/S5]: 825 triệu USD vs. [E11/S5]: 825 triệu USD vs. [E21/S9]: 825 triệu USD vs. [E26/S12]: 825 triệu USD vs. [E27/S12]: 825 triệu USD vs. [E23/S10]: 1.100 triệu USD — Các nguồn S5, S9, S12 đều thống nhất doanh thu năm 2025 là 825 triệu USD. Tuy nhiên, nguồn S10 dự báo thị trường sẽ đạt 1.100 triệu USD vào năm 2033, với CAGR 8,1% từ 2025-2033, không trực tiếp đưa ra con số cho năm 2025 nhưng có thể ngụ ý một con số khác nếu tính toán ngược lại. Sự khác biệt này có thể do phương pháp luận dự báo và thời điểm công bố báo cáo khác nhau.)"
+  },
+  {
+    "id": "TC4",
+    "sources": 12,
+    "unknown_date_sources": 3,
+    "verified_quotes": 29,
+    "total_quotes": 29,
+    "verified_rate": 100.0,
+    "insights_count": 8,
+    "conf_dist": {
+      "THẤP": 6,
+      "TRUNG BÌNH": 2
+    },
+    "conflicts_count": 0,
+    "short_answer": "Dữ liệu doanh thu cụ thể cho thể loại MMORPG mobile tại Campuchia năm 2025 không có sẵn trong các bằng chứng được cung cấp. Tuy nhiên, thị trường game tổng thể tại Campuchia dự kiến đạt 131,44 triệu USD vào năm 2025. Thể loại RPG (bao gồm MMORPG) là một trong những thể loại chiếm ưu thế về doanh thu tại Đông Nam Á, nhưng MMORPG đã cho thấy xu hướng giảm doanh thu trong quý 1 năm 2025 tại khu vực này."
+  },
+  {
+    "id": "TC5",
+    "sources": 12,
+    "unknown_date_sources": 0,
+    "verified_quotes": 31,
+    "total_quotes": 31,
+    "verified_rate": 100.0,
+    "insights_count": 9,
+    "conf_dist": {
+      "TRUNG BÌNH": 5,
+      "THẤP": 4
+    },
+    "conflicts_count": 2,
+    "short_answer": "Không có bằng chứng nào cho thấy doanh thu game mobile Đông Nam Á giảm 50% trong năm qua (2025-2026). Ngược lại, các bằng chứng hiện có cho thấy thị trường này đang tăng trưởng về doanh thu, mặc dù lượt tải xuống có thể giảm ở một số khu vực hoặc có sự phân hóa giữa các thể loại game và quốc gia. Cụ thể, doanh thu game mobile Đông Nam Á đạt 5,4 tỷ USD và duy trì tốc độ tăng trưởng hàng năm 13,8% vào năm 2026. Lưu ý chênh lệch số liệu giữa các nguồn theo phạm vi/kỳ báo cáo: Doanh thu game mobile Đông Nam Á Q1 2025 ([E2]: 625 triệu USD vs. [E24]: 625 triệu USD vs. [E28]: 625 triệu USD — Các nguồn Sensor Tower, icon-era.com và gamedevreports.substack.com đều báo cáo cùng một con số doanh thu IAP cho Q1 2025 là 625 triệu USD. Không có xung đột.); Tăng trưởng doanh thu game mobile toàn cầu 2025 ([E23]: tăng 0.2% vs. [E26]: tăng 4.7% (cho 6 thị trường SEA) — AppMagic báo cáo doanh thu trò chơi di động toàn cầu chỉ tăng 0.2% trong năm 2025, trong khi Niko Partners báo cáo tăng trưởng 4.7% cho năm 2025 riêng cho sáu thị trường Đông Nam Á. Sự khác biệt này có thể do phạm vi địa lý (toàn cầu so với Đông Nam Á) và phương pháp tính toán.)"
+  },
+  {
+    "id": "TC6",
+    "sources": 12,
+    "unknown_date_sources": 5,
+    "verified_quotes": 20,
+    "total_quotes": 20,
+    "verified_rate": 100.0,
+    "insights_count": 9,
+    "conf_dist": {
+      "TRUNG BÌNH": 2,
+      "THẤP": 7
+    },
+    "conflicts_count": 1,
+    "short_answer": "Dữ liệu doanh thu tháng 9/2026 của các game gacha top đầu tại Thái Lan không có sẵn trong các nguồn đã cung cấp. Các nguồn hiện chỉ cung cấp dữ liệu doanh thu toàn cầu hoặc theo quốc gia cụ thể (ví dụ: Trung Quốc, Nhật Bản, Hoa Kỳ) cho một số game gacha, nhưng không có số liệu chi tiết cho thị trường Thái Lan. Doanh thu toàn cầu của các game gacha hàng đầu như Genshin Impact và Honkai: Star Rail đã được ghi nhận trong tháng 9/2026, nhưng không thể suy ra doanh thu cụ thể tại Thái Lan. Lưu ý chênh lệch số liệu giữa các nguồn theo phạm vi/kỳ báo cáo: Doanh thu toàn cầu của Honkai: Star Rail và Genshin Impact trong tháng 9/2026 ([E3]: Genshin Impact 50,23 triệu USD, [E5]: Honkai: Star Rail 35,735 triệu USD vs. [E19]: Honkai: Star Rail hơn 67 triệu USD, Genshin Impact 45 triệu USD — Có sự khác biệt đáng kể về số liệu doanh thu toàn cầu của Honkai: Star Rail và Genshin Impact trong tháng 9/2026 giữa các nguồn. Nguồn Game8.co (E3, E5) báo cáo Genshin Impact cao hơn HSR, trong khi nguồn Mytour.vn (E19) lại báo cáo HSR cao hơn Genshin Impact và với con số lớn hơn nhiều. Sự khác biệt này có thể do phương pháp ước tính, phạm vi dữ liệu (ví dụ: chỉ iOS, bao gồm Android, hoặc các thị trường cụ thể) hoặc thời điểm tổng hợp dữ liệu khác nhau.)"
+  }
+]
