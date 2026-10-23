@@ -197,7 +197,12 @@
       "tier": "A",
       "tier_reason": "Đơn vị nghiên cứu dữ liệu chuyên sâu ngành game toàn cầu (Newzoo)",
       "freshness": "fresh",
-      "freshness_label": "Mới (<=12 tháng)"
+      "freshness_label": "Mới (<=12 tháng)",
+      "date_method": "year_only",
+      "date_precision": "year",
+      "age_months": 4.0,
+      "age_months_min": 0.0,
+      "age_months_max": 9.4
     },
     {
       "id": "S2",
@@ -208,7 +213,12 @@
       "tier": "A",
       "tier_reason": "Cổng thông tin cơ quan nhà nước (game.gov.vn)",
       "freshness": "fresh",
-      "freshness_label": "Mới (<=12 tháng)"
+      "freshness_label": "Mới (<=12 tháng)",
+      "date_method": "text_date",
+      "date_precision": "day",
+      "age_months": 5.5,
+      "age_months_min": 5.5,
+      "age_months_max": 5.5
     },
     {
       "id": "S3",
@@ -219,7 +229,12 @@
       "tier": "A",
       "tier_reason": "Nhà cung cấp dữ liệu đo lường thị trường ứng dụng & game mobile hàng đầu (Sensor Tower)",
       "freshness": "aging",
-      "freshness_label": "Cũ dần (12-24 tháng)"
+      "freshness_label": "Cũ dần (12-24 tháng)",
+      "date_method": "month_year",
+      "date_precision": "month",
+      "age_months": 17.0,
+      "age_months_min": 16.5,
+      "age_months_max": 17.5
     },
     {
       "id": "S4",
@@ -230,7 +245,12 @@
       "tier": "C",
       "tier_reason": "Nguồn hạng C (mặc định): Blog, trang tổng hợp SEO, diễn đàn, thông cáo báo chí hoặc domain chưa trong danh mục kiểm chứng (gamota.com)",
       "freshness": "fresh",
-      "freshness_label": "Mới (<=12 tháng)"
+      "freshness_label": "Mới (<=12 tháng)",
+      "date_method": "quarter",
+      "date_precision": "quarter",
+      "age_months": 7.0,
+      "age_months_min": 6.5,
+      "age_months_max": 9.4
     },
     {
       "id": "S5",
@@ -241,7 +261,12 @@
       "tier": "C",
       "tier_reason": "Nguồn hạng C (mặc định): Blog, trang tổng hợp SEO, diễn đàn, thông cáo báo chí hoặc domain chưa trong danh mục kiểm chứng (nextbiggames.com)",
       "freshness": "fresh",
-      "freshness_label": "Mới (<=12 tháng)"
+      "freshness_label": "Mới (<=12 tháng)",
+      "date_method": "url_date",
+      "date_precision": "day",
+      "age_months": 7.0,
+      "age_months_min": 7.0,
+      "age_months_max": 7.0
     },
     {
       "id": "S6",
@@ -252,7 +277,12 @@
       "tier": "C",
       "tier_reason": "Nguồn hạng C (mặc định): Blog, trang tổng hợp SEO, diễn đàn, thông cáo báo chí hoặc domain chưa trong danh mục kiểm chứng (digitalinasia.com)",
       "freshness": "fresh",
-      "freshness_label": "Mới (<=12 tháng)"
+      "freshness_label": "Mới (<=12 tháng)",
+      "date_method": "month_year",
+      "date_precision": "month",
+      "age_months": 7.0,
+      "age_months_min": 6.5,
+      "age_months_max": 7.5
     },
     {
       "id": "S7",
@@ -263,7 +293,12 @@
       "tier": "C",
       "tier_reason": "Nguồn hạng C (mặc định): Blog, trang tổng hợp SEO, diễn đàn, thông cáo báo chí hoặc domain chưa trong danh mục kiểm chứng (mobidictum.com)",
       "freshness": "fresh",
-      "freshness_label": "Mới (<=12 tháng)"
+      "freshness_label": "Mới (<=12 tháng)",
+      "date_method": "text_date",
+      "date_precision": "day",
+      "age_months": 5.6,
+      "age_months_min": 5.6,
+      "age_months_max": 5.6
     },
     {
       "id": "S8",
@@ -274,7 +309,12 @@
       "tier": "C",
       "tier_reason": "Nguồn hạng C (mặc định): Blog, trang tổng hợp SEO, diễn đàn, thông cáo báo chí hoặc domain chưa trong danh mục kiểm chứng (vietnamfinance.vn)",
       "freshness": "fresh",
-      "freshness_label": "Mới (<=12 tháng)"
+      "freshness_label": "Mới (<=12 tháng)",
+      "date_method": "text_date",
+      "date_precision": "day",
+      "age_months": 5.7,
+      "age_months_min": 5.7,
+      "age_months_max": 5.7
     },
     {
       "id": "S9",
@@ -285,7 +325,12 @@
       "tier": "C",
       "tier_reason": "Nguồn hạng C (mặc định): Blog, trang tổng hợp SEO, diễn đàn, thông cáo báo chí hoặc domain chưa trong danh mục kiểm chứng (games.gg)",
       "freshness": "fresh",
-      "freshness_label": "Mới (<=12 tháng)"
+      "freshness_label": "Mới (<=12 tháng)",
+      "date_method": "text_date",
+      "date_precision": "day",
+      "age_months": 4.2,
+      "age_months_min": 4.2,
+      "age_months_max": 4.2
     },
     {
       "id": "S10",
@@ -296,7 +341,12 @@
       "tier": "C",
       "tier_reason": "Nguồn hạng C (mặc định): Blog, trang tổng hợp SEO, diễn đàn, thông cáo báo chí hoặc domain chưa trong danh mục kiểm chứng (imarcgroup.com)",
       "freshness": "aging",
-      "freshness_label": "Cũ dần (12-24 tháng)"
+      "freshness_label": "Cũ dần (12-24 tháng)",
+      "date_method": "text_date",
+      "date_precision": "day",
+      "age_months": 14.3,
+      "age_months_min": 14.3,
+      "age_months_max": 14.3
     },
     {
       "id": "S11",
@@ -307,7 +357,12 @@
       "tier": "C",
       "tier_reason": "Nguồn hạng C (mặc định): Blog, trang tổng hợp SEO, diễn đàn, thông cáo báo chí hoặc domain chưa trong danh mục kiểm chứng (gamota.com)",
       "freshness": "fresh",
-      "freshness_label": "Mới (<=12 tháng)"
+      "freshness_label": "Mới (<=12 tháng)",
+      "date_method": "text_date",
+      "date_precision": "day",
+      "age_months": 4.4,
+      "age_months_min": 4.4,
+      "age_months_max": 4.4
     },
     {
       "id": "S12",
@@ -318,7 +373,12 @@
       "tier": "C",
       "tier_reason": "Nguồn hạng C (mặc định): Blog, trang tổng hợp SEO, diễn đàn, thông cáo báo chí hoặc domain chưa trong danh mục kiểm chứng (gamota.com)",
       "freshness": "fresh",
-      "freshness_label": "Mới (<=12 tháng)"
+      "freshness_label": "Mới (<=12 tháng)",
+      "date_method": "text_date",
+      "date_precision": "day",
+      "age_months": 4.4,
+      "age_months_min": 4.4,
+      "age_months_max": 4.4
     }
   ],
   "evidences": [
@@ -329,7 +389,9 @@
       "claim": "Tổng doanh thu mua hàng trong ứng dụng (IAP) của ngành game mobile Việt Nam năm 2025 dự kiến tăng 83% so với năm 2024.",
       "verified": true,
       "match_score": 100.0,
-      "highlight_url": "https://game.gov.vn/tin-tuc/game-viet-can-moc-49-ti-luot-tai-toan-cau-trong-nam-2025-zun6#:~:text=t%E1%BB%95ng%20doanh%20thu%20IAP%20c%E1%BB%A7a%20ng%C3%A0nh%20game%20mobile%20Vi%E1%BB%87t%20Nam"
+      "highlight_url": "https://game.gov.vn/tin-tuc/game-viet-can-moc-49-ti-luot-tai-toan-cau-trong-nam-2025-zun6#:~:text=t%E1%BB%95ng%20doanh%20thu%20IAP%20c%E1%BB%A7a%20ng%C3%A0nh%20game%20mobile%20Vi%E1%BB%87t%20Nam",
+      "data_period": "2025",
+      "data_period_end": "2025-12-31"
     },
     {
       "id": "E2",
@@ -338,7 +400,9 @@
       "claim": "Game mobile do người Việt sản xuất và phát hành đạt 4,9 tỷ lượt tải toàn cầu vào năm 2025.",
       "verified": true,
       "match_score": 100.0,
-      "highlight_url": "https://game.gov.vn/tin-tuc/game-viet-can-moc-49-ti-luot-tai-toan-cau-trong-nam-2025-zun6#:~:text=Kh%C3%A9p%20l%E1%BA%A1i%20n%C4%83m%20t%C3%A0i%20ch%C3%ADnh%202025%2C%20m%E1%BA%A3ng%20tr%C3%B2%20ch%C6%A1i%20tr%C3%AAn"
+      "highlight_url": "https://game.gov.vn/tin-tuc/game-viet-can-moc-49-ti-luot-tai-toan-cau-trong-nam-2025-zun6#:~:text=Kh%C3%A9p%20l%E1%BA%A1i%20n%C4%83m%20t%C3%A0i%20ch%C3%ADnh%202025%2C%20m%E1%BA%A3ng%20tr%C3%B2%20ch%C6%A1i%20tr%C3%AAn",
+      "data_period": "2025",
+      "data_period_end": "2025-12-31"
     },
     {
       "id": "E3",
@@ -347,7 +411,9 @@
       "claim": "Thị trường game mobile nội địa Việt Nam chỉ chiếm 5,53% tổng lượt tải, tương đương khoảng 272 triệu lượt, cho thấy phần lớn giá trị sáng tạo được tiêu thụ ở thị trường quốc tế.",
       "verified": true,
       "match_score": 100.0,
-      "highlight_url": "https://game.gov.vn/tin-tuc/game-viet-can-moc-49-ti-luot-tai-toan-cau-trong-nam-2025-zun6#:~:text=Th%E1%BB%8B%20tr%C6%B0%E1%BB%9Dng%20n%E1%BB%99i%20%C4%91%E1%BB%8Ba%20hi%E1%BB%87n%20ch%E1%BB%89%20chi%E1%BA%BFm%20v%E1%BB%8Fn%20v%E1%BA%B9n%205%2C53%25"
+      "highlight_url": "https://game.gov.vn/tin-tuc/game-viet-can-moc-49-ti-luot-tai-toan-cau-trong-nam-2025-zun6#:~:text=Th%E1%BB%8B%20tr%C6%B0%E1%BB%9Dng%20n%E1%BB%99i%20%C4%91%E1%BB%8Ba%20hi%E1%BB%87n%20ch%E1%BB%89%20chi%E1%BA%BFm%20v%E1%BB%8Fn%20v%E1%BA%B9n%205%2C53%25",
+      "data_period": "",
+      "data_period_end": null
     },
     {
       "id": "E4",
@@ -356,7 +422,9 @@
       "claim": "Các thể loại game Simulation, Puzzle và Arcade chiếm 66% tổng lượt tải game mobile tại Việt Nam.",
       "verified": true,
       "match_score": 100.0,
-      "highlight_url": "https://game.gov.vn/tin-tuc/game-viet-can-moc-49-ti-luot-tai-toan-cau-trong-nam-2025-zun6#:~:text=V%E1%BB%81%20th%E1%BB%83%20lo%E1%BA%A1i%2C%20b%E1%BB%99%20ba%20Simulation%20%28M%C3%B4%20ph%E1%BB%8Fng%29%2C%20Puzzle%20%28Gi%E1%BA%A3i"
+      "highlight_url": "https://game.gov.vn/tin-tuc/game-viet-can-moc-49-ti-luot-tai-toan-cau-trong-nam-2025-zun6#:~:text=V%E1%BB%81%20th%E1%BB%83%20lo%E1%BA%A1i%2C%20b%E1%BB%99%20ba%20Simulation%20%28M%C3%B4%20ph%E1%BB%8Fng%29%2C%20Puzzle%20%28Gi%E1%BA%A3i",
+      "data_period": "",
+      "data_period_end": null
     },
     {
       "id": "E5",
@@ -365,7 +433,9 @@
       "claim": "Việt Nam đạt 329 triệu lượt tải game mobile trong quý 1 năm 2025, xếp sau Philippines với 366 triệu lượt tải.",
       "verified": true,
       "match_score": 100.0,
-      "highlight_url": "https://sensortower.com/blog/southeast-asia-mobile-gaming-2025#:~:text=The%20Philippines%20and%20Vietnam%20follow%20with%20366%20million%20and%20329"
+      "highlight_url": "https://sensortower.com/blog/southeast-asia-mobile-gaming-2025#:~:text=The%20Philippines%20and%20Vietnam%20follow%20with%20366%20million%20and%20329",
+      "data_period": "",
+      "data_period_end": null
     },
     {
       "id": "E6",
@@ -374,7 +444,9 @@
       "claim": "Doanh thu mua hàng trong ứng dụng (IAP) chủ yếu đến từ các thể loại game nhập vai như Chiến thuật (4X và MOBA), Bắn súng và RPG.",
       "verified": true,
       "match_score": 100.0,
-      "highlight_url": "https://sensortower.com/blog/southeast-asia-mobile-gaming-2025#:~:text=in-app%20purchase%20revenue%20is%20primarily%20dominated%20by%20more%20immersive%20genres"
+      "highlight_url": "https://sensortower.com/blog/southeast-asia-mobile-gaming-2025#:~:text=in-app%20purchase%20revenue%20is%20primarily%20dominated%20by%20more%20immersive%20genres",
+      "data_period": "",
+      "data_period_end": null
     },
     {
       "id": "E7",
@@ -383,7 +455,9 @@
       "claim": "Ba nhà phát hành game Việt Nam nằm trong top 15 toàn cầu về lượt tải xuống, cho thấy ảnh hưởng ngày càng tăng của Việt Nam trong ngành xuất bản game.",
       "verified": true,
       "match_score": 100.0,
-      "highlight_url": "https://sensortower.com/blog/southeast-asia-mobile-gaming-2025#:~:text=Notably%2C%20three%20Vietnamese%20publishers%20were%20among%20the%20top%2015%20globally"
+      "highlight_url": "https://sensortower.com/blog/southeast-asia-mobile-gaming-2025#:~:text=Notably%2C%20three%20Vietnamese%20publishers%20were%20among%20the%20top%2015%20globally",
+      "data_period": "",
+      "data_period_end": null
     },
     {
       "id": "E8",
@@ -392,7 +466,9 @@
       "claim": "Báo cáo của Gamota phân tích xu hướng doanh thu, lượt tải, hành vi người chơi và sự dịch chuyển của các dòng game dẫn dắt thị trường game mobile Việt Nam trong quý 1 năm 2026.",
       "verified": true,
       "match_score": 100.0,
-      "highlight_url": "https://gamota.com/gamota-lab/gamota-launches-vietnam-mobile-gaming-industry-report-q1-2026#:~:text=B%C3%A1o%20c%C3%A1o%20t%E1%BA%ADp%20trung%20ph%C3%A2n%20t%C3%ADch%20c%C3%A1c%20xu%20h%C6%B0%E1%BB%9Bng%20n%E1%BB%95i"
+      "highlight_url": "https://gamota.com/gamota-lab/gamota-launches-vietnam-mobile-gaming-industry-report-q1-2026#:~:text=B%C3%A1o%20c%C3%A1o%20t%E1%BA%ADp%20trung%20ph%C3%A2n%20t%C3%ADch%20c%C3%A1c%20xu%20h%C6%B0%E1%BB%9Bng%20n%E1%BB%95i",
+      "data_period": "",
+      "data_period_end": null
     },
     {
       "id": "E9",
@@ -401,7 +477,9 @@
       "claim": "Thị trường game mobile Việt Nam đạt doanh thu 825 triệu USD và có 54 triệu người chơi vào năm 2025.",
       "verified": true,
       "match_score": 100.0,
-      "highlight_url": "https://nextbiggames.com/2026/03/17/vietnam-mobile-games-market-825m-growth#:~:text=The%20Vietnam%20mobile%20games%20market%20%24825M%20reached%2054M%20gamers%20in"
+      "highlight_url": "https://nextbiggames.com/2026/03/17/vietnam-mobile-games-market-825m-growth#:~:text=The%20Vietnam%20mobile%20games%20market%20%24825M%20reached%2054M%20gamers%20in",
+      "data_period": "2025",
+      "data_period_end": "2025-12-31"
     },
     {
       "id": "E10",
@@ -410,7 +488,9 @@
       "claim": "Thị trường game mobile Việt Nam năm 2025 đạt doanh thu 825 triệu USD với 54 triệu người chơi, cho thấy tiềm năng phát triển lớn.",
       "verified": true,
       "match_score": 100.0,
-      "highlight_url": "https://nextbiggames.com/2026/03/17/vietnam-mobile-games-market-825m-growth#:~:text=With%20%24825%20million%20in%20revenue%2C%2054%20million%20players%2C%20and%20rapidly"
+      "highlight_url": "https://nextbiggames.com/2026/03/17/vietnam-mobile-games-market-825m-growth#:~:text=With%20%24825%20million%20in%20revenue%2C%2054%20million%20players%2C%20and%20rapidly",
+      "data_period": "",
+      "data_period_end": null
     },
     {
       "id": "E11",
@@ -419,7 +499,9 @@
       "claim": "Năm 2025, thị trường game mobile Việt Nam đạt doanh thu 825 triệu USD, tăng trưởng 9,16% so với năm trước và có 54 triệu người chơi.",
       "verified": true,
       "match_score": 100.0,
-      "highlight_url": "https://nextbiggames.com/2026/03/17/vietnam-mobile-games-market-825m-growth#:~:text=The%20Vietnam%20mobile%20games%20market%20%24825M%20recorded%20strong%20growth%20in"
+      "highlight_url": "https://nextbiggames.com/2026/03/17/vietnam-mobile-games-market-825m-growth#:~:text=The%20Vietnam%20mobile%20games%20market%20%24825M%20recorded%20strong%20growth%20in",
+      "data_period": "2025",
+      "data_period_end": "2025-12-31"
     },
     {
       "id": "E12",
@@ -428,7 +510,9 @@
       "claim": "Thị trường game mobile Việt Nam có tỷ lệ người chơi chi tiêu thấp (7%-10%), chỉ 2%-3% là người chơi chi tiêu nhiều, và doanh thu trung bình trên mỗi người dùng (ARPU) là 15,27 USD.",
       "verified": true,
       "match_score": 100.0,
-      "highlight_url": "https://nextbiggames.com/2026/03/17/vietnam-mobile-games-market-825m-growth#:~:text=Despite%20its%20scale%2C%20the%20Vietnam%20mobile%20games%20market%20%24825M%20still"
+      "highlight_url": "https://nextbiggames.com/2026/03/17/vietnam-mobile-games-market-825m-growth#:~:text=Despite%20its%20scale%2C%20the%20Vietnam%20mobile%20games%20market%20%24825M%20still",
+      "data_period": "",
+      "data_period_end": null
     },
     {
       "id": "E13",
@@ -437,7 +521,9 @@
       "claim": "Doanh thu xuất khẩu game của Việt Nam đạt 315 triệu USD vào năm 2024 và dự kiến vượt 430 triệu USD vào năm 2025, tăng 36,4% so với năm trước.",
       "verified": true,
       "match_score": 100.0,
-      "highlight_url": "https://digitalinasia.com/vietnam-gaming-market-2026-key-findings#:~:text=Export%20revenue%20is%20already%20moving%3A%20USD%20315%20million%20in%202024%2C"
+      "highlight_url": "https://digitalinasia.com/vietnam-gaming-market-2026-key-findings#:~:text=Export%20revenue%20is%20already%20moving%3A%20USD%20315%20million%20in%202024%2C",
+      "data_period": "2025",
+      "data_period_end": "2025-12-31"
     },
     {
       "id": "E14",
@@ -446,7 +532,9 @@
       "claim": "Chính phủ Việt Nam đặt mục tiêu đạt 1 tỷ USD doanh thu từ ngành game vào năm 2030 và cam kết đào tạo 5.000 nhà phát triển game.",
       "verified": true,
       "match_score": 100.0,
-      "highlight_url": "https://digitalinasia.com/vietnam-gaming-market-2026-key-findings#:~:text=The%20government%20targets%20USD%201%20billion%20in%20gaming%20revenue%20by"
+      "highlight_url": "https://digitalinasia.com/vietnam-gaming-market-2026-key-findings#:~:text=The%20government%20targets%20USD%201%20billion%20in%20gaming%20revenue%20by",
+      "data_period": "",
+      "data_period_end": null
     },
     {
       "id": "E15",
@@ -455,7 +543,9 @@
       "claim": "Doanh thu từ mua hàng trong ứng dụng (IAP) của game mobile Việt Nam ước tính tăng 83% so với năm trước vào năm 2025.",
       "verified": true,
       "match_score": 100.0,
-      "highlight_url": "https://mobidictum.com/vietnam-mobile-game-report-2025#:~:text=This%20momentum%20contributed%20to%20an%20estimated%2083%25%20year-over-year%20increase%20in"
+      "highlight_url": "https://mobidictum.com/vietnam-mobile-game-report-2025#:~:text=This%20momentum%20contributed%20to%20an%20estimated%2083%25%20year-over-year%20increase%20in",
+      "data_period": "2025",
+      "data_period_end": "2025-12-31"
     },
     {
       "id": "E16",
@@ -464,7 +554,9 @@
       "claim": "Các thể loại game Simulation, Puzzle và Arcade chiếm khoảng 66% tổng lượt tải xuống, trở thành phân khúc sản phẩm chủ đạo.",
       "verified": true,
       "match_score": 100.0,
-      "highlight_url": "https://mobidictum.com/vietnam-mobile-game-report-2025#:~:text=Simulation%2C%20Puzzle%2C%20and%20Arcade%20genres%20collectively%20account%20for%20approximately%2066%25"
+      "highlight_url": "https://mobidictum.com/vietnam-mobile-game-report-2025#:~:text=Simulation%2C%20Puzzle%2C%20and%20Arcade%20genres%20collectively%20account%20for%20approximately%2066%25",
+      "data_period": "",
+      "data_period_end": null
     },
     {
       "id": "E17",
@@ -473,7 +565,9 @@
       "claim": "73% các studio game Việt Nam đã chuyển đổi từ mô hình kiếm tiền dựa trên quảng cáo sang mô hình mua hàng trong ứng dụng (IAP) hoặc mô hình lai.",
       "verified": true,
       "match_score": 100.0,
-      "highlight_url": "https://mobidictum.com/vietnam-mobile-game-report-2025#:~:text=A%20major%20operational%20shift%20is%20also%20evident%3A%2073%25%20of%20studios"
+      "highlight_url": "https://mobidictum.com/vietnam-mobile-game-report-2025#:~:text=A%20major%20operational%20shift%20is%20also%20evident%3A%2073%25%20of%20studios",
+      "data_period": "",
+      "data_period_end": null
     },
     {
       "id": "E18",
@@ -482,7 +576,9 @@
       "claim": "Năm 2025, ngành game di động Việt Nam đạt kỷ lục 4,9 tỷ lượt tải, đứng thứ 2 toàn cầu, chỉ sau Trung Quốc.",
       "verified": true,
       "match_score": 100.0,
-      "highlight_url": "https://vietnamfinance.vn/bao-cao-tong-quan-nganh-game-mobile-viet-nam-nam-2025-d143841.html#:~:text=Theo%20b%C3%A1o%20c%C3%A1o%2C%202025%20l%C3%A0%20n%C4%83m%20ng%C3%A0nh%20game%20di%20%C4%91%E1%BB%99ng"
+      "highlight_url": "https://vietnamfinance.vn/bao-cao-tong-quan-nganh-game-mobile-viet-nam-nam-2025-d143841.html#:~:text=Theo%20b%C3%A1o%20c%C3%A1o%2C%202025%20l%C3%A0%20n%C4%83m%20ng%C3%A0nh%20game%20di%20%C4%91%E1%BB%99ng",
+      "data_period": "2025",
+      "data_period_end": "2025-12-31"
     },
     {
       "id": "E19",
@@ -491,7 +587,9 @@
       "claim": "Các sản phẩm game di động của Việt Nam đạt tốc độ phân phối 9.300 lượt tải mỗi phút, cho thấy khả năng tiếp cận người dùng quốc tế lớn.",
       "verified": true,
       "match_score": 100.0,
-      "highlight_url": "https://vietnamfinance.vn/bao-cao-tong-quan-nganh-game-mobile-viet-nam-nam-2025-d143841.html#:~:text=V%E1%BB%9Bi%20t%E1%BB%91c%20%C4%91%E1%BB%99%20ph%C3%A2n%20ph%E1%BB%91i%209.300%20l%C6%B0%E1%BB%A3t%20t%E1%BA%A3i%2Fph%C3%BAt%20-%20c%C3%A1c"
+      "highlight_url": "https://vietnamfinance.vn/bao-cao-tong-quan-nganh-game-mobile-viet-nam-nam-2025-d143841.html#:~:text=V%E1%BB%9Bi%20t%E1%BB%91c%20%C4%91%E1%BB%99%20ph%C3%A2n%20ph%E1%BB%91i%209.300%20l%C6%B0%E1%BB%A3t%20t%E1%BA%A3i%2Fph%C3%BAt%20-%20c%C3%A1c",
+      "data_period": "",
+      "data_period_end": null
     },
     {
       "id": "E20",
@@ -500,7 +598,9 @@
       "claim": "Thị trường game mobile nội địa Việt Nam chỉ đóng góp 5,5% tổng lượt tải, trong khi gần 95% sản lượng của các studio Việt được tiêu thụ tại thị trường quốc tế.",
       "verified": true,
       "match_score": 100.0,
-      "highlight_url": "https://vietnamfinance.vn/bao-cao-tong-quan-nganh-game-mobile-viet-nam-nam-2025-d143841.html#:~:text=S%E1%BB%91%20li%E1%BB%87u%20b%C3%A1o%20c%C3%A1o%20ch%E1%BB%89%20ra%20r%E1%BA%B1ng%20th%E1%BB%8B%20tr%C6%B0%E1%BB%9Dng%20n%E1%BB%99i"
+      "highlight_url": "https://vietnamfinance.vn/bao-cao-tong-quan-nganh-game-mobile-viet-nam-nam-2025-d143841.html#:~:text=S%E1%BB%91%20li%E1%BB%87u%20b%C3%A1o%20c%C3%A1o%20ch%E1%BB%89%20ra%20r%E1%BA%B1ng%20th%E1%BB%8B%20tr%C6%B0%E1%BB%9Dng%20n%E1%BB%99i",
+      "data_period": "",
+      "data_period_end": null
     },
     {
       "id": "E21",
@@ -509,7 +609,9 @@
       "claim": "Thị trường game di động Việt Nam dự kiến đạt doanh thu 825 triệu USD vào năm 2025.",
       "verified": true,
       "match_score": 100.0,
-      "highlight_url": "https://games.gg/vi/news/thị-trường-game-mobile-việt-nam-đạt-doanh-thu-825-triệu-usd-năm-2025#:~:text=Th%E1%BB%8B%20tr%C6%B0%E1%BB%9Dng%20game%20di%20%C4%91%E1%BB%99ng%20Vi%E1%BB%87t%20Nam%20%C4%91%E1%BA%A1t%20doanh%20thu"
+      "highlight_url": "https://games.gg/vi/news/thị-trường-game-mobile-việt-nam-đạt-doanh-thu-825-triệu-usd-năm-2025#:~:text=Th%E1%BB%8B%20tr%C6%B0%E1%BB%9Dng%20game%20di%20%C4%91%E1%BB%99ng%20Vi%E1%BB%87t%20Nam%20%C4%91%E1%BA%A1t%20doanh%20thu",
+      "data_period": "2025",
+      "data_period_end": "2025-12-31"
     },
     {
       "id": "E22",
@@ -518,7 +620,9 @@
       "claim": "Việt Nam hiện có khoảng 54 triệu game thủ di động và nằm trong top 7 quốc gia có số lượt tải game di động cao nhất toàn cầu.",
       "verified": true,
       "match_score": 100.0,
-      "highlight_url": "https://games.gg/vi/news/thị-trường-game-mobile-việt-nam-đạt-doanh-thu-825-triệu-usd-năm-2025#:~:text=Hi%E1%BB%87n%20t%E1%BA%A1i%2C%20qu%E1%BB%91c%20gia%20n%C3%A0y%20c%C3%B3%20kho%E1%BA%A3ng%2054%20tri%E1%BB%87u%20game"
+      "highlight_url": "https://games.gg/vi/news/thị-trường-game-mobile-việt-nam-đạt-doanh-thu-825-triệu-usd-năm-2025#:~:text=Hi%E1%BB%87n%20t%E1%BA%A1i%2C%20qu%E1%BB%91c%20gia%20n%C3%A0y%20c%C3%B3%20kho%E1%BA%A3ng%2054%20tri%E1%BB%87u%20game",
+      "data_period": "",
+      "data_period_end": null
     },
     {
       "id": "E23",
@@ -527,7 +631,9 @@
       "claim": "Quy mô thị trường game di động Việt Nam đạt 500 triệu USD vào năm 2024 và dự kiến đạt 1.100 triệu USD vào năm 2033, với CAGR 8,1% từ 2025-2033.",
       "verified": true,
       "match_score": 100.0,
-      "highlight_url": "https://www.imarcgroup.com/report/vi/vietnam-mobile-gaming-market#:~:text=Quy%20m%C3%B4%20th%E1%BB%8B%20tr%C6%B0%E1%BB%9Dng%20game%20di%20%C4%91%E1%BB%99ng%20t%E1%BA%A1i%20Vi%E1%BB%87t%20Nam"
+      "highlight_url": "https://www.imarcgroup.com/report/vi/vietnam-mobile-gaming-market#:~:text=Quy%20m%C3%B4%20th%E1%BB%8B%20tr%C6%B0%E1%BB%9Dng%20game%20di%20%C4%91%E1%BB%99ng%20t%E1%BA%A1i%20Vi%E1%BB%87t%20Nam",
+      "data_period": "2024",
+      "data_period_end": "2024-12-31"
     },
     {
       "id": "E24",
@@ -536,7 +642,9 @@
       "claim": "Các thể loại game casual và game cạnh tranh đang chiếm ưu thế trên thị trường game di động Việt Nam.",
       "verified": true,
       "match_score": 100.0,
-      "highlight_url": "https://www.imarcgroup.com/report/vi/vietnam-mobile-gaming-market#:~:text=C%C3%A1c%20th%E1%BB%83%20lo%E1%BA%A1i%20ph%E1%BB%95%20bi%E1%BA%BFn%20nh%C6%B0%20game%20casual%20v%C3%A0%20game"
+      "highlight_url": "https://www.imarcgroup.com/report/vi/vietnam-mobile-gaming-market#:~:text=C%C3%A1c%20th%E1%BB%83%20lo%E1%BA%A1i%20ph%E1%BB%95%20bi%E1%BA%BFn%20nh%C6%B0%20game%20casual%20v%C3%A0%20game",
+      "data_period": "",
+      "data_period_end": null
     },
     {
       "id": "E25",
@@ -545,7 +653,9 @@
       "claim": "Sự gia tăng sử dụng điện thoại thông minh và các gói dữ liệu giá rẻ là những yếu tố chính thúc đẩy thị trường game di động Việt Nam.",
       "verified": true,
       "match_score": 100.0,
-      "highlight_url": "https://www.imarcgroup.com/report/vi/vietnam-mobile-gaming-market#:~:text=S%E1%BB%B1%20gia%20t%C4%83ng%20nhanh%20ch%C3%B3ng%20c%E1%BB%A7a%20vi%E1%BB%87c%20s%E1%BB%AD%20d%E1%BB%A5ng%20%C4%91i%E1%BB%87n"
+      "highlight_url": "https://www.imarcgroup.com/report/vi/vietnam-mobile-gaming-market#:~:text=S%E1%BB%B1%20gia%20t%C4%83ng%20nhanh%20ch%C3%B3ng%20c%E1%BB%A7a%20vi%E1%BB%87c%20s%E1%BB%AD%20d%E1%BB%A5ng%20%C4%91i%E1%BB%87n",
+      "data_period": "",
+      "data_period_end": null
     },
     {
       "id": "E26",
@@ -554,7 +664,9 @@
       "claim": "Thị trường game mobile Việt Nam năm 2025 có 54 triệu người chơi và doanh thu dự kiến đạt 825 triệu USD.",
       "verified": true,
       "match_score": 100.0,
-      "highlight_url": "https://gamota.com/gamota-lab/reports/gamota-releases-vietnam-mobile-gaming-year-in-review-2025-report-revenue-reaches-825-million#:~:text=Gamota%20ph%C3%A1t%20h%C3%A0nh%20b%C3%A1o%20c%C3%A1o%20Vietnam%20Mobile%20Gaming%20Year-in-Review%202025%2C"
+      "highlight_url": "https://gamota.com/gamota-lab/reports/gamota-releases-vietnam-mobile-gaming-year-in-review-2025-report-revenue-reaches-825-million#:~:text=Gamota%20ph%C3%A1t%20h%C3%A0nh%20b%C3%A1o%20c%C3%A1o%20Vietnam%20Mobile%20Gaming%20Year-in-Review%202025%2C",
+      "data_period": "2025",
+      "data_period_end": "2025-12-31"
     },
     {
       "id": "E27",
@@ -563,7 +675,9 @@
       "claim": "Doanh thu thị trường Mobile Gaming Việt Nam năm 2025 ước tính đạt 825 triệu USD, tăng 9,16% so với năm trước.",
       "verified": true,
       "match_score": 100.0,
-      "highlight_url": "https://gamota.com/gamota-lab/reports/gamota-releases-vietnam-mobile-gaming-year-in-review-2025-report-revenue-reaches-825-million#:~:text=Doanh%20thu%20n%C4%83m%202025%20%C6%B0%E1%BB%9Bc%20t%C3%ADnh%20%C4%91%E1%BA%A1t%20825%20tri%E1%BB%87u%20USD%2C"
+      "highlight_url": "https://gamota.com/gamota-lab/reports/gamota-releases-vietnam-mobile-gaming-year-in-review-2025-report-revenue-reaches-825-million#:~:text=Doanh%20thu%20n%C4%83m%202025%20%C6%B0%E1%BB%9Bc%20t%C3%ADnh%20%C4%91%E1%BA%A1t%20825%20tri%E1%BB%87u%20USD%2C",
+      "data_period": "2025",
+      "data_period_end": "2025-12-31"
     },
     {
       "id": "E28",
@@ -572,7 +686,9 @@
       "claim": "Các thể loại game MMORPG, Chiến thuật 4X và Team Battle là những nhóm game chủ lực, chiếm phần lớn doanh thu trên thị trường game mobile Việt Nam.",
       "verified": true,
       "match_score": 100.0,
-      "highlight_url": "https://gamota.com/gamota-lab/reports/gamota-releases-vietnam-mobile-gaming-year-in-review-2025-report-revenue-reaches-825-million#:~:text=Nh%C3%B3m%20ch%E1%BB%A7%20l%E1%BB%B1c%3A%20MMORPG%2C%20Chi%E1%BA%BFn%20thu%E1%BA%ADt%204X%20v%C3%A0%20Team%20Battle"
+      "highlight_url": "https://gamota.com/gamota-lab/reports/gamota-releases-vietnam-mobile-gaming-year-in-review-2025-report-revenue-reaches-825-million#:~:text=Nh%C3%B3m%20ch%E1%BB%A7%20l%E1%BB%B1c%3A%20MMORPG%2C%20Chi%E1%BA%BFn%20thu%E1%BA%ADt%204X%20v%C3%A0%20Team%20Battle",
+      "data_period": "",
+      "data_period_end": null
     }
   ],
   "quality": {
@@ -615,12 +731,12 @@
     "rejected_quotes": []
   },
   "trace": {
-    "run_timestamp": "2026-10-15T01:16:19",
+    "run_timestamp": "2026-10-23T13:22:35",
     "current_date": "2026-10-15",
-    "duration_seconds": 30.5,
+    "duration_seconds": 0.04,
     "llm_provider": "gemini",
     "llm_model": "gemini-3.8-flash",
-    "llm_calls_count": 4,
+    "llm_calls_count": 0,
     "search_provider": "ddgs",
     "queries_executed": [
       "Vietnam mobile game market size 2025 2026 Sensor Tower",
@@ -657,7 +773,353 @@
       "[Bước 5/6 · Tổng hợp nhận định (Synthesize)] Đang tổng hợp nhận định, kiểm tra tiền đề, phát hiện mâu thuẫn và khoảng trống dữ liệu từ 28 bằng chứng đã xác minh...",
       "[Bước 5/6 · Hoàn tất Synthesize] Đã tổng hợp 8 nhận định dự thảo, 1 điểm mâu thuẫn, 1 kiểm tra tiền đề và 3 khoảng trống dữ liệu.",
       "[Bước 6/6 · Chấm điểm độ tin cậy & Tự kiểm (Score & Self-Check)] Áp dụng quy tắc chấm điểm CAO/TRUNG BÌNH/THẤP, gắn link Text Fragment và tính chỉ số tự kiểm...",
-      "[Bước 6/6 · Hoàn tất] Hoàn thành trong 30.5s với 4 lần gọi LLM. Tỷ lệ trích dẫn xác minh: 100.0% | Số nhận định CAO từ nguồn C: 0."
-    ]
-  }
+      "[Bước 6b/6 · Phân tích độ mới dữ liệu (Change Request A2)] Mức ảnh hưởng: KHÔNG | Số nguồn then chốt cũ (> 18 tháng hoặc chưa rõ tuổi): 0.",
+      "[Bước 6/6 · Hoàn tất] Hoàn thành trong 0.04s với 0 lần gọi LLM. Tỷ lệ trích dẫn xác minh: 100.0% | Số nhận định CAO từ nguồn C: 0."
+    ],
+    "keywords": [
+      "Vietnam mobile game market",
+      "mobile game revenue",
+      "market size",
+      "player base",
+      "ARPU Vietnam",
+      "thị trường game mobile Việt Nam",
+      "doanh thu game di động",
+      "người chơi game",
+      "quy mô thị trường",
+      "Đông Nam Á game"
+    ],
+    "version": 1,
+    "parent_run_timestamp": ""
+  },
+  "recency": {
+    "reference_date": "2026-10-15",
+    "alert_months": 18,
+    "impact_level": "KHÔNG",
+    "summary": "Mức ảnh hưởng: KHÔNG. Toàn bộ 8/8 nhận định đều dựa trên nguồn và số liệu mới trong 18 tháng gần đây (tính đến 2026-10-15).",
+    "sources": [
+      {
+        "source_id": "S1",
+        "status": "MỚI",
+        "reasons": [
+          "đăng 2026 (chỉ biết năm) (0–10 tháng)"
+        ],
+        "date_display": "2026 (chỉ biết năm)",
+        "date_method_label": "chỉ có năm trong URL/tiêu đề — ước tính sai số ±6 tháng",
+        "age_display": "0–10 tháng",
+        "older_than_alert": false,
+        "possibly_older_than_alert": false,
+        "data_vintage": "",
+        "date_conflict": false,
+        "supported_insight_ids": [],
+        "is_key": false,
+        "key_reasons": []
+      },
+      {
+        "source_id": "S2",
+        "status": "MỚI",
+        "reasons": [
+          "đăng 02/05/2026 (~6 tháng), kỳ số liệu 2025"
+        ],
+        "date_display": "02/05/2026",
+        "date_method_label": "ngày ghi trong tiêu đề/đầu bài viết",
+        "age_display": "~6 tháng",
+        "older_than_alert": false,
+        "possibly_older_than_alert": false,
+        "data_vintage": "2025",
+        "date_conflict": false,
+        "supported_insight_ids": [
+          "I2",
+          "I3",
+          "I4",
+          "I5"
+        ],
+        "is_key": true,
+        "key_reasons": [
+          "bỏ nguồn làm giảm/mất căn cứ nhận định I2 (TRUNG BÌNH → THẤP), I3 (CAO → THẤP), I4 (CAO → THẤP), I5 (CAO → TRUNG BÌNH)",
+          "nguồn hạng A duy nhất của nhận định I2, I3, I4",
+          "hỗ trợ 4/8 nhận định (I2, I3, I4, I5)"
+        ]
+      },
+      {
+        "source_id": "S3",
+        "status": "MỚI",
+        "reasons": [
+          "đăng 05/2025 (~17 tháng)"
+        ],
+        "date_display": "05/2025",
+        "date_method_label": "tháng/năm trong URL hoặc tiêu đề",
+        "age_display": "~17 tháng",
+        "older_than_alert": false,
+        "possibly_older_than_alert": false,
+        "data_vintage": "",
+        "date_conflict": false,
+        "supported_insight_ids": [
+          "I5"
+        ],
+        "is_key": false,
+        "key_reasons": []
+      },
+      {
+        "source_id": "S4",
+        "status": "MỚI",
+        "reasons": [
+          "đăng Q1/2026 (7–10 tháng)"
+        ],
+        "date_display": "Q1/2026",
+        "date_method_label": "suy từ quý ghi trong URL/tiêu đề",
+        "age_display": "7–10 tháng",
+        "older_than_alert": false,
+        "possibly_older_than_alert": false,
+        "data_vintage": "",
+        "date_conflict": false,
+        "supported_insight_ids": [],
+        "is_key": false,
+        "key_reasons": []
+      },
+      {
+        "source_id": "S5",
+        "status": "MỚI",
+        "reasons": [
+          "đăng 17/03/2026 (~7 tháng), kỳ số liệu 2025"
+        ],
+        "date_display": "17/03/2026",
+        "date_method_label": "ngày trong đường dẫn URL",
+        "age_display": "~7 tháng",
+        "older_than_alert": false,
+        "possibly_older_than_alert": false,
+        "data_vintage": "2025",
+        "date_conflict": false,
+        "supported_insight_ids": [
+          "I1",
+          "I6"
+        ],
+        "is_key": true,
+        "key_reasons": [
+          "hỗ trợ 2/8 nhận định (I1, I6)"
+        ]
+      },
+      {
+        "source_id": "S6",
+        "status": "MỚI",
+        "reasons": [
+          "đăng 03/2026 (~7 tháng), kỳ số liệu 2025"
+        ],
+        "date_display": "03/2026",
+        "date_method_label": "tháng/năm trong URL hoặc tiêu đề",
+        "age_display": "~7 tháng",
+        "older_than_alert": false,
+        "possibly_older_than_alert": false,
+        "data_vintage": "2025",
+        "date_conflict": false,
+        "supported_insight_ids": [
+          "I8"
+        ],
+        "is_key": false,
+        "key_reasons": []
+      },
+      {
+        "source_id": "S7",
+        "status": "MỚI",
+        "reasons": [
+          "đăng 27/04/2026 (~6 tháng), kỳ số liệu 2025"
+        ],
+        "date_display": "27/04/2026",
+        "date_method_label": "ngày ghi trong tiêu đề/đầu bài viết",
+        "age_display": "~6 tháng",
+        "older_than_alert": false,
+        "possibly_older_than_alert": false,
+        "data_vintage": "2025",
+        "date_conflict": false,
+        "supported_insight_ids": [
+          "I2",
+          "I5",
+          "I7"
+        ],
+        "is_key": true,
+        "key_reasons": [
+          "hỗ trợ 3/8 nhận định (I2, I5, I7)"
+        ]
+      },
+      {
+        "source_id": "S8",
+        "status": "MỚI",
+        "reasons": [
+          "đăng 23/04/2026 (~6 tháng), kỳ số liệu 2025"
+        ],
+        "date_display": "23/04/2026",
+        "date_method_label": "ngày ghi trong tiêu đề/đầu bài viết",
+        "age_display": "~6 tháng",
+        "older_than_alert": false,
+        "possibly_older_than_alert": false,
+        "data_vintage": "2025",
+        "date_conflict": false,
+        "supported_insight_ids": [
+          "I3",
+          "I4"
+        ],
+        "is_key": true,
+        "key_reasons": [
+          "bỏ nguồn làm giảm/mất căn cứ nhận định I3 (CAO → TRUNG BÌNH), I4 (CAO → TRUNG BÌNH)",
+          "hỗ trợ 2/8 nhận định (I3, I4)"
+        ]
+      },
+      {
+        "source_id": "S9",
+        "status": "MỚI",
+        "reasons": [
+          "đăng 09/06/2026 (~4 tháng), kỳ số liệu 2025"
+        ],
+        "date_display": "09/06/2026",
+        "date_method_label": "ngày ghi trong tiêu đề/đầu bài viết",
+        "age_display": "~4 tháng",
+        "older_than_alert": false,
+        "possibly_older_than_alert": false,
+        "data_vintage": "2025",
+        "date_conflict": false,
+        "supported_insight_ids": [
+          "I1"
+        ],
+        "is_key": false,
+        "key_reasons": []
+      },
+      {
+        "source_id": "S10",
+        "status": "CŨ",
+        "reasons": [
+          "kỳ số liệu 2024, ~21 tháng"
+        ],
+        "date_display": "07/08/2025",
+        "date_method_label": "ngày ghi trong tiêu đề/đầu bài viết",
+        "age_display": "~14 tháng",
+        "older_than_alert": false,
+        "possibly_older_than_alert": false,
+        "data_vintage": "2024",
+        "date_conflict": false,
+        "supported_insight_ids": [],
+        "is_key": false,
+        "key_reasons": []
+      },
+      {
+        "source_id": "S11",
+        "status": "MỚI",
+        "reasons": [
+          "đăng 04/06/2026 (~4 tháng)"
+        ],
+        "date_display": "04/06/2026",
+        "date_method_label": "ngày ghi trong tiêu đề/đầu bài viết",
+        "age_display": "~4 tháng",
+        "older_than_alert": false,
+        "possibly_older_than_alert": false,
+        "data_vintage": "",
+        "date_conflict": false,
+        "supported_insight_ids": [],
+        "is_key": false,
+        "key_reasons": []
+      },
+      {
+        "source_id": "S12",
+        "status": "MỚI",
+        "reasons": [
+          "đăng 04/06/2026 (~4 tháng), kỳ số liệu 2025"
+        ],
+        "date_display": "04/06/2026",
+        "date_method_label": "ngày ghi trong tiêu đề/đầu bài viết",
+        "age_display": "~4 tháng",
+        "older_than_alert": false,
+        "possibly_older_than_alert": false,
+        "data_vintage": "2025",
+        "date_conflict": false,
+        "supported_insight_ids": [
+          "I1",
+          "I5"
+        ],
+        "is_key": true,
+        "key_reasons": [
+          "hỗ trợ 2/8 nhận định (I1, I5)"
+        ]
+      }
+    ],
+    "key_old_sources": [],
+    "insights": [
+      {
+        "insight_id": "I1",
+        "status": "MỚI",
+        "non_recent_source_ids": [],
+        "note": ""
+      },
+      {
+        "insight_id": "I2",
+        "status": "MỚI",
+        "non_recent_source_ids": [],
+        "note": ""
+      },
+      {
+        "insight_id": "I3",
+        "status": "MỚI",
+        "non_recent_source_ids": [],
+        "note": ""
+      },
+      {
+        "insight_id": "I4",
+        "status": "MỚI",
+        "non_recent_source_ids": [],
+        "note": ""
+      },
+      {
+        "insight_id": "I5",
+        "status": "MỚI",
+        "non_recent_source_ids": [],
+        "note": ""
+      },
+      {
+        "insight_id": "I6",
+        "status": "MỚI",
+        "non_recent_source_ids": [],
+        "note": ""
+      },
+      {
+        "insight_id": "I7",
+        "status": "MỚI",
+        "non_recent_source_ids": [],
+        "note": ""
+      },
+      {
+        "insight_id": "I8",
+        "status": "MỚI",
+        "non_recent_source_ids": [],
+        "note": ""
+      }
+    ],
+    "upcoming_changes": [
+      {
+        "date": "2027-05-04",
+        "source_ids": [
+          "S2"
+        ],
+        "changes": [
+          "I3: CAO → TRUNG BÌNH",
+          "I4: CAO → TRUNG BÌNH",
+          "I5: CAO → TRUNG BÌNH"
+        ]
+      }
+    ],
+    "suggested_refresh_queries": [],
+    "certainty_groups": {
+      "Đủ cơ sở": [
+        "I3",
+        "I4",
+        "I5"
+      ],
+      "Cần lưu ý": [
+        "I2"
+      ],
+      "Chưa chắc chắn": [
+        "I1",
+        "I6",
+        "I7",
+        "I8"
+      ]
+    }
+  },
+  "refresh": null
 }

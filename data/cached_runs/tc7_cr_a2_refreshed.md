@@ -1,7 +1,7 @@
 # Báo cáo Nghiên cứu Thị trường Game
 **Câu hỏi nghiên cứu:** Mô hình kiếm tiền nào đang hiệu quả với game casual tại Indonesia và Philippines?
 
-> **Thời điểm chạy:** `2026-10-23T12:33:06` · **Thời gian xử lý:** `0.04s` · **Model:** `gemini/gemini-3.8-flash` (0 lệnh gọi LLM) · **Search:** `ddgs`
+> **Thời điểm chạy:** `2026-10-23T13:22:35` · **Thời gian xử lý:** `0.03s` · **Model:** `gemini/gemini-3.8-flash` (0 lệnh gọi LLM) · **Search:** `ddgs`
 
 ## 1. Trả lời ngắn & Khuyến nghị ra quyết định
 ### Trả lời ngắn
@@ -195,7 +195,7 @@ Các truy vấn tìm kiếm tự động sinh để tìm bản báo cáo/số li
 - `Casual Mobile Gaming 2025 site:ripplereports.com`
 
 ### 7.5 Kết quả vòng làm mới (nếu đã chạy)
-- **Trạng thái:** `ĐÃ LÀM MỚI` · **Ngày tham chiếu làm mới:** `2026-10-23` · **Nguồn mục tiêu:** `S1, S5` · **Nguồn mới bổ sung:** `S13, S14, S15, S16, S17, S18` · **Số lệnh gọi LLM:** `4` (47.8s)
+- **Trạng thái:** `ĐÃ LÀM MỚI` · **Ngày tham chiếu làm mới:** `2026-10-23` · **Nguồn mục tiêu:** `S1, S5` · **Nguồn mới bổ sung:** `S13, S14, S15, S16, S17, S18` · **Số lệnh gọi LLM:** `0` (0.03s)
 
 | Bằng chứng cũ | Bằng chứng mới | Kết quả đối chiếu | Giải thích (kỳ cũ vs kỳ mới) |
 |---|---|---|---|

@@ -31,6 +31,7 @@ def run(
     progress_callback: Optional[ProgressCallback] = None,
     use_cache: bool = True,
     reference_date: Optional[date] = None,
+    refresh_old: bool = False,
     llm_client: Optional[LLMClient] = None,
     alert_months: Optional[int] = None,
 ) -> Report:
@@ -218,6 +219,15 @@ def run(
     )
     final_report.trace["step_logs"] = step_logs
     final_report.trace["duration_seconds"] = duration_sec
+    if refresh_old:
+        from research.refresh import refresh_old_sources
+
+        final_report = refresh_old_sources(
+            report=final_report,
+            reference_date=ref_date,
+            use_cache=use_cache,
+            progress_callback=progress_callback,
+        )
     return final_report
 
 

@@ -1,0 +1,2159 @@
+{
+  "question": "Mô hình kiếm tiền nào đang hiệu quả với game casual tại Indonesia và Philippines?",
+  "short_answer": "Tại Indonesia và Philippines, mô hình kiếm tiền kết hợp (hybrid revenue models) đang ngày càng hiệu quả cho game casual, đặc biệt là sự kết hợp giữa quảng cáo trong ứng dụng (IAA) và mua hàng trong ứng dụng (IAP). Quảng cáo trong ứng dụng là chiến lược phổ biến nhất ở Indonesia, trong khi IAP vẫn là mô hình hàng đầu cho game Casual nói chung, với mô hình hybrid bám sát phía sau. Lưu ý chênh lệch số liệu giữa các nguồn theo phạm vi/kỳ báo cáo: Số liệu cũ ↔ mới (CẬP NHẬT): Doanh thu mua hàng trong ứng dụng (IAP) của Đông Nam Á đạt 625 triệu USD trong quý 1 năm 2 ([E2/S1, Q1/2025]: \"While SEA currently ranks seventh globally in in-app purchase (IAP) revenue at $625 million in Q1 2025, this figure signals...\" vs. [E29/S13, 2026-06]: \"In-app purchase revenue reached $5.3 billion, up 16.3% YoY, marking a new high for the market.\" — Bằng chứng mới [E29] cập nhật doanh thu IAP của Đông Nam Á lên 5,3 tỷ USD, tăng đáng kể so với 625 triệu USD trong [E2] (Q1/2025).); Số liệu cũ ↔ mới (CẬP NHẬT): Chi tiêu của người dùng cho mua hàng trong ứng dụng (IAP) giảm trong khi doanh thu từ quản ([E12/S5, Q2/2024]: \"Consumer spending on in-app purchases (IAP) dropped while in-app advertising (IAA) rose. Overall, IAA increased by 4% in Q2-2024 compared...\" vs. [E34/S15, 2026-06]: \"Design your game economy to support both IAP and rewarded ads from inception. Retrofit hybrid monetization is significantly harder and...\" — Bằng chứng mới [E34] khuyến nghị thiết kế kinh tế game hỗ trợ cả IAP và quảng cáo có thưởng, cập nhật xu hướng từ [E12] (Q2/2024) về sự thay đổi giữa IAP và IAA.); Số liệu cũ ↔ mới (CẬP NHẬT): Tăng trưởng IAA trên Android được dẫn dắt bởi các game Hypercasual, Puzzle và Simulation,  ([E13/S5, Q2/2024]: \"Android’s IAA growth was led by Hypercasual, Puzzle and Simulation games. Hypercasual games saw a 5% rise in Q2-2024 (YoY...\" vs. [E31/S15, 2026-06]: \"The most significant narrative of the period is the hybrid-casual revolution: titles that combine casual accessibility with deeper progression and...\" vs. [E32/S15, 2022]: \"By 2027, we expect pure hyper-casual to represent less than 5% of casual gaming revenue, down from an estimated 12%...\" vs. [E40/S18, 2026-07-29]: \"By combining hypercasual accessibility with casual-style progression, LiveOps, and hybrid IAA/IAP monetization, subgenres like Sort, Screw and Block puzzles continue...\" — Bằng chứng mới [E31], [E32], [E40] cập nhật xu hướng tăng trưởng của game hybrid-casual, thay vì chỉ hypercasual như [E13] (Q2/2024).) [Độ mới dữ liệu] Mức ảnh hưởng: ĐÁNG KỂ. 7/13 nhận định chưa có bằng chứng mới trong 18 tháng gần đây (I2, I3, I4, I6, I9, I10, I12); 3 nhận định dựa một phần vào dữ liệu cũ. Nguồn cũ then chốt: S1 (cùng S15, S2) (sensortower.com, 05/2025, ~17 tháng, số liệu Q1/2025). Chi tiết ở mục 7.",
+  "recommendation": "Để tối ưu hóa hiệu quả kiếm tiền cho game casual tại Indonesia và Philippines, Gamota nên tập trung vào mô hình hybrid (IAA + IAP). Cụ thể, hãy tận dụng quảng cáo có thưởng (rewarded ads) để thu hút và giữ chân người chơi miễn phí, đồng thời thiết kế các đường dẫn chuyển đổi rõ ràng sang IAP thông qua các ưu đãi giá trị (ví dụ: gói khởi đầu, ưu đãi giới hạn). Ưu tiên phát triển trên Android do thị trường này dẫn đầu về tăng trưởng cài đặt và IAA, đồng thời cân nhắc các thể loại Hypercasual, Puzzle và Simulation. [Sau vòng làm mới 23/10/2026] Kết quả làm mới: đã xác nhận thêm bằng chứng mới cho I1, I5; phát hiện số liệu mới thay đổi/mâu thuẫn tại I2, I4; khuyến nghị gốc được viết trước vòng làm mới, cần đọc lại các nhận định có đánh dấu.",
+  "decision_criteria": [
+    "Hiệu quả kiếm tiền (ARPU, LTV) của từng mô hình",
+    "Mức độ chấp nhận của người chơi đối với từng mô hình kiếm tiền",
+    "Chi phí phát triển và vận hành liên quan đến từng mô hình",
+    "Tiềm năng tăng trưởng và bền vững của mô hình trong dài hạn",
+    "Mức độ cạnh tranh và rào cản gia nhập cho các mô hình kiếm tiền cụ thể"
+  ],
+  "option_matrix": [
+    {
+      "option": "Quảng cáo trong ứng dụng (IAA)",
+      "criteria_assessment": {
+        "Hiệu quả kiếm tiền (ARPU, LTV) của từng mô hình": "ARPU thường thấp hơn IAP, nhưng IAA tổng thể tăng 4% trong Q2/2024 so với Q2/2023. Tăng trưởng IAA trên Android được dẫn dắt bởi Hypercasual, Puzzle và Simulation [E12, E13, E18].",
+        "Mức độ chấp nhận của người chơi đối với từng mô hình kiếm tiền": "Quảng cáo là chiến lược kiếm tiền phổ biến nhất ở Indonesia (86% nhà phát hành sử dụng) [E9, E24]. Quảng cáo có thưởng hiệu quả trong việc thu hút người chơi miễn phí [E18].",
+        "Chi phí phát triển và vận hành liên quan đến từng mô hình": "Không có dữ liệu cụ thể về chi phí, nhưng mô hình này giúp mở rộng nhanh chóng lượng người dùng với chi phí UA hiệu quả [E20].",
+        "Tiềm năng tăng trưởng và bền vững của mô hình trong dài hạn": "IAA đang tăng trưởng, đặc biệt trên Android và với các thể loại casual [E12, E13]. Indonesia và Philippines dẫn đầu về số lượng nhà quảng cáo game di động trong khu vực [E21].",
+        "Mức độ cạnh tranh và rào cản gia nhập cho các mô hình kiếm tiền cụ thể": "Game casual chiếm tỷ lệ lớn nhất về số lượng nhà quảng cáo tại Đông Nam Á (28.4%) [E22]."
+      },
+      "suitability": "Phù hợp để mở rộng lượng người dùng nhanh chóng và hiệu quả chi phí, đặc biệt cho các game casual/hypercasual trên Android. Cần chiến lược chuyển đổi rõ ràng để tăng ARPPU.",
+      "evidence_ids": [
+        "E9",
+        "E12",
+        "E13",
+        "E18",
+        "E20",
+        "E21",
+        "E22",
+        "E24"
+      ]
+    },
+    {
+      "option": "Mua hàng trong ứng dụng (IAP)",
+      "criteria_assessment": {
+        "Hiệu quả kiếm tiền (ARPU, LTV) của từng mô hình": "IAP là mô hình kiếm tiền hàng đầu cho game Casual nói chung [E15]. ARPPU của iOS cao hơn, chiếm khoảng 60% doanh thu trong game Casual [E16]. Doanh thu IAP ở Đông Nam Á đạt 625 triệu USD trong Q1/2025, nhưng giảm nhẹ 3% trong H1/2024 [E2, E6].",
+        "Mức độ chấp nhận của người chơi đối với từng mô hình kiếm tiền": "29% nhà phát hành game di động Indonesia sử dụng IAP, thấp hơn mức trung bình toàn cầu (35%) [E24, E25].",
+        "Chi phí phát triển và vận hành liên quan đến từng mô hình": "Không có dữ liệu cụ thể về chi phí.",
+        "Tiềm năng tăng trưởng và bền vững của mô hình trong dài hạn": "Doanh thu IAP ở Indonesia tăng 1% và Philippines tăng 3% từ tháng 1 đến tháng 8 năm 2024 [E28]. Tiềm năng kiếm tiền chưa được khai thác đáng kể ở Đông Nam Á [E2].",
+        "Mức độ cạnh tranh và rào cản gia nhập cho các mô hình kiếm tiền cụ thể": "Các thể loại chuyên sâu hơn như Chiến thuật và RPG thống trị doanh thu IAP, không phải game casual [E4, E8]."
+      },
+      "suitability": "Hiệu quả cao cho người chơi trả tiền, đặc biệt trên iOS. Tuy nhiên, cần cân nhắc mức độ chấp nhận thấp hơn ở Indonesia và sự cạnh tranh từ các thể loại game chuyên sâu.",
+      "evidence_ids": [
+        "E2",
+        "E4",
+        "E6",
+        "E8",
+        "E15",
+        "E16",
+        "E24",
+        "E25",
+        "E28"
+      ]
+    },
+    {
+      "option": "Mô hình kết hợp (Hybrid: IAA + IAP)",
+      "criteria_assessment": {
+        "Hiệu quả kiếm tiền (ARPU, LTV) của từng mô hình": "Ngày càng phổ biến, đặc biệt với game Hypercasual (tỷ lệ áp dụng tăng 37% trong 9 tháng) [E11]. Với Hypercasual trên iOS, mô hình hybrid có ARPU cao hơn một chút so với IAA [E15]. Mô hình này tận dụng quảng cáo có thưởng để giữ chân người chơi miễn phí và khuyến khích chuyển đổi sang IAP [E19].",
+        "Mức độ chấp nhận của người chơi đối với từng mô hình kiếm tiền": "Giảm rào cản gia nhập cho người chơi mới [E20].",
+        "Chi phí phát triển và vận hành liên quan đến từng mô hình": "Lợi thế là mở rộng nhanh chóng lượng người dùng với chi phí UA hiệu quả [E20].",
+        "Tiềm năng tăng trưởng và bền vững của mô hình trong dài hạn": "Phù hợp cho game casual/casual-puzzle [E20]. Xu hướng chung của ngành game di động đang hướng tới mô hình hybrid [E11].",
+        "Mức độ cạnh tranh và rào cản gia nhập cho các mô hình kiếm tiền cụ thể": "Không có dữ liệu cụ thể về mức độ cạnh tranh riêng cho mô hình hybrid."
+      },
+      "suitability": "Mô hình tối ưu nhất cho game casual tại Indonesia và Philippines, kết hợp lợi thế của cả IAA và IAP để tối đa hóa doanh thu và mở rộng cơ sở người dùng.",
+      "evidence_ids": [
+        "E11",
+        "E15",
+        "E19",
+        "E20"
+      ]
+    }
+  ],
+  "insights": [
+    {
+      "id": "I1",
+      "statement": "Đông Nam Á là thị trường game di động lớn thứ hai toàn cầu về lượt tải xuống, với Indonesia dẫn đầu khu vực về số lượt tải.",
+      "type": "fact",
+      "evidence_ids": [
+        "E1",
+        "E3",
+        "E5",
+        "E27",
+        "E35"
+      ],
+      "confidence": "TRUNG BÌNH",
+      "confidence_reason": "Đạt mức TRUNG BÌNH: nguồn tham chiếu (S1 (Hạng A, sensortower.com), S11 (Hạng C, gamedevreports.substack.com), S16 (Hạng C, mobidictum.com), S2 (Hạng A, sensortower.com)) · Độ mới: MỘT PHẦN CŨ (S1 05/2025, kỳ Q1/2025; S2 10/2024, kỳ H1/2024; S11 01/11/2024, kỳ 08/2024)",
+      "assumptions": [],
+      "is_forecast": false,
+      "has_conflict": false
+    },
+    {
+      "id": "I2",
+      "statement": "Doanh thu mua hàng trong ứng dụng (IAP) của Đông Nam Á đạt 625 triệu USD trong quý 1 năm 2025, xếp thứ bảy toàn cầu, cho thấy tiềm năng kiếm tiền chưa được khai thác đáng kể.",
+      "type": "fact",
+      "evidence_ids": [
+        "E2"
+      ],
+      "confidence": "THẤP",
+      "confidence_reason": "Các nguồn đang có số liệu/nhận định mâu thuẫn chưa giải quyết (S1 (Hạng A, sensortower.com)) · Độ mới: KHÔNG CÓ BẰNG CHỨNG MỚI (S1 05/2025, kỳ Q1/2025)",
+      "assumptions": [],
+      "is_forecast": false,
+      "has_conflict": true
+    },
+    {
+      "id": "I3",
+      "statement": "Các thể loại game dễ tiếp cận như Arcade và Simulation có lượng tải xuống cao ở Đông Nam Á, nhưng doanh thu IAP chủ yếu đến từ các thể loại chuyên sâu hơn như Chiến thuật và RPG.",
+      "type": "fact",
+      "evidence_ids": [
+        "E4",
+        "E7",
+        "E8"
+      ],
+      "confidence": "TRUNG BÌNH",
+      "confidence_reason": "Đạt mức TRUNG BÌNH: dữ liệu cũ dần 12–24 tháng (S1 (Hạng A, sensortower.com), S2 (Hạng A, sensortower.com)) · Độ mới: KHÔNG CÓ BẰNG CHỨNG MỚI (S1 05/2025, kỳ Q1/2025; S2 10/2024, kỳ 2024)",
+      "assumptions": [],
+      "is_forecast": false,
+      "has_conflict": false
+    },
+    {
+      "id": "I4",
+      "statement": "Quảng cáo trong ứng dụng (IAA) là chiến lược kiếm tiền phổ biến nhất trong game di động ở Indonesia (86% nhà phát hành sử dụng) và đang có xu hướng tăng trưởng, đặc biệt trên Android.",
+      "type": "fact",
+      "evidence_ids": [
+        "E9",
+        "E12",
+        "E13",
+        "E24",
+        "E25"
+      ],
+      "confidence": "THẤP",
+      "confidence_reason": "Các nguồn đang có số liệu/nhận định mâu thuẫn chưa giải quyết (S10 (Hạng C, 42matters.com), S3 (Hạng A, statista.com), S5 (Hạng B, appsflyer.com)) · Độ mới: KHÔNG CÓ BẰNG CHỨNG MỚI (S3 Không rõ ngày, kỳ 2024; S5 2024 (chỉ biết năm), kỳ Q2/2024; S10 2025 (chỉ biết năm))",
+      "assumptions": [],
+      "is_forecast": false,
+      "has_conflict": true
+    },
+    {
+      "id": "I5",
+      "statement": "Mô hình doanh thu kết hợp (hybrid revenue models) đang ngày càng phổ biến trong ngành game di động, đặc biệt với game Hypercasual khi tỷ lệ áp dụng tăng 37% trong 9 tháng.",
+      "type": "fact",
+      "evidence_ids": [
+        "E11",
+        "E31",
+        "E34",
+        "E40"
+      ],
+      "confidence": "TRUNG BÌNH",
+      "confidence_reason": "Đạt mức TRUNG BÌNH: 2 nguồn hạng C khác domain đồng thuận (S15 (Hạng C, ripplereports.com), S18 (Hạng C, friendlygamedev.com), S5 (Hạng B, appsflyer.com)) · Độ mới: MỘT PHẦN CŨ (S5 2024 (chỉ biết năm), kỳ 2024; S15 2026 (chỉ biết năm), kỳ 2022)",
+      "assumptions": [],
+      "is_forecast": false,
+      "has_conflict": false
+    },
+    {
+      "id": "I6",
+      "statement": "Đối với game Casual, IAP là mô hình kiếm tiền hàng đầu, nhưng mô hình hybrid cũng rất gần; trong khi với Hypercasual trên iOS, mô hình hybrid có ARPU cao hơn một chút so với IAA.",
+      "type": "fact",
+      "evidence_ids": [
+        "E15"
+      ],
+      "confidence": "THẤP",
+      "confidence_reason": "Dữ liệu cũ (>24 tháng hoặc không rõ ngày đăng) từ S6 (Hạng B, appsflyer.com) · Độ mới: KHÔNG CÓ BẰNG CHỨNG MỚI (S6 2024 (chỉ biết năm))",
+      "assumptions": [],
+      "is_forecast": false,
+      "has_conflict": false
+    },
+    {
+      "id": "I7",
+      "statement": "Quảng cáo có thưởng (rewarded ads) hiệu quả trong việc thu hút người chơi miễn phí nhưng có ARPU thấp hơn IAP, đòi hỏi chiến lược chuyển đổi rõ ràng để tăng ARPPU.",
+      "type": "fact",
+      "evidence_ids": [
+        "E18"
+      ],
+      "confidence": "THẤP",
+      "confidence_reason": "Chỉ có 1 nguồn hạng C mới hoặc nguồn A/B không rõ ngày (S7 (Hạng C, khuvuichoihuongnghiep.com))",
+      "assumptions": [],
+      "is_forecast": false,
+      "has_conflict": false
+    },
+    {
+      "id": "I8",
+      "statement": "Mô hình hybrid quảng cáo + IAP có lợi thế là mở rộng nhanh chóng lượng người dùng với chi phí UA hiệu quả, phù hợp cho game casual/casual-puzzle và giảm rào cản cho người chơi mới.",
+      "type": "fact",
+      "evidence_ids": [
+        "E19",
+        "E20"
+      ],
+      "confidence": "THẤP",
+      "confidence_reason": "Chỉ có 1 nguồn hạng C mới hoặc nguồn A/B không rõ ngày (S7 (Hạng C, khuvuichoihuongnghiep.com))",
+      "assumptions": [],
+      "is_forecast": false,
+      "has_conflict": false
+    },
+    {
+      "id": "I9",
+      "statement": "Indonesia và Philippines dẫn đầu Đông Nam Á về số lượng nhà quảng cáo game di động, với game casual chiếm tỷ lệ lớn nhất về số lượng nhà quảng cáo trong khu vực.",
+      "type": "fact",
+      "evidence_ids": [
+        "E21",
+        "E22"
+      ],
+      "confidence": "THẤP",
+      "confidence_reason": "Chỉ có 1 nguồn hạng C mới hoặc nguồn A/B không rõ ngày (S9 (Hạng C, mobidictum.com)) · Độ mới: KHÔNG CÓ BẰNG CHỨNG MỚI (S9 30/10/2024)",
+      "assumptions": [],
+      "is_forecast": false,
+      "has_conflict": false
+    },
+    {
+      "id": "I10",
+      "statement": "Doanh thu trong game ở Indonesia tăng 1% và Philippines tăng 3% từ tháng 1 đến tháng 8 năm 2024, cho thấy tiềm năng tăng trưởng doanh thu ở cả hai thị trường.",
+      "type": "fact",
+      "evidence_ids": [
+        "E28"
+      ],
+      "confidence": "THẤP",
+      "confidence_reason": "Chỉ có 1 nguồn hạng C mới hoặc nguồn A/B không rõ ngày (S11 (Hạng C, gamedevreports.substack.com)) · Độ mới: KHÔNG CÓ BẰNG CHỨNG MỚI (S11 01/11/2024, kỳ 08/2024)",
+      "assumptions": [],
+      "is_forecast": false,
+      "has_conflict": false
+    },
+    {
+      "id": "I11",
+      "statement": "Doanh thu mua hàng trong ứng dụng (IAP) ở Đông Nam Á đạt 5,3 tỷ USD, tăng 16,3% so với cùng kỳ năm trước, đánh dấu mức cao kỷ lục mới cho thị trường.",
+      "type": "fact",
+      "evidence_ids": [
+        "E29"
+      ],
+      "confidence": "TRUNG BÌNH",
+      "confidence_reason": "Đạt mức TRUNG BÌNH: dựa trên 1 nguồn uy tín hạng A/B (S13 (Hạng A, sensortower.com))",
+      "assumptions": [],
+      "is_forecast": false,
+      "has_conflict": false
+    },
+    {
+      "id": "I12",
+      "statement": "Các nhà phát triển nên thiết kế nền kinh tế game để hỗ trợ cả IAP và quảng cáo có thưởng ngay từ đầu, vì việc điều chỉnh sau này sẽ khó khăn và kém hiệu quả hơn.",
+      "type": "fact",
+      "evidence_ids": [
+        "E34"
+      ],
+      "confidence": "THẤP",
+      "confidence_reason": "Chỉ có 1 nguồn hạng C mới hoặc nguồn A/B không rõ ngày (S15 (Hạng C, ripplereports.com)) · Độ mới: KHÔNG CÓ BẰNG CHỨNG MỚI (S15 2026 (chỉ biết năm), kỳ 2022)",
+      "assumptions": [],
+      "is_forecast": false,
+      "has_conflict": false
+    },
+    {
+      "id": "I13",
+      "statement": "Mô hình game hybrid-casual, kết hợp tính dễ tiếp cận của game casual với chiều sâu tiến trình và kiếm tiền qua IAP, đã tăng doanh thu 37%.",
+      "type": "fact",
+      "evidence_ids": [
+        "E31",
+        "E32",
+        "E40"
+      ],
+      "confidence": "TRUNG BÌNH",
+      "confidence_reason": "Đạt mức TRUNG BÌNH: 2 nguồn hạng C khác domain đồng thuận (S15 (Hạng C, ripplereports.com), S18 (Hạng C, friendlygamedev.com)) · Độ mới: MỘT PHẦN CŨ (S15 2026 (chỉ biết năm), kỳ 2022)",
+      "assumptions": [],
+      "is_forecast": false,
+      "has_conflict": false
+    }
+  ],
+  "conflicts": [
+    {
+      "topic": "Doanh thu IAP game di động tại Đông Nam Á",
+      "values": [],
+      "explanation": "Các số liệu khác nhau do thời gian và phạm vi báo cáo khác nhau. E2 báo cáo doanh thu IAP 625 triệu USD trong Q1/2025, trong khi E6 báo cáo 1.16 tỷ USD trong H1/2024.",
+      "evidence_ids": [
+        "E2",
+        "E6"
+      ]
+    },
+    {
+      "topic": "Số liệu cũ ↔ mới (CẬP NHẬT): Doanh thu mua hàng trong ứng dụng (IAP) của Đông Nam Á đạt 625 triệu USD trong quý 1 năm 2",
+      "values": [
+        "[E2/S1, Q1/2025]: \"While SEA currently ranks seventh globally in in-app purchase (IAP) revenue at $625 million in Q1 2025, this figure signals...\"",
+        "[E29/S13, 2026-06]: \"In-app purchase revenue reached $5.3 billion, up 16.3% YoY, marking a new high for the market.\""
+      ],
+      "explanation": "Bằng chứng mới [E29] cập nhật doanh thu IAP của Đông Nam Á lên 5,3 tỷ USD, tăng đáng kể so với 625 triệu USD trong [E2] (Q1/2025).",
+      "evidence_ids": [
+        "E2",
+        "E29"
+      ]
+    },
+    {
+      "topic": "Số liệu cũ ↔ mới (CẬP NHẬT): Chi tiêu của người dùng cho mua hàng trong ứng dụng (IAP) giảm trong khi doanh thu từ quản",
+      "values": [
+        "[E12/S5, Q2/2024]: \"Consumer spending on in-app purchases (IAP) dropped while in-app advertising (IAA) rose. Overall, IAA increased by 4% in Q2-2024 compared...\"",
+        "[E34/S15, 2026-06]: \"Design your game economy to support both IAP and rewarded ads from inception. Retrofit hybrid monetization is significantly harder and...\""
+      ],
+      "explanation": "Bằng chứng mới [E34] khuyến nghị thiết kế kinh tế game hỗ trợ cả IAP và quảng cáo có thưởng, cập nhật xu hướng từ [E12] (Q2/2024) về sự thay đổi giữa IAP và IAA.",
+      "evidence_ids": [
+        "E12",
+        "E34"
+      ]
+    },
+    {
+      "topic": "Số liệu cũ ↔ mới (CẬP NHẬT): Tăng trưởng IAA trên Android được dẫn dắt bởi các game Hypercasual, Puzzle và Simulation, ",
+      "values": [
+        "[E13/S5, Q2/2024]: \"Android’s IAA growth was led by Hypercasual, Puzzle and Simulation games. Hypercasual games saw a 5% rise in Q2-2024 (YoY...\"",
+        "[E31/S15, 2026-06]: \"The most significant narrative of the period is the hybrid-casual revolution: titles that combine casual accessibility with deeper progression and...\"",
+        "[E32/S15, 2022]: \"By 2027, we expect pure hyper-casual to represent less than 5% of casual gaming revenue, down from an estimated 12%...\"",
+        "[E40/S18, 2026-07-29]: \"By combining hypercasual accessibility with casual-style progression, LiveOps, and hybrid IAA/IAP monetization, subgenres like Sort, Screw and Block puzzles continue...\""
+      ],
+      "explanation": "Bằng chứng mới [E31], [E32], [E40] cập nhật xu hướng tăng trưởng của game hybrid-casual, thay vì chỉ hypercasual như [E13] (Q2/2024).",
+      "evidence_ids": [
+        "E13",
+        "E31",
+        "E32",
+        "E40"
+      ]
+    }
+  ],
+  "premise_checks": [
+    {
+      "premise": "Có một hoặc một vài mô hình kiếm tiền đang 'hiệu quả' rõ rệt hơn các mô hình khác cho game casual ở Indonesia và Philippines.",
+      "status": "XÁC NHẬN",
+      "explanation": "Mô hình hybrid (IAA + IAP) đang nổi lên như một lựa chọn hiệu quả rõ rệt, đặc biệt cho game casual và hypercasual, do khả năng mở rộng người dùng và tối ưu hóa doanh thu từ cả quảng cáo và mua hàng trong ứng dụng. IAA cũng rất phổ biến ở Indonesia. [E11, E15, E19, E20, E24]",
+      "evidence_ids": [
+        "E11",
+        "E15",
+        "E19",
+        "E20",
+        "E24"
+      ]
+    },
+    {
+      "premise": "Dữ liệu về hiệu quả kiếm tiền của game casual theo từng mô hình cụ thể ở cấp độ quốc gia (Indonesia, Philippines) là có sẵn và đủ chi tiết để phân tích.",
+      "status": "MỘT PHẦN",
+      "explanation": "Có dữ liệu về mức độ phổ biến của các mô hình (ví dụ: 86% nhà phát hành Indonesia dùng quảng cáo [E24]), xu hướng tăng trưởng IAA theo thể loại và quốc gia (Philippines dẫn đầu tăng trưởng cài đặt Android [E14], IAA tăng trưởng ở Hypercasual, Puzzle, Simulation [E13]), và tăng trưởng doanh thu chung trong game ở Indonesia (+1%) và Philippines (+3%) [E28]. Tuy nhiên, không có số liệu cụ thể về ARPU hoặc tỷ lệ chuyển đổi người chơi (payer conversion rate) riêng cho game casual theo từng mô hình kiếm tiền ở cấp độ quốc gia Indonesia và Philippines.",
+      "evidence_ids": [
+        "E13",
+        "E14",
+        "E24",
+        "E28"
+      ]
+    }
+  ],
+  "gaps": [
+    "Tỷ lệ người chơi chi tiêu (payer conversion rate) và doanh thu trung bình trên mỗi người dùng (ARPU) của game casual theo từng mô hình kiếm tiền (IAA, IAP, Hybrid) ở Indonesia và Philippines.",
+    "Chi phí phát triển và vận hành cụ thể liên quan đến từng mô hình kiếm tiền cho game casual tại hai thị trường này.",
+    "Mức độ cạnh tranh và rào cản gia nhập cụ thể cho từng mô hình kiếm tiền trong phân khúc game casual ở Indonesia và Philippines.",
+    "Sự khác biệt chi tiết về hiệu quả kiếm tiền giữa các thể loại game casual cụ thể (ví dụ: hyper-casual, puzzle, arcade) tại Indonesia và Philippines."
+  ],
+  "what_would_change": [
+    "Nếu có dữ liệu chi tiết về ARPU và tỷ lệ chuyển đổi người chơi theo từng mô hình kiếm tiền và thể loại game casual cụ thể ở Indonesia và Philippines, khuyến nghị có thể tập trung hơn vào mô hình mang lại lợi nhuận cao nhất cho từng phân khúc.",
+    "Nếu có sự thay đổi đáng kể trong hành vi chi tiêu của người chơi hoặc quy định về quảng cáo/IAP tại hai quốc gia này, chiến lược kiếm tiền cần được điều chỉnh.",
+    "Nếu chi phí phát triển hoặc vận hành của một mô hình kiếm tiền nào đó tăng đột biến, điều đó có thể ảnh hưởng đến tính khả thi của mô hình đó."
+  ],
+  "next_checks": [
+    "Tìm kiếm các báo cáo thị trường chuyên sâu hơn từ các công ty phân tích dữ liệu game (ví dụ: Sensor Tower, App Annie, Data.ai) tập trung vào ARPU và tỷ lệ chuyển đổi của game casual theo mô hình kiếm tiền tại Indonesia và Philippines.",
+    "Phân tích dữ liệu nội bộ của các game casual hiện có của Gamota tại các thị trường tương tự để ước tính ARPU và tỷ lệ chuyển đổi.",
+    "Tiến hành khảo sát người chơi tại Indonesia và Philippines để hiểu rõ hơn về mức độ chấp nhận và sở thích đối với các mô hình kiếm tiền khác nhau trong game casual.",
+    "Thực hiện A/B testing các mô hình kiếm tiền khác nhau trong các game casual thử nghiệm tại Indonesia và Philippines để thu thập dữ liệu thực tế."
+  ],
+  "sources": [
+    {
+      "id": "S1",
+      "url": "https://sensortower.com/blog/southeast-asia-mobile-gaming-2025",
+      "domain": "sensortower.com",
+      "title": "Sensor Tower Southeast Asia Mobile Game Market Insights 2025",
+      "published_date": "2025-05",
+      "tier": "A",
+      "tier_reason": "Nhà cung cấp dữ liệu đo lường thị trường ứng dụng & game mobile hàng đầu (Sensor Tower)",
+      "freshness": "aging",
+      "freshness_label": "Cũ dần (12-24 tháng)",
+      "date_method": "month_year",
+      "date_precision": "month",
+      "age_months": 17.3,
+      "age_months_min": 16.8,
+      "age_months_max": 17.7
+    },
+    {
+      "id": "S2",
+      "url": "https://sensortower.com/blog/southeast-asian-mobile-game-market-insights-2024",
+      "domain": "sensortower.com",
+      "title": "Southeast Asian Mobile Game Market Insights 2024",
+      "published_date": "2024-10",
+      "tier": "A",
+      "tier_reason": "Nhà cung cấp dữ liệu đo lường thị trường ứng dụng & game mobile hàng đầu (Sensor Tower)",
+      "freshness": "stale",
+      "freshness_label": "Cũ (>24 tháng hoặc không rõ ngày)",
+      "date_method": "month_year",
+      "date_precision": "month",
+      "age_months": 24.2,
+      "age_months_min": 23.7,
+      "age_months_max": 24.7
+    },
+    {
+      "id": "S3",
+      "url": "https://www.statista.com/topics/12574/mobile-gaming-in-indonesia",
+      "domain": "statista.com",
+      "title": "Mobile gaming in Indonesia - statistics & facts | Statista",
+      "published_date": null,
+      "tier": "A",
+      "tier_reason": "Nền tảng tổng hợp thống kê và dữ liệu thị trường định lượng (Statista)",
+      "freshness": "stale",
+      "freshness_label": "Cũ (>24 tháng hoặc không rõ ngày)",
+      "date_method": "unknown",
+      "date_precision": "unknown",
+      "age_months": null,
+      "age_months_min": null,
+      "age_months_max": null
+    },
+    {
+      "id": "S4",
+      "url": "https://tuoitre.vn/voi-1-29-ti-luot-tai-nguoi-dung-viet-choi-game-di-dong-nhieu-va-lau-hang-dau-khu-vuc-20260528141837525.htm",
+      "domain": "tuoitre.vn",
+      "title": "Với 1,29 tỉ lượt tải, người dùng Việt chơi game di động nhiều ...",
+      "published_date": "2026-05-28",
+      "tier": "B",
+      "tier_reason": "Báo điện tử lớn tại Việt Nam (Tuổi Trẻ)",
+      "freshness": "fresh",
+      "freshness_label": "Mới (<=12 tháng)",
+      "date_method": "text_date",
+      "date_precision": "day",
+      "age_months": 4.9,
+      "age_months_min": 4.9,
+      "age_months_max": 4.9
+    },
+    {
+      "id": "S5",
+      "url": "https://www.appsflyer.com/resources/reports/gaming-app-marketing-2024-report",
+      "domain": "appsflyer.com",
+      "title": "The 2024 state of gaming app marketing [Report] I AppsFlyer",
+      "published_date": "2024-06",
+      "tier": "B",
+      "tier_reason": "Báo cáo phân tích tiếp thị và UA ngành mobile (AppsFlyer)",
+      "freshness": "stale",
+      "freshness_label": "Cũ (>24 tháng hoặc không rõ ngày)",
+      "date_method": "year_only",
+      "date_precision": "year",
+      "age_months": 28.3,
+      "age_months_min": 21.7,
+      "age_months_max": 33.7
+    },
+    {
+      "id": "S6",
+      "url": "https://www.appsflyer.com/resources/reports/app-marketing-monetization-report-2024",
+      "domain": "appsflyer.com",
+      "title": "The State of App Monetization - 2024 Edition - appsflyer.com",
+      "published_date": "2024-06",
+      "tier": "B",
+      "tier_reason": "Báo cáo phân tích tiếp thị và UA ngành mobile (AppsFlyer)",
+      "freshness": "stale",
+      "freshness_label": "Cũ (>24 tháng hoặc không rõ ngày)",
+      "date_method": "year_only",
+      "date_precision": "year",
+      "age_months": 28.3,
+      "age_months_min": 21.7,
+      "age_months_max": 33.7
+    },
+    {
+      "id": "S7",
+      "url": "https://khuvuichoihuongnghiep.com/mo-hinh-kiem-tien-game-hot-4-mo-hinh-tang-doanh-thu",
+      "domain": "khuvuichoihuongnghiep.com",
+      "title": "Mô hình kiếm tiền game hot: 4 mô hình tăng doanh thu",
+      "published_date": "2026-08-24",
+      "tier": "C",
+      "tier_reason": "Nguồn hạng C (mặc định): Blog, trang tổng hợp SEO, diễn đàn, thông cáo báo chí hoặc domain chưa trong danh mục kiểm chứng (khuvuichoihuongnghiep.com)",
+      "freshness": "fresh",
+      "freshness_label": "Mới (<=12 tháng)",
+      "date_method": "text_date",
+      "date_precision": "day",
+      "age_months": 2.0,
+      "age_months_min": 2.0,
+      "age_months_max": 2.0
+    },
+    {
+      "id": "S8",
+      "url": "https://games.gg/vi/news/mô-hình-kiếm-tiền-từ-game-ở-châu-á-mena-trị-giá-894-tỷ-usd",
+      "domain": "games.gg",
+      "title": "Mô hình kiếm tiền game Châu Á & MENA: 89,4 tỷ USD",
+      "published_date": "2026-03-31",
+      "tier": "C",
+      "tier_reason": "Nguồn hạng C (mặc định): Blog, trang tổng hợp SEO, diễn đàn, thông cáo báo chí hoặc domain chưa trong danh mục kiểm chứng (games.gg)",
+      "freshness": "fresh",
+      "freshness_label": "Mới (<=12 tháng)",
+      "date_method": "text_date",
+      "date_precision": "day",
+      "age_months": 6.8,
+      "age_months_min": 6.8,
+      "age_months_max": 6.8
+    },
+    {
+      "id": "S9",
+      "url": "https://mobidictum.com/southeast-asia-mobile-game-report-for-2024",
+      "domain": "mobidictum.com",
+      "title": "Southeast Asia mobile game report for 2024 | Games Industry ...",
+      "published_date": "2024-10-30",
+      "tier": "C",
+      "tier_reason": "Nguồn hạng C (mặc định): Blog, trang tổng hợp SEO, diễn đàn, thông cáo báo chí hoặc domain chưa trong danh mục kiểm chứng (mobidictum.com)",
+      "freshness": "aging",
+      "freshness_label": "Cũ dần (12-24 tháng)",
+      "date_method": "text_date",
+      "date_precision": "day",
+      "age_months": 23.8,
+      "age_months_min": 23.8,
+      "age_months_max": 23.8
+    },
+    {
+      "id": "S10",
+      "url": "https://42matters.com/indonesia-mobile-gaming-statistics",
+      "domain": "42matters.com",
+      "title": "Indonesia Mobile Game Market Statistics in 2025 for Android",
+      "published_date": "2025-06",
+      "tier": "C",
+      "tier_reason": "Nguồn hạng C (mặc định): Blog, trang tổng hợp SEO, diễn đàn, thông cáo báo chí hoặc domain chưa trong danh mục kiểm chứng (42matters.com)",
+      "freshness": "aging",
+      "freshness_label": "Cũ dần (12-24 tháng)",
+      "date_method": "year_only",
+      "date_precision": "year",
+      "age_months": 16.3,
+      "age_months_min": 9.7,
+      "age_months_max": 21.7
+    },
+    {
+      "id": "S11",
+      "url": "https://gamedevreports.substack.com/p/sensor-tower-mobile-gaming-market-b92",
+      "domain": "gamedevreports.substack.com",
+      "title": "Sensor Tower: Mobile gaming market in Southeast Asia in 2024",
+      "published_date": "2024-11-01",
+      "tier": "C",
+      "tier_reason": "Nguồn hạng C (mặc định): Blog, trang tổng hợp SEO, diễn đàn, thông cáo báo chí hoặc domain chưa trong danh mục kiểm chứng (gamedevreports.substack.com)",
+      "freshness": "aging",
+      "freshness_label": "Cũ dần (12-24 tháng)",
+      "date_method": "text_date",
+      "date_precision": "day",
+      "age_months": 23.7,
+      "age_months_min": 23.7,
+      "age_months_max": 23.7
+    },
+    {
+      "id": "S12",
+      "url": "https://www.brandsvietnam.com/congdong/topic/344021-socialpeta-phat-hanh-bao-cao-thi-truong-game-di-dong-dong-nam-a-nam-2024",
+      "domain": "brandsvietnam.com",
+      "title": "SocialPeta phát hành báo cáo thị trường game di động Đông Nam ...",
+      "published_date": "2024-11-01",
+      "tier": "C",
+      "tier_reason": "Nguồn hạng C (mặc định): Blog, trang tổng hợp SEO, diễn đàn, thông cáo báo chí hoặc domain chưa trong danh mục kiểm chứng (brandsvietnam.com)",
+      "freshness": "aging",
+      "freshness_label": "Cũ dần (12-24 tháng)",
+      "date_method": "text_date",
+      "date_precision": "day",
+      "age_months": 23.7,
+      "age_months_min": 23.7,
+      "age_months_max": 23.7
+    },
+    {
+      "id": "S13",
+      "url": "https://sensortower.com/blog/state-of-mobile-southeast-asia-2026",
+      "domain": "sensortower.com",
+      "title": "State of Mobile Southeast Asia 2026 - sensortower.com",
+      "published_date": "2026-06",
+      "tier": "A",
+      "tier_reason": "Nhà cung cấp dữ liệu đo lường thị trường ứng dụng & game mobile hàng đầu (Sensor Tower)",
+      "freshness": "fresh",
+      "freshness_label": "Mới (<=12 tháng)",
+      "date_method": "year_only",
+      "date_precision": "year",
+      "age_months": 4.3,
+      "age_months_min": 0.0,
+      "age_months_max": 9.7
+    },
+    {
+      "id": "S14",
+      "url": "https://sensortower.com/report/state-of-mobile-sea-2026",
+      "domain": "sensortower.com",
+      "title": "State of Mobile Southeast Asia 2026 Report - sensortower.com",
+      "published_date": "2026-06",
+      "tier": "A",
+      "tier_reason": "Nhà cung cấp dữ liệu đo lường thị trường ứng dụng & game mobile hàng đầu (Sensor Tower)",
+      "freshness": "fresh",
+      "freshness_label": "Mới (<=12 tháng)",
+      "date_method": "year_only",
+      "date_precision": "year",
+      "age_months": 4.3,
+      "age_months_min": 0.0,
+      "age_months_max": 9.7
+    },
+    {
+      "id": "S15",
+      "url": "https://www.ripplereports.com/sample-casual-gaming.html",
+      "domain": "ripplereports.com",
+      "title": "Casual Mobile Gaming 2026 — Trends & Revenue Analysis ...",
+      "published_date": "2026-06",
+      "tier": "C",
+      "tier_reason": "Nguồn hạng C (mặc định): Blog, trang tổng hợp SEO, diễn đàn, thông cáo báo chí hoặc domain chưa trong danh mục kiểm chứng (ripplereports.com)",
+      "freshness": "fresh",
+      "freshness_label": "Mới (<=12 tháng)",
+      "date_method": "year_only",
+      "date_precision": "year",
+      "age_months": 4.3,
+      "age_months_min": 0.0,
+      "age_months_max": 9.7
+    },
+    {
+      "id": "S16",
+      "url": "https://mobidictum.com/2026-southeast-asia-mobile-game-marketing-report",
+      "domain": "mobidictum.com",
+      "title": "2026 Southeast Asia Mobile Game Marketing Report",
+      "published_date": "2026-09-02",
+      "tier": "C",
+      "tier_reason": "Nguồn hạng C (mặc định): Blog, trang tổng hợp SEO, diễn đàn, thông cáo báo chí hoặc domain chưa trong danh mục kiểm chứng (mobidictum.com)",
+      "freshness": "fresh",
+      "freshness_label": "Mới (<=12 tháng)",
+      "date_method": "text_date",
+      "date_precision": "day",
+      "age_months": 1.7,
+      "age_months_min": 1.7,
+      "age_months_max": 1.7
+    },
+    {
+      "id": "S17",
+      "url": "https://foxreload.com/en/library/business/southeast-asia-mobile-gaming-2026",
+      "domain": "foxreload.com",
+      "title": "Southeast Asia Mobile Gaming 2026 — Indonesia, Philippines ...",
+      "published_date": "2026-06",
+      "tier": "C",
+      "tier_reason": "Nguồn hạng C (mặc định): Blog, trang tổng hợp SEO, diễn đàn, thông cáo báo chí hoặc domain chưa trong danh mục kiểm chứng (foxreload.com)",
+      "freshness": "fresh",
+      "freshness_label": "Mới (<=12 tháng)",
+      "date_method": "year_only",
+      "date_precision": "year",
+      "age_months": 4.3,
+      "age_months_min": 0.0,
+      "age_months_max": 9.7
+    },
+    {
+      "id": "S18",
+      "url": "https://friendlygamedev.com/blog/mobile-casual-market-in-h1-2026",
+      "domain": "friendlygamedev.com",
+      "title": "Mobile Casual Market in H1 2026 - Friendly GameDev.",
+      "published_date": "2026-07-29",
+      "tier": "C",
+      "tier_reason": "Nguồn hạng C (mặc định): Blog, trang tổng hợp SEO, diễn đàn, thông cáo báo chí hoặc domain chưa trong danh mục kiểm chứng (friendlygamedev.com)",
+      "freshness": "fresh",
+      "freshness_label": "Mới (<=12 tháng)",
+      "date_method": "text_date",
+      "date_precision": "day",
+      "age_months": 2.8,
+      "age_months_min": 2.8,
+      "age_months_max": 2.8
+    }
+  ],
+  "evidences": [
+    {
+      "id": "E1",
+      "source_id": "S1",
+      "quote": "In the first quarter of 2025, Southeast Asia ranked as the second-largest global market for mobile game downloads, hitting an impressive 1.93 billion new installs.",
+      "claim": "Trong quý 1 năm 2025, Đông Nam Á là thị trường game di động lớn thứ hai toàn cầu về lượt tải xuống, với 1,93 tỷ lượt cài đặt mới.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://sensortower.com/blog/southeast-asia-mobile-gaming-2025#:~:text=In%20the%20first%20quarter%20of%202025%2C%20Southeast%20Asia%20ranked%20as",
+      "data_period": "Q1/2025",
+      "data_period_end": "2025-03-31"
+    },
+    {
+      "id": "E2",
+      "source_id": "S1",
+      "quote": "While SEA currently ranks seventh globally in in-app purchase (IAP) revenue at $625 million in Q1 2025, this figure signals significant untapped monetization potential.",
+      "claim": "Doanh thu mua hàng trong ứng dụng (IAP) của Đông Nam Á đạt 625 triệu USD trong quý 1 năm 2025, xếp thứ bảy toàn cầu, cho thấy tiềm năng kiếm tiền chưa được khai thác đáng kể.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://sensortower.com/blog/southeast-asia-mobile-gaming-2025#:~:text=While%20SEA%20currently%20ranks%20seventh%20globally%20in%20in-app%20purchase%20%28IAP%29",
+      "data_period": "Q1/2025",
+      "data_period_end": "2025-03-31"
+    },
+    {
+      "id": "E3",
+      "source_id": "S1",
+      "quote": "Indonesia stands out as the leader in mobile game downloads, reaching 870 million in Q1 2025, a 9% increase from the prior quarter.",
+      "claim": "Indonesia dẫn đầu về lượt tải game di động với 870 triệu lượt trong quý 1 năm 2025, tăng 9% so với quý trước.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://sensortower.com/blog/southeast-asia-mobile-gaming-2025#:~:text=Indonesia%20stands%20out%20as%20the%20leader%20in%20mobile%20game%20downloads%2C",
+      "data_period": "Q1/2025",
+      "data_period_end": "2025-03-31"
+    },
+    {
+      "id": "E4",
+      "source_id": "S1",
+      "quote": "Across SEA, accessible genres like Arcade and Simulation games drive high download volumes due to their ease of play. However, in-app purchase revenue is primarily dominated by more immersive genres such as Strategy (especially 4X and MOBA), Shooters, and RPGs.",
+      "claim": "Các thể loại game dễ tiếp cận như Arcade và Simulation có lượng tải xuống cao ở Đông Nam Á, nhưng doanh thu IAP chủ yếu đến từ các thể loại chuyên sâu hơn như Chiến thuật (4X, MOBA), Bắn súng và RPG.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://sensortower.com/blog/southeast-asia-mobile-gaming-2025#:~:text=Across%20SEA%2C%20accessible%20genres%20like%20Arcade%20and%20Simulation%20games%20drive",
+      "data_period": "",
+      "data_period_end": null
+    },
+    {
+      "id": "E5",
+      "source_id": "S2",
+      "quote": "In the first half of 2024, the mobile game downloads in the Southeast Asian market grew by 3.4% period-on-period to 4.2 billion, with Indonesia being the country with the highest mobile game downloads in the region, contributing 41% of the",
+      "claim": "Trong nửa đầu năm 2024, lượt tải game di động tại Đông Nam Á tăng 3,4% lên 4,2 tỷ lượt, trong đó Indonesia đóng góp 41% tổng số lượt tải, là quốc gia có lượt tải cao nhất khu vực.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://sensortower.com/blog/southeast-asian-mobile-game-market-insights-2024#:~:text=In%20the%20first%20half%20of%202024%2C%20the%20mobile%20game%20downloads",
+      "data_period": "H1/2024",
+      "data_period_end": "2024-06-30"
+    },
+    {
+      "id": "E6",
+      "source_id": "S2",
+      "quote": "The mobile game IAP revenue in the Southeast Asian market declined slightly by 3.0% period-over-period to $1.16 billion, close to the 2020H1 level, with 57% coming from Google Play.",
+      "claim": "Doanh thu IAP game di động tại Đông Nam Á giảm nhẹ 3,0% so với cùng kỳ, đạt 1,16 tỷ USD, gần bằng mức của nửa đầu năm 2020, với 57% đến từ Google Play.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://sensortower.com/blog/southeast-asian-mobile-game-market-insights-2024#:~:text=The%20mobile%20game%20IAP%20revenue%20in%20the%20Southeast%20Asian%20market",
+      "data_period": "",
+      "data_period_end": null
+    },
+    {
+      "id": "E7",
+      "source_id": "S2",
+      "quote": "In the Southeast Asian region, simulation is the mobile game genre with the highest downloads. In 2024, multiple simulation games such as Supercent's pizza shop simulation game \"Pizza Ready!\" and CodeXplore's food delivery driver simulation game \"Ojol The Game\" demonstrated",
+      "claim": "Thể loại game mô phỏng có lượt tải xuống cao nhất ở Đông Nam Á, với tổng lượt tải tăng 11% lên 1,2 tỷ từ tháng 1 đến tháng 8 năm 2024, nhờ các tựa game như \"Pizza Ready!\" và \"Ojol The Game\".",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://sensortower.com/blog/southeast-asian-mobile-game-market-insights-2024#:~:text=In%20the%20Southeast%20Asian%20region%2C%20simulation%20is%20the%20mobile%20game",
+      "data_period": "2024",
+      "data_period_end": "2024-12-31"
+    },
+    {
+      "id": "E8",
+      "source_id": "S2",
+      "quote": "From January to August 2024, strategy and RPG continued to be the highest revenue-generating mobile game genres in the Southeast Asian market, contributing 24% and 23% of the total revenue respectively.",
+      "claim": "Từ tháng 1 đến tháng 8 năm 2024, game chiến thuật và RPG tiếp tục là những thể loại game di động tạo doanh thu cao nhất tại Đông Nam Á, đóng góp lần lượt 24% và 23% tổng doanh thu.",
+      "verified": true,
+      "match_score": 98.5,
+      "highlight_url": "https://sensortower.com/blog/southeast-asian-mobile-game-market-insights-2024#:~:text=From%20January%20to%20August%202024%2C%20strategy%20and%20RPG%20continued%20to",
+      "data_period": "08/2024",
+      "data_period_end": "2024-08-31"
+    },
+    {
+      "id": "E9",
+      "source_id": "S3",
+      "quote": "Monetization of Indonesian mobile games 2024, by type - Ads",
+      "claim": "Quảng cáo là chiến lược kiếm tiền phổ biến nhất trong game di động ở Indonesia vào năm 2024.",
+      "verified": true,
+      "match_score": 96.6,
+      "highlight_url": "https://www.statista.com/topics/12574/mobile-gaming-in-indonesia#:~:text=Monetization%20of%20Indonesian%20mobile%20games%202024%2C%20by%20type%20-%20Ads",
+      "data_period": "2024",
+      "data_period_end": "2024-12-31"
+    },
+    {
+      "id": "E10",
+      "source_id": "S4",
+      "quote": "Bên cạnh đó, doanh thu từ mua hàng trong ứng dụng (in-app purchase - IAP) đạt 259 triệu USD (khoảng 6.800 tỉ đồng), cho thấy tiềm năng kiếm tiền tương xứng với quy mô người chơi, trong bối cảnh ví",
+      "claim": "Doanh thu từ mua hàng trong ứng dụng (IAP) tại Việt Nam đạt 259 triệu USD, cho thấy tiềm năng kiếm tiền lớn, với ví điện tử chiếm 41% giao dịch game trực tuyến.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://tuoitre.vn/voi-1-29-ti-luot-tai-nguoi-dung-viet-choi-game-di-dong-nhieu-va-lau-hang-dau-khu-vuc-20260528141837525.htm#:~:text=B%C3%AAn%20c%E1%BA%A1nh%20%C4%91%C3%B3%2C%20doanh%20thu%20t%E1%BB%AB%20mua%20h%C3%A0ng%20trong%20%E1%BB%A9ng",
+      "data_period": "",
+      "data_period_end": null
+    },
+    {
+      "id": "E11",
+      "source_id": "S5",
+      "quote": "The mobile gaming landscape continued its march toward hybrid revenue models in 2024. The adoption of hybrid models by Hypercasual games jumped from 19% to 26% (+37%) in just nine months.",
+      "claim": "Mô hình doanh thu kết hợp (hybrid revenue models) đang ngày càng phổ biến trong ngành game di động vào năm 2024, đặc biệt là với game Hypercasual khi tỷ lệ áp dụng tăng 37% trong 9 tháng.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://www.appsflyer.com/resources/reports/gaming-app-marketing-2024-report#:~:text=The%20mobile%20gaming%20landscape%20continued%20its%20march%20toward%20hybrid%20revenue",
+      "data_period": "2024",
+      "data_period_end": "2024-12-31"
+    },
+    {
+      "id": "E12",
+      "source_id": "S5",
+      "quote": "Consumer spending on in-app purchases (IAP) dropped while in-app advertising (IAA) rose. Overall, IAA increased by 4% in Q2-2024 compared with Q2-2023.",
+      "claim": "Chi tiêu của người dùng cho mua hàng trong ứng dụng (IAP) giảm trong khi doanh thu từ quảng cáo trong ứng dụng (IAA) tăng, với IAA tăng 4% trong quý 2 năm 2024 so với cùng kỳ năm 2023.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://www.appsflyer.com/resources/reports/gaming-app-marketing-2024-report#:~:text=Consumer%20spending%20on%20in-app%20purchases%20%28IAP%29%20dropped%20while%20in-app%20advertising",
+      "data_period": "Q2/2024",
+      "data_period_end": "2024-06-30"
+    },
+    {
+      "id": "E13",
+      "source_id": "S5",
+      "quote": "Android’s IAA growth was led by Hypercasual, Puzzle and Simulation games. Hypercasual games saw a 5% rise in Q2-2024 (YoY 10%), while iOS dropped by 21% (YoY -13%).",
+      "claim": "Tăng trưởng IAA trên Android được dẫn dắt bởi các game Hypercasual, Puzzle và Simulation, trong đó game Hypercasual tăng 5% trong quý 2 năm 2024 (tăng 10% so với cùng kỳ năm trước).",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://www.appsflyer.com/resources/reports/gaming-app-marketing-2024-report#:~:text=Android%E2%80%99s%20IAA%20growth%20was%20led%20by%20Hypercasual%2C%20Puzzle%20and%20Simulation",
+      "data_period": "Q2/2024",
+      "data_period_end": "2024-06-30"
+    },
+    {
+      "id": "E14",
+      "source_id": "S5",
+      "quote": "The Philippines led with a 26% increase, followed by Japan at 16% and Indonesia at 13%. India remained steady with a 2% rise.",
+      "claim": "Thị trường Android tại Philippines dẫn đầu về tăng trưởng cài đặt với 26%, tiếp theo là Nhật Bản 16% và Indonesia 13%.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://www.appsflyer.com/resources/reports/gaming-app-marketing-2024-report#:~:text=The%20Philippines%20led%20with%20a%2026%25%20increase%2C%20followed%20by%20Japan",
+      "data_period": "",
+      "data_period_end": null
+    },
+    {
+      "id": "E15",
+      "source_id": "S6",
+      "quote": "For Casual games, IAP sits on top but has hybrid models close behind. In Hypercasual, iOS hybrid models slightly edge out IAA ($0.82 vs. $0.71)",
+      "claim": "Đối với game Casual, IAP là mô hình kiếm tiền hàng đầu, nhưng mô hình hybrid cũng rất gần; trong khi với Hypercasual trên iOS, mô hình hybrid có ARPU cao hơn một chút so với IAA.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://www.appsflyer.com/resources/reports/app-marketing-monetization-report-2024#:~:text=For%20Casual%20games%2C%20IAP%20sits%20on%20top%20but%20has%20hybrid",
+      "data_period": "",
+      "data_period_end": null
+    },
+    {
+      "id": "E16",
+      "source_id": "S6",
+      "quote": "ARPPU (Average Revenue Per Paying User) further underscores iOS’s value, capturing around 60% of revenue in both Mid-Core and Casual games.",
+      "claim": "ARPPU (Doanh thu trung bình trên mỗi người dùng trả tiền) cho thấy giá trị của iOS, chiếm khoảng 60% doanh thu trong cả game Mid-Core và Casual.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://www.appsflyer.com/resources/reports/app-marketing-monetization-report-2024#:~:text=ARPPU%20%28Average%20Revenue%20Per%20Paying%20User%29%20further%20underscores%20iOS%E2%80%99s%20value%2C",
+      "data_period": "",
+      "data_period_end": null
+    },
+    {
+      "id": "E17",
+      "source_id": "S7",
+      "quote": "Gacha ở thị trường châu Á vẫn là động lực doanh thu chính của nhiều RPG, còn casual games tại US/Western tận dụng quảng cáo và IAP nhẹ để mở rộng lượng người chơi.",
+      "claim": "Tại thị trường châu Á, gacha là động lực doanh thu chính cho RPG, trong khi game casual ở phương Tây sử dụng quảng cáo và IAP nhẹ để mở rộng người chơi.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://khuvuichoihuongnghiep.com/mo-hinh-kiem-tien-game-hot-4-mo-hinh-tang-doanh-thu#:~:text=Gacha%20%E1%BB%9F%20th%E1%BB%8B%20tr%C6%B0%E1%BB%9Dng%20ch%C3%A2u%20%C3%81%20v%E1%BA%ABn%20l%C3%A0%20%C4%91%E1%BB%99ng%20l%E1%BB%B1c",
+      "data_period": "",
+      "data_period_end": null
+    },
+    {
+      "id": "E18",
+      "source_id": "S7",
+      "quote": "Rewarded ads là kênh hiệu quả mở funnel người chơi miễn phí nhưng ARPU thường thấp hơn so với thu qua IAP; điều này đòi hỏi chiến lược chuyển đổi rõ ràng để tăng ARPPU.",
+      "claim": "Quảng cáo có thưởng (rewarded ads) hiệu quả trong việc thu hút người chơi miễn phí nhưng có ARPU thấp hơn IAP, yêu cầu chiến lược chuyển đổi rõ ràng để tăng ARPPU.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://khuvuichoihuongnghiep.com/mo-hinh-kiem-tien-game-hot-4-mo-hinh-tang-doanh-thu#:~:text=Rewarded%20ads%20l%C3%A0%20k%C3%AAnh%20hi%E1%BB%87u%20qu%E1%BA%A3%20m%E1%BB%9F%20funnel%20ng%C6%B0%E1%BB%9Di%20ch%C6%A1i",
+      "data_period": "",
+      "data_period_end": null
+    },
+    {
+      "id": "E19",
+      "source_id": "S7",
+      "quote": "Mô hình hybrid tận dụng rewarded ads để giữ người chơi miễn phí, đồng thời thiết kế đường dẫn chuyển sang IAP bằng các gợi ý giá trị (gói starter, bundles, limited offers).",
+      "claim": "Mô hình hybrid sử dụng quảng cáo có thưởng để giữ chân người chơi miễn phí và khuyến khích chuyển đổi sang IAP thông qua các ưu đãi giá trị như gói khởi đầu hoặc ưu đãi giới hạn.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://khuvuichoihuongnghiep.com/mo-hinh-kiem-tien-game-hot-4-mo-hinh-tang-doanh-thu#:~:text=M%C3%B4%20h%C3%ACnh%20hybrid%20t%E1%BA%ADn%20d%E1%BB%A5ng%20rewarded%20ads%20%C4%91%E1%BB%83%20gi%E1%BB%AF%20ng%C6%B0%E1%BB%9Di",
+      "data_period": "",
+      "data_period_end": null
+    },
+    {
+      "id": "E20",
+      "source_id": "S7",
+      "quote": "Lợi thế: scaling nhanh user base với chi phí UA hiệu quả, phù hợp cho casual/casual‑puzzle; giảm bar entry cho người chơi mới.",
+      "claim": "Mô hình hybrid quảng cáo + IAP có lợi thế là mở rộng nhanh chóng lượng người dùng với chi phí UA hiệu quả, phù hợp cho game casual/casual-puzzle và giảm rào cản cho người chơi mới.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://khuvuichoihuongnghiep.com/mo-hinh-kiem-tien-game-hot-4-mo-hinh-tang-doanh-thu#:~:text=L%E1%BB%A3i%20th%E1%BA%BF%3A%20scaling%20nhanh%20user%20base%20v%E1%BB%9Bi%20chi%20ph%C3%AD%20UA",
+      "data_period": "",
+      "data_period_end": null
+    },
+    {
+      "id": "E21",
+      "source_id": "S9",
+      "quote": "In Southeast Asia, Indonesia and the Philippines have surpassed Japan and South Korea in the number of advertisers, averaging 12.3K and 9.8K per month, respectively, while Vietnam follows with 9.2K.",
+      "claim": "Indonesia và Philippines dẫn đầu Đông Nam Á về số lượng nhà quảng cáo game di động, với trung bình lần lượt là 12.300 và 9.800 mỗi tháng, vượt qua Nhật Bản và Hàn Quốc.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://mobidictum.com/southeast-asia-mobile-game-report-for-2024#:~:text=In%20Southeast%20Asia%2C%20Indonesia%20and%20the%20Philippines%20have%20surpassed%20Japan",
+      "data_period": "",
+      "data_period_end": null
+    },
+    {
+      "id": "E22",
+      "source_id": "S9",
+      "quote": "Casual games lead in advertiser share, making up 28.4% of the market, which is 1.4 percentage points higher than the global average.",
+      "claim": "Game casual chiếm tỷ lệ lớn nhất về số lượng nhà quảng cáo tại Đông Nam Á, đạt 28,4% thị phần, cao hơn 1,4 điểm phần trăm so với mức trung bình toàn cầu.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://mobidictum.com/southeast-asia-mobile-game-report-for-2024#:~:text=Casual%20games%20lead%20in%20advertiser%20share%2C%20making%20up%2028.4%25%20of",
+      "data_period": "",
+      "data_period_end": null
+    },
+    {
+      "id": "E23",
+      "source_id": "S9",
+      "quote": "In Southeast Asia, mobile game advertising emphasizes video creatives, which make up 65.8% of all ads—above the global average of 54.8%, but down from 71.3% last year.",
+      "claim": "Quảng cáo game di động ở Đông Nam Á chủ yếu sử dụng định dạng video, chiếm 65,8% tổng số quảng cáo, cao hơn mức trung bình toàn cầu là 54,8%.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://mobidictum.com/southeast-asia-mobile-game-report-for-2024#:~:text=In%20Southeast%20Asia%2C%20mobile%20game%20advertising%20emphasizes%20video%20creatives%2C%20which",
+      "data_period": "",
+      "data_period_end": null
+    },
+    {
+      "id": "E24",
+      "source_id": "S10",
+      "quote": "Indonesian mobile Game publishers monetize their apps in the following ways: - 2% of Games must be purchased. - 86% leverage mobile advertising. - 29% have in-app purchases.",
+      "claim": "Các nhà phát hành game di động Indonesia kiếm tiền chủ yếu qua quảng cáo di động (86%) và mua hàng trong ứng dụng (29%), chỉ 2% là game trả phí.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://42matters.com/indonesia-mobile-gaming-statistics#:~:text=Indonesian%20mobile%20Game%20publishers%20monetize%20their%20apps%20in%20the%20following",
+      "data_period": "",
+      "data_period_end": null
+    },
+    {
+      "id": "E25",
+      "source_id": "S10",
+      "quote": "Globally, however, mobile Game publishers monetize their apps like so: - 4% of Games must be purchased. - 74% leverage mobile advertising. - 35% have in-app purchases.",
+      "claim": "So với toàn cầu, các nhà phát hành game di động Indonesia sử dụng quảng cáo di động nhiều hơn (86% so với 74%) nhưng ít sử dụng mua hàng trong ứng dụng hơn (29% so với 35%).",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://42matters.com/indonesia-mobile-gaming-statistics#:~:text=Globally%2C%20however%2C%20mobile%20Game%20publishers%20monetize%20their%20apps%20like%20so%3A",
+      "data_period": "",
+      "data_period_end": null
+    },
+    {
+      "id": "E26",
+      "source_id": "S10",
+      "quote": "Most Popular Casual Games in the Indonesia: Candy Crush Saga, Gardenscapes, and Dark War Survival.",
+      "claim": "Các game casual phổ biến nhất ở Indonesia bao gồm Candy Crush Saga, Gardenscapes và Dark War Survival.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://42matters.com/indonesia-mobile-gaming-statistics#:~:text=Most%20Popular%20Casual%20Games%20in%20the%20Indonesia%3A%20Candy%20Crush%20Saga%2C",
+      "data_period": "",
+      "data_period_end": null
+    },
+    {
+      "id": "E27",
+      "source_id": "S11",
+      "quote": "Indonesia was the only Southeast Asian country to see download growth from January to August 2024, with a 10% increase, leading also in absolute installs.",
+      "claim": "Indonesia là quốc gia duy nhất ở Đông Nam Á có mức tăng trưởng lượt tải xuống game di động 10% từ tháng 1 đến tháng 8 năm 2024, đồng thời dẫn đầu về tổng số lượt cài đặt.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://gamedevreports.substack.com/p/sensor-tower-mobile-gaming-market-b92#:~:text=Indonesia%20was%20the%20only%20Southeast%20Asian%20country%20to%20see%20download",
+      "data_period": "08/2024",
+      "data_period_end": "2024-08-31"
+    },
+    {
+      "id": "E28",
+      "source_id": "S11",
+      "quote": "For in-game revenue, Thailand (+10% YoY), Indonesia (+1% YoY), the Philippines (+3% YoY), and Cambodia (+6% YoY) showed growth, while Singapore (-14% YoY) and Malaysia (-8% YoY) faced significant declines.",
+      "claim": "Về doanh thu trong game, Thái Lan (+10%), Indonesia (+1%) và Philippines (+3%) đều ghi nhận tăng trưởng từ tháng 1 đến tháng 8 năm 2024.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://gamedevreports.substack.com/p/sensor-tower-mobile-gaming-market-b92#:~:text=For%20in-game%20revenue%2C%20Thailand%20%28%2B10%25%20YoY%29%2C%20Indonesia%20%28%2B1%25%20YoY%29%2C%20the",
+      "data_period": "",
+      "data_period_end": null
+    },
+    {
+      "id": "E29",
+      "source_id": "S13",
+      "quote": "In-app purchase revenue reached $5.3 billion, up 16.3% YoY, marking a new high for the market.",
+      "claim": "Doanh thu mua hàng trong ứng dụng (IAP) ở Đông Nam Á đạt 5,3 tỷ USD, tăng 16,3% so với cùng kỳ năm trước, đánh dấu mức cao kỷ lục mới cho thị trường.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://sensortower.com/blog/state-of-mobile-southeast-asia-2026#:~:text=In-app%20purchase%20revenue%20reached%20%245.3%20billion%2C%20up%2016.3%25%20YoY%2C%20marking",
+      "data_period": "",
+      "data_period_end": null
+    },
+    {
+      "id": "E30",
+      "source_id": "S13",
+      "quote": "Growth is no longer driven solely by installs, but by how effectively apps engage users and convert activity into revenue.",
+      "claim": "Sự tăng trưởng của thị trường di động không còn chỉ dựa vào lượt cài đặt mà phụ thuộc vào khả năng ứng dụng thu hút người dùng và chuyển đổi hoạt động thành doanh thu.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://sensortower.com/blog/state-of-mobile-southeast-asia-2026#:~:text=Growth%20is%20no%20longer%20driven%20solely%20by%20installs%2C%20but%20by",
+      "data_period": "",
+      "data_period_end": null
+    },
+    {
+      "id": "E31",
+      "source_id": "S15",
+      "quote": "The most significant narrative of the period is the hybrid-casual revolution: titles that combine casual accessibility with deeper progression and IAP monetization surged 37% in revenue.",
+      "claim": "Mô hình game hybrid-casual, kết hợp tính dễ tiếp cận của game casual với chiều sâu tiến trình và kiếm tiền qua IAP, đã tăng doanh thu 37%.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://www.ripplereports.com/sample-casual-gaming.html#:~:text=The%20most%20significant%20narrative%20of%20the%20period%20is%20the%20hybrid-casual",
+      "data_period": "",
+      "data_period_end": null
+    },
+    {
+      "id": "E32",
+      "source_id": "S15",
+      "quote": "By 2027, we expect pure hyper-casual to represent less than 5% of casual gaming revenue, down from an estimated 12% in 2022.",
+      "claim": "Đến năm 2027, game hyper-casual thuần túy dự kiến sẽ chiếm dưới 5% doanh thu game casual, giảm từ mức ước tính 12% vào năm 2022.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://www.ripplereports.com/sample-casual-gaming.html#:~:text=By%202027%2C%20we%20expect%20pure%20hyper-casual%20to%20represent%20less%20than",
+      "data_period": "2022",
+      "data_period_end": "2022-12-31"
+    },
+    {
+      "id": "E33",
+      "source_id": "S15",
+      "quote": "Subscription offerings — from VIP passes to ad-removal bundles — are the fastest growing monetization layer, up an estimated 28% YoY.",
+      "claim": "Các gói đăng ký, từ VIP pass đến gói loại bỏ quảng cáo, là lớp kiếm tiền tăng trưởng nhanh nhất, ước tính tăng 28% so với cùng kỳ năm trước.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://www.ripplereports.com/sample-casual-gaming.html#:~:text=Subscription%20offerings%20%E2%80%94%20from%20VIP%20passes%20to%20ad-removal%20bundles%20%E2%80%94",
+      "data_period": "",
+      "data_period_end": null
+    },
+    {
+      "id": "E34",
+      "source_id": "S15",
+      "quote": "Design your game economy to support both IAP and rewarded ads from inception. Retrofit hybrid monetization is significantly harder and less effective than designing for it natively.",
+      "claim": "Các nhà phát triển nên thiết kế nền kinh tế game để hỗ trợ cả IAP và quảng cáo có thưởng ngay từ đầu, vì việc điều chỉnh sau này sẽ khó khăn và kém hiệu quả hơn.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://www.ripplereports.com/sample-casual-gaming.html#:~:text=Design%20your%20game%20economy%20to%20support%20both%20IAP%20and%20rewarded",
+      "data_period": "",
+      "data_period_end": null
+    },
+    {
+      "id": "E35",
+      "source_id": "S16",
+      "quote": "Indonesia leads in downloads but ranks relatively low in IAP revenue, while Thailand ranks first in IAP revenue.",
+      "claim": "Indonesia dẫn đầu về lượt tải xuống nhưng có doanh thu IAP tương đối thấp, trong khi Thái Lan đứng đầu về doanh thu IAP.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://mobidictum.com/2026-southeast-asia-mobile-game-marketing-report#:~:text=Indonesia%20leads%20in%20downloads%20but%20ranks%20relatively%20low%20in%20IAP",
+      "data_period": "",
+      "data_period_end": null
+    },
+    {
+      "id": "E36",
+      "source_id": "S16",
+      "quote": "The report highlights that the key to market selection lies in product-market fit rather than simply comparing rankings",
+      "claim": "Báo cáo nhấn mạnh rằng chìa khóa để lựa chọn thị trường nằm ở sự phù hợp giữa sản phẩm và thị trường, chứ không chỉ đơn thuần so sánh các bảng xếp hạng.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://mobidictum.com/2026-southeast-asia-mobile-game-marketing-report#:~:text=The%20report%20highlights%20that%20the%20key%20to%20market%20selection%20lies",
+      "data_period": "",
+      "data_period_end": null
+    },
+    {
+      "id": "E37",
+      "source_id": "S17",
+      "quote": "Indonesia is the gravitational centre at 40% of regional GMV. Vietnam is the fastest-growing at +33% YoY thanks to younger demographics (median age 32) and rapid smartphone penetration.",
+      "claim": "Indonesia là trung tâm của thị trường game di động Đông Nam Á, chiếm 40% tổng giá trị giao dịch (GMV) của khu vực.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://foxreload.com/en/library/business/southeast-asia-mobile-gaming-2026#:~:text=Indonesia%20is%20the%20gravitational%20centre%20at%2040%25%20of%20regional%20GMV.",
+      "data_period": "",
+      "data_period_end": null
+    },
+    {
+      "id": "E38",
+      "source_id": "S17",
+      "quote": "E-wallets handle 54% of SEA gaming top-up volume in 2026, up from 38% in 2022. Country-specific: Indonesia - OVO — 110M users, owned by Grup Lippo + Tokopedia ties.",
+      "claim": "Ví điện tử chiếm 54% tổng khối lượng nạp tiền game ở Đông Nam Á vào năm 2026, với OVO là ví điện tử hàng đầu tại Indonesia với 110 triệu người dùng.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://foxreload.com/en/library/business/southeast-asia-mobile-gaming-2026#:~:text=E-wallets%20handle%2054%25%20of%20SEA%20gaming%20top-up%20volume%20in%202026%2C",
+      "data_period": "2022",
+      "data_period_end": "2022-12-31"
+    },
+    {
+      "id": "E39",
+      "source_id": "S17",
+      "quote": "Philippines - GCash — 94M users (out of 117M population), Globe Telecom. Maya (formerly PayMaya) — 50M users. Coins.ph — 18M users, crypto/wallet hybrid.",
+      "claim": "Tại Philippines, GCash là ví điện tử phổ biến nhất với 94 triệu người dùng, tiếp theo là Maya với 50 triệu người dùng.",
+      "verified": true,
+      "match_score": 97.4,
+      "highlight_url": "https://foxreload.com/en/library/business/southeast-asia-mobile-gaming-2026#:~:text=Philippines%20-%20GCash%20%E2%80%94%2094M%20users%20%28out%20of%20117M%20population%29%2C",
+      "data_period": "",
+      "data_period_end": null
+    },
+    {
+      "id": "E40",
+      "source_id": "S18",
+      "quote": "By combining hypercasual accessibility with casual-style progression, LiveOps, and hybrid IAA/IAP monetization, subgenres like Sort, Screw and Block puzzles continue to attract both players and publishers.",
+      "claim": "Các thể loại game Hybrid Casual, kết hợp tính dễ tiếp cận của hypercasual với tiến trình kiểu casual, LiveOps và mô hình kiếm tiền kết hợp IAA/IAP, đang thu hút người chơi và nhà phát hành.",
+      "verified": true,
+      "match_score": 100.0,
+      "highlight_url": "https://friendlygamedev.com/blog/mobile-casual-market-in-h1-2026#:~:text=By%20combining%20hypercasual%20accessibility%20with%20casual-style%20progression%2C%20LiveOps%2C%20and%20hybrid",
+      "data_period": "",
+      "data_period_end": null
+    }
+  ],
+  "quality": {
+    "total_quotes_extracted": 40,
+    "verified_quotes_count": 40,
+    "verified_quote_rate": 100.0,
+    "total_insights_count": 13,
+    "insights_with_verified_evidence_rate": 100.0,
+    "high_confidence_from_tier_c_only_count": 0,
+    "llm_invented_urls_removed_count": 0,
+    "rejected_sources_count": 31,
+    "rejected_quotes_count": 0,
+    "rejected_sources": [
+      {
+        "item_id": "https://investgame.net/wp-content/uploads/2025/07/Gamesforum-Intelligence-Casual",
+        "reason": "Bỏ qua định dạng file nhị phân/tải xuống",
+        "detail": ""
+      },
+      {
+        "item_id": "https://investgame.net/wp-content/uploads/2024/10/State-of-Mobile-Games-in-SEA-2",
+        "reason": "Bỏ qua định dạng file nhị phân/tải xuống",
+        "detail": ""
+      },
+      {
+        "item_id": "https://investgame.net/wp-content/uploads/2024/10/State-of-Mobile-Games-in-SEA-2",
+        "reason": "Bỏ qua định dạng file nhị phân/tải xuống",
+        "detail": ""
+      },
+      {
+        "item_id": "https://investgame.net/wp-content/uploads/2024/10/State-of-Mobile-Games-in-SEA-2",
+        "reason": "Bỏ qua định dạng file nhị phân/tải xuống",
+        "detail": ""
+      },
+      {
+        "item_id": "https://investgame.net/wp-content/uploads/2025/02/Pdf-Casual.pdf",
+        "reason": "Bỏ qua định dạng file nhị phân/tải xuống",
+        "detail": ""
+      },
+      {
+        "item_id": "https://soha.vn/game-duoc-du-bao-thanh-nganh-kinh-te-242-ty-usd-cua-viet-nam-doa",
+        "reason": "Ngoài top 18 ứng viên ưu tiên sau khi khử trùng lặp",
+        "detail": ""
+      },
+      {
+        "item_id": "https://www.vietnam.vn/viet-nam-dang-tro-thanh-thi-truong-game-soi-dong-nhat-don",
+        "reason": "Ngoài top 18 ứng viên ưu tiên sau khi khử trùng lặp",
+        "detail": ""
+      },
+      {
+        "item_id": "https://dantri.com.vn/cong-nghe/xu-huong-moi-phat-trien-nganh-game-viet-20250410",
+        "reason": "Vượt quá giới hạn 12 nguồn tốt nhất hoặc trùng lặp domain (Hạng C, Cũ dần (12-24 tháng))",
+        "detail": ""
+      },
+      {
+        "item_id": "https://savameta.com/vi/tin-tuc/monetization-game-mobile",
+        "reason": "Vượt quá giới hạn 12 nguồn tốt nhất hoặc trùng lặp domain (Hạng C, Cũ (>24 tháng hoặc không rõ ngày))",
+        "detail": ""
+      },
+      {
+        "item_id": "https://investgame.net/news/pdf/southeast-asian-mobile-game-market-insights-2024",
+        "reason": "Vượt quá giới hạn 12 nguồn tốt nhất hoặc trùng lặp domain (Hạng C, Cũ (>24 tháng hoặc không rõ ngày))",
+        "detail": ""
+      },
+      {
+        "item_id": "https://tenjin.com/blog/from-hyper-to-hybrid-in-2024-ad-spend-cpi-by-platform-ad",
+        "reason": "Vượt quá giới hạn 12 nguồn tốt nhất hoặc trùng lặp domain (Hạng C, Cũ (>24 tháng hoặc không rõ ngày))",
+        "detail": ""
+      },
+      {
+        "item_id": "https://knowledge.antom.com/indonesia-gaming-payment-trends-report-mobile-only-n",
+        "reason": "Vượt quá giới hạn 12 nguồn tốt nhất hoặc trùng lặp domain (Hạng C, Cũ (>24 tháng hoặc không rõ ngày))",
+        "detail": ""
+      },
+      {
+        "item_id": "https://sensortower.com/state-of-mobile-games-in-sea-2024-report",
+        "reason": "Vượt quá giới hạn 12 nguồn tốt nhất hoặc trùng lặp domain (Hạng A, Cũ (>24 tháng hoặc không rõ ngày))",
+        "detail": ""
+      },
+      {
+        "item_id": "https://investgame.net/wp-content/uploads/2026/09/2026-09-03-socialpetaxgamato_2",
+        "reason": "Bỏ qua định dạng file nhị phân/tải xuống",
+        "detail": ""
+      },
+      {
+        "item_id": "https://investgame.net/wp-content/uploads/2026/09/2026-09-03-socialpetaxgamato_2",
+        "reason": "Bỏ qua định dạng file nhị phân/tải xuống",
+        "detail": ""
+      },
+      {
+        "item_id": "https://greatinternetwisdom.com/hybrid-monetization-models-iap-ad-revenue-best-p",
+        "reason": "Ngoài top 18 ứng viên ưu tiên sau khi khử trùng lặp",
+        "detail": ""
+      },
+      {
+        "item_id": "https://cas.ai/blog/hybrid-monetization-in-mobile-games-a-practical-guide",
+        "reason": "Ngoài top 18 ứng viên ưu tiên sau khi khử trùng lặp",
+        "detail": ""
+      },
+      {
+        "item_id": "https://writingmate.github.io/zeptolab-game-deepresearch/reports/hybrid-casual-m",
+        "reason": "Ngoài top 18 ứng viên ưu tiên sau khi khử trùng lặp",
+        "detail": ""
+      },
+      {
+        "item_id": "https://www.tap-nation.io/blog/hybrid-monetization-in-mobile-games-the-key-to-gr",
+        "reason": "Ngoài top 18 ứng viên ưu tiên sau khi khử trùng lặp",
+        "detail": ""
+      },
+      {
+        "item_id": "https://www.nagpurtoday.in/casual-game-market-analysis-in-indonesia-2026",
+        "reason": "Vượt quá giới hạn 6 nguồn tốt nhất hoặc trùng lặp domain (Hạng C, Mới (<=12 tháng))",
+        "detail": ""
+      },
+      {
+        "item_id": "https://www.businessofapps.com/insights/2026-southeast-asia-mobile-game-marketin",
+        "reason": "Vượt quá giới hạn 6 nguồn tốt nhất hoặc trùng lặp domain (Hạng C, Mới (<=12 tháng))",
+        "detail": ""
+      },
+      {
+        "item_id": "https://socialpeta.com/en/academy/2026-southeast-asia-mobile-game-marketing-repo",
+        "reason": "Vượt quá giới hạn 6 nguồn tốt nhất hoặc trùng lặp domain (Hạng C, Mới (<=12 tháng))",
+        "detail": ""
+      },
+      {
+        "item_id": "https://cabrait.wordpress.com/2025/07/26/in-app-purchases-vs-ads",
+        "reason": "Vượt quá giới hạn 6 nguồn tốt nhất hoặc trùng lặp domain (Hạng C, Cũ dần (12-24 tháng))",
+        "detail": ""
+      },
+      {
+        "item_id": "https://icon-era.com/statistics/southeast-asia-mobile-gaming",
+        "reason": "Vượt quá giới hạn 6 nguồn tốt nhất hoặc trùng lặp domain (Hạng C, Cũ dần (12-24 tháng))",
+        "detail": ""
+      },
+      {
+        "item_id": "https://tyrads.com/in-app-purchase-vs-ads",
+        "reason": "Vượt quá giới hạn 6 nguồn tốt nhất hoặc trùng lặp domain (Hạng C, Cũ dần (12-24 tháng))",
+        "detail": ""
+      },
+      {
+        "item_id": "https://playbook.appsamurai.com/monetization-playbook",
+        "reason": "Vượt quá giới hạn 6 nguồn tốt nhất hoặc trùng lặp domain (Hạng C, Cũ (>24 tháng hoặc không rõ ngày))",
+        "detail": ""
+      },
+      {
+        "item_id": "https://www.linkedin.com/pulse/game-monetization-strategies-ads-vs-in-app-purcha",
+        "reason": "Vượt quá giới hạn 6 nguồn tốt nhất hoặc trùng lặp domain (Hạng C, Cũ (>24 tháng hoặc không rõ ngày))",
+        "detail": ""
+      },
+      {
+        "item_id": "https://koderspedia.com/how-in-app-purchases-ads-drive-mobile-game-revenue",
+        "reason": "Vượt quá giới hạn 6 nguồn tốt nhất hoặc trùng lặp domain (Hạng C, Cũ (>24 tháng hoặc không rõ ngày))",
+        "detail": ""
+      },
+      {
+        "item_id": "https://sensortower.com/blog/state-of-mobile-2026",
+        "reason": "Vượt quá giới hạn 6 nguồn tốt nhất hoặc trùng lặp domain (Hạng A, Mới (<=12 tháng))",
+        "detail": ""
+      },
+      {
+        "item_id": "https://sensortower.com/report/state-of-mobile-2026",
+        "reason": "Vượt quá giới hạn 6 nguồn tốt nhất hoặc trùng lặp domain (Hạng A, Mới (<=12 tháng))",
+        "detail": ""
+      },
+      {
+        "item_id": "https://sensortower.com/blog/southeast-asia-mobile-gaming-2025",
+        "reason": "Vượt quá giới hạn 6 nguồn tốt nhất hoặc trùng lặp domain (Hạng A, Cũ dần (12-24 tháng))",
+        "detail": ""
+      }
+    ],
+    "rejected_quotes": []
+  },
+  "trace": {
+    "run_timestamp": "2026-10-23T13:22:35",
+    "current_date": "2026-10-15",
+    "duration_seconds": 0.03,
+    "llm_provider": "gemini",
+    "llm_model": "gemini-3.8-flash",
+    "llm_calls_count": 0,
+    "search_provider": "ddgs",
+    "queries_executed": [
+      "Indonesia Philippines casual game monetization trends 2024 2025",
+      "Mobile game revenue models Indonesia Philippines Sensor Tower 2024",
+      "Casual game ARPU IAP IAA performance Southeast Asia 2024",
+      "Top casual games Indonesia Philippines monetization strategy Data.ai 2024",
+      "Mô hình kiếm tiền game casual Indonesia Philippines hiệu quả nhất 2024",
+      "Xu hướng doanh thu game di động Đông Nam Á 2024 Newzoo"
+    ],
+    "sub_questions": [
+      "Các mô hình kiếm tiền phổ biến nhất cho game casual ở Indonesia và Philippines hiện nay là gì?",
+      "Mô hình quảng cáo trong ứng dụng (IAA) và mua hàng trong ứng dụng (IAP) đang hoạt động như thế nào đối với game casual tại hai thị trường này?",
+      "Tỷ lệ người chơi chi tiêu (payer conversion rate) và doanh thu trung bình trên mỗi người dùng (ARPU) của game casual theo từng mô hình kiếm tiền ở Indonesia và Philippines là bao nhiêu?",
+      "Có sự khác biệt đáng kể nào về hiệu quả kiếm tiền giữa các thể loại game casual cụ thể (ví dụ: hyper-casual, puzzle, arcade) tại hai quốc gia này không?",
+      "Những xu hướng mới nổi hoặc thách thức nào đang ảnh hưởng đến hiệu quả kiếm tiền của game casual ở Indonesia và Philippines?"
+    ],
+    "decision_criteria": [
+      "Hiệu quả kiếm tiền (ARPU, LTV) của từng mô hình",
+      "Mức độ chấp nhận của người chơi đối với từng mô hình kiếm tiền",
+      "Chi phí phát triển và vận hành liên quan đến từng mô hình",
+      "Tiềm năng tăng trưởng và bền vững của mô hình trong dài hạn",
+      "Mức độ cạnh tranh và rào cản gia nhập cho các mô hình kiếm tiền cụ thể"
+    ],
+    "implicit_premises": [
+      "Có một hoặc một vài mô hình kiếm tiền đang 'hiệu quả' rõ rệt hơn các mô hình khác cho game casual ở Indonesia và Philippines.",
+      "Dữ liệu về hiệu quả kiếm tiền của game casual theo từng mô hình cụ thể ở cấp độ quốc gia (Indonesia, Philippines) là có sẵn và đủ chi tiết để phân tích."
+    ],
+    "raw_search_results_count": 30,
+    "deduped_sources_count": 20,
+    "kept_sources_count": 12,
+    "step_logs": [
+      "[Bước 1/6 · Lập kế hoạch (Plan)] Phân tách câu hỏi con, tiêu chí ra quyết định, truy vấn tìm kiếm EN/VI và tiền đề ngầm...",
+      "[Bước 1/6 · Hoàn tất Plan] Đã tạo 5 câu hỏi con, 5 tiêu chí quyết định, 6 truy vấn tìm kiếm và 2 tiền đề cần kiểm chứng.",
+      "[Bước 2–3/6 · Thu thập & Xếp hạng nguồn (Retrieve & Grade)] Đang tìm kiếm 6 truy vấn (top 5/truy vấn), khử trùng lặp, trích xuất nội dung và chấm hạng A/B/C...",
+      "[Bước 2–3/6 · Hoàn tất Retrieve & Grade] Tìm thấy 30 kết quả thô -> 20 URL duy nhất -> Giữ 12 nguồn tốt nhất (Hạng A: 3, Hạng B: 3, Hạng C: 6); Loại 13 nguồn.",
+      "[Bước 4/6 · Rút trích & Xác minh trích dẫn (Extract & Verify)] Đang rút trích claim kèm trích dẫn nguyên văn <= 40 từ từ 12 nguồn (gom 4 nguồn/lần gọi LLM) và kiểm tra bằng RapidFuzz >= 90...",
+      "[Bước 4/6 · Hoàn tất Extract & Verify] Xác minh thành công 28/28 trích dẫn nguyên văn (Loại 0 trích dẫn không đạt chuẩn).",
+      "[Bước 5/6 · Tổng hợp nhận định (Synthesize)] Đang tổng hợp nhận định, kiểm tra tiền đề, phát hiện mâu thuẫn và khoảng trống dữ liệu từ 28 bằng chứng đã xác minh...",
+      "[Bước 5/6 · Hoàn tất Synthesize] Đã tổng hợp 10 nhận định dự thảo, 1 điểm mâu thuẫn, 2 kiểm tra tiền đề và 4 khoảng trống dữ liệu.",
+      "[Bước 6/6 · Chấm điểm độ tin cậy & Tự kiểm (Score & Self-Check)] Áp dụng quy tắc chấm điểm CAO/TRUNG BÌNH/THẤP, gắn link Text Fragment và tính chỉ số tự kiểm...",
+      "[Bước 6b/6 · Phân tích độ mới dữ liệu (Change Request A2)] Mức ảnh hưởng: ĐÁNG KỂ | Số nguồn then chốt cũ (> 18 tháng hoặc chưa rõ tuổi): 5.",
+      "[Bước 6/6 · Hoàn tất] Hoàn thành trong 0.03s với 0 lần gọi LLM. Tỷ lệ trích dẫn xác minh: 100.0% | Số nhận định CAO từ nguồn C: 0.",
+      "[Làm mới 1/4 · Sinh truy vấn] Đang tạo truy vấn tìm dữ liệu mới hơn cho nguồn mục tiêu S1, S5...",
+      "[Làm mới 2/4 · Tìm & lọc nguồn mới] Đang chạy 6 truy vấn và lọc các nguồn có ngày đăng mới hơn...",
+      "[Làm mới 3/4 · Trích xuất & xác minh trích dẫn mới] Đang rút trích và kiểm chứng RapidFuzz >= 90 từ 6 nguồn mới...",
+      "[Làm mới 4/4 · Đối chiếu bằng chứng cũ ↔ mới & Chấm lại độ tin cậy] Đang so sánh 7 bằng chứng cũ với 12 bằng chứng mới..."
+    ],
+    "keywords": [
+      "casual game",
+      "monetization",
+      "kiếm tiền",
+      "Indonesia",
+      "Philippines",
+      "IAP",
+      "IAA",
+      "in-app purchase",
+      "in-app advertising",
+      "ARPU",
+      "LTV",
+      "revenue model",
+      "mobile game",
+      "Southeast Asia",
+      "Đông Nam Á"
+    ],
+    "version": 2,
+    "parent_run_timestamp": "2026-10-23T13:22:35",
+    "rescored_as_of": "2026-10-23",
+    "refresh_timestamp": "2026-10-23T13:22:35"
+  },
+  "recency": {
+    "reference_date": "2026-10-23",
+    "alert_months": 18,
+    "impact_level": "ĐÁNG KỂ",
+    "summary": "Mức ảnh hưởng: ĐÁNG KỂ. 7/13 nhận định chưa có bằng chứng mới trong 18 tháng gần đây (I2, I3, I4, I6, I9, I10, I12); 3 nhận định dựa một phần vào dữ liệu cũ. Nguồn cũ then chốt: S1 (cùng S15, S2) (sensortower.com, 05/2025, ~17 tháng, số liệu Q1/2025). Chi tiết ở mục 7.",
+    "sources": [
+      {
+        "source_id": "S1",
+        "status": "CŨ",
+        "reasons": [
+          "kỳ số liệu Q1/2025, ~19 tháng"
+        ],
+        "date_display": "05/2025",
+        "date_method_label": "tháng/năm trong URL hoặc tiêu đề",
+        "age_display": "~17 tháng",
+        "older_than_alert": false,
+        "possibly_older_than_alert": false,
+        "data_vintage": "Q1/2025",
+        "date_conflict": false,
+        "supported_insight_ids": [
+          "I1",
+          "I2",
+          "I3"
+        ],
+        "is_key": true,
+        "key_reasons": [
+          "bỏ nguồn làm giảm/mất căn cứ nhận định I3 (TRUNG BÌNH → THẤP)",
+          "nếu còn mới sẽ nâng mức I1 (TRUNG BÌNH → CAO)"
+        ]
+      },
+      {
+        "source_id": "S2",
+        "status": "CŨ",
+        "reasons": [
+          "kỳ số liệu H1/2024, ~28 tháng",
+          "đăng 10/2024, ~24 tháng",
+          "kỳ số liệu 2024, ~22 tháng",
+          "kỳ số liệu 08/2024, ~26 tháng"
+        ],
+        "date_display": "10/2024",
+        "date_method_label": "tháng/năm trong URL hoặc tiêu đề",
+        "age_display": "~24 tháng",
+        "older_than_alert": true,
+        "possibly_older_than_alert": true,
+        "data_vintage": "2024",
+        "date_conflict": false,
+        "supported_insight_ids": [
+          "I1",
+          "I3"
+        ],
+        "is_key": true,
+        "key_reasons": [
+          "nếu còn mới sẽ nâng mức I1 (TRUNG BÌNH → CAO)"
+        ]
+      },
+      {
+        "source_id": "S3",
+        "status": "CŨ",
+        "reasons": [
+          "kỳ số liệu 2024, ~22 tháng"
+        ],
+        "date_display": "Không rõ ngày",
+        "date_method_label": "không xác định được",
+        "age_display": "không rõ",
+        "older_than_alert": false,
+        "possibly_older_than_alert": true,
+        "data_vintage": "2024",
+        "date_conflict": false,
+        "supported_insight_ids": [
+          "I4"
+        ],
+        "is_key": false,
+        "key_reasons": []
+      },
+      {
+        "source_id": "S4",
+        "status": "MỚI",
+        "reasons": [
+          "đăng 28/05/2026 (~5 tháng)"
+        ],
+        "date_display": "28/05/2026",
+        "date_method_label": "ngày ghi trong tiêu đề/đầu bài viết",
+        "age_display": "~5 tháng",
+        "older_than_alert": false,
+        "possibly_older_than_alert": false,
+        "data_vintage": "",
+        "date_conflict": false,
+        "supported_insight_ids": [],
+        "is_key": false,
+        "key_reasons": []
+      },
+      {
+        "source_id": "S5",
+        "status": "CŨ",
+        "reasons": [
+          "kỳ số liệu Q2/2024, ~28 tháng",
+          "đăng 2024 (chỉ biết năm), 22–34 tháng",
+          "kỳ số liệu 2024, ~22 tháng"
+        ],
+        "date_display": "2024 (chỉ biết năm)",
+        "date_method_label": "chỉ có năm trong URL/tiêu đề — ước tính sai số ±6 tháng",
+        "age_display": "22–34 tháng",
+        "older_than_alert": true,
+        "possibly_older_than_alert": true,
+        "data_vintage": "2024",
+        "date_conflict": false,
+        "supported_insight_ids": [
+          "I4",
+          "I5"
+        ],
+        "is_key": true,
+        "key_reasons": [
+          "nguồn hạng B duy nhất của nhận định I5",
+          "nếu còn mới sẽ nâng mức I5 (TRUNG BÌNH → CAO)"
+        ]
+      },
+      {
+        "source_id": "S6",
+        "status": "CŨ",
+        "reasons": [
+          "đăng 2024 (chỉ biết năm), 22–34 tháng"
+        ],
+        "date_display": "2024 (chỉ biết năm)",
+        "date_method_label": "chỉ có năm trong URL/tiêu đề — ước tính sai số ±6 tháng",
+        "age_display": "22–34 tháng",
+        "older_than_alert": true,
+        "possibly_older_than_alert": true,
+        "data_vintage": "",
+        "date_conflict": false,
+        "supported_insight_ids": [
+          "I6"
+        ],
+        "is_key": true,
+        "key_reasons": [
+          "nếu còn mới sẽ nâng mức I6 (THẤP → TRUNG BÌNH)"
+        ]
+      },
+      {
+        "source_id": "S7",
+        "status": "MỚI",
+        "reasons": [
+          "đăng 24/08/2026 (~2 tháng)"
+        ],
+        "date_display": "24/08/2026",
+        "date_method_label": "ngày ghi trong tiêu đề/đầu bài viết",
+        "age_display": "~2 tháng",
+        "older_than_alert": false,
+        "possibly_older_than_alert": false,
+        "data_vintage": "",
+        "date_conflict": false,
+        "supported_insight_ids": [
+          "I7",
+          "I8"
+        ],
+        "is_key": false,
+        "key_reasons": []
+      },
+      {
+        "source_id": "S8",
+        "status": "MỚI",
+        "reasons": [
+          "đăng 31/03/2026 (~7 tháng)"
+        ],
+        "date_display": "31/03/2026",
+        "date_method_label": "ngày ghi trong tiêu đề/đầu bài viết",
+        "age_display": "~7 tháng",
+        "older_than_alert": false,
+        "possibly_older_than_alert": false,
+        "data_vintage": "",
+        "date_conflict": false,
+        "supported_insight_ids": [],
+        "is_key": false,
+        "key_reasons": []
+      },
+      {
+        "source_id": "S9",
+        "status": "CŨ",
+        "reasons": [
+          "đăng 30/10/2024, ~24 tháng"
+        ],
+        "date_display": "30/10/2024",
+        "date_method_label": "ngày ghi trong tiêu đề/đầu bài viết",
+        "age_display": "~24 tháng",
+        "older_than_alert": true,
+        "possibly_older_than_alert": true,
+        "data_vintage": "",
+        "date_conflict": false,
+        "supported_insight_ids": [
+          "I9"
+        ],
+        "is_key": false,
+        "key_reasons": []
+      },
+      {
+        "source_id": "S10",
+        "status": "KHÔNG CHẮC",
+        "reasons": [
+          "chỉ biết năm 2025 → 10–22 tháng"
+        ],
+        "date_display": "2025 (chỉ biết năm)",
+        "date_method_label": "chỉ có năm trong URL/tiêu đề — ước tính sai số ±6 tháng",
+        "age_display": "10–22 tháng",
+        "older_than_alert": false,
+        "possibly_older_than_alert": true,
+        "data_vintage": "",
+        "date_conflict": false,
+        "supported_insight_ids": [
+          "I4"
+        ],
+        "is_key": false,
+        "key_reasons": []
+      },
+      {
+        "source_id": "S11",
+        "status": "CŨ",
+        "reasons": [
+          "kỳ số liệu 08/2024, ~26 tháng",
+          "đăng 01/11/2024, ~24 tháng"
+        ],
+        "date_display": "01/11/2024",
+        "date_method_label": "ngày ghi trong tiêu đề/đầu bài viết",
+        "age_display": "~24 tháng",
+        "older_than_alert": true,
+        "possibly_older_than_alert": true,
+        "data_vintage": "08/2024",
+        "date_conflict": false,
+        "supported_insight_ids": [
+          "I1",
+          "I10"
+        ],
+        "is_key": false,
+        "key_reasons": []
+      },
+      {
+        "source_id": "S12",
+        "status": "CŨ",
+        "reasons": [
+          "đăng 01/11/2024, ~24 tháng"
+        ],
+        "date_display": "01/11/2024",
+        "date_method_label": "ngày ghi trong tiêu đề/đầu bài viết",
+        "age_display": "~24 tháng",
+        "older_than_alert": true,
+        "possibly_older_than_alert": true,
+        "data_vintage": "",
+        "date_conflict": false,
+        "supported_insight_ids": [],
+        "is_key": false,
+        "key_reasons": []
+      },
+      {
+        "source_id": "S13",
+        "status": "MỚI",
+        "reasons": [
+          "đăng 2026 (chỉ biết năm) (0–10 tháng)"
+        ],
+        "date_display": "2026 (chỉ biết năm)",
+        "date_method_label": "chỉ có năm trong URL/tiêu đề — ước tính sai số ±6 tháng",
+        "age_display": "0–10 tháng",
+        "older_than_alert": false,
+        "possibly_older_than_alert": false,
+        "data_vintage": "",
+        "date_conflict": false,
+        "supported_insight_ids": [
+          "I11"
+        ],
+        "is_key": true,
+        "key_reasons": [
+          "bỏ nguồn làm giảm/mất căn cứ nhận định I11 (TRUNG BÌNH → MẤT CĂN CỨ)",
+          "nguồn hạng A duy nhất của nhận định I11"
+        ]
+      },
+      {
+        "source_id": "S14",
+        "status": "MỚI",
+        "reasons": [
+          "đăng 2026 (chỉ biết năm) (0–10 tháng)"
+        ],
+        "date_display": "2026 (chỉ biết năm)",
+        "date_method_label": "chỉ có năm trong URL/tiêu đề — ước tính sai số ±6 tháng",
+        "age_display": "0–10 tháng",
+        "older_than_alert": false,
+        "possibly_older_than_alert": false,
+        "data_vintage": "",
+        "date_conflict": false,
+        "supported_insight_ids": [],
+        "is_key": false,
+        "key_reasons": []
+      },
+      {
+        "source_id": "S15",
+        "status": "CŨ",
+        "reasons": [
+          "kỳ số liệu 2022, ~46 tháng"
+        ],
+        "date_display": "2026 (chỉ biết năm)",
+        "date_method_label": "chỉ có năm trong URL/tiêu đề — ước tính sai số ±6 tháng",
+        "age_display": "0–10 tháng",
+        "older_than_alert": false,
+        "possibly_older_than_alert": false,
+        "data_vintage": "2022",
+        "date_conflict": false,
+        "supported_insight_ids": [
+          "I5",
+          "I12",
+          "I13"
+        ],
+        "is_key": true,
+        "key_reasons": [
+          "bỏ nguồn làm giảm/mất căn cứ nhận định I5 (TRUNG BÌNH → THẤP), I13 (TRUNG BÌNH → THẤP)"
+        ]
+      },
+      {
+        "source_id": "S16",
+        "status": "MỚI",
+        "reasons": [
+          "đăng 02/09/2026 (~2 tháng)"
+        ],
+        "date_display": "02/09/2026",
+        "date_method_label": "ngày ghi trong tiêu đề/đầu bài viết",
+        "age_display": "~2 tháng",
+        "older_than_alert": false,
+        "possibly_older_than_alert": false,
+        "data_vintage": "",
+        "date_conflict": false,
+        "supported_insight_ids": [
+          "I1"
+        ],
+        "is_key": false,
+        "key_reasons": []
+      },
+      {
+        "source_id": "S17",
+        "status": "CŨ",
+        "reasons": [
+          "kỳ số liệu 2022, ~46 tháng"
+        ],
+        "date_display": "2026 (chỉ biết năm)",
+        "date_method_label": "chỉ có năm trong URL/tiêu đề — ước tính sai số ±6 tháng",
+        "age_display": "0–10 tháng",
+        "older_than_alert": false,
+        "possibly_older_than_alert": false,
+        "data_vintage": "2022",
+        "date_conflict": false,
+        "supported_insight_ids": [],
+        "is_key": false,
+        "key_reasons": []
+      },
+      {
+        "source_id": "S18",
+        "status": "MỚI",
+        "reasons": [
+          "đăng 29/07/2026 (~3 tháng)"
+        ],
+        "date_display": "29/07/2026",
+        "date_method_label": "ngày ghi trong tiêu đề/đầu bài viết",
+        "age_display": "~3 tháng",
+        "older_than_alert": false,
+        "possibly_older_than_alert": false,
+        "data_vintage": "",
+        "date_conflict": false,
+        "supported_insight_ids": [
+          "I5",
+          "I13"
+        ],
+        "is_key": true,
+        "key_reasons": [
+          "bỏ nguồn làm giảm/mất căn cứ nhận định I5 (TRUNG BÌNH → THẤP), I13 (TRUNG BÌNH → THẤP)"
+        ]
+      }
+    ],
+    "key_old_sources": [
+      {
+        "source_id": "S1",
+        "impacts": [
+          {
+            "insight_id": "I1",
+            "current": "TRUNG BÌNH",
+            "if_source_removed": "TRUNG BÌNH",
+            "if_source_fresh": "CAO"
+          },
+          {
+            "insight_id": "I2",
+            "current": "THẤP",
+            "if_source_removed": "MẤT CĂN CỨ",
+            "if_source_fresh": "THẤP"
+          },
+          {
+            "insight_id": "I3",
+            "current": "TRUNG BÌNH",
+            "if_source_removed": "THẤP",
+            "if_source_fresh": "TRUNG BÌNH"
+          }
+        ],
+        "summary": "S1 (sensortower.com, hạng A; đăng 05/2025 — tháng/năm trong URL hoặc tiêu đề; tuổi ước tính ~17 tháng; kỳ số liệu mới nhất trong trích dẫn: Q1/2025) là căn cứ của 3/13 nhận định (I1, I2, I3). Nếu bỏ nguồn này: I2 mất căn cứ (không còn nguồn nào khác); I3 giảm TRUNG BÌNH → THẤP. Nếu có bản cập nhật mới (≤ 12 tháng): I1 tăng TRUNG BÌNH → CAO."
+      },
+      {
+        "source_id": "S15",
+        "impacts": [
+          {
+            "insight_id": "I5",
+            "current": "TRUNG BÌNH",
+            "if_source_removed": "THẤP",
+            "if_source_fresh": "TRUNG BÌNH"
+          },
+          {
+            "insight_id": "I12",
+            "current": "THẤP",
+            "if_source_removed": "MẤT CĂN CỨ",
+            "if_source_fresh": "THẤP"
+          },
+          {
+            "insight_id": "I13",
+            "current": "TRUNG BÌNH",
+            "if_source_removed": "THẤP",
+            "if_source_fresh": "TRUNG BÌNH"
+          }
+        ],
+        "summary": "S15 (ripplereports.com, hạng C; đăng 2026 (chỉ biết năm) — chỉ có năm trong URL/tiêu đề — ước tính sai số ±6 tháng; tuổi ước tính 0–10 tháng; kỳ số liệu mới nhất trong trích dẫn: 2022) là căn cứ của 3/13 nhận định (I5, I12, I13). Nếu bỏ nguồn này: I5 giảm TRUNG BÌNH → THẤP; I12 mất căn cứ (không còn nguồn nào khác); I13 giảm TRUNG BÌNH → THẤP. Nếu có bản cập nhật mới (≤ 12 tháng): độ tin cậy giữ nguyên."
+      },
+      {
+        "source_id": "S2",
+        "impacts": [
+          {
+            "insight_id": "I1",
+            "current": "TRUNG BÌNH",
+            "if_source_removed": "TRUNG BÌNH",
+            "if_source_fresh": "CAO"
+          },
+          {
+            "insight_id": "I3",
+            "current": "TRUNG BÌNH",
+            "if_source_removed": "TRUNG BÌNH",
+            "if_source_fresh": "TRUNG BÌNH"
+          }
+        ],
+        "summary": "S2 (sensortower.com, hạng A; đăng 10/2024 — tháng/năm trong URL hoặc tiêu đề; tuổi ước tính ~24 tháng; kỳ số liệu mới nhất trong trích dẫn: 2024) là căn cứ của 2/13 nhận định (I1, I3). Nếu bỏ nguồn này: không nhận định nào bị tụt mức. Nếu có bản cập nhật mới (≤ 12 tháng): I1 tăng TRUNG BÌNH → CAO."
+      },
+      {
+        "source_id": "S5",
+        "impacts": [
+          {
+            "insight_id": "I4",
+            "current": "THẤP",
+            "if_source_removed": "THẤP",
+            "if_source_fresh": "THẤP"
+          },
+          {
+            "insight_id": "I5",
+            "current": "TRUNG BÌNH",
+            "if_source_removed": "TRUNG BÌNH",
+            "if_source_fresh": "CAO"
+          }
+        ],
+        "summary": "S5 (appsflyer.com, hạng B; đăng 2024 (chỉ biết năm) — chỉ có năm trong URL/tiêu đề — ước tính sai số ±6 tháng; tuổi ước tính 22–34 tháng; kỳ số liệu mới nhất trong trích dẫn: 2024) là căn cứ của 2/13 nhận định (I4, I5). Nếu bỏ nguồn này: không nhận định nào bị tụt mức. Nếu có bản cập nhật mới (≤ 12 tháng): I5 tăng TRUNG BÌNH → CAO."
+      },
+      {
+        "source_id": "S6",
+        "impacts": [
+          {
+            "insight_id": "I6",
+            "current": "THẤP",
+            "if_source_removed": "MẤT CĂN CỨ",
+            "if_source_fresh": "TRUNG BÌNH"
+          }
+        ],
+        "summary": "S6 (appsflyer.com, hạng B; đăng 2024 (chỉ biết năm) — chỉ có năm trong URL/tiêu đề — ước tính sai số ±6 tháng; tuổi ước tính 22–34 tháng) là căn cứ của 1/13 nhận định (I6). Nếu bỏ nguồn này: I6 mất căn cứ (không còn nguồn nào khác). Nếu có bản cập nhật mới (≤ 12 tháng): I6 tăng THẤP → TRUNG BÌNH."
+      }
+    ],
+    "insights": [
+      {
+        "insight_id": "I1",
+        "status": "MỘT PHẦN CŨ",
+        "non_recent_source_ids": [
+          "S1",
+          "S2",
+          "S11"
+        ],
+        "note": "S1 05/2025, kỳ Q1/2025; S2 10/2024, kỳ H1/2024; S11 01/11/2024, kỳ 08/2024"
+      },
+      {
+        "insight_id": "I2",
+        "status": "KHÔNG CÓ BẰNG CHỨNG MỚI",
+        "non_recent_source_ids": [
+          "S1"
+        ],
+        "note": "S1 05/2025, kỳ Q1/2025"
+      },
+      {
+        "insight_id": "I3",
+        "status": "KHÔNG CÓ BẰNG CHỨNG MỚI",
+        "non_recent_source_ids": [
+          "S1",
+          "S2"
+        ],
+        "note": "S1 05/2025, kỳ Q1/2025; S2 10/2024, kỳ 2024"
+      },
+      {
+        "insight_id": "I4",
+        "status": "KHÔNG CÓ BẰNG CHỨNG MỚI",
+        "non_recent_source_ids": [
+          "S3",
+          "S5",
+          "S10"
+        ],
+        "note": "S3 Không rõ ngày, kỳ 2024; S5 2024 (chỉ biết năm), kỳ Q2/2024; S10 2025 (chỉ biết năm)"
+      },
+      {
+        "insight_id": "I5",
+        "status": "MỘT PHẦN CŨ",
+        "non_recent_source_ids": [
+          "S5",
+          "S15"
+        ],
+        "note": "S5 2024 (chỉ biết năm), kỳ 2024; S15 2026 (chỉ biết năm), kỳ 2022"
+      },
+      {
+        "insight_id": "I6",
+        "status": "KHÔNG CÓ BẰNG CHỨNG MỚI",
+        "non_recent_source_ids": [
+          "S6"
+        ],
+        "note": "S6 2024 (chỉ biết năm)"
+      },
+      {
+        "insight_id": "I7",
+        "status": "MỚI",
+        "non_recent_source_ids": [],
+        "note": ""
+      },
+      {
+        "insight_id": "I8",
+        "status": "MỚI",
+        "non_recent_source_ids": [],
+        "note": ""
+      },
+      {
+        "insight_id": "I9",
+        "status": "KHÔNG CÓ BẰNG CHỨNG MỚI",
+        "non_recent_source_ids": [
+          "S9"
+        ],
+        "note": "S9 30/10/2024"
+      },
+      {
+        "insight_id": "I10",
+        "status": "KHÔNG CÓ BẰNG CHỨNG MỚI",
+        "non_recent_source_ids": [
+          "S11"
+        ],
+        "note": "S11 01/11/2024, kỳ 08/2024"
+      },
+      {
+        "insight_id": "I11",
+        "status": "MỚI",
+        "non_recent_source_ids": [],
+        "note": ""
+      },
+      {
+        "insight_id": "I12",
+        "status": "KHÔNG CÓ BẰNG CHỨNG MỚI",
+        "non_recent_source_ids": [
+          "S15"
+        ],
+        "note": "S15 2026 (chỉ biết năm), kỳ 2022"
+      },
+      {
+        "insight_id": "I13",
+        "status": "MỘT PHẦN CŨ",
+        "non_recent_source_ids": [
+          "S15"
+        ],
+        "note": "S15 2026 (chỉ biết năm), kỳ 2022"
+      }
+    ],
+    "upcoming_changes": [
+      {
+        "date": "2027-05-17",
+        "source_ids": [
+          "S1"
+        ],
+        "changes": [
+          "I1: TRUNG BÌNH → THẤP",
+          "I3: TRUNG BÌNH → THẤP"
+        ]
+      }
+    ],
+    "suggested_refresh_queries": [
+      "Sensor Tower Southeast Asia Mobile Game Market Insights 2026 site:sensortower.com",
+      "Sensor Tower Southeast Asia Mobile Game Market Insights 2026",
+      "Sensor Tower Southeast Asia Mobile Game Market Insights 2025 site:sensortower.com",
+      "Casual Mobile Gaming 2026 site:ripplereports.com",
+      "Casual Mobile Gaming 2026",
+      "Casual Mobile Gaming 2025 site:ripplereports.com"
+    ],
+    "certainty_groups": {
+      "Đủ cơ sở": [
+        "I11"
+      ],
+      "Cần lưu ý": [
+        "I1",
+        "I5",
+        "I13"
+      ],
+      "Chưa chắc chắn": [
+        "I2",
+        "I3",
+        "I4",
+        "I6",
+        "I7",
+        "I8",
+        "I9",
+        "I10",
+        "I12"
+      ]
+    }
+  },
+  "refresh": {
+    "status": "ĐÃ LÀM MỚI",
+    "refreshed_at": "2026-10-23T13:22:35",
+    "reference_date": "2026-10-23",
+    "target_source_ids": [
+      "S1",
+      "S5"
+    ],
+    "queries": [
+      "Sensor Tower Southeast Asia Mobile Game Market Insights 2026 site:sensortower.com",
+      "Sensor Tower Southeast Asia Mobile Game Market Insights 2026",
+      "Indonesia Philippines casual mobile game monetization trends 2026",
+      "casual game revenue models Southeast Asia 2026",
+      "in-app advertising vs in-app purchase casual games 2025",
+      "hybrid monetization models casual mobile games 2025"
+    ],
+    "new_source_ids": [
+      "S13",
+      "S14",
+      "S15",
+      "S16",
+      "S17",
+      "S18"
+    ],
+    "rejected_new_sources": [
+      {
+        "item_id": "https://investgame.net/wp-content/uploads/2026/09/2026-09-03-socialpetaxgamato_2",
+        "reason": "Bỏ qua định dạng file nhị phân/tải xuống",
+        "detail": ""
+      },
+      {
+        "item_id": "https://investgame.net/wp-content/uploads/2026/09/2026-09-03-socialpetaxgamato_2",
+        "reason": "Bỏ qua định dạng file nhị phân/tải xuống",
+        "detail": ""
+      },
+      {
+        "item_id": "https://greatinternetwisdom.com/hybrid-monetization-models-iap-ad-revenue-best-p",
+        "reason": "Ngoài top 18 ứng viên ưu tiên sau khi khử trùng lặp",
+        "detail": ""
+      },
+      {
+        "item_id": "https://cas.ai/blog/hybrid-monetization-in-mobile-games-a-practical-guide",
+        "reason": "Ngoài top 18 ứng viên ưu tiên sau khi khử trùng lặp",
+        "detail": ""
+      },
+      {
+        "item_id": "https://writingmate.github.io/zeptolab-game-deepresearch/reports/hybrid-casual-m",
+        "reason": "Ngoài top 18 ứng viên ưu tiên sau khi khử trùng lặp",
+        "detail": ""
+      },
+      {
+        "item_id": "https://www.tap-nation.io/blog/hybrid-monetization-in-mobile-games-the-key-to-gr",
+        "reason": "Ngoài top 18 ứng viên ưu tiên sau khi khử trùng lặp",
+        "detail": ""
+      },
+      {
+        "item_id": "https://www.nagpurtoday.in/casual-game-market-analysis-in-indonesia-2026",
+        "reason": "Vượt quá giới hạn 6 nguồn tốt nhất hoặc trùng lặp domain (Hạng C, Mới (<=12 tháng))",
+        "detail": ""
+      },
+      {
+        "item_id": "https://www.businessofapps.com/insights/2026-southeast-asia-mobile-game-marketin",
+        "reason": "Vượt quá giới hạn 6 nguồn tốt nhất hoặc trùng lặp domain (Hạng C, Mới (<=12 tháng))",
+        "detail": ""
+      },
+      {
+        "item_id": "https://socialpeta.com/en/academy/2026-southeast-asia-mobile-game-marketing-repo",
+        "reason": "Vượt quá giới hạn 6 nguồn tốt nhất hoặc trùng lặp domain (Hạng C, Mới (<=12 tháng))",
+        "detail": ""
+      },
+      {
+        "item_id": "https://cabrait.wordpress.com/2025/07/26/in-app-purchases-vs-ads",
+        "reason": "Vượt quá giới hạn 6 nguồn tốt nhất hoặc trùng lặp domain (Hạng C, Cũ dần (12-24 tháng))",
+        "detail": ""
+      },
+      {
+        "item_id": "https://icon-era.com/statistics/southeast-asia-mobile-gaming",
+        "reason": "Vượt quá giới hạn 6 nguồn tốt nhất hoặc trùng lặp domain (Hạng C, Cũ dần (12-24 tháng))",
+        "detail": ""
+      },
+      {
+        "item_id": "https://tyrads.com/in-app-purchase-vs-ads",
+        "reason": "Vượt quá giới hạn 6 nguồn tốt nhất hoặc trùng lặp domain (Hạng C, Cũ dần (12-24 tháng))",
+        "detail": ""
+      },
+      {
+        "item_id": "https://playbook.appsamurai.com/monetization-playbook",
+        "reason": "Vượt quá giới hạn 6 nguồn tốt nhất hoặc trùng lặp domain (Hạng C, Cũ (>24 tháng hoặc không rõ ngày))",
+        "detail": ""
+      },
+      {
+        "item_id": "https://www.linkedin.com/pulse/game-monetization-strategies-ads-vs-in-app-purcha",
+        "reason": "Vượt quá giới hạn 6 nguồn tốt nhất hoặc trùng lặp domain (Hạng C, Cũ (>24 tháng hoặc không rõ ngày))",
+        "detail": ""
+      },
+      {
+        "item_id": "https://koderspedia.com/how-in-app-purchases-ads-drive-mobile-game-revenue",
+        "reason": "Vượt quá giới hạn 6 nguồn tốt nhất hoặc trùng lặp domain (Hạng C, Cũ (>24 tháng hoặc không rõ ngày))",
+        "detail": ""
+      },
+      {
+        "item_id": "https://sensortower.com/blog/state-of-mobile-2026",
+        "reason": "Vượt quá giới hạn 6 nguồn tốt nhất hoặc trùng lặp domain (Hạng A, Mới (<=12 tháng))",
+        "detail": ""
+      },
+      {
+        "item_id": "https://sensortower.com/report/state-of-mobile-2026",
+        "reason": "Vượt quá giới hạn 6 nguồn tốt nhất hoặc trùng lặp domain (Hạng A, Mới (<=12 tháng))",
+        "detail": ""
+      },
+      {
+        "item_id": "https://sensortower.com/blog/southeast-asia-mobile-gaming-2025",
+        "reason": "Vượt quá giới hạn 6 nguồn tốt nhất hoặc trùng lặp domain (Hạng A, Cũ dần (12-24 tháng))",
+        "detail": ""
+      }
+    ],
+    "comparisons": [
+      {
+        "old_evidence_id": "E1",
+        "new_evidence_ids": [],
+        "status": "KHÔNG TƯƠNG ĐƯƠNG",
+        "explanation": "Bằng chứng mới [E29] tập trung vào doanh thu IAP, không phải lượt tải xuống game di động toàn cầu của Đông Nam Á như [E1] (Q1/2025)."
+      },
+      {
+        "old_evidence_id": "E3",
+        "new_evidence_ids": [
+          "E35"
+        ],
+        "status": "XÁC NHẬN",
+        "explanation": "Bằng chứng mới [E35] xác nhận Indonesia dẫn đầu về lượt tải xuống, tương tự [E3] (Q1/2025), mặc dù không có số liệu cụ thể."
+      },
+      {
+        "old_evidence_id": "E2",
+        "new_evidence_ids": [
+          "E29"
+        ],
+        "status": "CẬP NHẬT",
+        "explanation": "Bằng chứng mới [E29] cập nhật doanh thu IAP của Đông Nam Á lên 5,3 tỷ USD, tăng đáng kể so với 625 triệu USD trong [E2] (Q1/2025)."
+      },
+      {
+        "old_evidence_id": "E4",
+        "new_evidence_ids": [],
+        "status": "KHÔNG TƯƠNG ĐƯƠNG",
+        "explanation": "Bằng chứng mới không so sánh cụ thể các thể loại game dễ tiếp cận với các thể loại chuyên sâu hơn về doanh thu IAP ở Đông Nam Á như [E4]."
+      },
+      {
+        "old_evidence_id": "E12",
+        "new_evidence_ids": [
+          "E34"
+        ],
+        "status": "CẬP NHẬT",
+        "explanation": "Bằng chứng mới [E34] khuyến nghị thiết kế kinh tế game hỗ trợ cả IAP và quảng cáo có thưởng, cập nhật xu hướng từ [E12] (Q2/2024) về sự thay đổi giữa IAP và IAA."
+      },
+      {
+        "old_evidence_id": "E13",
+        "new_evidence_ids": [
+          "E31",
+          "E32",
+          "E40"
+        ],
+        "status": "CẬP NHẬT",
+        "explanation": "Bằng chứng mới [E31], [E32], [E40] cập nhật xu hướng tăng trưởng của game hybrid-casual, thay vì chỉ hypercasual như [E13] (Q2/2024)."
+      },
+      {
+        "old_evidence_id": "E11",
+        "new_evidence_ids": [
+          "E31",
+          "E34",
+          "E40"
+        ],
+        "status": "XÁC NHẬN",
+        "explanation": "Bằng chứng mới [E31], [E34], [E40] xác nhận sự phổ biến của mô hình doanh thu kết hợp, đặc biệt là hybrid-casual, tương tự [E11] (2024)."
+      }
+    ],
+    "confidence_changes": [
+      {
+        "insight_id": "I2",
+        "before": "TRUNG BÌNH",
+        "after": "THẤP",
+        "reason": "Các nguồn đang có số liệu/nhận định mâu thuẫn chưa giải quyết (S1 (Hạng A, sensortower.com)) · Độ mới: KHÔNG CÓ BẰNG CHỨNG MỚI (S1 05/2025, kỳ Q1/2025)"
+      },
+      {
+        "insight_id": "I5",
+        "before": "THẤP",
+        "after": "TRUNG BÌNH",
+        "reason": "Đạt mức TRUNG BÌNH: 2 nguồn hạng C khác domain đồng thuận (S15 (Hạng C, ripplereports.com), S18 (Hạng C, friendlygamedev.com), S5 (Hạng B, appsflyer.com)) · Độ mới: MỘT PHẦN CŨ (S5 2024 (chỉ biết năm), kỳ 2024; S15 2026 (chỉ biết năm), kỳ 2022)"
+      },
+      {
+        "insight_id": "I11",
+        "before": "—",
+        "after": "TRUNG BÌNH",
+        "reason": "Nhận định mới bổ sung từ nguồn làm mới (E29)"
+      },
+      {
+        "insight_id": "I12",
+        "before": "—",
+        "after": "THẤP",
+        "reason": "Nhận định mới bổ sung từ nguồn làm mới (E34)"
+      },
+      {
+        "insight_id": "I13",
+        "before": "—",
+        "after": "TRUNG BÌNH",
+        "reason": "Nhận định mới bổ sung từ nguồn làm mới (E31, E32, E40)"
+      }
+    ],
+    "llm_calls_count": 0,
+    "duration_seconds": 0.03,
+    "note": ""
+  }
+}

@@ -91,5 +91,21 @@ Mỗi quyết định được ghi nhận liên tục trong quá trình xây d�
     - *Quyết định*: Đổi hàm `_find_cached_run_for_preset` ưu tiên khớp `c_path.stem.lower() == preset["stem"]` trước khi fallback sang `question`; chỉ tính `ensure_report_recency` cho `active_report` đang hiển thị kèm `@st.cache_data`; bổ sung What-if Simulator cho phép người dùng thử đổi ngày đăng giả định của bất kỳ nguồn nào trên bản sao trong bộ nhớ mà không ghi đè báo cáo gốc.
     - *Lý do*: Giúp người dùng kiểm chứng trực tiếp cả 2 báo cáo `TC2` (trước làm mới) và `TC7` (sau làm mới) không cần API key, vẫn giữ nguyên đúng 1 `st.title` và 4 `st.metric` tương thích 100% với bộ test UI của Mission 2.
 
+18. **[M3 · P3] Ghim `reference_date: "2026-10-15"` cho `TC1`–`TC9` và ưu tiên đường dẫn tiếng Việt (`/vi/`) khi hai bài cùng domain đồng hạng**:
+    - *Bối cảnh*: Khi chạy lại `TC1`–`TC6` và `TC8`–`TC9` vào ngày 23/10/2026 để kiểm thử hồi quy so với snapshot Mission 2 (`2026-10-15`), nếu dùng `date.today()` thì tuổi nguồn sẽ tăng thêm 8 ngày (ví dụ `TC2-S2` chuyển từ `aging` sang `stale`). Ngoài ra ở `TC3`, trang `games.gg` có cả bản tiếng Anh (`/news/...`) và bản tiếng Việt (`/vi/news/...`) cùng hạng C và cùng số từ khóa khớp.
+    - *Quyết định*: Thêm cấu hình `reference_date: "2026-10-15"` vào `eval/cases.yaml` cho `TC1`–`TC9` (riêng `TC7` làm mới và `TC10` câu hỏi mới dùng `2026-10-23`); khi hai bài cùng một domain đồng hạng `(tier, freshness, -kw_hits)` trong `retrieve_and_grade_sources`, ưu tiên giữ bài có đường dẫn tiếng Việt `/vi/` tại vị trí của domain đó mà không đổi thứ tự giữa các domain.
+    - *Lý do*: Đảm bảo `TC2`, `TC3`, `TC4`, `TC5` và `TC9` phát lại từ cache với `0` lần gọi LLM và trùng khớp 100% với baseline Mission 2.
+
+19. **[M3 · P3] Quản lý nguồn gốc minh bạch cho 7 báo cáo mẫu trong `data/cached_runs/`**:
+    - *Bối cảnh*: Thư mục `data/cached_runs/` phục vụ chế độ mặc định "Kết quả đã lưu" trên Streamlit và được kiểm tra bởi `tests/test_app_ui.py` (yêu cầu báo cáo đầu tiên `TC1` hiển thị `100.0%` trích dẫn xác minh).
+    - *Quyết định*: Cập nhật `data/cached_runs/` với nguồn gốc rõ ràng: `tc2`–`tc5` lấy từ `eval/results/TC2..TC5.{json,md}` (trùng 100% nội dung M2 và có đầy đủ `date_method` + `recency`); `tc1` và `tc6` lấy từ `eval/results/m3_offline/TC1,TC6.{json,md}` (áp lớp `research.recency` trực tiếp lên JSON đã nộp ở M2 để giữ nguyên 100% nhận định gốc và metric `100.0%` của `TC1`); `tc7_cr_a2_refreshed` lấy từ `eval/results/TC7.{json,md}` (chạy làm mới thật tại `2026-10-23`).
+    - *Lý do*: Vừa giữ nguyên nội dung các báo cáo đã nộp ở Mission 2 để người chấm đối chiếu trước/sau, vừa cung cấp đầy đủ dữ liệu phân tích độ mới (Mục 7) và bản làm mới thật (`TC7`) ngay khi mở ứng dụng không cần API key.
+
+20. **[M3 · P3/P4] Chủ động không làm các tính năng ngoài phạm vi Change Request A2**:
+    - *Bối cảnh*: Trong giới hạn thời gian Mission 3, việc mở rộng sang nhiều hướng cùng lúc sẽ làm loãng mục tiêu trả lời Change Request A2 và gây rủi ro hồi quy.
+    - *Quyết định*: Chủ động **không làm**: (1) không sửa ngưỡng độ mới hay quy tắc chấm điểm M2; (2) không để LLM tự đánh giá mức độ ảnh hưởng của nguồn cũ; (3) không tự động sửa `published_date` hay tự ghi đè số cũ bằng số mới trong câu trả lời; (4) không làm tính năng upload CSV/PDF nội bộ hay đọc PDF trực tuyến (ưu tiên số 1 của Câu 3 ở M2, vì thuộc bài toán nguồn dữ liệu đóng ở `TC6` chứ không giải quyết câu hỏi ảnh hưởng của nguồn > 18 tháng); (5) không làm khung chat hỏi-đáp tự do (chỉ làm vòng làm mới có mục tiêu rõ ràng để đo lường được trước/sau).
+    - *Lý do*: Tập trung toàn bộ nguồn lực vào chuỗi giải pháp **Phát hiện độ mới thật → Định lượng ảnh hưởng bằng code → Làm mới có mục tiêu giữ nguyên bối cảnh**, chứng minh bằng con số kiểm thử định lượng trước/sau.
+
+
 
 

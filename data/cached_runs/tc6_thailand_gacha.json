@@ -113,7 +113,7 @@
         "E20"
       ],
       "confidence": "THẤP",
-      "confidence_reason": "Dữ liệu cũ (>24 tháng hoặc không rõ ngày đăng) từ S12 (Hạng C, mytour.vn)",
+      "confidence_reason": "Dữ liệu cũ (>24 tháng hoặc không rõ ngày đăng) từ S12 (Hạng C, mytour.vn) · Độ mới: KHÔNG CÓ BẰNG CHỨNG MỚI (S12 Không rõ ngày)",
       "assumptions": [
         "Các game gacha thường xuyên cập nhật nội dung mới để duy trì sự hấp dẫn và thúc đẩy chi tiêu của người chơi.",
         "Chiến lược cập nhật nội dung mới là yếu tố quan trọng đối với thành công doanh thu của các game gacha nói chung."
@@ -199,7 +199,12 @@
       "tier": "A",
       "tier_reason": "Nhà cung cấp dữ liệu đo lường thị trường ứng dụng & game mobile hàng đầu (Sensor Tower)",
       "freshness": "fresh",
-      "freshness_label": "Mới (<=12 tháng)"
+      "freshness_label": "Mới (<=12 tháng)",
+      "date_method": "legacy_month_year",
+      "date_precision": "month",
+      "age_months": 1.0,
+      "age_months_min": 0.5,
+      "age_months_max": 1.4
     },
     {
       "id": "S2",
@@ -210,7 +215,12 @@
       "tier": "A",
       "tier_reason": "Nhà cung cấp dữ liệu đo lường thị trường ứng dụng & game mobile hàng đầu (Sensor Tower)",
       "freshness": "stale",
-      "freshness_label": "Cũ (>24 tháng hoặc không rõ ngày)"
+      "freshness_label": "Cũ (>24 tháng hoặc không rõ ngày)",
+      "date_method": "unknown",
+      "date_precision": "unknown",
+      "age_months": null,
+      "age_months_min": null,
+      "age_months_max": null
     },
     {
       "id": "S3",
@@ -221,7 +231,12 @@
       "tier": "C",
       "tier_reason": "Nguồn hạng C (mặc định): Blog, trang tổng hợp SEO, diễn đàn, thông cáo báo chí hoặc domain chưa trong danh mục kiểm chứng (game8.co)",
       "freshness": "fresh",
-      "freshness_label": "Mới (<=12 tháng)"
+      "freshness_label": "Mới (<=12 tháng)",
+      "date_method": "legacy_metadata",
+      "date_precision": "day",
+      "age_months": 0.4,
+      "age_months_min": 0.4,
+      "age_months_max": 0.4
     },
     {
       "id": "S4",
@@ -232,7 +247,12 @@
       "tier": "C",
       "tier_reason": "Nguồn hạng C (mặc định): Blog, trang tổng hợp SEO, diễn đàn, thông cáo báo chí hoặc domain chưa trong danh mục kiểm chứng (eog.gg)",
       "freshness": "fresh",
-      "freshness_label": "Mới (<=12 tháng)"
+      "freshness_label": "Mới (<=12 tháng)",
+      "date_method": "legacy_month_year",
+      "date_precision": "month",
+      "age_months": 2.0,
+      "age_months_min": 1.5,
+      "age_months_max": 2.5
     },
     {
       "id": "S5",
@@ -243,7 +263,12 @@
       "tier": "C",
       "tier_reason": "Nguồn hạng C (mặc định): Blog, trang tổng hợp SEO, diễn đàn, thông cáo báo chí hoặc domain chưa trong danh mục kiểm chứng (speequalgames.com)",
       "freshness": "fresh",
-      "freshness_label": "Mới (<=12 tháng)"
+      "freshness_label": "Mới (<=12 tháng)",
+      "date_method": "legacy_metadata",
+      "date_precision": "day",
+      "age_months": 2.6,
+      "age_months_min": 2.6,
+      "age_months_max": 2.6
     },
     {
       "id": "S6",
@@ -254,7 +279,12 @@
       "tier": "C",
       "tier_reason": "Nguồn hạng C (mặc định): Blog, trang tổng hợp SEO, diễn đàn, thông cáo báo chí hoặc domain chưa trong danh mục kiểm chứng (facebook.com)",
       "freshness": "fresh",
-      "freshness_label": "Mới (<=12 tháng)"
+      "freshness_label": "Mới (<=12 tháng)",
+      "date_method": "legacy_metadata",
+      "date_precision": "day",
+      "age_months": 0.4,
+      "age_months_min": 0.4,
+      "age_months_max": 0.4
     },
     {
       "id": "S7",
@@ -265,7 +295,12 @@
       "tier": "C",
       "tier_reason": "Nguồn hạng C (mặc định): Blog, trang tổng hợp SEO, diễn đàn, thông cáo báo chí hoặc domain chưa trong danh mục kiểm chứng (6wresearch.com)",
       "freshness": "fresh",
-      "freshness_label": "Mới (<=12 tháng)"
+      "freshness_label": "Mới (<=12 tháng)",
+      "date_method": "legacy_year_only",
+      "date_precision": "year",
+      "age_months": 4.0,
+      "age_months_min": 0.0,
+      "age_months_max": 9.4
     },
     {
       "id": "S8",
@@ -276,7 +311,12 @@
       "tier": "C",
       "tier_reason": "Nguồn hạng C (mặc định): Blog, trang tổng hợp SEO, diễn đàn, thông cáo báo chí hoặc domain chưa trong danh mục kiểm chứng (marketreportsworld.com)",
       "freshness": "fresh",
-      "freshness_label": "Mới (<=12 tháng)"
+      "freshness_label": "Mới (<=12 tháng)",
+      "date_method": "legacy_metadata",
+      "date_precision": "day",
+      "age_months": 1.4,
+      "age_months_min": 1.4,
+      "age_months_max": 1.4
     },
     {
       "id": "S9",
@@ -287,7 +327,12 @@
       "tier": "C",
       "tier_reason": "Nguồn hạng C (mặc định): Blog, trang tổng hợp SEO, diễn đàn, thông cáo báo chí hoặc domain chưa trong danh mục kiểm chứng (derkein.github.io)",
       "freshness": "stale",
-      "freshness_label": "Cũ (>24 tháng hoặc không rõ ngày)"
+      "freshness_label": "Cũ (>24 tháng hoặc không rõ ngày)",
+      "date_method": "unknown",
+      "date_precision": "unknown",
+      "age_months": null,
+      "age_months_min": null,
+      "age_months_max": null
     },
     {
       "id": "S10",
@@ -298,7 +343,12 @@
       "tier": "C",
       "tier_reason": "Nguồn hạng C (mặc định): Blog, trang tổng hợp SEO, diễn đàn, thông cáo báo chí hoặc domain chưa trong danh mục kiểm chứng (revenue.ennead.cc)",
       "freshness": "stale",
-      "freshness_label": "Cũ (>24 tháng hoặc không rõ ngày)"
+      "freshness_label": "Cũ (>24 tháng hoặc không rõ ngày)",
+      "date_method": "unknown",
+      "date_precision": "unknown",
+      "age_months": null,
+      "age_months_min": null,
+      "age_months_max": null
     },
     {
       "id": "S11",
@@ -309,7 +359,12 @@
       "tier": "C",
       "tier_reason": "Nguồn hạng C (mặc định): Blog, trang tổng hợp SEO, diễn đàn, thông cáo báo chí hoặc domain chưa trong danh mục kiểm chứng (gachadash.com)",
       "freshness": "stale",
-      "freshness_label": "Cũ (>24 tháng hoặc không rõ ngày)"
+      "freshness_label": "Cũ (>24 tháng hoặc không rõ ngày)",
+      "date_method": "unknown",
+      "date_precision": "unknown",
+      "age_months": null,
+      "age_months_min": null,
+      "age_months_max": null
     },
     {
       "id": "S12",
@@ -320,7 +375,12 @@
       "tier": "C",
       "tier_reason": "Nguồn hạng C (mặc định): Blog, trang tổng hợp SEO, diễn đàn, thông cáo báo chí hoặc domain chưa trong danh mục kiểm chứng (mytour.vn)",
       "freshness": "stale",
-      "freshness_label": "Cũ (>24 tháng hoặc không rõ ngày)"
+      "freshness_label": "Cũ (>24 tháng hoặc không rõ ngày)",
+      "date_method": "unknown",
+      "date_precision": "unknown",
+      "age_months": null,
+      "age_months_min": null,
+      "age_months_max": null
     }
   ],
   "evidences": [
@@ -331,7 +391,9 @@
       "claim": "Tổng chi tiêu của người dùng toàn cầu cho game di động trên App Store và Google Play đạt 6,13 tỷ USD vào tháng 9, giảm 7% so với tháng trước.",
       "verified": true,
       "match_score": 100.0,
-      "highlight_url": "https://sensortower.com/blog/top-10-worldwide-mobile-games-by-revenue-and-downloads-in-september-2026#:~:text=Global%20consumer%20spending%20on%20mobile%20games%20across%20the%20App%20Store"
+      "highlight_url": "https://sensortower.com/blog/top-10-worldwide-mobile-games-by-revenue-and-downloads-in-september-2026#:~:text=Global%20consumer%20spending%20on%20mobile%20games%20across%20the%20App%20Store",
+      "data_period": "",
+      "data_period_end": null
     },
     {
       "id": "E2",
@@ -340,7 +402,9 @@
       "claim": "Hoa Kỳ chiếm 28,7% tổng doanh thu game di động toàn cầu, Trung Quốc (chỉ iOS) 15,7% và Nhật Bản 12,4%.",
       "verified": true,
       "match_score": 100.0,
-      "highlight_url": "https://sensortower.com/blog/top-10-worldwide-mobile-games-by-revenue-and-downloads-in-september-2026#:~:text=The%20United%20States%20accounted%20for%2028.7%25%20of%20total%20revenue%2C%20followed"
+      "highlight_url": "https://sensortower.com/blog/top-10-worldwide-mobile-games-by-revenue-and-downloads-in-september-2026#:~:text=The%20United%20States%20accounted%20for%2028.7%25%20of%20total%20revenue%2C%20followed",
+      "data_period": "",
+      "data_period_end": null
     },
     {
       "id": "E3",
@@ -349,7 +413,9 @@
       "claim": "Genshin Impact dẫn đầu với doanh thu di động ước tính 50,23 triệu USD vào tháng 9, tăng 30,7% so với 38,42 triệu USD của tháng 8.",
       "verified": true,
       "match_score": 100.0,
-      "highlight_url": "https://game8.co/articles/latest/genshin-hsr-naruto-mobile-top-gacha-game-revenue-rankings-september-2026-zzz-falls-from-top-10#:~:text=Genshin%20Impact%20led%20the%20pack%20with%20an%20estimated%20%2450.23%20million"
+      "highlight_url": "https://game8.co/articles/latest/genshin-hsr-naruto-mobile-top-gacha-game-revenue-rankings-september-2026-zzz-falls-from-top-10#:~:text=Genshin%20Impact%20led%20the%20pack%20with%20an%20estimated%20%2450.23%20million",
+      "data_period": "",
+      "data_period_end": null
     },
     {
       "id": "E4",
@@ -358,7 +424,9 @@
       "claim": "Naruto Mobile tăng 30%, đạt doanh thu ước tính 35,75 triệu USD từ 27,5 triệu USD vào tháng 8, nhưng con số này chỉ tính riêng thị trường Trung Quốc.",
       "verified": true,
       "match_score": 100.0,
-      "highlight_url": "https://game8.co/articles/latest/genshin-hsr-naruto-mobile-top-gacha-game-revenue-rankings-september-2026-zzz-falls-from-top-10#:~:text=Naruto%20Mobile%20also%20posted%20a%2030%25%20increase%2C%20reaching%20an%20estimated"
+      "highlight_url": "https://game8.co/articles/latest/genshin-hsr-naruto-mobile-top-gacha-game-revenue-rankings-september-2026-zzz-falls-from-top-10#:~:text=Naruto%20Mobile%20also%20posted%20a%2030%25%20increase%2C%20reaching%20an%20estimated",
+      "data_period": "",
+      "data_period_end": null
     },
     {
       "id": "E5",
@@ -367,7 +435,9 @@
       "claim": "Honkai: Star Rail (HSR) đạt 35,735 triệu USD vào tháng 9, tăng 20,2% so với ước tính 29,74 triệu USD vào tháng 8.",
       "verified": true,
       "match_score": 100.0,
-      "highlight_url": "https://game8.co/articles/latest/genshin-hsr-naruto-mobile-top-gacha-game-revenue-rankings-september-2026-zzz-falls-from-top-10#:~:text=Honkai%3A%20Star%20Rail%20%28HSR%29%20reached%20%2435.735%20million%20in%20September%2C%20a"
+      "highlight_url": "https://game8.co/articles/latest/genshin-hsr-naruto-mobile-top-gacha-game-revenue-rankings-september-2026-zzz-falls-from-top-10#:~:text=Honkai%3A%20Star%20Rail%20%28HSR%29%20reached%20%2435.735%20million%20in%20September%2C%20a",
+      "data_period": "",
+      "data_period_end": null
     },
     {
       "id": "E6",
@@ -376,7 +446,9 @@
       "claim": "Genshin Impact dẫn trước hơn 14 triệu USD so với hai game còn lại, trong khi Naruto Mobile và HSR chỉ chênh lệch 15.000 USD.",
       "verified": true,
       "match_score": 100.0,
-      "highlight_url": "https://game8.co/articles/latest/genshin-hsr-naruto-mobile-top-gacha-game-revenue-rankings-september-2026-zzz-falls-from-top-10#:~:text=Genshin%20Impact%27s%20lead%20over%20the%20other%20two%20was%20more%20than"
+      "highlight_url": "https://game8.co/articles/latest/genshin-hsr-naruto-mobile-top-gacha-game-revenue-rankings-september-2026-zzz-falls-from-top-10#:~:text=Genshin%20Impact%27s%20lead%20over%20the%20other%20two%20was%20more%20than",
+      "data_period": "",
+      "data_period_end": null
     },
     {
       "id": "E7",
@@ -385,7 +457,9 @@
       "claim": "Game di động chiếm khoảng 58% tổng doanh thu ngành game Thái Lan, trong khi game PC và console chiếm 42%, cho thấy thị trường game Thái Lan có tỷ lệ doanh thu từ các nền tảng không di động cao nhất Đông Nam Á.",
       "verified": true,
       "match_score": 100.0,
-      "highlight_url": "https://speequalgames.com/thailands-game-guide-2026-navigating-seas-top-spending-gaming-market-development-trends#:~:text=While%20mobile%20gaming%20continues%20to%20be%20the%20dominant%20force%2C%20accounting"
+      "highlight_url": "https://speequalgames.com/thailands-game-guide-2026-navigating-seas-top-spending-gaming-market-development-trends#:~:text=While%20mobile%20gaming%20continues%20to%20be%20the%20dominant%20force%2C%20accounting",
+      "data_period": "",
+      "data_period_end": null
     },
     {
       "id": "E8",
@@ -394,7 +468,9 @@
       "claim": "Hệ thống thanh toán kỹ thuật số như PromptPay đã thay đổi cách người chơi thanh toán cho game và các giao dịch trong game, với hơn 90 triệu lượt đăng ký và 74 triệu giao dịch hàng ngày tính đến tháng 6 năm 2025.",
       "verified": true,
       "match_score": 100.0,
-      "highlight_url": "https://speequalgames.com/thailands-game-guide-2026-navigating-seas-top-spending-gaming-market-development-trends#:~:text=Services%20like%20PromptPay%20have%20changed%20the%20way%20players%20pay%20for"
+      "highlight_url": "https://speequalgames.com/thailands-game-guide-2026-navigating-seas-top-spending-gaming-market-development-trends#:~:text=Services%20like%20PromptPay%20have%20changed%20the%20way%20players%20pay%20for",
+      "data_period": "",
+      "data_period_end": null
     },
     {
       "id": "E9",
@@ -403,7 +479,9 @@
       "claim": "MMORPG vẫn là một trong những thể loại game yêu thích tại Thái Lan, với các tựa game phổ biến như Genshin Impact, Ragnarok Origin, Ragnarok Online và Final Fantasy XIV.",
       "verified": true,
       "match_score": 100.0,
-      "highlight_url": "https://speequalgames.com/thailands-game-guide-2026-navigating-seas-top-spending-gaming-market-development-trends#:~:text=MMORPGs%20%28Massively%20Multiplayer%20Online%20Role-Playing%20Games%29%20remain%20one%20of%20the"
+      "highlight_url": "https://speequalgames.com/thailands-game-guide-2026-navigating-seas-top-spending-gaming-market-development-trends#:~:text=MMORPGs%20%28Massively%20Multiplayer%20Online%20Role-Playing%20Games%29%20remain%20one%20of%20the",
+      "data_period": "",
+      "data_period_end": null
     },
     {
       "id": "E10",
@@ -412,7 +490,9 @@
       "claim": "Trang GACHA REVENUE đã công bố bảng xếp hạng doanh thu game gacha toàn cầu trong tháng 9/2026.",
       "verified": true,
       "match_score": 100.0,
-      "highlight_url": "https://www.facebook.com/Otaku.Media.Magazine/posts/-trang-thống-kê-gacha-revenue-đã-công-bố-bảng-xếp-hạng-doanh-thu-game-gacha-trên/1655540536134870#:~:text=Trang%20th%E1%BB%91ng%20k%C3%AA%20GACHA%20REVENUE%20%C4%91%C3%A3%20c%C3%B4ng%20b%E1%BB%91%20b%E1%BA%A3ng%20x%E1%BA%BFp"
+      "highlight_url": "https://www.facebook.com/Otaku.Media.Magazine/posts/-trang-thống-kê-gacha-revenue-đã-công-bố-bảng-xếp-hạng-doanh-thu-game-gacha-trên/1655540536134870#:~:text=Trang%20th%E1%BB%91ng%20k%C3%AA%20GACHA%20REVENUE%20%C4%91%C3%A3%20c%C3%B4ng%20b%E1%BB%91%20b%E1%BA%A3ng%20x%E1%BA%BFp",
+      "data_period": "09/2026",
+      "data_period_end": "2026-09-30"
     },
     {
       "id": "E11",
@@ -421,7 +501,9 @@
       "claim": "Thị trường game Thái Lan được ước tính đạt 192 triệu USD vào năm 2025 và dự kiến sẽ tăng lên 220 triệu USD vào năm 2032, với tốc độ tăng trưởng kép hàng năm (CAGR) là 2.0% từ năm 2026 đến 2032.",
       "verified": true,
       "match_score": 100.0,
-      "highlight_url": "https://www.6wresearch.com/industry-report/thailand-gaming-market-outlook#:~:text=The%20Thailand%20Gaming%20Market%20was%20estimated%20at%20USD%20192%20Million"
+      "highlight_url": "https://www.6wresearch.com/industry-report/thailand-gaming-market-outlook#:~:text=The%20Thailand%20Gaming%20Market%20was%20estimated%20at%20USD%20192%20Million",
+      "data_period": "2025",
+      "data_period_end": "2025-12-31"
     },
     {
       "id": "E12",
@@ -430,7 +512,9 @@
       "claim": "Thị trường game Thái Lan đối mặt với các thách thức như rào cản pháp lý và nạn vi phạm bản quyền, đồng thời các nhà phát triển địa phương phải cạnh tranh với các ông lớn game quốc tế.",
       "verified": true,
       "match_score": 100.0,
-      "highlight_url": "https://www.6wresearch.com/industry-report/thailand-gaming-market-outlook#:~:text=Despite%20the%20promising%20growth%2C%20regulatory%20hurdles%20and%20piracy%20remain%20pervasive"
+      "highlight_url": "https://www.6wresearch.com/industry-report/thailand-gaming-market-outlook#:~:text=Despite%20the%20promising%20growth%2C%20regulatory%20hurdles%20and%20piracy%20remain%20pervasive",
+      "data_period": "",
+      "data_period_end": null
     },
     {
       "id": "E13",
@@ -439,7 +523,9 @@
       "claim": "Các xu hướng mới nổi trong thị trường game Thái Lan cho thấy sự chuyển dịch sang game di động và nền tảng trực tuyến, cùng với sự gia tăng phổ biến của livestream và các sự kiện thể thao điện tử.",
       "verified": true,
       "match_score": 100.0,
-      "highlight_url": "https://www.6wresearch.com/industry-report/thailand-gaming-market-outlook#:~:text=Emerging%20trends%20in%20the%20Thailand%20Gaming%20Market%20reflect%20a%20shift"
+      "highlight_url": "https://www.6wresearch.com/industry-report/thailand-gaming-market-outlook#:~:text=Emerging%20trends%20in%20the%20Thailand%20Gaming%20Market%20reflect%20a%20shift",
+      "data_period": "",
+      "data_period_end": null
     },
     {
       "id": "E14",
@@ -448,7 +534,9 @@
       "claim": "Game RPG chiếm ưu thế trên thị trường game gacha với khoảng 58% thị phần, kết hợp thu thập nhân vật với kể chuyện, khám phá, chiến đấu chiến thuật, phát triển kỹ năng và xây dựng đội hình.",
       "verified": true,
       "match_score": 100.0,
-      "highlight_url": "https://www.marketreportsworld.com/market-reports/gacha-games-market-14722256#:~:text=RPG%20Games%3A%20RPG%20games%20dominate%20the%20gacha%20games%20market%20with"
+      "highlight_url": "https://www.marketreportsworld.com/market-reports/gacha-games-market-14722256#:~:text=RPG%20Games%3A%20RPG%20games%20dominate%20the%20gacha%20games%20market%20with",
+      "data_period": "",
+      "data_period_end": null
     },
     {
       "id": "E15",
@@ -457,7 +545,9 @@
       "claim": "Sensor Tower chỉ báo cáo tổng doanh thu hàng tháng trên toàn thế giới của một trò chơi; số liệu của mỗi banner được ước tính dựa trên tỷ lệ đóng góp vào tổng doanh thu đó.",
       "verified": true,
       "match_score": 100.0,
-      "highlight_url": "https://derkein.github.io/gacha-tracker-#:~:text=Sensor%20Tower%20reports%20only%20a%20game%27s%20monthly%20worldwide%20total%3B%20each"
+      "highlight_url": "https://derkein.github.io/gacha-tracker-#:~:text=Sensor%20Tower%20reports%20only%20a%20game%27s%20monthly%20worldwide%20total%3B%20each",
+      "data_period": "",
+      "data_period_end": null
     },
     {
       "id": "E16",
@@ -466,7 +556,9 @@
       "claim": "Trang web này không tự đo lường hay ước tính doanh thu mà chỉ trình bày lại dữ liệu từ hai nguồn bên thứ ba: doanh thu từng banner tại Nhật Bản của game-i.daa.jp và tổng doanh thu toàn cầu hàng tháng của Sensor Tower.",
       "verified": true,
       "match_score": 100.0,
-      "highlight_url": "https://derkein.github.io/gacha-tracker-#:~:text=This%20site%20doesn%27t%20measure%20or%20estimate%20anything%20itself.%20It%20re-presents"
+      "highlight_url": "https://derkein.github.io/gacha-tracker-#:~:text=This%20site%20doesn%27t%20measure%20or%20estimate%20anything%20itself.%20It%20re-presents",
+      "data_period": "",
+      "data_period_end": null
     },
     {
       "id": "E17",
@@ -475,7 +567,9 @@
       "claim": "Dữ liệu doanh thu tháng 9 năm 2026 chưa có sẵn, hiện đang hiển thị dữ liệu tháng 8 năm 2026 và thường được công bố sau 2-4 tuần kể từ cuối tháng.",
       "verified": true,
       "match_score": 100.0,
-      "highlight_url": "https://www.gachadash.com/revenue#:~:text=Sep%202026%20data%20not%20yet%20available%20Showing%20Aug%202026.%20Revenue"
+      "highlight_url": "https://www.gachadash.com/revenue#:~:text=Sep%202026%20data%20not%20yet%20available%20Showing%20Aug%202026.%20Revenue",
+      "data_period": "09/2026",
+      "data_period_end": "2026-09-30"
     },
     {
       "id": "E18",
@@ -484,7 +578,9 @@
       "claim": "Ước tính doanh thu được lấy từ SensorTower thông qua gacharevenue, chỉ tính trên nền tảng di động (iOS + Android), với doanh thu tại Trung Quốc được ước tính bằng cách nhân 1.75 lần.",
       "verified": true,
       "match_score": 100.0,
-      "highlight_url": "https://www.gachadash.com/revenue#:~:text=Revenue%20estimates%20sourced%20from%20SensorTower%20via%20gacharevenue.%20Mobile%20only%20%28iOS"
+      "highlight_url": "https://www.gachadash.com/revenue#:~:text=Revenue%20estimates%20sourced%20from%20SensorTower%20via%20gacharevenue.%20Mobile%20only%20%28iOS",
+      "data_period": "",
+      "data_period_end": null
     },
     {
       "id": "E19",
@@ -493,7 +589,9 @@
       "claim": "Trong tháng 9, Honkai: Star Rail dẫn đầu bảng xếp hạng với mức tăng hơn 67 triệu USD, Genshin Impact đạt 45 triệu USD và Zenless Zone Zero đạt 34 triệu USD.",
       "verified": true,
       "match_score": 100.0,
-      "highlight_url": "https://mytour.vn/vi/blog/bai-viet/bxh-doanh-thu-game-gacha-thang-9-mihoyo-co-cu-tro-lai-an-tuong-mot-sieu-pham-roi-tu-do-mytour.html#:~:text=Honkai%3A%20Star%20Rail%20d%E1%BA%ABn%20%C4%91%E1%BA%A7u%20BXH%20v%E1%BB%9Bi%20m%E1%BB%A9c%20t%C4%83ng%20h%C6%A1n"
+      "highlight_url": "https://mytour.vn/vi/blog/bai-viet/bxh-doanh-thu-game-gacha-thang-9-mihoyo-co-cu-tro-lai-an-tuong-mot-sieu-pham-roi-tu-do-mytour.html#:~:text=Honkai%3A%20Star%20Rail%20d%E1%BA%ABn%20%C4%91%E1%BA%A7u%20BXH%20v%E1%BB%9Bi%20m%E1%BB%A9c%20t%C4%83ng%20h%C6%A1n",
+      "data_period": "",
+      "data_period_end": null
     },
     {
       "id": "E20",
@@ -502,7 +600,9 @@
       "claim": "Thành công doanh thu của các game miHoYo trong tháng 9 là nhờ vào việc cập nhật nội dung mới: Honkai: Star Rail với phiên bản 2.5, Genshin Impact với phiên bản 5.0 và Zenless Zone Zero với banner nhân vật Jane Doe.",
       "verified": true,
       "match_score": 100.0,
-      "highlight_url": "https://mytour.vn/vi/blog/bai-viet/bxh-doanh-thu-game-gacha-thang-9-mihoyo-co-cu-tro-lai-an-tuong-mot-sieu-pham-roi-tu-do-mytour.html#:~:text=Th%C3%A0nh%20c%C3%B4ng%20n%C3%A0y%20c%C3%B3%20th%E1%BB%83%20d%E1%BB%85%20d%C3%A0ng%20l%C3%BD%20gi%E1%BA%A3i%20nh%E1%BB%9D"
+      "highlight_url": "https://mytour.vn/vi/blog/bai-viet/bxh-doanh-thu-game-gacha-thang-9-mihoyo-co-cu-tro-lai-an-tuong-mot-sieu-pham-roi-tu-do-mytour.html#:~:text=Th%C3%A0nh%20c%C3%B4ng%20n%C3%A0y%20c%C3%B3%20th%E1%BB%83%20d%E1%BB%85%20d%C3%A0ng%20l%C3%BD%20gi%E1%BA%A3i%20nh%E1%BB%9D",
+      "data_period": "",
+      "data_period_end": null
     }
   ],
   "quality": {
@@ -575,5 +675,340 @@
       "[Bước 6/6 · Chấm điểm độ tin cậy & Tự kiểm (Score & Self-Check)] Áp dụng quy tắc chấm điểm CAO/TRUNG BÌNH/THẤP, gắn link Text Fragment và tính chỉ số tự kiểm...",
       "[Bước 6/6 · Hoàn tất] Hoàn thành trong 23.39s với 2 lần gọi LLM. Tỷ lệ trích dẫn xác minh: 100.0% | Số nhận định CAO từ nguồn C: 0."
     ]
-  }
+  },
+  "recency": {
+    "reference_date": "2026-10-15",
+    "alert_months": 18,
+    "impact_level": "VỪA PHẢI",
+    "summary": "Mức ảnh hưởng: VỪA PHẢI. 1/9 nhận định chưa có bằng chứng mới trong 18 tháng gần đây (I8). Nguồn cần lưu ý: S12 (mytour.vn, Không rõ ngày). Chi tiết ở mục 7.",
+    "sources": [
+      {
+        "source_id": "S1",
+        "status": "MỚI",
+        "reasons": [
+          "đăng 09/2026 (~1 tháng)"
+        ],
+        "date_display": "09/2026",
+        "date_method_label": "tháng/năm trong URL hoặc tiêu đề",
+        "age_display": "~1 tháng",
+        "older_than_alert": false,
+        "possibly_older_than_alert": false,
+        "data_vintage": "",
+        "date_conflict": false,
+        "supported_insight_ids": [
+          "I1",
+          "I2"
+        ],
+        "is_key": true,
+        "key_reasons": [
+          "bỏ nguồn làm giảm/mất căn cứ nhận định I1 (TRUNG BÌNH → MẤT CĂN CỨ), I2 (TRUNG BÌNH → MẤT CĂN CỨ)",
+          "nguồn hạng A duy nhất của nhận định I1, I2"
+        ]
+      },
+      {
+        "source_id": "S2",
+        "status": "KHÔNG CHẮC",
+        "reasons": [
+          "không rõ ngày đăng"
+        ],
+        "date_display": "Không rõ ngày",
+        "date_method_label": "không xác định được",
+        "age_display": "không rõ",
+        "older_than_alert": false,
+        "possibly_older_than_alert": true,
+        "data_vintage": "",
+        "date_conflict": false,
+        "supported_insight_ids": [],
+        "is_key": false,
+        "key_reasons": []
+      },
+      {
+        "source_id": "S3",
+        "status": "MỚI",
+        "reasons": [
+          "đăng 02/10/2026 (~0 tháng)"
+        ],
+        "date_display": "02/10/2026",
+        "date_method_label": "metadata — báo cáo cũ không lưu chi tiết",
+        "age_display": "~0 tháng",
+        "older_than_alert": false,
+        "possibly_older_than_alert": false,
+        "data_vintage": "",
+        "date_conflict": false,
+        "supported_insight_ids": [
+          "I3",
+          "I4"
+        ],
+        "is_key": false,
+        "key_reasons": []
+      },
+      {
+        "source_id": "S4",
+        "status": "MỚI",
+        "reasons": [
+          "đăng 08/2026 (~2 tháng)"
+        ],
+        "date_display": "08/2026",
+        "date_method_label": "tháng/năm trong URL hoặc tiêu đề",
+        "age_display": "~2 tháng",
+        "older_than_alert": false,
+        "possibly_older_than_alert": false,
+        "data_vintage": "",
+        "date_conflict": false,
+        "supported_insight_ids": [],
+        "is_key": false,
+        "key_reasons": []
+      },
+      {
+        "source_id": "S5",
+        "status": "MỚI",
+        "reasons": [
+          "đăng 27/07/2026 (~3 tháng)"
+        ],
+        "date_display": "27/07/2026",
+        "date_method_label": "metadata — báo cáo cũ không lưu chi tiết",
+        "age_display": "~3 tháng",
+        "older_than_alert": false,
+        "possibly_older_than_alert": false,
+        "data_vintage": "",
+        "date_conflict": false,
+        "supported_insight_ids": [
+          "I6",
+          "I7"
+        ],
+        "is_key": false,
+        "key_reasons": []
+      },
+      {
+        "source_id": "S6",
+        "status": "MỚI",
+        "reasons": [
+          "đăng 03/10/2026 (~0 tháng), kỳ số liệu 09/2026"
+        ],
+        "date_display": "03/10/2026",
+        "date_method_label": "metadata — báo cáo cũ không lưu chi tiết",
+        "age_display": "~0 tháng",
+        "older_than_alert": false,
+        "possibly_older_than_alert": false,
+        "data_vintage": "09/2026",
+        "date_conflict": false,
+        "supported_insight_ids": [],
+        "is_key": false,
+        "key_reasons": []
+      },
+      {
+        "source_id": "S7",
+        "status": "MỚI",
+        "reasons": [
+          "đăng 2026 (chỉ biết năm) (0–10 tháng), kỳ số liệu 2025"
+        ],
+        "date_display": "2026 (chỉ biết năm)",
+        "date_method_label": "chỉ có năm trong URL/tiêu đề — ước tính sai số ±6 tháng",
+        "age_display": "0–10 tháng",
+        "older_than_alert": false,
+        "possibly_older_than_alert": false,
+        "data_vintage": "2025",
+        "date_conflict": false,
+        "supported_insight_ids": [
+          "I5",
+          "I9"
+        ],
+        "is_key": false,
+        "key_reasons": []
+      },
+      {
+        "source_id": "S8",
+        "status": "MỚI",
+        "reasons": [
+          "đăng 01/09/2026 (~1 tháng)"
+        ],
+        "date_display": "01/09/2026",
+        "date_method_label": "metadata — báo cáo cũ không lưu chi tiết",
+        "age_display": "~1 tháng",
+        "older_than_alert": false,
+        "possibly_older_than_alert": false,
+        "data_vintage": "",
+        "date_conflict": false,
+        "supported_insight_ids": [],
+        "is_key": false,
+        "key_reasons": []
+      },
+      {
+        "source_id": "S9",
+        "status": "KHÔNG CHẮC",
+        "reasons": [
+          "không rõ ngày đăng"
+        ],
+        "date_display": "Không rõ ngày",
+        "date_method_label": "không xác định được",
+        "age_display": "không rõ",
+        "older_than_alert": false,
+        "possibly_older_than_alert": true,
+        "data_vintage": "",
+        "date_conflict": false,
+        "supported_insight_ids": [],
+        "is_key": false,
+        "key_reasons": []
+      },
+      {
+        "source_id": "S10",
+        "status": "KHÔNG CHẮC",
+        "reasons": [
+          "không rõ ngày đăng"
+        ],
+        "date_display": "Không rõ ngày",
+        "date_method_label": "không xác định được",
+        "age_display": "không rõ",
+        "older_than_alert": false,
+        "possibly_older_than_alert": true,
+        "data_vintage": "",
+        "date_conflict": false,
+        "supported_insight_ids": [],
+        "is_key": false,
+        "key_reasons": []
+      },
+      {
+        "source_id": "S11",
+        "status": "MỚI",
+        "reasons": [
+          "kỳ số liệu 09/2026 gần đây cho thấy nguồn không quá cũ (đăng Không rõ ngày)"
+        ],
+        "date_display": "Không rõ ngày",
+        "date_method_label": "không xác định được",
+        "age_display": "không rõ",
+        "older_than_alert": false,
+        "possibly_older_than_alert": true,
+        "data_vintage": "09/2026",
+        "date_conflict": false,
+        "supported_insight_ids": [],
+        "is_key": false,
+        "key_reasons": []
+      },
+      {
+        "source_id": "S12",
+        "status": "KHÔNG CHẮC",
+        "reasons": [
+          "không rõ ngày đăng"
+        ],
+        "date_display": "Không rõ ngày",
+        "date_method_label": "không xác định được",
+        "age_display": "không rõ",
+        "older_than_alert": false,
+        "possibly_older_than_alert": true,
+        "data_vintage": "",
+        "date_conflict": false,
+        "supported_insight_ids": [
+          "I8"
+        ],
+        "is_key": false,
+        "key_reasons": []
+      }
+    ],
+    "key_old_sources": [],
+    "insights": [
+      {
+        "insight_id": "I1",
+        "status": "MỚI",
+        "non_recent_source_ids": [],
+        "note": ""
+      },
+      {
+        "insight_id": "I2",
+        "status": "MỚI",
+        "non_recent_source_ids": [],
+        "note": ""
+      },
+      {
+        "insight_id": "I3",
+        "status": "MỚI",
+        "non_recent_source_ids": [],
+        "note": ""
+      },
+      {
+        "insight_id": "I4",
+        "status": "MỚI",
+        "non_recent_source_ids": [],
+        "note": ""
+      },
+      {
+        "insight_id": "I5",
+        "status": "MỚI",
+        "non_recent_source_ids": [],
+        "note": ""
+      },
+      {
+        "insight_id": "I6",
+        "status": "MỚI",
+        "non_recent_source_ids": [],
+        "note": ""
+      },
+      {
+        "insight_id": "I7",
+        "status": "MỚI",
+        "non_recent_source_ids": [],
+        "note": ""
+      },
+      {
+        "insight_id": "I8",
+        "status": "KHÔNG CÓ BẰNG CHỨNG MỚI",
+        "non_recent_source_ids": [
+          "S12"
+        ],
+        "note": "S12 Không rõ ngày"
+      },
+      {
+        "insight_id": "I9",
+        "status": "MỚI",
+        "non_recent_source_ids": [],
+        "note": ""
+      }
+    ],
+    "upcoming_changes": [
+      {
+        "date": "2027-06-17",
+        "source_ids": [
+          "S7"
+        ],
+        "changes": [
+          "Chưa làm đổi mức độ tin cậy của nhận định (chuyển nhóm độ mới nguồn)"
+        ]
+      },
+      {
+        "date": "2027-07-29",
+        "source_ids": [
+          "S5"
+        ],
+        "changes": [
+          "Chưa làm đổi mức độ tin cậy của nhận định (chuyển nhóm độ mới nguồn)"
+        ]
+      },
+      {
+        "date": "2027-09-17",
+        "source_ids": [
+          "S1"
+        ],
+        "changes": [
+          "Chưa làm đổi mức độ tin cậy của nhận định (chuyển nhóm độ mới nguồn)"
+        ]
+      }
+    ],
+    "suggested_refresh_queries": [],
+    "certainty_groups": {
+      "Đủ cơ sở": [
+        "I1",
+        "I2"
+      ],
+      "Cần lưu ý": [],
+      "Chưa chắc chắn": [
+        "I3",
+        "I4",
+        "I5",
+        "I6",
+        "I7",
+        "I8",
+        "I9"
+      ]
+    }
+  },
+  "refresh": null
 }

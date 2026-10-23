@@ -1,0 +1,431 @@
+{
+  "reference_date_m2": "2026-10-15",
+  "table_a_regression": [
+    {
+      "case": "TC1",
+      "m2_status": "ĐẠT",
+      "m3_status": "ĐẠT",
+      "m2_verified_rate": 100.0,
+      "m3_verified_rate": 92.6,
+      "m2_verified_counts": "30/30",
+      "m3_verified_counts": "25/27",
+      "m2_high_from_c": 0,
+      "m3_high_from_c": 0,
+      "m2_insights_count": 8,
+      "m3_insights_count": 10,
+      "m2_dist": "0/4/4",
+      "m3_dist": "0/6/4",
+      "exact_match_m2": false
+    },
+    {
+      "case": "TC2",
+      "m2_status": "ĐẠT",
+      "m3_status": "ĐẠT",
+      "m2_verified_rate": 100.0,
+      "m3_verified_rate": 100.0,
+      "m2_verified_counts": "28/28",
+      "m3_verified_counts": "28/28",
+      "m2_high_from_c": 0,
+      "m3_high_from_c": 0,
+      "m2_insights_count": 10,
+      "m3_insights_count": 10,
+      "m2_dist": "0/3/7",
+      "m3_dist": "0/3/7",
+      "exact_match_m2": true
+    },
+    {
+      "case": "TC3",
+      "m2_status": "ĐẠT",
+      "m3_status": "ĐẠT",
+      "m2_verified_rate": 100.0,
+      "m3_verified_rate": 100.0,
+      "m2_verified_counts": "28/28",
+      "m3_verified_counts": "28/28",
+      "m2_high_from_c": 0,
+      "m3_high_from_c": 0,
+      "m2_insights_count": 8,
+      "m3_insights_count": 8,
+      "m2_dist": "3/1/4",
+      "m3_dist": "3/1/4",
+      "exact_match_m2": true
+    },
+    {
+      "case": "TC4",
+      "m2_status": "ĐẠT",
+      "m3_status": "ĐẠT",
+      "m2_verified_rate": 100.0,
+      "m3_verified_rate": 100.0,
+      "m2_verified_counts": "29/29",
+      "m3_verified_counts": "29/29",
+      "m2_high_from_c": 0,
+      "m3_high_from_c": 0,
+      "m2_insights_count": 8,
+      "m3_insights_count": 8,
+      "m2_dist": "0/2/6",
+      "m3_dist": "0/2/6",
+      "exact_match_m2": true
+    },
+    {
+      "case": "TC5",
+      "m2_status": "ĐẠT",
+      "m3_status": "ĐẠT",
+      "m2_verified_rate": 100.0,
+      "m3_verified_rate": 100.0,
+      "m2_verified_counts": "31/31",
+      "m3_verified_counts": "31/31",
+      "m2_high_from_c": 0,
+      "m3_high_from_c": 0,
+      "m2_insights_count": 9,
+      "m3_insights_count": 9,
+      "m2_dist": "0/5/4",
+      "m3_dist": "0/5/4",
+      "exact_match_m2": true
+    },
+    {
+      "case": "TC6",
+      "m2_status": "CHƯA ĐẠT",
+      "m3_status": "CHƯA ĐẠT",
+      "m2_verified_rate": 100.0,
+      "m3_verified_rate": 100.0,
+      "m2_verified_counts": "20/20",
+      "m3_verified_counts": "20/20",
+      "m2_high_from_c": 0,
+      "m3_high_from_c": 0,
+      "m2_insights_count": 9,
+      "m3_insights_count": 8,
+      "m2_dist": "0/2/7",
+      "m3_dist": "0/2/6",
+      "exact_match_m2": false
+    }
+  ],
+  "table_b_change_request": [
+    {
+      "case": "TC1",
+      "impact_level": "ĐÁNG KỂ",
+      "key_old_sources_count": 3,
+      "key_old_sources": [
+        "S2",
+        "S3",
+        "S12"
+      ],
+      "no_fresh_insights_count": 4,
+      "total_insights_count": 8,
+      "no_fresh_insights": [
+        "I1",
+        "I2",
+        "I3",
+        "I6"
+      ],
+      "year_as_month_m2_count": 3,
+      "year_as_month_m2_sources": [
+        "S3",
+        "S7",
+        "S12"
+      ],
+      "year_or_unknown_sources_count": 4,
+      "year_or_unknown_sources": [
+        "S3",
+        "S5",
+        "S7",
+        "S12"
+      ],
+      "fresh_pub_old_data_count": 3,
+      "fresh_pub_old_data_sources": [
+        "S2",
+        "S6",
+        "S12"
+      ],
+      "date_conflict_count": 0,
+      "date_conflict_sources": [],
+      "m2_short_answer_mentions_age": false,
+      "m3_short_answer_mentions_age": true
+    },
+    {
+      "case": "TC2",
+      "impact_level": "ĐÁNG KỂ",
+      "key_old_sources_count": 5,
+      "key_old_sources": [
+        "S1",
+        "S5",
+        "S2",
+        "S3",
+        "S6"
+      ],
+      "no_fresh_insights_count": 8,
+      "total_insights_count": 10,
+      "no_fresh_insights": [
+        "I1",
+        "I2",
+        "I3",
+        "I4",
+        "I5",
+        "I6",
+        "I9",
+        "I10"
+      ],
+      "year_as_month_m2_count": 3,
+      "year_as_month_m2_sources": [
+        "S5",
+        "S6",
+        "S10"
+      ],
+      "year_or_unknown_sources_count": 4,
+      "year_or_unknown_sources": [
+        "S3",
+        "S5",
+        "S6",
+        "S10"
+      ],
+      "fresh_pub_old_data_count": 2,
+      "fresh_pub_old_data_sources": [
+        "S1",
+        "S3"
+      ],
+      "date_conflict_count": 0,
+      "date_conflict_sources": [],
+      "m2_short_answer_mentions_age": false,
+      "m3_short_answer_mentions_age": true
+    },
+    {
+      "case": "TC3",
+      "impact_level": "KHÔNG",
+      "key_old_sources_count": 0,
+      "key_old_sources": [],
+      "no_fresh_insights_count": 0,
+      "total_insights_count": 8,
+      "no_fresh_insights": [],
+      "year_as_month_m2_count": 1,
+      "year_as_month_m2_sources": [
+        "S1"
+      ],
+      "year_or_unknown_sources_count": 1,
+      "year_or_unknown_sources": [
+        "S1"
+      ],
+      "fresh_pub_old_data_count": 1,
+      "fresh_pub_old_data_sources": [
+        "S10"
+      ],
+      "date_conflict_count": 0,
+      "date_conflict_sources": [],
+      "m2_short_answer_mentions_age": false,
+      "m3_short_answer_mentions_age": false
+    },
+    {
+      "case": "TC4",
+      "impact_level": "ĐÁNG KỂ",
+      "key_old_sources_count": 6,
+      "key_old_sources": [
+        "S1",
+        "S2",
+        "S5",
+        "S7",
+        "S10",
+        "S11"
+      ],
+      "no_fresh_insights_count": 6,
+      "total_insights_count": 8,
+      "no_fresh_insights": [
+        "I2",
+        "I3",
+        "I5",
+        "I6",
+        "I7",
+        "I8"
+      ],
+      "year_as_month_m2_count": 3,
+      "year_as_month_m2_sources": [
+        "S1",
+        "S8",
+        "S9"
+      ],
+      "year_or_unknown_sources_count": 6,
+      "year_or_unknown_sources": [
+        "S1",
+        "S4",
+        "S5",
+        "S6",
+        "S8",
+        "S9"
+      ],
+      "fresh_pub_old_data_count": 2,
+      "fresh_pub_old_data_sources": [
+        "S2",
+        "S11"
+      ],
+      "date_conflict_count": 1,
+      "date_conflict_sources": [
+        "S10"
+      ],
+      "m2_short_answer_mentions_age": false,
+      "m3_short_answer_mentions_age": true
+    },
+    {
+      "case": "TC5",
+      "impact_level": "ĐÁNG KỂ",
+      "key_old_sources_count": 1,
+      "key_old_sources": [
+        "S1"
+      ],
+      "no_fresh_insights_count": 3,
+      "total_insights_count": 9,
+      "no_fresh_insights": [
+        "I5",
+        "I7",
+        "I9"
+      ],
+      "year_as_month_m2_count": 3,
+      "year_as_month_m2_sources": [
+        "S2",
+        "S8",
+        "S9"
+      ],
+      "year_or_unknown_sources_count": 3,
+      "year_or_unknown_sources": [
+        "S2",
+        "S8",
+        "S9"
+      ],
+      "fresh_pub_old_data_count": 3,
+      "fresh_pub_old_data_sources": [
+        "S1",
+        "S7",
+        "S12"
+      ],
+      "date_conflict_count": 0,
+      "date_conflict_sources": [],
+      "m2_short_answer_mentions_age": false,
+      "m3_short_answer_mentions_age": true
+    },
+    {
+      "case": "TC6",
+      "impact_level": "VỪA PHẢI",
+      "key_old_sources_count": 0,
+      "key_old_sources": [],
+      "no_fresh_insights_count": 1,
+      "total_insights_count": 9,
+      "no_fresh_insights": [
+        "I8"
+      ],
+      "year_as_month_m2_count": 1,
+      "year_as_month_m2_sources": [
+        "S7"
+      ],
+      "year_or_unknown_sources_count": 6,
+      "year_or_unknown_sources": [
+        "S2",
+        "S7",
+        "S9",
+        "S10",
+        "S11",
+        "S12"
+      ],
+      "fresh_pub_old_data_count": 0,
+      "fresh_pub_old_data_sources": [],
+      "date_conflict_count": 0,
+      "date_conflict_sources": [],
+      "m2_short_answer_mentions_age": false,
+      "m3_short_answer_mentions_age": false
+    }
+  ],
+  "table_b_totals": {
+    "total_sources": 72,
+    "total_key_old_sources": 15,
+    "total_insights": 52,
+    "total_no_fresh_insights": 22,
+    "total_year_as_month_m2": 14,
+    "total_year_or_unknown_sources": 24,
+    "total_fresh_pub_old_data": 11,
+    "total_date_conflict": 1
+  },
+  "table_c_refresh": [
+    {
+      "case": "TC7",
+      "reference_date": "2026-10-23",
+      "status": "ĐÃ LÀM MỚI",
+      "target_source_ids": [
+        "S1",
+        "S5"
+      ],
+      "queries_count": 6,
+      "queries": [
+        "Sensor Tower Southeast Asia Mobile Game Market Insights 2026 site:sensortower.com",
+        "Sensor Tower Southeast Asia Mobile Game Market Insights 2026",
+        "Indonesia Philippines casual mobile game monetization trends 2026",
+        "casual game revenue models Southeast Asia 2026",
+        "in-app advertising vs in-app purchase casual games 2025",
+        "hybrid monetization models casual mobile games 2025"
+      ],
+      "kept_new_sources_count": 6,
+      "kept_new_source_ids": [
+        "S13",
+        "S14",
+        "S15",
+        "S16",
+        "S17",
+        "S18"
+      ],
+      "rejected_new_sources_count": 18,
+      "new_verified_evidences_count": 12,
+      "comparison_counts": {
+        "XÁC NHẬN": 2,
+        "CẬP NHẬT": 3,
+        "MÂU THUẪN": 0,
+        "KHÔNG TƯƠNG ĐƯƠNG": 2,
+        "KHÔNG TÌM THẤY DỮ LIỆU MỚI": 0
+      },
+      "confidence_changes": [
+        "I2: TRUNG BÌNH → THẤP",
+        "I5: THẤP → TRUNG BÌNH",
+        "I11: — → TRUNG BÌNH",
+        "I12: — → THẤP",
+        "I13: — → TRUNG BÌNH"
+      ],
+      "llm_calls_count": 0,
+      "duration_seconds": 0.03
+    },
+    {
+      "case": "TC10",
+      "reference_date": "2026-10-23",
+      "status": "ĐÃ LÀM MỚI",
+      "target_source_ids": [
+        "S1",
+        "S10"
+      ],
+      "queries_count": 6,
+      "queries": [
+        "Sensor Tower Southeast Asia Mobile Game Market Insights 2026 site:sensortower.com",
+        "Sensor Tower Southeast Asia Mobile Game Market Insights 2026",
+        "Southeast Asia mobile game downloads Q1 2026",
+        "Southeast Asia mobile game market share 2026",
+        "Indonesia mobile game downloads Q1 2026",
+        "Thailand mobile game IAP revenue Q1 2026"
+      ],
+      "kept_new_sources_count": 6,
+      "kept_new_source_ids": [
+        "S13",
+        "S14",
+        "S15",
+        "S16",
+        "S17",
+        "S18"
+      ],
+      "rejected_new_sources_count": 17,
+      "new_verified_evidences_count": 15,
+      "comparison_counts": {
+        "XÁC NHẬN": 4,
+        "CẬP NHẬT": 2,
+        "MÂU THUẪN": 0,
+        "KHÔNG TƯƠNG ĐƯƠNG": 1,
+        "KHÔNG TÌM THẤY DỮ LIỆU MỚI": 0
+      },
+      "confidence_changes": [
+        "I4: TRUNG BÌNH → THẤP",
+        "I10: — → TRUNG BÌNH",
+        "I11: — → TRUNG BÌNH"
+      ],
+      "llm_calls_count": 3,
+      "duration_seconds": 81.87
+    }
+  ]
+}

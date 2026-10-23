@@ -1254,9 +1254,9 @@
     "rejected_quotes": []
   },
   "trace": {
-    "run_timestamp": "2026-10-23T12:33:06",
+    "run_timestamp": "2026-10-23T13:22:35",
     "current_date": "2026-10-15",
-    "duration_seconds": 0.04,
+    "duration_seconds": 0.03,
     "llm_provider": "gemini",
     "llm_model": "gemini-3.8-flash",
     "llm_calls_count": 0,
@@ -1301,7 +1301,7 @@
       "[Bước 5/6 · Hoàn tất Synthesize] Đã tổng hợp 10 nhận định dự thảo, 1 điểm mâu thuẫn, 2 kiểm tra tiền đề và 4 khoảng trống dữ liệu.",
       "[Bước 6/6 · Chấm điểm độ tin cậy & Tự kiểm (Score & Self-Check)] Áp dụng quy tắc chấm điểm CAO/TRUNG BÌNH/THẤP, gắn link Text Fragment và tính chỉ số tự kiểm...",
       "[Bước 6b/6 · Phân tích độ mới dữ liệu (Change Request A2)] Mức ảnh hưởng: ĐÁNG KỂ | Số nguồn then chốt cũ (> 18 tháng hoặc chưa rõ tuổi): 5.",
-      "[Bước 6/6 · Hoàn tất] Hoàn thành trong 0.04s với 0 lần gọi LLM. Tỷ lệ trích dẫn xác minh: 100.0% | Số nhận định CAO từ nguồn C: 0.",
+      "[Bước 6/6 · Hoàn tất] Hoàn thành trong 0.03s với 0 lần gọi LLM. Tỷ lệ trích dẫn xác minh: 100.0% | Số nhận định CAO từ nguồn C: 0.",
       "[Làm mới 1/4 · Sinh truy vấn] Đang tạo truy vấn tìm dữ liệu mới hơn cho nguồn mục tiêu S1, S5...",
       "[Làm mới 2/4 · Tìm & lọc nguồn mới] Đang chạy 6 truy vấn và lọc các nguồn có ngày đăng mới hơn...",
       "[Làm mới 3/4 · Trích xuất & xác minh trích dẫn mới] Đang rút trích và kiểm chứng RapidFuzz >= 90 từ 6 nguồn mới...",
@@ -1325,9 +1325,9 @@
       "Đông Nam Á"
     ],
     "version": 2,
-    "parent_run_timestamp": "2026-10-23T12:33:06",
+    "parent_run_timestamp": "2026-10-23T13:22:35",
     "rescored_as_of": "2026-10-23",
-    "refresh_timestamp": "2026-10-23T12:34:08"
+    "refresh_timestamp": "2026-10-23T13:22:35"
   },
   "recency": {
     "reference_date": "2026-10-23",
@@ -1948,7 +1948,7 @@
   },
   "refresh": {
     "status": "ĐÃ LÀM MỚI",
-    "refreshed_at": "2026-10-23T12:34:08",
+    "refreshed_at": "2026-10-23T13:22:35",
     "reference_date": "2026-10-23",
     "target_source_ids": [
       "S1",
@@ -2152,8 +2152,8 @@
         "reason": "Nhận định mới bổ sung từ nguồn làm mới (E31, E32, E40)"
       }
     ],
-    "llm_calls_count": 4,
-    "duration_seconds": 47.8,
+    "llm_calls_count": 0,
+    "duration_seconds": 0.03,
     "note": ""
   }
 }

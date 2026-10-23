@@ -476,6 +476,21 @@ def retrieve_and_grade_sources(
 
     fetched_items.sort(key=_rank_key)
 
+    # When multiple articles from the same domain tie on (tier, freshness, keyword_hits),
+    # prefer localized Vietnamese path (/vi/) at that domain's slot while preserving candidate order.
+    same_dom_buckets: dict[tuple[str, tuple[int, int, int]], list[int]] = {}
+    for idx_f, pair in enumerate(fetched_items):
+        b_key = ((pair[0].domain or "").lower(), _rank_key(pair))
+        same_dom_buckets.setdefault(b_key, []).append(idx_f)
+    for b_indices in same_dom_buckets.values():
+        if len(b_indices) > 1:
+            sorted_group = sorted(
+                (fetched_items[i] for i in b_indices),
+                key=lambda p: (0 if "/vi/" in (p[0].url or "") else 1),
+            )
+            for pos, item_val in zip(b_indices, sorted_group):
+                fetched_items[pos] = item_val
+
     # Prioritize domain diversity: take at most 2 sources per domain first, then fill remaining slots if needed
     primary_pass: list[tuple[Source, str]] = []
     overflow_pass: list[tuple[Source, str]] = []
