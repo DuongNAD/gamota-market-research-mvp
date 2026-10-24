@@ -3,7 +3,7 @@ Hạn nộp: 18:00 ngày 24/10/2026
 Link Source Code (GitHub): https://github.com/DuongNAD/gamota-market-research-mvp
 Link Git Tag Mission 2: https://github.com/DuongNAD/gamota-market-research-mvp/tree/mission2-final
 Link Live Demo (Streamlit): https://gamota-market-research-mvp.streamlit.app
-Link Video Demo Mission 3: (cập nhật sau khi quay)
+Link Video Demo Mission 3: https://youtu.be/rXCLtsMb9ug
 
 ================================================================================
 Câu 1. Khi nhận yêu cầu thay đổi/mở rộng, bạn đã ưu tiên làm gì và chủ động chưa làm gì? Vì sao?

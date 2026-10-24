@@ -10,7 +10,7 @@
 - **Link Source Code (GitHub Public — nhánh chính có Mission 3):** [https://github.com/DuongNAD/gamota-market-research-mvp](https://github.com/DuongNAD/gamota-market-research-mvp)
 - **Link Bản đóng băng Mission 2 (Git Tag `mission2-final` để đối chiếu Trước/Sau):** [https://github.com/DuongNAD/gamota-market-research-mvp/tree/mission2-final](https://github.com/DuongNAD/gamota-market-research-mvp/tree/mission2-final)
 - **Link Live Demo (Streamlit Community Cloud — giữ nguyên URL từ Mission 2):** [https://gamota-market-research-mvp.streamlit.app](https://gamota-market-research-mvp.streamlit.app) *(Chế độ mặc định **"Xem báo cáo mẫu đã chạy thật (TC1–TC7)"** mở dùng ngay không cần API key, đã có sẵn Tab **"3. Độ mới & Ảnh hưởng (A2)"** và nút mẫu **"TC7 · Làm mới nguồn cũ (A2)"**)*
-- **Link Video Demo Mission 3 (≤ 4:45):** *(cập nhật sau khi quay)*
+- **Link Video Demo Mission 3 (4:22, giọng đọc AI trên ảnh chụp thật từ ứng dụng):** [https://youtu.be/rXCLtsMb9ug](https://youtu.be/rXCLtsMb9ug)
 
 ---
 

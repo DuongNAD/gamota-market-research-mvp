@@ -157,6 +157,8 @@ Mỗi quyết định được ghi nhận liên tục trong quá trình xây d�
 
 30. **[M3-FIX] Sửa câu TC4 trong kịch bản video**: kịch bản ghi `S10` "đăng tháng 6/2024, trích số liệu Q1/2025", nhưng `data/cached_runs/tc4_cambodia_mmorpg.json` ghi `S10` ngày đăng `Q1/2025` và trích dẫn nhắc số liệu `Q2/2026` (cờ "ngày đăng có thể sai"). Sửa lời thoại trong `SUBMISSION_M3.md` theo dữ liệu thật; video lồng tiếng AI giọng `vi-VN-NamMinhNeural` dùng đúng nội dung này.
 
+31. **[M3-FIX] Thêm link video Mission 3 vào tài liệu nộp**: video dài 4 phút 22 giây tại `https://youtu.be/rXCLtsMb9ug`. Hình trong video là ảnh chụp ứng dụng Streamlit chạy local từ repo và các trang tài liệu dựng từ tệp thật trong repo (`eval/results/m2/TC2.md`, `eval/results/m2_vs_m3.md`, `SUBMISSION_M3_FORM.txt`; kết quả `pytest` lấy từ lần chạy thật), cộng 2 slide mở và kết; lời thoại là giọng đọc AI (`vi-VN-NamMinhNeural`, edge-tts), không quay màn hình trực tiếp. Video quay ngày 23/10 (dài 5:09, có trước đợt sửa chốt chặn đối chiếu) không dùng vì nội dung đã lỗi thời. Đã điền link vào `README.md`, `SUBMISSION_M3.md`, `SUBMISSION_M3_FORM.txt`.
+
 
 
 

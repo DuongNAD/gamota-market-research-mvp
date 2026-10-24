@@ -5,7 +5,7 @@
 - **Link Demo (Streamlit Cloud):** [https://gamota-market-research-mvp.streamlit.app](https://gamota-market-research-mvp.streamlit.app) *(Nếu ứng dụng đang ở trạng thái ngủ khi mở bằng trình duyệt ẩn danh, vui lòng bấm **"Yes, get this app back up!"** và chờ khoảng 1 phút)*
 - **Link Source Code (GitHub Public):** [https://github.com/DuongNAD/gamota-market-research-mvp](https://github.com/DuongNAD/gamota-market-research-mvp)
 - **Link Video Walkthrough Mission 2 (≤ 5 phút):** [https://youtu.be/WZhY9xlLmMY](https://youtu.be/WZhY9xlLmMY)
-- **Link Video Demo Mission 3 (≤ 5 phút):** *(cập nhật sau khi quay)*
+- **Link Video Demo Mission 3 (≤ 5 phút; 4 phút 22 giây, giọng đọc AI trên ảnh chụp thật từ ứng dụng):** [https://youtu.be/rXCLtsMb9ug](https://youtu.be/rXCLtsMb9ug)
 - **Link Tag đóng băng Mission 2 (`mission2-final`):** [https://github.com/DuongNAD/gamota-market-research-mvp/tree/mission2-final](https://github.com/DuongNAD/gamota-market-research-mvp/tree/mission2-final)
 
 ---
