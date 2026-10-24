@@ -155,6 +155,8 @@ Mỗi quyết định được ghi nhận liên tục trong quá trình xây d�
     - *Quyết định*: Sửa `TESTING.md` cho khớp code; ghi lỗi `401` vào `TESTING.md` và mục Hạn chế của `README.md`; viết lại câu (4) trong `SUBMISSION_M3.md`, `SUBMISSION_M3_FORM.txt`, `README.md`: `E3→E35` bổ sung bằng chứng cho `I1` (giữ `TRUNG BÌNH`), chỉ `E11` làm `I5` lên `TRUNG BÌNH`; đếm lại ký tự Câu 2 (`1902`).
     - *Lý do*: Quy tắc 1 và 7 của `AGENTS.md`: tài liệu nộp không được nói khác kết quả chạy thật, và hạn chế phải ghi rõ trong `TESTING.md` và README.
 
+30. **[M3-FIX] Sửa câu TC4 trong kịch bản video**: kịch bản ghi `S10` "đăng tháng 6/2024, trích số liệu Q1/2025", nhưng `data/cached_runs/tc4_cambodia_mmorpg.json` ghi `S10` ngày đăng `Q1/2025` và trích dẫn nhắc số liệu `Q2/2026` (cờ "ngày đăng có thể sai"). Sửa lời thoại trong `SUBMISSION_M3.md` theo dữ liệu thật; video lồng tiếng AI giọng `vi-VN-NamMinhNeural` dùng đúng nội dung này.
+
 
 
 
